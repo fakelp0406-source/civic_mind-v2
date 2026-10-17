@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "civicmind"
+version = "0.0.1"
+description = "Evidence-grounded, bounded-agent municipal decision intelligence (CivicMind AI)"
+readme = "README.md"
+# Supported: Python 3.11+. Developed and tested on Python 3.13.15 only; 3.11 and 3.12 are
+# declared but not yet exercised by tests.
+requires-python = ">=3.11"
+authors = [{ name = "CivicMind AI contributors" }]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+# Version RANGES, not pins. Exact resolved versions will be recorded in a constraints file
+# after the separately approved installation. Upper bounds guard breaking majors:
+# pandas stays <3 for now (pandas 3 changes defaults such as copy-on-write and the string
+# dtype; revisit once the analytics layer has tests); pydantic 3 and pytest 9 are future majors.
+# Checked on PyPI (2026-10-17), newest release in each range, Windows wheels for CPython 3.13
+# (cp313-win_amd64) or pure-Python: pandas 2.3.3, numpy 2.5.4 (pandas dependency),
+# pydantic 2.14.1 / pydantic-core 2.50.1, PyYAML 6.0.3.
+dependencies = [
+    "pandas>=2.2,<3",
+    "pydantic>=2.7,<3",
+    "pyyaml>=6.0,<7",
+]
+
+[project.optional-dependencies]
+# HTTP API layer. Checked (pure-Python): fastapi 0.143.3 (>=3.10), its dependency
+# starlette 1.8.0 (>=3.11), uvicorn 0.54.0 (>=3.10).
+api = [
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+]
+# Tooling. Checked: pytest 8.4.2 (>=3.9), ruff 0.17.1 (>=3.7), httpx 0.28.1 (>=3.8).
+# httpx is capped below 1.0 because only 1.0 pre-releases exist.
+dev = [
+    "pytest>=8,<9",
+    "ruff>=0.5",
+    "httpx>=0.27,<1",
+]
+# Deliberately absent at this stage (see docs/architecture.md, "Future options"):
+# LLM providers, embeddings/vector stores, LangChain/LangGraph, Neo4j, frontend tooling.
+
+[project.urls]
+Repository = "https://github.com/fakelp0406-source/civic_mind-v2"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+civicmind = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 99
+target-version = "py311"
+src = ["src", "tests"]
+extend-exclude = ["data", "web", "docs"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "UP", "B", "C4", "SIM"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["civicmind"]

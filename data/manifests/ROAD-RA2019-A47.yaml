@@ -1,0 +1,286 @@
+dataset_id: ROAD-RA2019-A47
+manifest_version: 1
+title: Cities-wise Accidents Classified according to Type of Traffic Violations in Million Plus Cities
+  during 2019
+publisher: Ministry of Road Transport and Highways
+host_portal: data.gov.in
+source_class: official
+resource_page: https://www.data.gov.in/resource/cities-wise-accidents-classified-according-type-traffic-violations-million-plus-cities
+download_url: https://data.gov.in/files/ogd20/ogdpv2dms/s3fs-public/RA2019_A47.csv
+portal_published: '2023-02-15'
+portal_updated: '2023-02-15'
+licence:
+  name: Government Open Data License - India
+  url: https://www.data.gov.in/Godl
+  evidence: Catalogue field 'Released under NDSAP' / portal footer; GODL text rendered at https://www.data.gov.in/Godl
+    on 2026-10-17 (raw HTML in this batch is an app shell; see data/external/verify_2026-10-17/licence/GODL_evidence_note.md)
+  attribution: 'Ministry of Road Transport and Highways, 2023, Cities-wise Accidents Classified according
+    to Type of Traffic Violations in Million Plus Cities during 2019, Open Government Data Platform India,
+    15/02, https://www.data.gov.in/resource/cities-wise-accidents-classified-according-type-traffic-violations-million-plus-cities.
+    Published under Government Open Data License - India: https://www.data.gov.in/Godl.'
+  exemptions_checked: true
+retrieval:
+  retrieved_at: '2026-10-17T11:03:39+05:30'
+  retrieved_by: project owner (manual download; CAPTCHA completed by a person)
+  method: resource page Data > CSV Download (usage/purpose form)
+  http_status: null
+  content_type: null
+  original_filename: RA2019_A47.csv
+  local_path: data/external/verify_2026-10-17/roads/RA2019_A47.csv
+  note: Browser saved the file as 'RA2019_A47 (1).csv'; copied byte-identically (sha256 40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc)
+    and stored under the served name. retrieved_at is the downloaded file's modification time. An earlier
+    automated GET of the catalogue direct URL returned HTTP 403.
+integrity:
+  bytes: 6807
+  portal_stated_bytes: 6807
+  size_matches_portal: true
+  sha256: 40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc
+  format: csv
+  encoding: utf-8
+  bom: false
+  newline: CRLF
+  newline_counts:
+    CRLF: 52
+    LF: 0
+    CR: 0
+  delimiter: ','
+  looks_like_html: false
+  passed: true
+schema:
+- name: States/UTs
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Number of Accidents - Number
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Number of Accidents - Rank
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Killed - Number
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Killed - Rank
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Injured - Greviously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/ Consumption of alcohol and drug  - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/ Consumption of alcohol and drug  - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Greviously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong side - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong side - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong side - Persons Injured - Greviously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong side - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong side - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Persons Injured - Greviously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Persons Injured - Greviously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Persons Injured - Greviously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+row_count: 51
+period:
+  start: '2019-01-01'
+  end: '2019-12-31'
+  granularity: year
+  as_on: null
+geography:
+  country: India
+  state: null
+  city: null
+  level: million-plus city
+ward_scheme: null
+identifier_evidence: null
+sensitivity: public
+contains_personal_data: false
+semantic_checks:
+  validator: morth_city@v1
+  errors: 0
+  warnings: 0
+compatibility: {}
+findings:
+- code: entities.count
+  severity: info
+  message: 50 entity rows (excluding Total)
+  details:
+    label_column: States/UTs
+    entities:
+    - Agra
+    - Ahmedabad
+    - Allahabad(Prayagraj)
+    - Amritsar
+    - Asansol Durgapur
+    - Aurangabad
+    - Bengaluru
+    - Bhopal
+    - Chandigarh
+    - Coimbatore
+    - Chennai
+    - Delhi
+    - Dhanbad
+    - Faridabad
+    - Ghaziabad
+    - Gwalior
+    - Hyderabad
+    - Indore
+    - Jabalpur
+    - Jaipur
+    - Jamshedpur
+    - Jodhpur
+    - Kannur
+    - Kanpur
+    - Khozikode
+    - Kochi
+    - Kolkata
+    - Kollam
+    - Kota
+    - Lucknow
+    - Ludhiana
+    - Madurai
+    - Mallapuram
+    - Meerut
+    - Mumbai
+    - Nagpur
+    - Nashik
+    - Patna
+    - Pune
+    - Raipur
+    - Rajkot
+    - Srinagar
+    - Surat
+    - Thiruvanthapuram
+    - Thrissur
+    - Tiruchirapalli
+    - Vadodra
+    - Varanasi
+    - Vijaywada city
+    - Vizaq
+- code: total.consistent
+  severity: info
+  message: Total row equals the sum of entity rows for every count column
+  details: {}
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
+value_nature: unknown
+human_review: accepted
+review:
+  decision: accept
+  reviewed_by: project owner
+  reviewed_on: '2026-10-17'
+  sha256: 40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc
+  accepted_caveats: []
+  permitted_uses: []
+  note: null
+status: promoted
+promoted_to: data/raw/roads/RA2019_A47.csv
+git_tracked: false
+same_bytes_as: legacy repo lp-0406/civicmind-ai e3b194f:data/raw/RA2019_A47.csv (byte-identical, sha256
+  40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc)
+known_limitations:
+- City-level only; MoRTH's city boundary definition is not established - never join to ward data.
+- Later editions may restate earlier years; cite the edition.

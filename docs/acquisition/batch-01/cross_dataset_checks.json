@@ -1,0 +1,2908 @@
+{
+  "names_reused_across_ward_numbers::WATER-BWSSB-2025-08": {
+    "note": "Normalised names that appear under more than one ward number in the same file. Many entries mean the name column is not a reliable label.",
+    "count": 1,
+    "examples": {
+      "varthur": [
+        "85",
+        "149"
+      ]
+    }
+  },
+  "names_reused_across_ward_numbers::DEMO-SC-BLR-2011-DEM": {
+    "note": "Normalised names that appear under more than one ward number in the same file. Many entries mean the name column is not a reliable label.",
+    "count": 67,
+    "examples": {
+      "a narayanapura": [
+        "56",
+        "123",
+        "190"
+      ],
+      "aramane nagara": [
+        "35",
+        "102",
+        "169"
+      ],
+      "atturu": [
+        "3",
+        "70",
+        "137"
+      ],
+      "bagalakunte": [
+        "14",
+        "81",
+        "148"
+      ],
+      "banasavadi": [
+        "27",
+        "94",
+        "161"
+      ],
+      "basavanapura": [
+        "53",
+        "120",
+        "187"
+      ],
+      "benniganahalli": [
+        "50",
+        "117",
+        "184"
+      ],
+      "byatarayanapura": [
+        "7",
+        "74",
+        "141"
+      ],
+      "c v raman nagar": [
+        "57",
+        "124",
+        "191"
+      ],
+      "chokkasandra": [
+        "39",
+        "106",
+        "173"
+      ]
+    }
+  },
+  "names_reused_across_ward_numbers::WASTE-BLR-GCP": {
+    "note": "Normalised names that appear under more than one ward number in the same file. Many entries mean the name column is not a reliable label.",
+    "count": 0,
+    "examples": {}
+  },
+  "identifiers::WATER-BWSSB-2025-08__vs__DEMO-SC-BLR-2011-DEM": {
+    "note": "Ward numbers compared with their names. join_authorised is always false: no document yet defines either side's ward scheme.",
+    "counts": {
+      "matched": 29,
+      "name_conflict": 165,
+      "unmatched_left": 0,
+      "unmatched_right": 0,
+      "ambiguous_left": 4,
+      "ambiguous_right": 0,
+      "duplicated_left": 4,
+      "duplicated_right": 0
+    },
+    "left_label": "WATER-BWSSB-2025-08",
+    "right_label": "DEMO-SC-BLR-2011-DEM",
+    "matched": [
+      "1",
+      "4",
+      "6",
+      "7",
+      "8",
+      "9",
+      "13",
+      "15",
+      "16",
+      "17",
+      "18",
+      "23",
+      "24",
+      "25",
+      "28",
+      "30",
+      "34",
+      "39",
+      "41",
+      "43",
+      "45",
+      "46",
+      "49",
+      "50",
+      "53",
+      "55",
+      "56",
+      "62",
+      "67"
+    ],
+    "name_conflict": [
+      {
+        "id": "2",
+        "WATER-BWSSB-2025-08": "Chowdeshwari Ward",
+        "DEMO-SC-BLR-2011-DEM": "Chowdeswari Ward"
+      },
+      {
+        "id": "3",
+        "WATER-BWSSB-2025-08": "Attur",
+        "DEMO-SC-BLR-2011-DEM": "Atturu"
+      },
+      {
+        "id": "5",
+        "WATER-BWSSB-2025-08": "Jakkur",
+        "DEMO-SC-BLR-2011-DEM": "Jakkuru"
+      },
+      {
+        "id": "10",
+        "WATER-BWSSB-2025-08": "Doddabommasandra",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bommasandra"
+      },
+      {
+        "id": "11",
+        "WATER-BWSSB-2025-08": "Kuvempunagar",
+        "DEMO-SC-BLR-2011-DEM": "Kuvempu Nagar"
+      },
+      {
+        "id": "12",
+        "WATER-BWSSB-2025-08": "Shettyhalli",
+        "DEMO-SC-BLR-2011-DEM": "Shettihalli"
+      },
+      {
+        "id": "19",
+        "WATER-BWSSB-2025-08": "Sanjaynagar",
+        "DEMO-SC-BLR-2011-DEM": "SanJayanagar"
+      },
+      {
+        "id": "20",
+        "WATER-BWSSB-2025-08": "Ganganagar",
+        "DEMO-SC-BLR-2011-DEM": "Ganga Nagar"
+      },
+      {
+        "id": "21",
+        "WATER-BWSSB-2025-08": "Hebbal",
+        "DEMO-SC-BLR-2011-DEM": "Hebbala"
+      },
+      {
+        "id": "22",
+        "WATER-BWSSB-2025-08": "VishwanathNagenahalli",
+        "DEMO-SC-BLR-2011-DEM": "Vishwanath Nagenahalli"
+      },
+      {
+        "id": "26",
+        "WATER-BWSSB-2025-08": "Ramamurthynagar",
+        "DEMO-SC-BLR-2011-DEM": "Ramamurthy Nagar"
+      },
+      {
+        "id": "27",
+        "WATER-BWSSB-2025-08": "Banasawadi",
+        "DEMO-SC-BLR-2011-DEM": "Banasavadi"
+      },
+      {
+        "id": "29",
+        "WATER-BWSSB-2025-08": "Kacharakanahalli",
+        "DEMO-SC-BLR-2011-DEM": "Kacharkanahalli"
+      },
+      {
+        "id": "31",
+        "WATER-BWSSB-2025-08": "Kushalnagar",
+        "DEMO-SC-BLR-2011-DEM": "Kushal Nagar"
+      },
+      {
+        "id": "32",
+        "WATER-BWSSB-2025-08": "Kavalbyrasandra",
+        "DEMO-SC-BLR-2011-DEM": "Kaval Bairasandra"
+      },
+      {
+        "id": "33",
+        "WATER-BWSSB-2025-08": "Manorayanapalya",
+        "DEMO-SC-BLR-2011-DEM": "Manorayana Palya"
+      },
+      {
+        "id": "35",
+        "WATER-BWSSB-2025-08": "Aramane Nagar",
+        "DEMO-SC-BLR-2011-DEM": "Aramane Nagara"
+      },
+      {
+        "id": "36",
+        "WATER-BWSSB-2025-08": "Mathikere",
+        "DEMO-SC-BLR-2011-DEM": "Mattikere"
+      },
+      {
+        "id": "37",
+        "WATER-BWSSB-2025-08": "Yeshwanthpur",
+        "DEMO-SC-BLR-2011-DEM": "Yeshwanthpura"
+      },
+      {
+        "id": "38",
+        "WATER-BWSSB-2025-08": "H.M.T",
+        "DEMO-SC-BLR-2011-DEM": "HMT Ward"
+      },
+      {
+        "id": "40",
+        "WATER-BWSSB-2025-08": "Doddabidirakalu",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bidarakallu"
+      },
+      {
+        "id": "42",
+        "WATER-BWSSB-2025-08": "Lakshmidevinagar",
+        "DEMO-SC-BLR-2011-DEM": "Lakshmi Devi Nagar"
+      },
+      {
+        "id": "44",
+        "WATER-BWSSB-2025-08": "Marappanahalli",
+        "DEMO-SC-BLR-2011-DEM": "Marappana Palya"
+      },
+      {
+        "id": "47",
+        "WATER-BWSSB-2025-08": "Devarajeevanahalli",
+        "DEMO-SC-BLR-2011-DEM": "Devara Jeevanahalli"
+      },
+      {
+        "id": "48",
+        "WATER-BWSSB-2025-08": "Muneshwaranagar",
+        "DEMO-SC-BLR-2011-DEM": "Muneshwara Nagar"
+      },
+      {
+        "id": "51",
+        "WATER-BWSSB-2025-08": "Vijinapura",
+        "DEMO-SC-BLR-2011-DEM": "Vijnanapura"
+      },
+      {
+        "id": "52",
+        "WATER-BWSSB-2025-08": "K.R.Puram",
+        "DEMO-SC-BLR-2011-DEM": "KR Puram"
+      },
+      {
+        "id": "54",
+        "WATER-BWSSB-2025-08": "Hoodi",
+        "DEMO-SC-BLR-2011-DEM": "Hudi"
+      },
+      {
+        "id": "57",
+        "WATER-BWSSB-2025-08": "C.V. Ramannagar",
+        "DEMO-SC-BLR-2011-DEM": "C.V. Raman Nagar"
+      },
+      {
+        "id": "58",
+        "WATER-BWSSB-2025-08": "Hosathippasandra",
+        "DEMO-SC-BLR-2011-DEM": "New Tippa Sandra"
+      },
+      {
+        "id": "59",
+        "WATER-BWSSB-2025-08": "Maruthiseva Nagar",
+        "DEMO-SC-BLR-2011-DEM": "Maruthi Seva Nagar"
+      },
+      {
+        "id": "60",
+        "WATER-BWSSB-2025-08": "Sagayapuram",
+        "DEMO-SC-BLR-2011-DEM": "Sagayara Puram"
+      },
+      {
+        "id": "61",
+        "WATER-BWSSB-2025-08": "S.K. Garden",
+        "DEMO-SC-BLR-2011-DEM": "SK Garden"
+      },
+      {
+        "id": "63",
+        "WATER-BWSSB-2025-08": "Jayamahal",
+        "DEMO-SC-BLR-2011-DEM": "Jaya Mahal"
+      },
+      {
+        "id": "64",
+        "WATER-BWSSB-2025-08": "Rajamahal",
+        "DEMO-SC-BLR-2011-DEM": "Raj Mahal Guttahalli"
+      },
+      {
+        "id": "65",
+        "WATER-BWSSB-2025-08": "Kadumalleshwara",
+        "DEMO-SC-BLR-2011-DEM": "Kadu Malleshwar Ward"
+      },
+      {
+        "id": "66",
+        "WATER-BWSSB-2025-08": "Subramanyanagar",
+        "DEMO-SC-BLR-2011-DEM": "Subramanya Nagar"
+      },
+      {
+        "id": "68",
+        "WATER-BWSSB-2025-08": "Mahalakshmipuram",
+        "DEMO-SC-BLR-2011-DEM": "Kempegowda Ward"
+      },
+      {
+        "id": "69",
+        "WATER-BWSSB-2025-08": "Laggere",
+        "DEMO-SC-BLR-2011-DEM": "Chowdeswari Ward"
+      },
+      {
+        "id": "70",
+        "WATER-BWSSB-2025-08": "Rajagopalanagar",
+        "DEMO-SC-BLR-2011-DEM": "Atturu"
+      },
+      {
+        "id": "71",
+        "WATER-BWSSB-2025-08": "Hegganahalli",
+        "DEMO-SC-BLR-2011-DEM": "Yelahanka Satellite Town"
+      },
+      {
+        "id": "72",
+        "WATER-BWSSB-2025-08": "herohalli",
+        "DEMO-SC-BLR-2011-DEM": "Jakkuru"
+      },
+      {
+        "id": "73",
+        "WATER-BWSSB-2025-08": "Kottigepalya",
+        "DEMO-SC-BLR-2011-DEM": "Thanisandra"
+      },
+      {
+        "id": "74",
+        "WATER-BWSSB-2025-08": "Shakthiganapathi nagar",
+        "DEMO-SC-BLR-2011-DEM": "Byatarayanapura"
+      },
+      {
+        "id": "75",
+        "WATER-BWSSB-2025-08": "Shankaramata",
+        "DEMO-SC-BLR-2011-DEM": "Kodigehalli"
+      },
+      {
+        "id": "76",
+        "WATER-BWSSB-2025-08": "Gayathrinagar",
+        "DEMO-SC-BLR-2011-DEM": "Vidyaranyapura"
+      },
+      {
+        "id": "77",
+        "WATER-BWSSB-2025-08": "Dattathreya Temple",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bommasandra"
+      },
+      {
+        "id": "78",
+        "WATER-BWSSB-2025-08": "Pulikeshinagar",
+        "DEMO-SC-BLR-2011-DEM": "Kuvempu Nagar"
+      },
+      {
+        "id": "79",
+        "WATER-BWSSB-2025-08": "Sarvagnanagar",
+        "DEMO-SC-BLR-2011-DEM": "Shettihalli"
+      },
+      {
+        "id": "80",
+        "WATER-BWSSB-2025-08": "Hoysalanagar",
+        "DEMO-SC-BLR-2011-DEM": "Mallasandra"
+      },
+      {
+        "id": "81",
+        "WATER-BWSSB-2025-08": "Vignananagar",
+        "DEMO-SC-BLR-2011-DEM": "Bagalakunte"
+      },
+      {
+        "id": "82",
+        "WATER-BWSSB-2025-08": "Garudacharpalya",
+        "DEMO-SC-BLR-2011-DEM": "T Dasarahalli"
+      },
+      {
+        "id": "83",
+        "WATER-BWSSB-2025-08": "Kadugodi",
+        "DEMO-SC-BLR-2011-DEM": "Jalahalli"
+      },
+      {
+        "id": "84",
+        "WATER-BWSSB-2025-08": "Hagadooru",
+        "DEMO-SC-BLR-2011-DEM": "J P Park"
+      },
+      {
+        "id": "86",
+        "WATER-BWSSB-2025-08": "Marathalli",
+        "DEMO-SC-BLR-2011-DEM": "SanJayanagar"
+      },
+      {
+        "id": "87",
+        "WATER-BWSSB-2025-08": "HAL Airport",
+        "DEMO-SC-BLR-2011-DEM": "Ganga Nagar"
+      },
+      {
+        "id": "88",
+        "WATER-BWSSB-2025-08": "Jeevanbhimanagar",
+        "DEMO-SC-BLR-2011-DEM": "Hebbala"
+      },
+      {
+        "id": "89",
+        "WATER-BWSSB-2025-08": "Jogupalya",
+        "DEMO-SC-BLR-2011-DEM": "Vishwanath Nagenahalli"
+      },
+      {
+        "id": "90",
+        "WATER-BWSSB-2025-08": "Ulsoor",
+        "DEMO-SC-BLR-2011-DEM": "Nagavara"
+      },
+      {
+        "id": "91",
+        "WATER-BWSSB-2025-08": "Bharathinagar",
+        "DEMO-SC-BLR-2011-DEM": "HBR Layout"
+      },
+      {
+        "id": "92",
+        "WATER-BWSSB-2025-08": "Shivajinagar",
+        "DEMO-SC-BLR-2011-DEM": "Horamavu"
+      },
+      {
+        "id": "93",
+        "WATER-BWSSB-2025-08": "Vasanthnagar",
+        "DEMO-SC-BLR-2011-DEM": "Ramamurthy Nagar"
+      },
+      {
+        "id": "94",
+        "WATER-BWSSB-2025-08": "Gandhinagar",
+        "DEMO-SC-BLR-2011-DEM": "Banasavadi"
+      },
+      {
+        "id": "95",
+        "WATER-BWSSB-2025-08": "Subhashnagar",
+        "DEMO-SC-BLR-2011-DEM": "Kammanahalli"
+      },
+      {
+        "id": "96",
+        "WATER-BWSSB-2025-08": "Okalipuram",
+        "DEMO-SC-BLR-2011-DEM": "Kacharkanahalli"
+      },
+      {
+        "id": "97",
+        "WATER-BWSSB-2025-08": "Dayanandanagar",
+        "DEMO-SC-BLR-2011-DEM": "Kadugondanahalli"
+      },
+      {
+        "id": "98",
+        "WATER-BWSSB-2025-08": "Prakashnagar",
+        "DEMO-SC-BLR-2011-DEM": "Kushal Nagar"
+      },
+      {
+        "id": "99",
+        "WATER-BWSSB-2025-08": "Rajajinagar",
+        "DEMO-SC-BLR-2011-DEM": "Kaval Bairasandra"
+      },
+      {
+        "id": "100",
+        "WATER-BWSSB-2025-08": "Basaveshwaranagar",
+        "DEMO-SC-BLR-2011-DEM": "Manorayana Palya"
+      },
+      {
+        "id": "101",
+        "WATER-BWSSB-2025-08": "Kamakshipalya",
+        "DEMO-SC-BLR-2011-DEM": "Gangenahalli"
+      },
+      {
+        "id": "102",
+        "WATER-BWSSB-2025-08": "Vrushabhavathi Nagar",
+        "DEMO-SC-BLR-2011-DEM": "Aramane Nagara"
+      },
+      {
+        "id": "103",
+        "WATER-BWSSB-2025-08": "Kaveripura",
+        "DEMO-SC-BLR-2011-DEM": "Mattikere"
+      },
+      {
+        "id": "104",
+        "WATER-BWSSB-2025-08": "Govindrajnagara",
+        "DEMO-SC-BLR-2011-DEM": "Yeshwanthpura"
+      },
+      {
+        "id": "105",
+        "WATER-BWSSB-2025-08": "Agrahara Dasarahalli",
+        "DEMO-SC-BLR-2011-DEM": "HMT Ward"
+      },
+      {
+        "id": "106",
+        "WATER-BWSSB-2025-08": "Dr. Rajkumar Ward",
+        "DEMO-SC-BLR-2011-DEM": "Chokkasandra"
+      },
+      {
+        "id": "107",
+        "WATER-BWSSB-2025-08": "Shivanagar",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bidarakallu"
+      },
+      {
+        "id": "108",
+        "WATER-BWSSB-2025-08": "Srirammandira ward",
+        "DEMO-SC-BLR-2011-DEM": "Peenya Industrial Area"
+      },
+      {
+        "id": "109",
+        "WATER-BWSSB-2025-08": "Chikpet",
+        "DEMO-SC-BLR-2011-DEM": "Lakshmi Devi Nagar"
+      },
+      {
+        "id": "110",
+        "WATER-BWSSB-2025-08": "Sampangiramnagar",
+        "DEMO-SC-BLR-2011-DEM": "Nandini Layout"
+      },
+      {
+        "id": "111",
+        "WATER-BWSSB-2025-08": "Shanthala Nagar",
+        "DEMO-SC-BLR-2011-DEM": "Marappana Palya"
+      },
+      {
+        "id": "112",
+        "WATER-BWSSB-2025-08": "Dommalur",
+        "DEMO-SC-BLR-2011-DEM": "Malleshwaram"
+      },
+      {
+        "id": "113",
+        "WATER-BWSSB-2025-08": "Konena Agrahara",
+        "DEMO-SC-BLR-2011-DEM": "Jayachamarajendra Nagar"
+      },
+      {
+        "id": "114",
+        "WATER-BWSSB-2025-08": "Agaram",
+        "DEMO-SC-BLR-2011-DEM": "Devara Jeevanahalli"
+      },
+      {
+        "id": "115",
+        "WATER-BWSSB-2025-08": "Vannarpet",
+        "DEMO-SC-BLR-2011-DEM": "Muneshwara Nagar"
+      },
+      {
+        "id": "116",
+        "WATER-BWSSB-2025-08": "Neelasandra",
+        "DEMO-SC-BLR-2011-DEM": "Lingarajapura"
+      },
+      {
+        "id": "117",
+        "WATER-BWSSB-2025-08": "Shanthinagar",
+        "DEMO-SC-BLR-2011-DEM": "Benniganahalli"
+      },
+      {
+        "id": "118",
+        "WATER-BWSSB-2025-08": "Sudamnagar",
+        "DEMO-SC-BLR-2011-DEM": "Vijnanapura"
+      },
+      {
+        "id": "119",
+        "WATER-BWSSB-2025-08": "Dharmarayaswamy Temple Ward",
+        "DEMO-SC-BLR-2011-DEM": "KR Puram"
+      },
+      {
+        "id": "120",
+        "WATER-BWSSB-2025-08": "Cottonpet",
+        "DEMO-SC-BLR-2011-DEM": "Basavanapura"
+      },
+      {
+        "id": "121",
+        "WATER-BWSSB-2025-08": "Binnypet",
+        "DEMO-SC-BLR-2011-DEM": "Hudi"
+      },
+      {
+        "id": "122",
+        "WATER-BWSSB-2025-08": "Kempapura Agrahara",
+        "DEMO-SC-BLR-2011-DEM": "Devasandra"
+      },
+      {
+        "id": "123",
+        "WATER-BWSSB-2025-08": "Vijaynagar",
+        "DEMO-SC-BLR-2011-DEM": "A Narayanapura"
+      },
+      {
+        "id": "124",
+        "WATER-BWSSB-2025-08": "Hosahalli",
+        "DEMO-SC-BLR-2011-DEM": "C.V. Raman Nagar"
+      },
+      {
+        "id": "125",
+        "WATER-BWSSB-2025-08": "Marenahalli",
+        "DEMO-SC-BLR-2011-DEM": "New Tippa Sandra"
+      },
+      {
+        "id": "126",
+        "WATER-BWSSB-2025-08": "Maruthi Mandira Ward",
+        "DEMO-SC-BLR-2011-DEM": "Maruthi Seva Nagar"
+      },
+      {
+        "id": "127",
+        "WATER-BWSSB-2025-08": "Moodalapalya",
+        "DEMO-SC-BLR-2011-DEM": "Sagayara Puram"
+      },
+      {
+        "id": "128",
+        "WATER-BWSSB-2025-08": "Nagarabhavi",
+        "DEMO-SC-BLR-2011-DEM": "SK Garden"
+      },
+      {
+        "id": "129",
+        "WATER-BWSSB-2025-08": "Jnanabharathi ward",
+        "DEMO-SC-BLR-2011-DEM": "Ramaswamy Palya"
+      },
+      {
+        "id": "130",
+        "WATER-BWSSB-2025-08": "Ullalu",
+        "DEMO-SC-BLR-2011-DEM": "Jaya Mahal"
+      },
+      {
+        "id": "131",
+        "WATER-BWSSB-2025-08": "Nayandanahalli",
+        "DEMO-SC-BLR-2011-DEM": "Raj Mahal Guttahalli"
+      },
+      {
+        "id": "132",
+        "WATER-BWSSB-2025-08": "Attiguppe",
+        "DEMO-SC-BLR-2011-DEM": "Kadu Malleshwar Ward"
+      },
+      {
+        "id": "133",
+        "WATER-BWSSB-2025-08": "Hampinagar",
+        "DEMO-SC-BLR-2011-DEM": "Subramanya Nagar"
+      },
+      {
+        "id": "134",
+        "WATER-BWSSB-2025-08": "Bapujinagar",
+        "DEMO-SC-BLR-2011-DEM": "Nagapura"
+      },
+      {
+        "id": "135",
+        "WATER-BWSSB-2025-08": "Padarayanapura",
+        "DEMO-SC-BLR-2011-DEM": "Kempegowda Ward"
+      },
+      {
+        "id": "136",
+        "WATER-BWSSB-2025-08": "Jagareevanram Nagar",
+        "DEMO-SC-BLR-2011-DEM": "Chowdeswari Ward"
+      },
+      {
+        "id": "137",
+        "WATER-BWSSB-2025-08": "Rayapuram",
+        "DEMO-SC-BLR-2011-DEM": "Atturu"
+      },
+      {
+        "id": "138",
+        "WATER-BWSSB-2025-08": "Chalavadipalya",
+        "DEMO-SC-BLR-2011-DEM": "Yelahanka Satellite Town"
+      },
+      {
+        "id": "139",
+        "WATER-BWSSB-2025-08": "K.R. Market",
+        "DEMO-SC-BLR-2011-DEM": "Jakkuru"
+      },
+      {
+        "id": "140",
+        "WATER-BWSSB-2025-08": "Chamrajpet",
+        "DEMO-SC-BLR-2011-DEM": "Thanisandra"
+      },
+      {
+        "id": "141",
+        "WATER-BWSSB-2025-08": "Azadnagar",
+        "DEMO-SC-BLR-2011-DEM": "Byatarayanapura"
+      },
+      {
+        "id": "142",
+        "WATER-BWSSB-2025-08": "Sunkenahalli",
+        "DEMO-SC-BLR-2011-DEM": "Kodigehalli"
+      },
+      {
+        "id": "143",
+        "WATER-BWSSB-2025-08": "Vishweshrapuram",
+        "DEMO-SC-BLR-2011-DEM": "Vidyaranyapura"
+      },
+      {
+        "id": "144",
+        "WATER-BWSSB-2025-08": "Siddapura",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bommasandra"
+      },
+      {
+        "id": "145",
+        "WATER-BWSSB-2025-08": "Hombegowdanagar",
+        "DEMO-SC-BLR-2011-DEM": "Kuvempu Nagar"
+      },
+      {
+        "id": "146",
+        "WATER-BWSSB-2025-08": "Lakkasandra",
+        "DEMO-SC-BLR-2011-DEM": "Shettihalli"
+      },
+      {
+        "id": "147",
+        "WATER-BWSSB-2025-08": "Adugodi",
+        "DEMO-SC-BLR-2011-DEM": "Mallasandra"
+      },
+      {
+        "id": "148",
+        "WATER-BWSSB-2025-08": "Ejipura",
+        "DEMO-SC-BLR-2011-DEM": "Bagalakunte"
+      },
+      {
+        "id": "149",
+        "WATER-BWSSB-2025-08": "Varthur",
+        "DEMO-SC-BLR-2011-DEM": "T Dasarahalli"
+      },
+      {
+        "id": "150",
+        "WATER-BWSSB-2025-08": "Bellandur",
+        "DEMO-SC-BLR-2011-DEM": "Jalahalli"
+      },
+      {
+        "id": "151",
+        "WATER-BWSSB-2025-08": "Koramangala",
+        "DEMO-SC-BLR-2011-DEM": "J P Park"
+      },
+      {
+        "id": "152",
+        "WATER-BWSSB-2025-08": "Sudduguntepalya",
+        "DEMO-SC-BLR-2011-DEM": "Radhakrishna Temple Ward"
+      },
+      {
+        "id": "154",
+        "WATER-BWSSB-2025-08": "Basavanagudi",
+        "DEMO-SC-BLR-2011-DEM": "Ganga Nagar"
+      },
+      {
+        "id": "155",
+        "WATER-BWSSB-2025-08": "Hanumanthanagar",
+        "DEMO-SC-BLR-2011-DEM": "Hebbala"
+      },
+      {
+        "id": "156",
+        "WATER-BWSSB-2025-08": "Srinagar",
+        "DEMO-SC-BLR-2011-DEM": "Vishwanath Nagenahalli"
+      },
+      {
+        "id": "157",
+        "WATER-BWSSB-2025-08": "Gali Anjaneya swamy Temple Ward",
+        "DEMO-SC-BLR-2011-DEM": "Nagavara"
+      },
+      {
+        "id": "158",
+        "WATER-BWSSB-2025-08": "Deepanjali Nagar",
+        "DEMO-SC-BLR-2011-DEM": "HBR Layout"
+      },
+      {
+        "id": "159",
+        "WATER-BWSSB-2025-08": "Kengeri",
+        "DEMO-SC-BLR-2011-DEM": "Horamavu"
+      },
+      {
+        "id": "160",
+        "WATER-BWSSB-2025-08": "Rajarajeshwarinagar",
+        "DEMO-SC-BLR-2011-DEM": "Ramamurthy Nagar"
+      },
+      {
+        "id": "161",
+        "WATER-BWSSB-2025-08": "Hosakerehalli",
+        "DEMO-SC-BLR-2011-DEM": "Banasavadi"
+      },
+      {
+        "id": "162",
+        "WATER-BWSSB-2025-08": "Girinagar",
+        "DEMO-SC-BLR-2011-DEM": "Kammanahalli"
+      },
+      {
+        "id": "163",
+        "WATER-BWSSB-2025-08": "Katriguppe",
+        "DEMO-SC-BLR-2011-DEM": "Kacharkanahalli"
+      },
+      {
+        "id": "164",
+        "WATER-BWSSB-2025-08": "Vidyapeetha Ward",
+        "DEMO-SC-BLR-2011-DEM": "Kadugondanahalli"
+      },
+      {
+        "id": "165",
+        "WATER-BWSSB-2025-08": "Ganeshmandira Ward",
+        "DEMO-SC-BLR-2011-DEM": "Kushal Nagar"
+      },
+      {
+        "id": "166",
+        "WATER-BWSSB-2025-08": "Karisandra",
+        "DEMO-SC-BLR-2011-DEM": "Kaval Bairasandra"
+      },
+      {
+        "id": "167",
+        "WATER-BWSSB-2025-08": "Yadiyuru",
+        "DEMO-SC-BLR-2011-DEM": "Manorayana Palya"
+      },
+      {
+        "id": "168",
+        "WATER-BWSSB-2025-08": "Pattabhiramnagar",
+        "DEMO-SC-BLR-2011-DEM": "Gangenahalli"
+      },
+      {
+        "id": "169",
+        "WATER-BWSSB-2025-08": "Byrasandra",
+        "DEMO-SC-BLR-2011-DEM": "Aramane Nagara"
+      },
+      {
+        "id": "170",
+        "WATER-BWSSB-2025-08": "Jayanagar East",
+        "DEMO-SC-BLR-2011-DEM": "Mattikere"
+      },
+      {
+        "id": "171",
+        "WATER-BWSSB-2025-08": "Gurappanapalya",
+        "DEMO-SC-BLR-2011-DEM": "Yeshwanthpura"
+      },
+      {
+        "id": "172",
+        "WATER-BWSSB-2025-08": "Madiwala",
+        "DEMO-SC-BLR-2011-DEM": "HMT Ward"
+      },
+      {
+        "id": "173",
+        "WATER-BWSSB-2025-08": "Jakkasandra",
+        "DEMO-SC-BLR-2011-DEM": "Chokkasandra"
+      },
+      {
+        "id": "174",
+        "WATER-BWSSB-2025-08": "HSR Layout",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bidarakallu"
+      },
+      {
+        "id": "175",
+        "WATER-BWSSB-2025-08": "Bommanahalli",
+        "DEMO-SC-BLR-2011-DEM": "Peenya Industrial Area"
+      },
+      {
+        "id": "176",
+        "WATER-BWSSB-2025-08": "BTM Layout",
+        "DEMO-SC-BLR-2011-DEM": "Lakshmi Devi Nagar"
+      },
+      {
+        "id": "177",
+        "WATER-BWSSB-2025-08": "J.P.Nagar",
+        "DEMO-SC-BLR-2011-DEM": "Nandini Layout"
+      },
+      {
+        "id": "178",
+        "WATER-BWSSB-2025-08": "Sarakki",
+        "DEMO-SC-BLR-2011-DEM": "Marappana Palya"
+      },
+      {
+        "id": "179",
+        "WATER-BWSSB-2025-08": "Shakambarinagar",
+        "DEMO-SC-BLR-2011-DEM": "Malleshwaram"
+      },
+      {
+        "id": "180",
+        "WATER-BWSSB-2025-08": "Banashankari Temple Ward",
+        "DEMO-SC-BLR-2011-DEM": "Jayachamarajendra Nagar"
+      },
+      {
+        "id": "181",
+        "WATER-BWSSB-2025-08": "Kumaraswamy Layout",
+        "DEMO-SC-BLR-2011-DEM": "Devara Jeevanahalli"
+      },
+      {
+        "id": "182",
+        "WATER-BWSSB-2025-08": "Padmanabhanagar",
+        "DEMO-SC-BLR-2011-DEM": "Muneshwara Nagar"
+      },
+      {
+        "id": "183",
+        "WATER-BWSSB-2025-08": "Chikkallasandra",
+        "DEMO-SC-BLR-2011-DEM": "Lingarajapura"
+      },
+      {
+        "id": "184",
+        "WATER-BWSSB-2025-08": "Uttarahalli",
+        "DEMO-SC-BLR-2011-DEM": "Benniganahalli"
+      },
+      {
+        "id": "185",
+        "WATER-BWSSB-2025-08": "Yelachenahalli",
+        "DEMO-SC-BLR-2011-DEM": "Vijnanapura"
+      },
+      {
+        "id": "186",
+        "WATER-BWSSB-2025-08": "Jaraganahalli",
+        "DEMO-SC-BLR-2011-DEM": "KR Puram"
+      },
+      {
+        "id": "187",
+        "WATER-BWSSB-2025-08": "Puttenahalli",
+        "DEMO-SC-BLR-2011-DEM": "Basavanapura"
+      },
+      {
+        "id": "188",
+        "WATER-BWSSB-2025-08": "Bilekahalli",
+        "DEMO-SC-BLR-2011-DEM": "Hudi"
+      },
+      {
+        "id": "189",
+        "WATER-BWSSB-2025-08": "Hongasandra",
+        "DEMO-SC-BLR-2011-DEM": "Devasandra"
+      },
+      {
+        "id": "190",
+        "WATER-BWSSB-2025-08": "Mangammanapalya",
+        "DEMO-SC-BLR-2011-DEM": "A Narayanapura"
+      },
+      {
+        "id": "192",
+        "WATER-BWSSB-2025-08": "Begur",
+        "DEMO-SC-BLR-2011-DEM": "New Tippa Sandra"
+      },
+      {
+        "id": "193",
+        "WATER-BWSSB-2025-08": "Arakere",
+        "DEMO-SC-BLR-2011-DEM": "Maruthi Seva Nagar"
+      },
+      {
+        "id": "194",
+        "WATER-BWSSB-2025-08": "Gottigere",
+        "DEMO-SC-BLR-2011-DEM": "Sagayara Puram"
+      },
+      {
+        "id": "195",
+        "WATER-BWSSB-2025-08": "Konanakunte",
+        "DEMO-SC-BLR-2011-DEM": "SK Garden"
+      },
+      {
+        "id": "196",
+        "WATER-BWSSB-2025-08": "Anjanapura",
+        "DEMO-SC-BLR-2011-DEM": "Ramaswamy Palya"
+      },
+      {
+        "id": "197",
+        "WATER-BWSSB-2025-08": "Vasanthapura",
+        "DEMO-SC-BLR-2011-DEM": "Jaya Mahal"
+      },
+      {
+        "id": "198",
+        "WATER-BWSSB-2025-08": "Hemmigepura",
+        "DEMO-SC-BLR-2011-DEM": "Raj Mahal Guttahalli"
+      }
+    ],
+    "unmatched_left": [],
+    "unmatched_right": [],
+    "ambiguous_left": {
+      "14": [
+        "Bagalagunte",
+        "sidedahalli"
+      ],
+      "85": [
+        "Doddanekkundi",
+        "Varthur"
+      ],
+      "153": [
+        "Jayanagar",
+        "Jayangar"
+      ],
+      "191": [
+        "Singasandra",
+        "Singsandra"
+      ]
+    },
+    "ambiguous_right": {},
+    "duplicated_left": {
+      "14": 2,
+      "85": 2,
+      "153": 2,
+      "191": 2
+    },
+    "duplicated_right": {},
+    "join_authorised": false
+  },
+  "identifiers::WATER-BWSSB-2025-08__vs__WASTE-BLR-GCP": {
+    "note": "Ward numbers compared with their names. join_authorised is always false: no document yet defines either side's ward scheme.",
+    "counts": {
+      "matched": 93,
+      "name_conflict": 101,
+      "unmatched_left": 0,
+      "unmatched_right": 0,
+      "ambiguous_left": 4,
+      "ambiguous_right": 0,
+      "duplicated_left": 4,
+      "duplicated_right": 0
+    },
+    "left_label": "WATER-BWSSB-2025-08",
+    "right_label": "WASTE-BLR-GCP",
+    "matched": [
+      "4",
+      "5",
+      "6",
+      "8",
+      "9",
+      "12",
+      "13",
+      "15",
+      "16",
+      "17",
+      "19",
+      "20",
+      "21",
+      "24",
+      "25",
+      "26",
+      "31",
+      "32",
+      "33",
+      "34",
+      "39",
+      "43",
+      "45",
+      "48",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "63",
+      "65",
+      "67",
+      "68",
+      "69",
+      "71",
+      "72",
+      "73",
+      "79",
+      "80",
+      "82",
+      "83",
+      "87",
+      "88",
+      "92",
+      "93",
+      "94",
+      "96",
+      "101",
+      "102",
+      "103",
+      "105",
+      "106",
+      "110",
+      "114",
+      "116",
+      "122",
+      "124",
+      "130",
+      "132",
+      "133",
+      "135",
+      "137",
+      "139",
+      "142",
+      "145",
+      "146",
+      "147",
+      "148",
+      "149",
+      "151",
+      "155",
+      "159",
+      "161",
+      "162",
+      "163",
+      "169",
+      "170",
+      "173",
+      "174",
+      "176",
+      "178",
+      "181",
+      "182",
+      "184",
+      "187",
+      "189",
+      "192",
+      "193",
+      "194",
+      "196",
+      "198"
+    ],
+    "name_conflict": [
+      {
+        "id": "1",
+        "WATER-BWSSB-2025-08": "Kempegowda Ward",
+        "WASTE-BLR-GCP": "KEMPEGOWDA_"
+      },
+      {
+        "id": "2",
+        "WATER-BWSSB-2025-08": "Chowdeshwari Ward",
+        "WASTE-BLR-GCP": "CHOWDESHWARI"
+      },
+      {
+        "id": "3",
+        "WATER-BWSSB-2025-08": "Attur",
+        "WASTE-BLR-GCP": "ATTURU"
+      },
+      {
+        "id": "7",
+        "WATER-BWSSB-2025-08": "Byatarayanapura",
+        "WASTE-BLR-GCP": "BYATRAYANAPURA"
+      },
+      {
+        "id": "10",
+        "WATER-BWSSB-2025-08": "Doddabommasandra",
+        "WASTE-BLR-GCP": "DODDABOMMSANDRA"
+      },
+      {
+        "id": "11",
+        "WATER-BWSSB-2025-08": "Kuvempunagar",
+        "WASTE-BLR-GCP": "KUVEMPUNAGARA"
+      },
+      {
+        "id": "18",
+        "WATER-BWSSB-2025-08": "Radhakrishna Temple Ward",
+        "WASTE-BLR-GCP": "RK_TEMPLE"
+      },
+      {
+        "id": "22",
+        "WATER-BWSSB-2025-08": "VishwanathNagenahalli",
+        "WASTE-BLR-GCP": "V_NAGENAHALLI"
+      },
+      {
+        "id": "23",
+        "WATER-BWSSB-2025-08": "Nagavara",
+        "WASTE-BLR-GCP": "NAGAWARA"
+      },
+      {
+        "id": "27",
+        "WATER-BWSSB-2025-08": "Banasawadi",
+        "WASTE-BLR-GCP": "banaswadi"
+      },
+      {
+        "id": "28",
+        "WATER-BWSSB-2025-08": "Kammanahalli",
+        "WASTE-BLR-GCP": "kamanahalli"
+      },
+      {
+        "id": "29",
+        "WATER-BWSSB-2025-08": "Kacharakanahalli",
+        "WASTE-BLR-GCP": "KACHRAKANAHALLI"
+      },
+      {
+        "id": "30",
+        "WATER-BWSSB-2025-08": "Kadugondanahalli",
+        "WASTE-BLR-GCP": "KG_HALLI"
+      },
+      {
+        "id": "35",
+        "WATER-BWSSB-2025-08": "Aramane Nagar",
+        "WASTE-BLR-GCP": "ARAMANENAGAR"
+      },
+      {
+        "id": "36",
+        "WATER-BWSSB-2025-08": "Mathikere",
+        "WASTE-BLR-GCP": "MATTIKERE"
+      },
+      {
+        "id": "37",
+        "WATER-BWSSB-2025-08": "Yeshwanthpur",
+        "WASTE-BLR-GCP": "Yeshwanthapura"
+      },
+      {
+        "id": "38",
+        "WATER-BWSSB-2025-08": "H.M.T",
+        "WASTE-BLR-GCP": "HMT"
+      },
+      {
+        "id": "40",
+        "WATER-BWSSB-2025-08": "Doddabidirakalu",
+        "WASTE-BLR-GCP": "Doddabidirakallu"
+      },
+      {
+        "id": "41",
+        "WATER-BWSSB-2025-08": "Peenya Industrial Area",
+        "WASTE-BLR-GCP": "PEENYA_INDL_AREA"
+      },
+      {
+        "id": "42",
+        "WATER-BWSSB-2025-08": "Lakshmidevinagar",
+        "WASTE-BLR-GCP": "Lakshmidevinagara"
+      },
+      {
+        "id": "44",
+        "WATER-BWSSB-2025-08": "Marappanahalli",
+        "WASTE-BLR-GCP": "MARAPANNAPALYA"
+      },
+      {
+        "id": "46",
+        "WATER-BWSSB-2025-08": "Jayachamarajendra Nagar",
+        "WASTE-BLR-GCP": "JC_Nagar"
+      },
+      {
+        "id": "47",
+        "WATER-BWSSB-2025-08": "Devarajeevanahalli",
+        "WASTE-BLR-GCP": "DEVARA_JEEVANA_HALLI"
+      },
+      {
+        "id": "49",
+        "WATER-BWSSB-2025-08": "Lingarajapura",
+        "WASTE-BLR-GCP": "Lingarajapuram"
+      },
+      {
+        "id": "57",
+        "WATER-BWSSB-2025-08": "C.V. Ramannagar",
+        "WASTE-BLR-GCP": "CV_RAMANNAGAR"
+      },
+      {
+        "id": "58",
+        "WATER-BWSSB-2025-08": "Hosathippasandra",
+        "WASTE-BLR-GCP": "NEW_TIPPASANDRA"
+      },
+      {
+        "id": "59",
+        "WATER-BWSSB-2025-08": "Maruthiseva Nagar",
+        "WASTE-BLR-GCP": "Maruthi_Seva_Nagar"
+      },
+      {
+        "id": "60",
+        "WATER-BWSSB-2025-08": "Sagayapuram",
+        "WASTE-BLR-GCP": "SAGAYA_PURAM"
+      },
+      {
+        "id": "61",
+        "WATER-BWSSB-2025-08": "S.K. Garden",
+        "WASTE-BLR-GCP": "SK_GARDEN"
+      },
+      {
+        "id": "62",
+        "WATER-BWSSB-2025-08": "Ramaswamy palya",
+        "WASTE-BLR-GCP": "M_RAMASWAMY_PALYA"
+      },
+      {
+        "id": "64",
+        "WATER-BWSSB-2025-08": "Rajamahal",
+        "WASTE-BLR-GCP": "RAJAMAHAL_GUTTAHALLI"
+      },
+      {
+        "id": "66",
+        "WATER-BWSSB-2025-08": "Subramanyanagar",
+        "WASTE-BLR-GCP": "SUBRAMANYA_NAGAR"
+      },
+      {
+        "id": "70",
+        "WATER-BWSSB-2025-08": "Rajagopalanagar",
+        "WASTE-BLR-GCP": "RAJAGOPALANAGARA"
+      },
+      {
+        "id": "74",
+        "WATER-BWSSB-2025-08": "Shakthiganapathi nagar",
+        "WASTE-BLR-GCP": "SHAKTHI_GANAPATHI_NAGAR"
+      },
+      {
+        "id": "75",
+        "WATER-BWSSB-2025-08": "Shankaramata",
+        "WASTE-BLR-GCP": "SHANKAR_MATT"
+      },
+      {
+        "id": "76",
+        "WATER-BWSSB-2025-08": "Gayathrinagar",
+        "WASTE-BLR-GCP": "GAYITHRINAGAR"
+      },
+      {
+        "id": "77",
+        "WATER-BWSSB-2025-08": "Dattathreya Temple",
+        "WASTE-BLR-GCP": "DATTATREYA_TEMPLE_"
+      },
+      {
+        "id": "78",
+        "WATER-BWSSB-2025-08": "Pulikeshinagar",
+        "WASTE-BLR-GCP": "PULAKESHINAGAR"
+      },
+      {
+        "id": "81",
+        "WATER-BWSSB-2025-08": "Vignananagar",
+        "WASTE-BLR-GCP": "Vignananagara"
+      },
+      {
+        "id": "84",
+        "WATER-BWSSB-2025-08": "Hagadooru",
+        "WASTE-BLR-GCP": "HAGADUR"
+      },
+      {
+        "id": "86",
+        "WATER-BWSSB-2025-08": "Marathalli",
+        "WASTE-BLR-GCP": "Marathahalli"
+      },
+      {
+        "id": "89",
+        "WATER-BWSSB-2025-08": "Jogupalya",
+        "WASTE-BLR-GCP": "JOGUPALAYA"
+      },
+      {
+        "id": "90",
+        "WATER-BWSSB-2025-08": "Ulsoor",
+        "WASTE-BLR-GCP": "HALASUR"
+      },
+      {
+        "id": "91",
+        "WATER-BWSSB-2025-08": "Bharathinagar",
+        "WASTE-BLR-GCP": "Bharathi_Nagar"
+      },
+      {
+        "id": "95",
+        "WATER-BWSSB-2025-08": "Subhashnagar",
+        "WASTE-BLR-GCP": "SUBHASH_NAGAR"
+      },
+      {
+        "id": "97",
+        "WATER-BWSSB-2025-08": "Dayanandanagar",
+        "WASTE-BLR-GCP": "DAYANANDA_NAGAR"
+      },
+      {
+        "id": "98",
+        "WATER-BWSSB-2025-08": "Prakashnagar",
+        "WASTE-BLR-GCP": "PRAKASH_NAGAR"
+      },
+      {
+        "id": "99",
+        "WATER-BWSSB-2025-08": "Rajajinagar",
+        "WASTE-BLR-GCP": "RAJAJI_NAGAR"
+      },
+      {
+        "id": "100",
+        "WATER-BWSSB-2025-08": "Basaveshwaranagar",
+        "WASTE-BLR-GCP": "BASAVESHWARA_NAGAR"
+      },
+      {
+        "id": "104",
+        "WATER-BWSSB-2025-08": "Govindrajnagara",
+        "WASTE-BLR-GCP": "GOVINDRAJA_NAGAR"
+      },
+      {
+        "id": "107",
+        "WATER-BWSSB-2025-08": "Shivanagar",
+        "WASTE-BLR-GCP": "SHIVA_NAGAR"
+      },
+      {
+        "id": "108",
+        "WATER-BWSSB-2025-08": "Srirammandira ward",
+        "WASTE-BLR-GCP": "SRIRAMAMANDIR"
+      },
+      {
+        "id": "109",
+        "WATER-BWSSB-2025-08": "Chikpet",
+        "WASTE-BLR-GCP": "CHICKPETE"
+      },
+      {
+        "id": "111",
+        "WATER-BWSSB-2025-08": "Shanthala Nagar",
+        "WASTE-BLR-GCP": "SHANTHALANAGAR"
+      },
+      {
+        "id": "112",
+        "WATER-BWSSB-2025-08": "Dommalur",
+        "WASTE-BLR-GCP": "DOMLUR"
+      },
+      {
+        "id": "113",
+        "WATER-BWSSB-2025-08": "Konena Agrahara",
+        "WASTE-BLR-GCP": "KONENAGRAHARA"
+      },
+      {
+        "id": "115",
+        "WATER-BWSSB-2025-08": "Vannarpet",
+        "WASTE-BLR-GCP": "VANNIGARAPET"
+      },
+      {
+        "id": "117",
+        "WATER-BWSSB-2025-08": "Shanthinagar",
+        "WASTE-BLR-GCP": "Shanthi_Nagar"
+      },
+      {
+        "id": "118",
+        "WATER-BWSSB-2025-08": "Sudamnagar",
+        "WASTE-BLR-GCP": "SUDHAM_NAGAR"
+      },
+      {
+        "id": "119",
+        "WATER-BWSSB-2025-08": "Dharmarayaswamy Temple Ward",
+        "WASTE-BLR-GCP": "DHARMARAYA_SWAMY_TEMPLE"
+      },
+      {
+        "id": "120",
+        "WATER-BWSSB-2025-08": "Cottonpet",
+        "WASTE-BLR-GCP": "COTTONPETE"
+      },
+      {
+        "id": "121",
+        "WATER-BWSSB-2025-08": "Binnypet",
+        "WASTE-BLR-GCP": "BINNIPETE"
+      },
+      {
+        "id": "123",
+        "WATER-BWSSB-2025-08": "Vijaynagar",
+        "WASTE-BLR-GCP": "VIJAYNAGARA"
+      },
+      {
+        "id": "125",
+        "WATER-BWSSB-2025-08": "Marenahalli",
+        "WASTE-BLR-GCP": "MARENAHALI"
+      },
+      {
+        "id": "126",
+        "WATER-BWSSB-2025-08": "Maruthi Mandira Ward",
+        "WASTE-BLR-GCP": "MARUTHI_MANDIR"
+      },
+      {
+        "id": "127",
+        "WATER-BWSSB-2025-08": "Moodalapalya",
+        "WASTE-BLR-GCP": "MUDALAPALYA"
+      },
+      {
+        "id": "128",
+        "WATER-BWSSB-2025-08": "Nagarabhavi",
+        "WASTE-BLR-GCP": "NAGARBHAVI"
+      },
+      {
+        "id": "129",
+        "WATER-BWSSB-2025-08": "Jnanabharathi ward",
+        "WASTE-BLR-GCP": "Jnanabharathi"
+      },
+      {
+        "id": "131",
+        "WATER-BWSSB-2025-08": "Nayandanahalli",
+        "WASTE-BLR-GCP": "NAYANDAHALLI"
+      },
+      {
+        "id": "134",
+        "WATER-BWSSB-2025-08": "Bapujinagar",
+        "WASTE-BLR-GCP": "BAPUJI_NAGAR"
+      },
+      {
+        "id": "136",
+        "WATER-BWSSB-2025-08": "Jagareevanram Nagar",
+        "WASTE-BLR-GCP": "JAGAJIVANARAM_NAGAR"
+      },
+      {
+        "id": "138",
+        "WATER-BWSSB-2025-08": "Chalavadipalya",
+        "WASTE-BLR-GCP": "CHELVADI_PALYA"
+      },
+      {
+        "id": "140",
+        "WATER-BWSSB-2025-08": "Chamrajpet",
+        "WASTE-BLR-GCP": "CHAMRAJAPET"
+      },
+      {
+        "id": "141",
+        "WATER-BWSSB-2025-08": "Azadnagar",
+        "WASTE-BLR-GCP": "AZAD_NAGAR"
+      },
+      {
+        "id": "143",
+        "WATER-BWSSB-2025-08": "Vishweshrapuram",
+        "WASTE-BLR-GCP": "VISHVESHWARA_PURAM"
+      },
+      {
+        "id": "144",
+        "WATER-BWSSB-2025-08": "Siddapura",
+        "WASTE-BLR-GCP": "SIDAPURA"
+      },
+      {
+        "id": "150",
+        "WATER-BWSSB-2025-08": "Bellandur",
+        "WASTE-BLR-GCP": "Bellanduru"
+      },
+      {
+        "id": "152",
+        "WATER-BWSSB-2025-08": "Sudduguntepalya",
+        "WASTE-BLR-GCP": "SUDDAGUNTE_PALYA"
+      },
+      {
+        "id": "154",
+        "WATER-BWSSB-2025-08": "Basavanagudi",
+        "WASTE-BLR-GCP": "BASAVANGUDI"
+      },
+      {
+        "id": "156",
+        "WATER-BWSSB-2025-08": "Srinagar",
+        "WASTE-BLR-GCP": "SRI_NAGAR"
+      },
+      {
+        "id": "157",
+        "WATER-BWSSB-2025-08": "Gali Anjaneya swamy Temple Ward",
+        "WASTE-BLR-GCP": "GALI_ANJANEYA_"
+      },
+      {
+        "id": "158",
+        "WATER-BWSSB-2025-08": "Deepanjali Nagar",
+        "WASTE-BLR-GCP": "DEEPANJALI"
+      },
+      {
+        "id": "160",
+        "WATER-BWSSB-2025-08": "Rajarajeshwarinagar",
+        "WASTE-BLR-GCP": "R.R.NAGAR"
+      },
+      {
+        "id": "164",
+        "WATER-BWSSB-2025-08": "Vidyapeetha Ward",
+        "WASTE-BLR-GCP": "VIDYAPEETA"
+      },
+      {
+        "id": "165",
+        "WATER-BWSSB-2025-08": "Ganeshmandira Ward",
+        "WASTE-BLR-GCP": "GANESH_MANDIRA"
+      },
+      {
+        "id": "166",
+        "WATER-BWSSB-2025-08": "Karisandra",
+        "WASTE-BLR-GCP": "KANISANDRA"
+      },
+      {
+        "id": "167",
+        "WATER-BWSSB-2025-08": "Yadiyuru",
+        "WASTE-BLR-GCP": "YEDIYUR"
+      },
+      {
+        "id": "168",
+        "WATER-BWSSB-2025-08": "Pattabhiramnagar",
+        "WASTE-BLR-GCP": "PATTABHINAGAAR"
+      },
+      {
+        "id": "171",
+        "WATER-BWSSB-2025-08": "Gurappanapalya",
+        "WASTE-BLR-GCP": "GURAPPANA_PALYA"
+      },
+      {
+        "id": "172",
+        "WATER-BWSSB-2025-08": "Madiwala",
+        "WASTE-BLR-GCP": "MADIVALA"
+      },
+      {
+        "id": "175",
+        "WATER-BWSSB-2025-08": "Bommanahalli",
+        "WASTE-BLR-GCP": "BOMMANHALLI"
+      },
+      {
+        "id": "177",
+        "WATER-BWSSB-2025-08": "J.P.Nagar",
+        "WASTE-BLR-GCP": "JP_NAGAR"
+      },
+      {
+        "id": "179",
+        "WATER-BWSSB-2025-08": "Shakambarinagar",
+        "WASTE-BLR-GCP": "SHAKAMBARI_NAGAR"
+      },
+      {
+        "id": "180",
+        "WATER-BWSSB-2025-08": "Banashankari Temple Ward",
+        "WASTE-BLR-GCP": "BANASHANKARI_TEMPLE"
+      },
+      {
+        "id": "183",
+        "WATER-BWSSB-2025-08": "Chikkallasandra",
+        "WASTE-BLR-GCP": "CHIKKALA_SANDRA"
+      },
+      {
+        "id": "185",
+        "WATER-BWSSB-2025-08": "Yelachenahalli",
+        "WASTE-BLR-GCP": "YELCHENAHALLI"
+      },
+      {
+        "id": "186",
+        "WATER-BWSSB-2025-08": "Jaraganahalli",
+        "WASTE-BLR-GCP": "JAGRAGANAHALLI"
+      },
+      {
+        "id": "188",
+        "WATER-BWSSB-2025-08": "Bilekahalli",
+        "WASTE-BLR-GCP": "BILKEHALLI"
+      },
+      {
+        "id": "190",
+        "WATER-BWSSB-2025-08": "Mangammanapalya",
+        "WASTE-BLR-GCP": "MANGAMMA_PALYA"
+      },
+      {
+        "id": "195",
+        "WATER-BWSSB-2025-08": "Konanakunte",
+        "WASTE-BLR-GCP": "KONANKUNTE"
+      },
+      {
+        "id": "197",
+        "WATER-BWSSB-2025-08": "Vasanthapura",
+        "WASTE-BLR-GCP": "VASANTHPURA"
+      }
+    ],
+    "unmatched_left": [],
+    "unmatched_right": [],
+    "ambiguous_left": {
+      "14": [
+        "Bagalagunte",
+        "sidedahalli"
+      ],
+      "85": [
+        "Doddanekkundi",
+        "Varthur"
+      ],
+      "153": [
+        "Jayanagar",
+        "Jayangar"
+      ],
+      "191": [
+        "Singasandra",
+        "Singsandra"
+      ]
+    },
+    "ambiguous_right": {},
+    "duplicated_left": {
+      "14": 2,
+      "85": 2,
+      "153": 2,
+      "191": 2
+    },
+    "duplicated_right": {},
+    "join_authorised": false
+  },
+  "identifiers::WASTE-BLR-GCP__vs__DEMO-SC-BLR-2011-DEM": {
+    "note": "Ward numbers compared with their names. join_authorised is always false: no document yet defines either side's ward scheme.",
+    "counts": {
+      "matched": 24,
+      "name_conflict": 174,
+      "unmatched_left": 0,
+      "unmatched_right": 0,
+      "ambiguous_left": 0,
+      "ambiguous_right": 0,
+      "duplicated_left": 0,
+      "duplicated_right": 0
+    },
+    "left_label": "WASTE-BLR-GCP",
+    "right_label": "DEMO-SC-BLR-2011-DEM",
+    "matched": [
+      "3",
+      "4",
+      "6",
+      "8",
+      "9",
+      "13",
+      "15",
+      "16",
+      "17",
+      "24",
+      "25",
+      "34",
+      "36",
+      "39",
+      "43",
+      "45",
+      "50",
+      "53",
+      "55",
+      "56",
+      "59",
+      "61",
+      "66",
+      "67"
+    ],
+    "name_conflict": [
+      {
+        "id": "1",
+        "WASTE-BLR-GCP": "KEMPEGOWDA_",
+        "DEMO-SC-BLR-2011-DEM": "Kempegowda Ward"
+      },
+      {
+        "id": "2",
+        "WASTE-BLR-GCP": "CHOWDESHWARI",
+        "DEMO-SC-BLR-2011-DEM": "Chowdeswari Ward"
+      },
+      {
+        "id": "5",
+        "WASTE-BLR-GCP": "JAKKUR",
+        "DEMO-SC-BLR-2011-DEM": "Jakkuru"
+      },
+      {
+        "id": "7",
+        "WASTE-BLR-GCP": "BYATRAYANAPURA",
+        "DEMO-SC-BLR-2011-DEM": "Byatarayanapura"
+      },
+      {
+        "id": "10",
+        "WASTE-BLR-GCP": "DODDABOMMSANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bommasandra"
+      },
+      {
+        "id": "11",
+        "WASTE-BLR-GCP": "KUVEMPUNAGARA",
+        "DEMO-SC-BLR-2011-DEM": "Kuvempu Nagar"
+      },
+      {
+        "id": "12",
+        "WASTE-BLR-GCP": "SHETTYHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Shettihalli"
+      },
+      {
+        "id": "14",
+        "WASTE-BLR-GCP": "Bagalagunte",
+        "DEMO-SC-BLR-2011-DEM": "Bagalakunte"
+      },
+      {
+        "id": "18",
+        "WASTE-BLR-GCP": "RK_TEMPLE",
+        "DEMO-SC-BLR-2011-DEM": "Radhakrishna Temple Ward"
+      },
+      {
+        "id": "19",
+        "WASTE-BLR-GCP": "SANJAYNAGAR",
+        "DEMO-SC-BLR-2011-DEM": "SanJayanagar"
+      },
+      {
+        "id": "20",
+        "WASTE-BLR-GCP": "GANGANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Ganga Nagar"
+      },
+      {
+        "id": "21",
+        "WASTE-BLR-GCP": "HEBBAL",
+        "DEMO-SC-BLR-2011-DEM": "Hebbala"
+      },
+      {
+        "id": "22",
+        "WASTE-BLR-GCP": "V_NAGENAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Vishwanath Nagenahalli"
+      },
+      {
+        "id": "23",
+        "WASTE-BLR-GCP": "NAGAWARA",
+        "DEMO-SC-BLR-2011-DEM": "Nagavara"
+      },
+      {
+        "id": "26",
+        "WASTE-BLR-GCP": "RAMAMURTHYNAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Ramamurthy Nagar"
+      },
+      {
+        "id": "27",
+        "WASTE-BLR-GCP": "banaswadi",
+        "DEMO-SC-BLR-2011-DEM": "Banasavadi"
+      },
+      {
+        "id": "28",
+        "WASTE-BLR-GCP": "kamanahalli",
+        "DEMO-SC-BLR-2011-DEM": "Kammanahalli"
+      },
+      {
+        "id": "29",
+        "WASTE-BLR-GCP": "KACHRAKANAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Kacharkanahalli"
+      },
+      {
+        "id": "30",
+        "WASTE-BLR-GCP": "KG_HALLI",
+        "DEMO-SC-BLR-2011-DEM": "Kadugondanahalli"
+      },
+      {
+        "id": "31",
+        "WASTE-BLR-GCP": "KUSHALNAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Kushal Nagar"
+      },
+      {
+        "id": "32",
+        "WASTE-BLR-GCP": "KAVALBYRASANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Kaval Bairasandra"
+      },
+      {
+        "id": "33",
+        "WASTE-BLR-GCP": "ManorayanaPalya",
+        "DEMO-SC-BLR-2011-DEM": "Manorayana Palya"
+      },
+      {
+        "id": "35",
+        "WASTE-BLR-GCP": "ARAMANENAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Aramane Nagara"
+      },
+      {
+        "id": "37",
+        "WASTE-BLR-GCP": "Yeshwanthapura",
+        "DEMO-SC-BLR-2011-DEM": "Yeshwanthpura"
+      },
+      {
+        "id": "38",
+        "WASTE-BLR-GCP": "HMT",
+        "DEMO-SC-BLR-2011-DEM": "HMT Ward"
+      },
+      {
+        "id": "40",
+        "WASTE-BLR-GCP": "Doddabidirakallu",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bidarakallu"
+      },
+      {
+        "id": "41",
+        "WASTE-BLR-GCP": "PEENYA_INDL_AREA",
+        "DEMO-SC-BLR-2011-DEM": "Peenya Industrial Area"
+      },
+      {
+        "id": "42",
+        "WASTE-BLR-GCP": "Lakshmidevinagara",
+        "DEMO-SC-BLR-2011-DEM": "Lakshmi Devi Nagar"
+      },
+      {
+        "id": "44",
+        "WASTE-BLR-GCP": "MARAPANNAPALYA",
+        "DEMO-SC-BLR-2011-DEM": "Marappana Palya"
+      },
+      {
+        "id": "46",
+        "WASTE-BLR-GCP": "JC_Nagar",
+        "DEMO-SC-BLR-2011-DEM": "Jayachamarajendra Nagar"
+      },
+      {
+        "id": "47",
+        "WASTE-BLR-GCP": "DEVARA_JEEVANA_HALLI",
+        "DEMO-SC-BLR-2011-DEM": "Devara Jeevanahalli"
+      },
+      {
+        "id": "48",
+        "WASTE-BLR-GCP": "MUNESHWARANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Muneshwara Nagar"
+      },
+      {
+        "id": "49",
+        "WASTE-BLR-GCP": "Lingarajapuram",
+        "DEMO-SC-BLR-2011-DEM": "Lingarajapura"
+      },
+      {
+        "id": "51",
+        "WASTE-BLR-GCP": "Vijinapura",
+        "DEMO-SC-BLR-2011-DEM": "Vijnanapura"
+      },
+      {
+        "id": "52",
+        "WASTE-BLR-GCP": "K_R_PURAM",
+        "DEMO-SC-BLR-2011-DEM": "KR Puram"
+      },
+      {
+        "id": "54",
+        "WASTE-BLR-GCP": "Hoodi",
+        "DEMO-SC-BLR-2011-DEM": "Hudi"
+      },
+      {
+        "id": "57",
+        "WASTE-BLR-GCP": "CV_RAMANNAGAR",
+        "DEMO-SC-BLR-2011-DEM": "C.V. Raman Nagar"
+      },
+      {
+        "id": "58",
+        "WASTE-BLR-GCP": "NEW_TIPPASANDRA",
+        "DEMO-SC-BLR-2011-DEM": "New Tippa Sandra"
+      },
+      {
+        "id": "60",
+        "WASTE-BLR-GCP": "SAGAYA_PURAM",
+        "DEMO-SC-BLR-2011-DEM": "Sagayara Puram"
+      },
+      {
+        "id": "62",
+        "WASTE-BLR-GCP": "M_RAMASWAMY_PALYA",
+        "DEMO-SC-BLR-2011-DEM": "Ramaswamy Palya"
+      },
+      {
+        "id": "63",
+        "WASTE-BLR-GCP": "Jayamahal",
+        "DEMO-SC-BLR-2011-DEM": "Jaya Mahal"
+      },
+      {
+        "id": "64",
+        "WASTE-BLR-GCP": "RAJAMAHAL_GUTTAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Raj Mahal Guttahalli"
+      },
+      {
+        "id": "65",
+        "WASTE-BLR-GCP": "KADUMALLESHWARA",
+        "DEMO-SC-BLR-2011-DEM": "Kadu Malleshwar Ward"
+      },
+      {
+        "id": "68",
+        "WASTE-BLR-GCP": "MAHALAKSHMIPURAM",
+        "DEMO-SC-BLR-2011-DEM": "Kempegowda Ward"
+      },
+      {
+        "id": "69",
+        "WASTE-BLR-GCP": "Laggere",
+        "DEMO-SC-BLR-2011-DEM": "Chowdeswari Ward"
+      },
+      {
+        "id": "70",
+        "WASTE-BLR-GCP": "RAJAGOPALANAGARA",
+        "DEMO-SC-BLR-2011-DEM": "Atturu"
+      },
+      {
+        "id": "71",
+        "WASTE-BLR-GCP": "HEGGANAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Yelahanka Satellite Town"
+      },
+      {
+        "id": "72",
+        "WASTE-BLR-GCP": "HEROHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Jakkuru"
+      },
+      {
+        "id": "73",
+        "WASTE-BLR-GCP": "Kottigepalya",
+        "DEMO-SC-BLR-2011-DEM": "Thanisandra"
+      },
+      {
+        "id": "74",
+        "WASTE-BLR-GCP": "SHAKTHI_GANAPATHI_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Byatarayanapura"
+      },
+      {
+        "id": "75",
+        "WASTE-BLR-GCP": "SHANKAR_MATT",
+        "DEMO-SC-BLR-2011-DEM": "Kodigehalli"
+      },
+      {
+        "id": "76",
+        "WASTE-BLR-GCP": "GAYITHRINAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Vidyaranyapura"
+      },
+      {
+        "id": "77",
+        "WASTE-BLR-GCP": "DATTATREYA_TEMPLE_",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bommasandra"
+      },
+      {
+        "id": "78",
+        "WASTE-BLR-GCP": "PULAKESHINAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Kuvempu Nagar"
+      },
+      {
+        "id": "79",
+        "WASTE-BLR-GCP": "SARVAGNANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Shettihalli"
+      },
+      {
+        "id": "80",
+        "WASTE-BLR-GCP": "HOYSALANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Mallasandra"
+      },
+      {
+        "id": "81",
+        "WASTE-BLR-GCP": "Vignananagara",
+        "DEMO-SC-BLR-2011-DEM": "Bagalakunte"
+      },
+      {
+        "id": "82",
+        "WASTE-BLR-GCP": "GARUDACHARPALYA",
+        "DEMO-SC-BLR-2011-DEM": "T Dasarahalli"
+      },
+      {
+        "id": "83",
+        "WASTE-BLR-GCP": "Kadugodi",
+        "DEMO-SC-BLR-2011-DEM": "Jalahalli"
+      },
+      {
+        "id": "84",
+        "WASTE-BLR-GCP": "HAGADUR",
+        "DEMO-SC-BLR-2011-DEM": "J P Park"
+      },
+      {
+        "id": "85",
+        "WASTE-BLR-GCP": "Dodda_nekkundi",
+        "DEMO-SC-BLR-2011-DEM": "Radhakrishna Temple Ward"
+      },
+      {
+        "id": "86",
+        "WASTE-BLR-GCP": "Marathahalli",
+        "DEMO-SC-BLR-2011-DEM": "SanJayanagar"
+      },
+      {
+        "id": "87",
+        "WASTE-BLR-GCP": "HAL_airport",
+        "DEMO-SC-BLR-2011-DEM": "Ganga Nagar"
+      },
+      {
+        "id": "88",
+        "WASTE-BLR-GCP": "JEEVANBHIMANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Hebbala"
+      },
+      {
+        "id": "89",
+        "WASTE-BLR-GCP": "JOGUPALAYA",
+        "DEMO-SC-BLR-2011-DEM": "Vishwanath Nagenahalli"
+      },
+      {
+        "id": "90",
+        "WASTE-BLR-GCP": "HALASUR",
+        "DEMO-SC-BLR-2011-DEM": "Nagavara"
+      },
+      {
+        "id": "91",
+        "WASTE-BLR-GCP": "Bharathi_Nagar",
+        "DEMO-SC-BLR-2011-DEM": "HBR Layout"
+      },
+      {
+        "id": "92",
+        "WASTE-BLR-GCP": "Shivajinagar",
+        "DEMO-SC-BLR-2011-DEM": "Horamavu"
+      },
+      {
+        "id": "93",
+        "WASTE-BLR-GCP": "VASANTHNAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Ramamurthy Nagar"
+      },
+      {
+        "id": "94",
+        "WASTE-BLR-GCP": "GANDHINAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Banasavadi"
+      },
+      {
+        "id": "95",
+        "WASTE-BLR-GCP": "SUBHASH_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Kammanahalli"
+      },
+      {
+        "id": "96",
+        "WASTE-BLR-GCP": "OKALIPURAM",
+        "DEMO-SC-BLR-2011-DEM": "Kacharkanahalli"
+      },
+      {
+        "id": "97",
+        "WASTE-BLR-GCP": "DAYANANDA_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Kadugondanahalli"
+      },
+      {
+        "id": "98",
+        "WASTE-BLR-GCP": "PRAKASH_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Kushal Nagar"
+      },
+      {
+        "id": "99",
+        "WASTE-BLR-GCP": "RAJAJI_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Kaval Bairasandra"
+      },
+      {
+        "id": "100",
+        "WASTE-BLR-GCP": "BASAVESHWARA_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Manorayana Palya"
+      },
+      {
+        "id": "101",
+        "WASTE-BLR-GCP": "KAMAKSHIPALYA",
+        "DEMO-SC-BLR-2011-DEM": "Gangenahalli"
+      },
+      {
+        "id": "102",
+        "WASTE-BLR-GCP": "VRUSHABHAVATHI_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Aramane Nagara"
+      },
+      {
+        "id": "103",
+        "WASTE-BLR-GCP": "KAVERIPURA",
+        "DEMO-SC-BLR-2011-DEM": "Mattikere"
+      },
+      {
+        "id": "104",
+        "WASTE-BLR-GCP": "GOVINDRAJA_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Yeshwanthpura"
+      },
+      {
+        "id": "105",
+        "WASTE-BLR-GCP": "AGRAHARA_DASARAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "HMT Ward"
+      },
+      {
+        "id": "106",
+        "WASTE-BLR-GCP": "DR_RAJKUMAR_WARD",
+        "DEMO-SC-BLR-2011-DEM": "Chokkasandra"
+      },
+      {
+        "id": "107",
+        "WASTE-BLR-GCP": "SHIVA_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bidarakallu"
+      },
+      {
+        "id": "108",
+        "WASTE-BLR-GCP": "SRIRAMAMANDIR",
+        "DEMO-SC-BLR-2011-DEM": "Peenya Industrial Area"
+      },
+      {
+        "id": "109",
+        "WASTE-BLR-GCP": "CHICKPETE",
+        "DEMO-SC-BLR-2011-DEM": "Lakshmi Devi Nagar"
+      },
+      {
+        "id": "110",
+        "WASTE-BLR-GCP": "SAMPANGIRAMNAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Nandini Layout"
+      },
+      {
+        "id": "111",
+        "WASTE-BLR-GCP": "SHANTHALANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Marappana Palya"
+      },
+      {
+        "id": "112",
+        "WASTE-BLR-GCP": "DOMLUR",
+        "DEMO-SC-BLR-2011-DEM": "Malleshwaram"
+      },
+      {
+        "id": "113",
+        "WASTE-BLR-GCP": "KONENAGRAHARA",
+        "DEMO-SC-BLR-2011-DEM": "Jayachamarajendra Nagar"
+      },
+      {
+        "id": "114",
+        "WASTE-BLR-GCP": "AGARAM",
+        "DEMO-SC-BLR-2011-DEM": "Devara Jeevanahalli"
+      },
+      {
+        "id": "115",
+        "WASTE-BLR-GCP": "VANNIGARAPET",
+        "DEMO-SC-BLR-2011-DEM": "Muneshwara Nagar"
+      },
+      {
+        "id": "116",
+        "WASTE-BLR-GCP": "NEELASANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Lingarajapura"
+      },
+      {
+        "id": "117",
+        "WASTE-BLR-GCP": "Shanthi_Nagar",
+        "DEMO-SC-BLR-2011-DEM": "Benniganahalli"
+      },
+      {
+        "id": "118",
+        "WASTE-BLR-GCP": "SUDHAM_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Vijnanapura"
+      },
+      {
+        "id": "119",
+        "WASTE-BLR-GCP": "DHARMARAYA_SWAMY_TEMPLE",
+        "DEMO-SC-BLR-2011-DEM": "KR Puram"
+      },
+      {
+        "id": "120",
+        "WASTE-BLR-GCP": "COTTONPETE",
+        "DEMO-SC-BLR-2011-DEM": "Basavanapura"
+      },
+      {
+        "id": "121",
+        "WASTE-BLR-GCP": "BINNIPETE",
+        "DEMO-SC-BLR-2011-DEM": "Hudi"
+      },
+      {
+        "id": "122",
+        "WASTE-BLR-GCP": "KEMPAPURA_AGRAHARA",
+        "DEMO-SC-BLR-2011-DEM": "Devasandra"
+      },
+      {
+        "id": "123",
+        "WASTE-BLR-GCP": "VIJAYNAGARA",
+        "DEMO-SC-BLR-2011-DEM": "A Narayanapura"
+      },
+      {
+        "id": "124",
+        "WASTE-BLR-GCP": "HOSAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "C.V. Raman Nagar"
+      },
+      {
+        "id": "125",
+        "WASTE-BLR-GCP": "MARENAHALI",
+        "DEMO-SC-BLR-2011-DEM": "New Tippa Sandra"
+      },
+      {
+        "id": "126",
+        "WASTE-BLR-GCP": "MARUTHI_MANDIR",
+        "DEMO-SC-BLR-2011-DEM": "Maruthi Seva Nagar"
+      },
+      {
+        "id": "127",
+        "WASTE-BLR-GCP": "MUDALAPALYA",
+        "DEMO-SC-BLR-2011-DEM": "Sagayara Puram"
+      },
+      {
+        "id": "128",
+        "WASTE-BLR-GCP": "NAGARBHAVI",
+        "DEMO-SC-BLR-2011-DEM": "SK Garden"
+      },
+      {
+        "id": "129",
+        "WASTE-BLR-GCP": "Jnanabharathi",
+        "DEMO-SC-BLR-2011-DEM": "Ramaswamy Palya"
+      },
+      {
+        "id": "130",
+        "WASTE-BLR-GCP": "ULLALU",
+        "DEMO-SC-BLR-2011-DEM": "Jaya Mahal"
+      },
+      {
+        "id": "131",
+        "WASTE-BLR-GCP": "NAYANDAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Raj Mahal Guttahalli"
+      },
+      {
+        "id": "132",
+        "WASTE-BLR-GCP": "ATTIGUPPE",
+        "DEMO-SC-BLR-2011-DEM": "Kadu Malleshwar Ward"
+      },
+      {
+        "id": "133",
+        "WASTE-BLR-GCP": "HAMPINAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Subramanya Nagar"
+      },
+      {
+        "id": "134",
+        "WASTE-BLR-GCP": "BAPUJI_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Nagapura"
+      },
+      {
+        "id": "135",
+        "WASTE-BLR-GCP": "PADARAYANAPURA",
+        "DEMO-SC-BLR-2011-DEM": "Kempegowda Ward"
+      },
+      {
+        "id": "136",
+        "WASTE-BLR-GCP": "JAGAJIVANARAM_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Chowdeswari Ward"
+      },
+      {
+        "id": "137",
+        "WASTE-BLR-GCP": "RAYAPURAM",
+        "DEMO-SC-BLR-2011-DEM": "Atturu"
+      },
+      {
+        "id": "138",
+        "WASTE-BLR-GCP": "CHELVADI_PALYA",
+        "DEMO-SC-BLR-2011-DEM": "Yelahanka Satellite Town"
+      },
+      {
+        "id": "139",
+        "WASTE-BLR-GCP": "K_R_MARKET",
+        "DEMO-SC-BLR-2011-DEM": "Jakkuru"
+      },
+      {
+        "id": "140",
+        "WASTE-BLR-GCP": "CHAMRAJAPET",
+        "DEMO-SC-BLR-2011-DEM": "Thanisandra"
+      },
+      {
+        "id": "141",
+        "WASTE-BLR-GCP": "AZAD_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Byatarayanapura"
+      },
+      {
+        "id": "142",
+        "WASTE-BLR-GCP": "SUNKENAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Kodigehalli"
+      },
+      {
+        "id": "143",
+        "WASTE-BLR-GCP": "VISHVESHWARA_PURAM",
+        "DEMO-SC-BLR-2011-DEM": "Vidyaranyapura"
+      },
+      {
+        "id": "144",
+        "WASTE-BLR-GCP": "SIDAPURA",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bommasandra"
+      },
+      {
+        "id": "145",
+        "WASTE-BLR-GCP": "HOMBEGOWDANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Kuvempu Nagar"
+      },
+      {
+        "id": "146",
+        "WASTE-BLR-GCP": "LAKKASANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Shettihalli"
+      },
+      {
+        "id": "147",
+        "WASTE-BLR-GCP": "ADUGODI",
+        "DEMO-SC-BLR-2011-DEM": "Mallasandra"
+      },
+      {
+        "id": "148",
+        "WASTE-BLR-GCP": "EJIPURA",
+        "DEMO-SC-BLR-2011-DEM": "Bagalakunte"
+      },
+      {
+        "id": "149",
+        "WASTE-BLR-GCP": "Varthur",
+        "DEMO-SC-BLR-2011-DEM": "T Dasarahalli"
+      },
+      {
+        "id": "150",
+        "WASTE-BLR-GCP": "Bellanduru",
+        "DEMO-SC-BLR-2011-DEM": "Jalahalli"
+      },
+      {
+        "id": "151",
+        "WASTE-BLR-GCP": "KORAMANGALA",
+        "DEMO-SC-BLR-2011-DEM": "J P Park"
+      },
+      {
+        "id": "152",
+        "WASTE-BLR-GCP": "SUDDAGUNTE_PALYA",
+        "DEMO-SC-BLR-2011-DEM": "Radhakrishna Temple Ward"
+      },
+      {
+        "id": "153",
+        "WASTE-BLR-GCP": "JAYANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "SanJayanagar"
+      },
+      {
+        "id": "154",
+        "WASTE-BLR-GCP": "BASAVANGUDI",
+        "DEMO-SC-BLR-2011-DEM": "Ganga Nagar"
+      },
+      {
+        "id": "155",
+        "WASTE-BLR-GCP": "HANUMANTHANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Hebbala"
+      },
+      {
+        "id": "156",
+        "WASTE-BLR-GCP": "SRI_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Vishwanath Nagenahalli"
+      },
+      {
+        "id": "157",
+        "WASTE-BLR-GCP": "GALI_ANJANEYA_",
+        "DEMO-SC-BLR-2011-DEM": "Nagavara"
+      },
+      {
+        "id": "158",
+        "WASTE-BLR-GCP": "DEEPANJALI",
+        "DEMO-SC-BLR-2011-DEM": "HBR Layout"
+      },
+      {
+        "id": "159",
+        "WASTE-BLR-GCP": "KENGERI",
+        "DEMO-SC-BLR-2011-DEM": "Horamavu"
+      },
+      {
+        "id": "160",
+        "WASTE-BLR-GCP": "R.R.NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Ramamurthy Nagar"
+      },
+      {
+        "id": "161",
+        "WASTE-BLR-GCP": "HOSAKEREHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Banasavadi"
+      },
+      {
+        "id": "162",
+        "WASTE-BLR-GCP": "GIRINAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Kammanahalli"
+      },
+      {
+        "id": "163",
+        "WASTE-BLR-GCP": "KATRIGUPPE",
+        "DEMO-SC-BLR-2011-DEM": "Kacharkanahalli"
+      },
+      {
+        "id": "164",
+        "WASTE-BLR-GCP": "VIDYAPEETA",
+        "DEMO-SC-BLR-2011-DEM": "Kadugondanahalli"
+      },
+      {
+        "id": "165",
+        "WASTE-BLR-GCP": "GANESH_MANDIRA",
+        "DEMO-SC-BLR-2011-DEM": "Kushal Nagar"
+      },
+      {
+        "id": "166",
+        "WASTE-BLR-GCP": "KANISANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Kaval Bairasandra"
+      },
+      {
+        "id": "167",
+        "WASTE-BLR-GCP": "YEDIYUR",
+        "DEMO-SC-BLR-2011-DEM": "Manorayana Palya"
+      },
+      {
+        "id": "168",
+        "WASTE-BLR-GCP": "PATTABHINAGAAR",
+        "DEMO-SC-BLR-2011-DEM": "Gangenahalli"
+      },
+      {
+        "id": "169",
+        "WASTE-BLR-GCP": "BYRASANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Aramane Nagara"
+      },
+      {
+        "id": "170",
+        "WASTE-BLR-GCP": "JAYANAGAR_EAST",
+        "DEMO-SC-BLR-2011-DEM": "Mattikere"
+      },
+      {
+        "id": "171",
+        "WASTE-BLR-GCP": "GURAPPANA_PALYA",
+        "DEMO-SC-BLR-2011-DEM": "Yeshwanthpura"
+      },
+      {
+        "id": "172",
+        "WASTE-BLR-GCP": "MADIVALA",
+        "DEMO-SC-BLR-2011-DEM": "HMT Ward"
+      },
+      {
+        "id": "173",
+        "WASTE-BLR-GCP": "JAKKASANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Chokkasandra"
+      },
+      {
+        "id": "174",
+        "WASTE-BLR-GCP": "HSR_LAYOUT",
+        "DEMO-SC-BLR-2011-DEM": "Dodda Bidarakallu"
+      },
+      {
+        "id": "175",
+        "WASTE-BLR-GCP": "BOMMANHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Peenya Industrial Area"
+      },
+      {
+        "id": "176",
+        "WASTE-BLR-GCP": "BTM_LAYOUT",
+        "DEMO-SC-BLR-2011-DEM": "Lakshmi Devi Nagar"
+      },
+      {
+        "id": "177",
+        "WASTE-BLR-GCP": "JP_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Nandini Layout"
+      },
+      {
+        "id": "178",
+        "WASTE-BLR-GCP": "SARAKKI",
+        "DEMO-SC-BLR-2011-DEM": "Marappana Palya"
+      },
+      {
+        "id": "179",
+        "WASTE-BLR-GCP": "SHAKAMBARI_NAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Malleshwaram"
+      },
+      {
+        "id": "180",
+        "WASTE-BLR-GCP": "BANASHANKARI_TEMPLE",
+        "DEMO-SC-BLR-2011-DEM": "Jayachamarajendra Nagar"
+      },
+      {
+        "id": "181",
+        "WASTE-BLR-GCP": "KUMARASWAMY_LAYOUT",
+        "DEMO-SC-BLR-2011-DEM": "Devara Jeevanahalli"
+      },
+      {
+        "id": "182",
+        "WASTE-BLR-GCP": "PADMANABHANAGAR",
+        "DEMO-SC-BLR-2011-DEM": "Muneshwara Nagar"
+      },
+      {
+        "id": "183",
+        "WASTE-BLR-GCP": "CHIKKALA_SANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Lingarajapura"
+      },
+      {
+        "id": "184",
+        "WASTE-BLR-GCP": "UTTARAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Benniganahalli"
+      },
+      {
+        "id": "185",
+        "WASTE-BLR-GCP": "YELCHENAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Vijnanapura"
+      },
+      {
+        "id": "186",
+        "WASTE-BLR-GCP": "JAGRAGANAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "KR Puram"
+      },
+      {
+        "id": "187",
+        "WASTE-BLR-GCP": "PUTTENAHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Basavanapura"
+      },
+      {
+        "id": "188",
+        "WASTE-BLR-GCP": "BILKEHALLI",
+        "DEMO-SC-BLR-2011-DEM": "Hudi"
+      },
+      {
+        "id": "189",
+        "WASTE-BLR-GCP": "HONGASANDRA",
+        "DEMO-SC-BLR-2011-DEM": "Devasandra"
+      },
+      {
+        "id": "190",
+        "WASTE-BLR-GCP": "MANGAMMA_PALYA",
+        "DEMO-SC-BLR-2011-DEM": "A Narayanapura"
+      },
+      {
+        "id": "191",
+        "WASTE-BLR-GCP": "SINGA_SANDRA",
+        "DEMO-SC-BLR-2011-DEM": "C.V. Raman Nagar"
+      },
+      {
+        "id": "192",
+        "WASTE-BLR-GCP": "BEGUR",
+        "DEMO-SC-BLR-2011-DEM": "New Tippa Sandra"
+      },
+      {
+        "id": "193",
+        "WASTE-BLR-GCP": "ARAKERE",
+        "DEMO-SC-BLR-2011-DEM": "Maruthi Seva Nagar"
+      },
+      {
+        "id": "194",
+        "WASTE-BLR-GCP": "GOTTIGERE",
+        "DEMO-SC-BLR-2011-DEM": "Sagayara Puram"
+      },
+      {
+        "id": "195",
+        "WASTE-BLR-GCP": "KONANKUNTE",
+        "DEMO-SC-BLR-2011-DEM": "SK Garden"
+      },
+      {
+        "id": "196",
+        "WASTE-BLR-GCP": "ANJANAPURA",
+        "DEMO-SC-BLR-2011-DEM": "Ramaswamy Palya"
+      },
+      {
+        "id": "197",
+        "WASTE-BLR-GCP": "VASANTHPURA",
+        "DEMO-SC-BLR-2011-DEM": "Jaya Mahal"
+      },
+      {
+        "id": "198",
+        "WASTE-BLR-GCP": "HEMMIGEPURA",
+        "DEMO-SC-BLR-2011-DEM": "Raj Mahal Guttahalli"
+      }
+    ],
+    "unmatched_left": [],
+    "unmatched_right": [],
+    "ambiguous_left": {},
+    "ambiguous_right": {},
+    "duplicated_left": {},
+    "duplicated_right": {},
+    "join_authorised": false
+  },
+  "identifiers::WATER-BWSSB-2025-08__vs__WATER-BWSSB-2026-03": {
+    "note": "Series consistency within one publisher. No join.",
+    "counts": {
+      "matched": 194,
+      "name_conflict": 0,
+      "unmatched_left": 0,
+      "unmatched_right": 0,
+      "ambiguous_left": 4,
+      "ambiguous_right": 4,
+      "duplicated_left": 4,
+      "duplicated_right": 4
+    },
+    "left_label": "WATER-BWSSB-2025-08",
+    "right_label": "WATER-BWSSB-2026-03",
+    "matched": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "77",
+      "78",
+      "79",
+      "80",
+      "81",
+      "82",
+      "83",
+      "84",
+      "86",
+      "87",
+      "88",
+      "89",
+      "90",
+      "91",
+      "92",
+      "93",
+      "94",
+      "95",
+      "96",
+      "97",
+      "98",
+      "99",
+      "100",
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112",
+      "113",
+      "114",
+      "115",
+      "116",
+      "117",
+      "118",
+      "119",
+      "120",
+      "121",
+      "122",
+      "123",
+      "124",
+      "125",
+      "126",
+      "127",
+      "128",
+      "129",
+      "130",
+      "131",
+      "132",
+      "133",
+      "134",
+      "135",
+      "136",
+      "137",
+      "138",
+      "139",
+      "140",
+      "141",
+      "142",
+      "143",
+      "144",
+      "145",
+      "146",
+      "147",
+      "148",
+      "149",
+      "150",
+      "151",
+      "152",
+      "154",
+      "155",
+      "156",
+      "157",
+      "158",
+      "159",
+      "160",
+      "161",
+      "162",
+      "163",
+      "164",
+      "165",
+      "166",
+      "167",
+      "168",
+      "169",
+      "170",
+      "171",
+      "172",
+      "173",
+      "174",
+      "175",
+      "176",
+      "177",
+      "178",
+      "179",
+      "180",
+      "181",
+      "182",
+      "183",
+      "184",
+      "185",
+      "186",
+      "187",
+      "188",
+      "189",
+      "190",
+      "192",
+      "193",
+      "194",
+      "195",
+      "196",
+      "197",
+      "198"
+    ],
+    "name_conflict": [],
+    "unmatched_left": [],
+    "unmatched_right": [],
+    "ambiguous_left": {
+      "14": [
+        "Bagalagunte",
+        "sidedahalli"
+      ],
+      "85": [
+        "Doddanekkundi",
+        "Varthur"
+      ],
+      "153": [
+        "Jayanagar",
+        "Jayangar"
+      ],
+      "191": [
+        "Singasandra",
+        "Singsandra"
+      ]
+    },
+    "ambiguous_right": {
+      "14": [
+        "Bagalagunte",
+        "sidedahalli"
+      ],
+      "85": [
+        "Doddanekkundi",
+        "Varthur"
+      ],
+      "153": [
+        "Jayanagar",
+        "Jayangar"
+      ],
+      "191": [
+        "Singasandra",
+        "Singsandra"
+      ]
+    },
+    "duplicated_left": {
+      "14": 2,
+      "85": 2,
+      "153": 2,
+      "191": 2
+    },
+    "duplicated_right": {
+      "14": 2,
+      "85": 2,
+      "153": 2,
+      "191": 2
+    },
+    "join_authorised": false
+  },
+  "observations::WASTE-BLR-GCP::collected_vs_generated": {
+    "note": "Descriptive observation only (no SWM validator approved yet).",
+    "2015-16": {
+      "wards": 198,
+      "collected_gt_generated": 0,
+      "collected_eq_generated": 198,
+      "total_generated_MT": 1255157.4,
+      "total_collected_MT": 1255157.4
+    },
+    "2016-17": {
+      "wards": 198,
+      "collected_gt_generated": 0,
+      "collected_eq_generated": 198,
+      "total_generated_MT": 1321218.31,
+      "total_collected_MT": 1321218.31
+    },
+    "2017-18": {
+      "wards": 198,
+      "collected_gt_generated": 197,
+      "collected_eq_generated": 0,
+      "total_generated_MT": 832038.59,
+      "total_collected_MT": 1390756.12
+    }
+  },
+  "schema_drift::ROAD-RA2019-A47__vs__ROAD-RA2024-A47": {
+    "note": "Verbatim header comparison of two official downloads.",
+    "only_in_old": [
+      "Driving on Wrong side - Number of Accidents",
+      "Driving on Wrong side - Persons Injured - Greviously Injured",
+      "Driving on Wrong side - Persons Injured - Minor Injury",
+      "Driving on Wrong side - Persons Injured - Total Injured",
+      "Driving on Wrong side - Persons Killed",
+      "Drunken Driving/ Consumption of alcohol and drug  - Number of Accidents",
+      "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Greviously Injured",
+      "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Minor Injury",
+      "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Total Injured",
+      "Drunken Driving/ Consumption of alcohol and drug  - Persons Killed",
+      "Jumping Red Light - Persons Injured - Greviously Injured",
+      "Others - Persons Injured - Greviously Injured",
+      "Over-Speeding - Persons Injured - Greviously Injured",
+      "States/UTs",
+      "Use of Mobile Phone - Persons Injured - Greviously Injured"
+    ],
+    "only_in_new": [
+      "Driving on Wrong Side - Number of Accidents",
+      "Driving on Wrong Side - Persons Injured - Grievously Injured",
+      "Driving on Wrong Side - Persons Injured - Minor Injury",
+      "Driving on Wrong Side - Persons Injured - Total Injured",
+      "Driving on Wrong Side - Persons Killed",
+      "Drunken Driving/Consumption of Alcohol and Drug - Number of Accidents",
+      "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Grievously Injured",
+      "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Minor Injury",
+      "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Total Injured",
+      "Drunken Driving/Consumption of Alcohol and Drug - Persons Killed",
+      "Jumping Red Light - Persons Injured - Grievously Injured",
+      "Million Plus Cities",
+      "Others - Persons Injured - Grievously Injured",
+      "Over-Speeding - Persons Injured - Grievously Injured",
+      "Sl. No.",
+      "Use of Mobile Phone - Persons Injured - Grievously Injured"
+    ],
+    "common": [
+      "Jumping Red Light - Number of Accidents",
+      "Jumping Red Light - Persons Injured - Minor Injury",
+      "Jumping Red Light - Persons Injured - Total Injured",
+      "Jumping Red Light - Persons Killed",
+      "Others - Number of Accidents",
+      "Others - Persons Injured - Minor Injury",
+      "Others - Persons Injured - Total Injured",
+      "Others - Persons Killed",
+      "Over-Speeding - Number of Accidents - Number",
+      "Over-Speeding - Number of Accidents - Rank",
+      "Over-Speeding - Persons Injured - Minor Injury",
+      "Over-Speeding - Persons Injured - Total Injured",
+      "Over-Speeding - Persons Killed - Number",
+      "Over-Speeding - Persons Killed - Rank",
+      "Use of Mobile Phone - Number of Accidents",
+      "Use of Mobile Phone - Persons Injured - Minor Injury",
+      "Use of Mobile Phone - Persons Injured - Total Injured",
+      "Use of Mobile Phone - Persons Killed"
+    ]
+  },
+  "city_labels::2019_vs_2024": {
+    "note": "Spelling differences are NOT equated without a cited alias table.",
+    "only_2019": [
+      "Allahabad(Prayagraj)",
+      "Khozikode",
+      "Thiruvanthapuram",
+      "Tiruchirapalli",
+      "Vadodra",
+      "Vijaywada city",
+      "Vizaq"
+    ],
+    "only_2024": [
+      "Allahabad (Prayagraj)",
+      "Kozhikode",
+      "Thiruvananthapuram",
+      "Tiruchirappalli",
+      "Vadodara",
+      "Vijayawada city",
+      "Vishakhapatnam"
+    ],
+    "common": 43
+  }
+}

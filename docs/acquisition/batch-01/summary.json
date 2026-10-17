@@ -1,0 +1,98 @@
+[
+  {
+    "dataset_id": "WATER-BWSSB-2025-08",
+    "status": "promoted",
+    "sha256": "108639ce30129414e1dbd3d67b8403dcc83878bf2c2dc674b58d895f2adca974",
+    "bytes": 6045,
+    "errors": 0,
+    "warnings": 2,
+    "same_bytes_as_legacy": true,
+    "human_review": "accepted",
+    "value_nature": "unknown",
+    "promoted_to": "data/raw/water/BWSSB_Water_Consumption_August_2025.csv"
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2025-04",
+    "status": "quarantined",
+    "sha256": "0bafa2d91c821db63161c213c7fe0def179d10e53eed87ab72e325ef77dc20ee",
+    "bytes": 5845,
+    "errors": 1,
+    "warnings": 3,
+    "same_bytes_as_legacy": false,
+    "human_review": "rejected",
+    "value_nature": "unknown",
+    "promoted_to": null
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2025-05",
+    "status": "quarantined",
+    "sha256": "d266a3a27c8f01c5c4d005bdeab018ccf19aa76ce83f268a80c2bbdb7c31da56",
+    "bytes": 6625,
+    "errors": 2,
+    "warnings": 2,
+    "same_bytes_as_legacy": false,
+    "human_review": "rejected",
+    "value_nature": "unknown",
+    "promoted_to": null
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2026-03",
+    "status": "promoted",
+    "sha256": "798243f90aad7697d4c5fb9e76bc2ef32c1e91b75b9e987be52685c115d8bc3c",
+    "bytes": 5844,
+    "errors": 0,
+    "warnings": 3,
+    "same_bytes_as_legacy": false,
+    "human_review": "accepted",
+    "value_nature": "unknown",
+    "promoted_to": "data/raw/water/Water_Consumption_Data_Mar_26_0.csv"
+  },
+  {
+    "dataset_id": "DEMO-SC-BLR-2011-DEM",
+    "status": "quarantined",
+    "sha256": "ec32966c4d43b24bd5b98ff3718e65b6dcd398d2968310c6d9d8ab720e266e37",
+    "bytes": 14921,
+    "errors": null,
+    "warnings": null,
+    "same_bytes_as_legacy": false,
+    "human_review": "rejected",
+    "value_nature": "unknown",
+    "promoted_to": null
+  },
+  {
+    "dataset_id": "WASTE-BLR-GCP",
+    "status": "integrity_passed",
+    "sha256": "7c51dc6a3c8dfdef0a0174e4e7f60b3444acdab13e7024a71293013fd074e394",
+    "bytes": 23868,
+    "errors": null,
+    "warnings": null,
+    "same_bytes_as_legacy": false,
+    "human_review": "pending",
+    "value_nature": "modelled",
+    "promoted_to": null
+  },
+  {
+    "dataset_id": "ROAD-RA2019-A47",
+    "status": "promoted",
+    "sha256": "40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc",
+    "bytes": 6807,
+    "errors": 0,
+    "warnings": 0,
+    "same_bytes_as_legacy": true,
+    "human_review": "accepted",
+    "value_nature": "unknown",
+    "promoted_to": "data/raw/roads/RA2019_A47.csv"
+  },
+  {
+    "dataset_id": "ROAD-RA2024-A47",
+    "status": "promoted",
+    "sha256": "702f75f332a273e9c09eb500a7d2f90c2ae71eec3bf06fe01d48a6fc56bd37e9",
+    "bytes": 6925,
+    "errors": 0,
+    "warnings": 0,
+    "same_bytes_as_legacy": false,
+    "human_review": "accepted",
+    "value_nature": "unknown",
+    "promoted_to": "data/raw/roads/Transport_2024_Annexure_47.csv"
+  }
+]

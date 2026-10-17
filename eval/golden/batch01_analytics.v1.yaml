@@ -1,0 +1,260 @@
+# Golden evaluation questions for analytics A1-A4 on batch-01 promoted data (version 1).
+#
+# Expected values were derived independently by eval/golden/derive_batch01.py (standard
+# library csv + decimal, no civicmind code) on 2026-10-17 and cross-checked against:
+#   - the BWSSB column totals in docs/acquisition/batch-01/VALIDATION_REPORT.md;
+#   - MoRTH's own published rank columns (e.g. Bengaluru over-speeding killed 2024: rank 1).
+# Run by tests/test_golden_analytics.py; items are skipped when a source file is absent.
+#
+# Each item: id, question, category (numeric | ranking | comparison | refusal), datasets
+# (ingested in order, with mode), optional references (trusted reference months for
+# water_intensity_flags@v1, passed as references=...), call (analytics function + keyword args), and either
+# expected (value) or refusal (stage + code). "fields" limits which keys of value.rows are
+# compared. Ranking questions ask about PUBLISHED ROWS unless they say "unique wards". Floats are compared with abs tolerance 1e-6 unless "tolerance" is given.
+# Answerable items are re-derived by eval/golden/derive_batch01.py and compared with this file
+# by tests/test_golden_analytics.py.
+# This is a 25-item fixed set for regression testing, not a measure of real-world accuracy.
+# Not covered here (no operation exists yet, so there is nothing to test): causal questions
+# such as "did enforcement reduce accidents"; cross-edition MoRTH comparisons.
+version: 1
+items:
+  - id: G01
+    question: How many BWSSB water connections were recorded in August 2025?
+    category: numeric
+    datasets: [WATER-BWSSB-2025-08]
+    call: {function: water_total, args: {measure: connections}}
+    expected: {value: 1047734, unit: connections}
+  - id: G02
+    question: How much water (ML) did BWSSB record as consumed in August 2025?
+    category: numeric
+    datasets: [WATER-BWSSB-2025-08]
+    call: {function: water_total, args: {measure: consumption_ml}}
+    expected: {value: 30580.05, unit: ML}
+  - id: G03
+    question: How much water (ML) did BWSSB record as consumed in March 2026?
+    category: numeric
+    datasets: [WATER-BWSSB-2026-03]
+    call: {function: water_total, args: {measure: consumption_ml}}
+    expected: {value: 29732.45, unit: ML}
+  - id: G04
+    question: How did city water consumption change from August 2025 to March 2026?
+    category: comparison
+    datasets: [WATER-BWSSB-2025-08, WATER-BWSSB-2026-03]
+    call: {function: water_month_change, args: {measure: consumption_ml}}
+    expected:
+      value:
+        earlier: 30580.05
+        later: 29732.45
+        change: -847.6
+        pct_change: -2.7717
+        earlier_days: 31
+        later_days: 31
+      unit: ML
+  - id: G05
+    question: Which three published rows recorded the highest water consumption in August 2025?
+    category: ranking
+    datasets: [WATER-BWSSB-2025-08]
+    call: {function: water_rank_rows, args: {measure: consumption_ml, n: 3}}
+    fields: [rank, ward_number, ward_name, value]
+    expected:
+      value:
+        ranked_unit: published_row
+        duplicated_ward_numbers:
+          "14": [Bagalagunte, sidedahalli]
+          "85": [Doddanekkundi, Varthur]
+          "153": [Jayanagar, Jayangar]
+          "191": [Singasandra, Singsandra]
+        rows:
+          - {rank: 1, ward_number: 174, ward_name: HSR Layout, value: 605.66}
+          - {rank: 2, ward_number: 160, ward_name: Rajarajeshwarinagar, value: 456.39}
+          - {rank: 3, ward_number: 150, ward_name: Bellandur, value: 398.22}
+      unit: ML
+  - id: G06
+    question: Which published row had the highest consumption per connection per day in August 2025?
+    category: ranking
+    datasets: [WATER-BWSSB-2025-08]
+    call: {function: water_rank_rows, args: {measure: litres_per_connection_per_day, n: 1}}
+    fields: [rank, ward_number, ward_name, value]
+    expected:
+      value:
+        ranked_unit: published_row
+        rows: [{rank: 1, ward_number: 150, ward_name: Bellandur, value: 2486.605972}]
+      unit: litres per connection per day
+  - id: G07
+    question: Which published row had the highest consumption per connection per day in March 2026?
+    category: ranking
+    datasets: [WATER-BWSSB-2026-03]
+    call: {function: water_rank_rows, args: {measure: litres_per_connection_per_day, n: 1}}
+    fields: [rank, ward_number, ward_name, value]
+    expected:
+      value:
+        ranked_unit: published_row
+        rows: [{rank: 1, ward_number: 2, ward_name: Chowdeshwari Ward, value: 3868.895489}]
+      unit: litres per connection per day
+  - id: G08
+    question: How many over-speeding accidents did Bengaluru record in 2019, and what share of all million-plus cities?
+    category: numeric
+    datasets: [ROAD-RA2019-A47]
+    call:
+      function: road_city_value
+      args: {city: Bengaluru, column: "Over-Speeding - Number of Accidents - Number"}
+    expected: {value: {value: 4143, share_of_total_pct: 7.7634}, unit: count}
+  - id: G09
+    question: How many over-speeding accidents did Bengaluru record in 2024, and what share of all million-plus cities?
+    category: numeric
+    datasets: [ROAD-RA2024-A47]
+    call:
+      function: road_city_value
+      args: {city: Bengaluru, column: "Over-Speeding - Number of Accidents - Number"}
+    expected: {value: {value: 4290, share_of_total_pct: 8.0124}, unit: count}
+  - id: G10
+    question: Which three million-plus cities had the most over-speeding deaths in 2024?
+    category: ranking
+    datasets: [ROAD-RA2024-A47]
+    call:
+      function: road_top_cities
+      args: {column: "Over-Speeding - Persons Killed - Number", n: 3}
+    expected:
+      value:
+        - {rank: 1, city: Bengaluru, value: 776}
+        - {rank: 2, city: Jaipur, value: 704}
+        - {rank: 3, city: Delhi, value: 678}
+      unit: count
+  - id: G11
+    question: How many over-speeding accidents did "Bangalore" record in 2019?
+    category: refusal
+    datasets: [ROAD-RA2019-A47]
+    call:
+      function: road_city_value
+      args: {city: Bangalore, column: "Over-Speeding - Number of Accidents - Number"}
+    refusal: {stage: analytics, code: city.not_found}
+  - id: G12
+    question: How many people were grievously injured in over-speeding accidents in Bengaluru in 2019 (using the 2024 column spelling)?
+    category: refusal
+    datasets: [ROAD-RA2019-A47]
+    call:
+      function: road_city_value
+      args: {city: Bengaluru, column: "Over-Speeding - Persons Injured - Grievously Injured"}
+    refusal: {stage: analytics, code: column.unknown}
+  - id: G13
+    question: How did city water consumption change from March 2026 back to August 2025 (inputs in the wrong order)?
+    category: refusal
+    datasets: [WATER-BWSSB-2026-03, WATER-BWSSB-2025-08]
+    call: {function: water_month_change, args: {measure: consumption_ml}}
+    refusal: {stage: analytics, code: period.order}
+  - id: G14
+    question: What was BWSSB's total water consumption in April 2025?
+    category: refusal
+    datasets: [WATER-BWSSB-2025-04]
+    call: {function: water_total, args: {measure: consumption_ml}}
+    refusal: {stage: ingest, code: status.quarantined}
+  - id: G15
+    question: What was the 2011 population of each Bengaluru ward?
+    category: refusal
+    datasets: [DEMO-SC-BLR-2011-DEM]
+    call: {function: none, args: {}}
+    refusal: {stage: ingest, code: status.quarantined}
+  - id: G16
+    question: Rank Bengaluru wards by waste collection efficiency.
+    category: refusal
+    datasets: [{id: WASTE-BLR-GCP, mode: exploratory}]
+    call: {function: none, args: {}}
+    refusal: {stage: ingest, code: exploratory.not_permitted}
+  - id: G17
+    question: Which three unique wards recorded the highest water consumption in August 2025?
+    category: refusal
+    datasets: [WATER-BWSSB-2025-08]
+    call: {function: water_rank_wards, args: {measure: consumption_ml, n: 3}}
+    refusal: {stage: analytics, code: ward.identifiers_not_unique}
+  - id: G18
+    question: How many kilolitres of water did BWSSB record in August 2025?
+    category: refusal
+    datasets: [WATER-BWSSB-2025-08]
+    call: {function: water_total, args: {measure: consumption_kl}}
+    refusal: {stage: analytics, code: measure.unknown}
+  - id: G19
+    question: What share of over-speeding accidents in 2024 belongs to the city "Total"?
+    category: refusal
+    datasets: [ROAD-RA2024-A47]
+    call:
+      function: road_city_value
+      args: {city: Total, column: "Over-Speeding - Number of Accidents - Number"}
+    refusal: {stage: analytics, code: city.not_found}
+  - id: G20
+    question: Which cities have the highest over-speeding accident rank number in 2024?
+    category: refusal
+    datasets: [ROAD-RA2024-A47]
+    call:
+      function: road_top_cities
+      args: {column: "Over-Speeding - Number of Accidents - Rank", n: 3}
+    refusal: {stage: analytics, code: column.unknown}
+  - id: G21
+    question: Which cities have the highest serial numbers in the 2024 table?
+    category: refusal
+    datasets: [ROAD-RA2024-A47]
+    call: {function: road_top_cities, args: {column: "Sl. No.", n: 3}}
+    refusal: {stage: analytics, code: column.unknown}
+  - id: G22
+    question: Which published row had the lowest consumption per connection per day in August 2025?
+    category: ranking
+    datasets: [WATER-BWSSB-2025-08]
+    call:
+      function: water_rank_rows
+      args: {measure: litres_per_connection_per_day, n: 1, order: asc}
+    fields: [rank, ward_number, ward_name, value, reference_values, reference_status, volatility_status, flags]
+    expected:
+      value:
+        ranked_unit: published_row
+        rows:
+          - rank: 1
+            ward_number: 40
+            ward_name: Doddabidirakalu
+            value: 0
+            reference_values: {}
+            reference_status: {}
+            volatility_status: not_assessed
+            flags: [small_connection_base]
+      unit: litres per connection per day
+  - id: G23
+    question: Which published row had the highest consumption per connection per day in March 2026, and is it volatile against August 2025?
+    category: ranking
+    datasets: [WATER-BWSSB-2026-03]
+    references: [WATER-BWSSB-2025-08]
+    call: {function: water_rank_rows, args: {measure: litres_per_connection_per_day, n: 1}}
+    fields: [rank, ward_number, ward_name, value, reference_values, reference_status, volatility_status, flags]
+    expected:
+      value:
+        ranked_unit: published_row
+        rows:
+          - rank: 1
+            ward_number: 2
+            ward_name: Chowdeshwari Ward
+            value: 3868.895489
+            reference_values: {WATER-BWSSB-2025-08: 1645.648993}
+            reference_status: {WATER-BWSSB-2025-08: volatile}
+            volatility_status: volatile
+            flags: [volatile_vs_reference]
+      unit: litres per connection per day
+  - id: G24
+    question: Flag March 2026 intensity rankings for volatility against April 2025.
+    category: refusal
+    datasets: [WATER-BWSSB-2026-03]
+    references: [WATER-BWSSB-2025-04]
+    call: {function: water_rank_rows, args: {measure: litres_per_connection_per_day, n: 3}}
+    refusal: {stage: ingest, code: status.quarantined}
+  - id: G25
+    question: Across all March 2026 published rows, how many are volatile, not comparable or within threshold against August 2025?
+    category: numeric
+    datasets: [WATER-BWSSB-2026-03]
+    references: [WATER-BWSSB-2025-08]
+    call: {function: water_rank_rows, args: {measure: litres_per_connection_per_day, n: 1}}
+    expected:
+      value:
+        flag_summary:
+          all_ranked_rows:
+            volatile: 1
+            not_comparable: 0
+            within_threshold: 201
+            not_assessed: 0
+            small_connection_base: 1
+      unit: litres per connection per day

@@ -1,0 +1,265 @@
+{
+  "dataset_id": "DEMO-SC-BLR-2011-DEM",
+  "fingerprint": {
+    "path": "data/quarantine/batch-01/Demographic_Profile_Bengaluru_ason_01-03-2011_1.csv",
+    "bytes": 14921,
+    "sha256": "ec32966c4d43b24bd5b98ff3718e65b6dcd398d2968310c6d9d8ab720e266e37",
+    "encoding": "utf-8",
+    "bom": false,
+    "newline": "CRLF",
+    "newline_counts": {
+      "CRLF": 199,
+      "LF": 0,
+      "CR": 0
+    },
+    "delimiter": ",",
+    "looks_like_html": false,
+    "contains_nul": false
+  },
+  "profile": {
+    "rows": 198,
+    "columns": 12,
+    "column_names": [
+      "City Name",
+      "Zone Name",
+      "Ward Name",
+      "Ward No.",
+      "Area (in sq km)",
+      "Total Population (in thousands)",
+      "Population - Male (in thousands)",
+      "Population - female (in thousands)",
+      "population - children aged 0-14 (in thousands)",
+      "Population - youth aged 15-24 (in thousands)",
+      "Population - adults aged 25-60 (in thousands)",
+      "Population - Senior citizens aged 60+ (in thousands)"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_column_names": [],
+    "names_with_outer_whitespace": [],
+    "header_rows_repeated_in_body": 0,
+    "columns_detail": [
+      {
+        "name": "City Name",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 1,
+        "numeric": 0,
+        "non_numeric_values": [
+          "Bengaluru"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "Bengaluru"
+        ]
+      },
+      {
+        "name": "Zone Name",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 6,
+        "numeric": 0,
+        "non_numeric_values": [
+          "Dasarahalli",
+          "East",
+          "Mahadevapura",
+          "Rajarajeswari Nagar",
+          "West",
+          "Yelahanka"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "Yelahanka",
+          "Dasarahalli",
+          "Rajarajeswari Nagar"
+        ]
+      },
+      {
+        "name": "Ward Name",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 67,
+        "numeric": 0,
+        "non_numeric_values": [
+          "A Narayanapura",
+          "Aramane Nagara",
+          "Atturu",
+          "Bagalakunte",
+          "Banasavadi",
+          "Basavanapura",
+          "Benniganahalli",
+          "Byatarayanapura",
+          "C.V. Raman Nagar",
+          "Chokkasandra"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "Kempegowda Ward",
+          "Chowdeswari Ward",
+          "Atturu"
+        ]
+      },
+      {
+        "name": "Ward No.",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 198,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 1.0,
+        "maximum": 198.0,
+        "negatives": 0,
+        "samples": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "name": "Area (in sq km)",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 74,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 0.3,
+        "maximum": 30.5,
+        "negatives": 0,
+        "samples": [
+          "10.9",
+          "6.5",
+          "8.8"
+        ]
+      },
+      {
+        "name": "Total Population (in thousands)",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 198,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 21171.0,
+        "maximum": 95368.0,
+        "negatives": 0,
+        "samples": [
+          "34783",
+          "36602",
+          "58129"
+        ]
+      },
+      {
+        "name": "Population - Male (in thousands)",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 198,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 10720.0,
+        "maximum": 49512.0,
+        "negatives": 0,
+        "samples": [
+          "18197",
+          "19060",
+          "30799"
+        ]
+      },
+      {
+        "name": "Population - female (in thousands)",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 197,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 10333.0,
+        "maximum": 45856.0,
+        "negatives": 0,
+        "samples": [
+          "16586",
+          "17542",
+          "27330"
+        ]
+      },
+      {
+        "name": "population - children aged 0-14 (in thousands)",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 1575.0,
+        "maximum": 11453.0,
+        "negatives": 0,
+        "samples": [
+          "3729",
+          "4420",
+          "6371"
+        ]
+      },
+      {
+        "name": "Population - youth aged 15-24 (in thousands)",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 1,
+        "numeric": 0,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "NA"
+        ]
+      },
+      {
+        "name": "Population - adults aged 25-60 (in thousands)",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 1,
+        "numeric": 0,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "NA"
+        ]
+      },
+      {
+        "name": "Population - Senior citizens aged 60+ (in thousands)",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 1,
+        "numeric": 0,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "NA"
+        ]
+      }
+    ]
+  },
+  "findings": [
+    {
+      "code": "sensitivity.header_scan",
+      "severity": "info",
+      "message": "No column name suggests personal data",
+      "details": {
+        "method": "header-name scan sensitivity@v1 (column names only; cell values not inspected)",
+        "matched": []
+      }
+    }
+  ],
+  "status": "quarantined"
+}

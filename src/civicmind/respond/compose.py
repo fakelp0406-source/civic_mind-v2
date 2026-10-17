@@ -4,6 +4,12 @@ An answer is a fixed template filled from a validated ``EvidencePackage``. The c
 computes a new number: it only formats values that are already in the package, and a final
 check refuses to emit text containing any number not found in the package (value, filters,
 periods, dataset ids). Refusals carry the stable code, the stage and the reason.
+
+``value_basis`` says what kind of value an answer gives: ``published`` (cells as published),
+``derived`` (computed by a tested formula), ``published_and_derived`` (a published count with a
+derived share or difference) or ``catalogue`` (manifest metadata; no data value). ``coverage``
+(optional) is the catalogue's description of trusted and non-trusted periods for the question's
+domain; it is passed through unchanged and never used to compute anything.
 """
 
 from __future__ import annotations
@@ -42,6 +48,8 @@ class Answer:
     assumptions: tuple[str, ...] = ()
     evidence: tuple[dict[str, Any], ...] = ()
     trace: tuple[str, ...] = field(default_factory=tuple)
+    value_basis: str | None = None  # published | derived | published_and_derived | catalogue
+    coverage: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -67,6 +75,26 @@ def period_label(start: str | None, end: str | None) -> str:
     if s.month == 1 and s.day == 1 and e.month == 12 and e.day == 31 and s.year == e.year:
         return str(s.year)
     return f"{start} to {end}"
+
+
+def month_label(period_key: str) -> str:
+    """'2025-07' -> 'July 2025'; a bare year is returned unchanged."""
+    if len(period_key) == 7:
+        return date.fromisoformat(f"{period_key}-01").strftime("%B %Y")
+    return period_key
+
+
+def value_basis(package: EvidencePackage) -> str:
+    op, measure = package.operation, package.filters.get("measure")
+    if op == "data_coverage":
+        return "catalogue"
+    if op in ("road_city_value", "road_compare_cities"):
+        return "published_and_derived"
+    if op == "road_top_cities":
+        return "published"
+    if op in ("water_rank_rows", "water_rank_wards"):
+        return "derived" if measure == "litres_per_connection_per_day" else "published"
+    return "derived"  # water_total (sum of rows), water_month_change (difference of totals)
 
 
 def _numbers(obj: Any) -> list[float]:
@@ -110,7 +138,7 @@ def _source_note(package: EvidencePackage) -> str:
 def _text(p: EvidencePackage) -> str:
     v, f = p.value, p.filters
     primary = [i for i in p.items if i.role == "primary"]
-    when = period_label(primary[0].period_start, primary[0].period_end)
+    when = period_label(primary[0].period_start, primary[0].period_end) if primary else ""
     if p.operation == "water_total":
         return (
             f"{MEASURE_LABEL[f['measure']]} recorded by BWSSB in {when}: {fmt(v)} {p.unit} "
@@ -144,6 +172,53 @@ def _text(p: EvidencePackage) -> str:
         share = v["share_of_total_pct"]
         share_text = "" if share is None else f", {fmt(share)}% of the published Total row"
         return f"{f['city']}, {when}, '{f['column']}': {fmt(v['value'])}{share_text}."
+    if p.operation == "road_compare_cities":
+        (a, b), diff = v["cities"], v["difference"]
+
+        def share(row: dict) -> str:
+            pct = row["share_of_total_pct"]
+            return "share n/a" if pct is None else f"{fmt(pct)}% of the published Total row"
+
+        return (
+            f"{a['city']} and {b['city']}, {when}, '{f['column']}': {fmt(a['value'])} "
+            f"({share(a)}) and {fmt(b['value'])} ({share(b)}); difference {fmt(diff)} "
+            f"({a['city']} minus {b['city']}, derived)."
+        )
+    if p.operation == "data_coverage":
+        unit = v["period_unit"]
+        trusted = [month_label(k) for k in v["trusted_periods"]]
+        parts = [
+            f"{v['series']}: {v['trusted_count']} trusted {unit}"
+            f"{'s' if v['trusted_count'] != 1 else ''}"
+            + (f" ({', '.join(trusted)})." if trusted else ".")
+        ]
+        if v["latest_trusted_period"]:
+            published = v["latest_trusted_portal_published"]
+            parts.append(
+                f"Latest trusted {unit}: {month_label(v['latest_trusted_period'])} "
+                f"({v['latest_trusted_dataset']}"
+                + (f"; portal published {published}" if published else "")
+                + ")."
+            )
+        if v["not_trusted"]:
+            parts.append(
+                "Not used for answers: "
+                + ", ".join(
+                    f"{month_label(n['period'])} ({n['trust'].replace('_', ' ')})"
+                    for n in v["not_trusted"]
+                )
+                + "."
+            )
+        if v["other_tables"]:
+            parts.append(
+                "Other tables catalogued but never used for these questions: "
+                + ", ".join(
+                    f"{o['dataset_id']} ({o['trust'].replace('_', ' ')})"
+                    for o in v["other_tables"]
+                )  # fmt: skip
+                + "."
+            )
+        return " ".join(parts)
     if p.operation == "road_top_cities":
         parts = [f"#{r['rank']} {r['city']}: {fmt(r['value'])}" for r in v]
         return (
@@ -158,7 +233,10 @@ TIE_PREFIX = "TIES BEYOND CUT-OFF"  # caveat prefix set by analytics rankings
 
 
 def compose_answer(
-    package: EvidencePackage, validation: ValidationReport, trace: tuple[str, ...] = ()
+    package: EvidencePackage,
+    validation: ValidationReport,
+    trace: tuple[str, ...] = (),
+    coverage: dict[str, Any] | None = None,
 ) -> Answer:
     """Compose an answer; only for a package that passed ``validate_package`` unchanged."""
     if not validation.ok or validation.package_digest != package_digest(package):
@@ -166,7 +244,8 @@ def compose_answer(
     body = _text(package)
     if any(c.startswith(TIE_PREFIX) for c in package.caveats):
         body += " Further items tie at the last rank shown and are not listed (see caveats)."
-    text = f"{body} Source: {_source_note(package)}."
+    source = _source_note(package) or "dataset manifests (catalogue metadata only)"
+    text = f"{body} Source: {source}."
     missing = check_numbers(text, package)
     if missing:  # a template bug must never reach a user
         raise ValueError(f"numbers not in evidence: {missing}")
@@ -190,10 +269,17 @@ def compose_answer(
         assumptions=package.assumptions,
         evidence=tuple(asdict(i) for i in package.items),
         trace=trace,
+        value_basis=value_basis(package),
+        coverage=coverage,
     )
 
 
-def compose_refusal(question: str, refusal: Refusal, trace: tuple[str, ...] = ()) -> Answer:
+def compose_refusal(
+    question: str,
+    refusal: Refusal,
+    trace: tuple[str, ...] = (),
+    coverage: dict[str, Any] | None = None,
+) -> Answer:
     return Answer(
         status="refused",
         question=question,
@@ -202,7 +288,17 @@ def compose_refusal(question: str, refusal: Refusal, trace: tuple[str, ...] = ()
         stage=refusal.stage,
         reason=refusal.reason,
         trace=trace,
+        coverage=coverage,
     )
 
 
-__all__ = ["Answer", "check_numbers", "compose_answer", "compose_refusal", "fmt", "period_label"]
+__all__ = [
+    "Answer",
+    "check_numbers",
+    "compose_answer",
+    "compose_refusal",
+    "fmt",
+    "month_label",
+    "period_label",
+    "value_basis",
+]

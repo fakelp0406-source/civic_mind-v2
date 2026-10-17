@@ -193,6 +193,30 @@ def test_body_over_the_size_limit_is_413(client):
     assert r.headers["x-request-id"] == r.json()["error"]["request_id"]
 
 
+def _chunks(data: bytes, size: int = 1024):
+    for i in range(0, len(data), size):
+        yield data[i : i + size]
+
+
+def test_chunked_body_over_the_size_limit_is_413_not_400(client):
+    # Regression: without Content-Length the limit trips while FastAPI reads the body, and
+    # FastAPI turned that into "400 There was an error parsing the body".
+    body = json.dumps({"question": "x" * (MAX_BODY_BYTES + 10)}).encode()
+    r = client.post(QUERY, content=_chunks(body), headers={"content-type": "application/json"})
+    assert "content-length" not in {k.lower() for k in r.request.headers}  # really chunked
+    assert r.status_code == 413
+    err = r.json()["error"]
+    assert err["code"] == "request.too_large" and str(MAX_BODY_BYTES) in err["message"]
+    assert err["request_id"] == r.headers["x-request-id"]
+
+
+def test_chunked_body_within_the_limit_is_answered_normally(client):
+    body = json.dumps({"question": "What is the best restaurant in Bengaluru?"}).encode()
+    r = client.post(QUERY, content=_chunks(body, 8), headers={"content-type": "application/json"})
+    assert "content-length" not in {k.lower() for k in r.request.headers}
+    assert r.status_code == 200 and r.json()["refusal"]["code"] == "query.out_of_scope"
+
+
 def test_access_log_has_request_id_and_outcome_but_not_the_question(client, caplog):
     question = "What is the best restaurant near my-house-secret-street?"
     with caplog.at_level(logging.INFO, logger="civicmind.api"):

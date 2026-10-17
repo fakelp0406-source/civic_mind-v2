@@ -17,6 +17,8 @@ Intent = Literal[
     "water_month_change",
     "road_city_value",
     "road_top_cities",
+    "road_compare_cities",  # two cities, one edition, one category and measure
+    "data_coverage",  # which periods exist and may be used (catalogue metadata only)
     "dataset_family",  # a question about a family with no trusted data (waste, census)
 ]
 INTENTS: tuple[str, ...] = Intent.__args__  # type: ignore[attr-defined]

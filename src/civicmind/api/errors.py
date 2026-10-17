@@ -87,9 +87,18 @@ async def on_validation_error(request: Request, exc: RequestValidationError) -> 
 
 
 async def on_http_error(request: Request, exc: StarletteHTTPException) -> JSONResponse:
-    codes = {404: "request.not_found", 405: "request.method_not_allowed"}
+    codes = {
+        404: "request.not_found",
+        405: "request.method_not_allowed",
+        413: "request.too_large",  # body limit hit while the body was being read (chunked)
+    }
     code = codes.get(exc.status_code, "request.http_error")
-    return error_response(request, exc.status_code, code, "The request cannot be served.")
+    message = (
+        exc.detail
+        if exc.status_code == 413 and isinstance(exc.detail, str)
+        else "The request cannot be served."
+    )
+    return error_response(request, exc.status_code, code, message)
 
 
 async def on_unhandled(request: Request, exc: Exception) -> JSONResponse:

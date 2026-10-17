@@ -121,4 +121,57 @@ def road_top_cities(ds: IngestedDataset, column: str, n: int = 10) -> AnalyticsR
     )
 
 
-__all__ = ["road_city_value", "road_top_cities"]
+def road_compare_cities(
+    ds: IngestedDataset, cities: tuple[str, ...], column: str
+) -> AnalyticsResult:
+    """A4c. Two cities' published counts in ONE edition, with a derived difference.
+
+    Each value is a published cell, matched by exact label; each share is of the edition's
+    published Total row; ``difference`` = first city minus second (derived). Nothing is summed
+    across categories and nothing crosses editions.
+    """
+    require(ds, FAMILY)
+    column = _measure_column(ds, column)
+    label, labels, total = _split(ds)
+    wanted = [c.strip() for c in cities]
+    if len(wanted) != 2 or wanted[0] == wanted[1]:
+        raise AnalyticsRefused("city.ambiguous", "exactly two different cities are required")
+    denominator = ds.values.loc[total, column].iloc[0]
+    rows = []
+    for city in wanted:
+        match = (labels == city) & ~total
+        if int(match.sum()) != 1:
+            raise AnalyticsRefused(
+                "city.not_found",
+                f"no row labelled exactly {city!r} in {ds.dataset_id} (no alias table)",
+                {"closest": difflib.get_close_matches(city, labels[~total].tolist(), n=3)},
+            )
+        value = ds.values.loc[match, column].iloc[0]
+        if pd.isna(value) or pd.isna(denominator):
+            raise AnalyticsRefused(
+                "values.missing", f"{column!r} is not numeric for {city!r}/Total"
+            )
+        share = round(float(value) / float(denominator) * 100, 4) if denominator > 0 else None
+        rows.append({"city": city, "value": _number(value), "share_of_total_pct": share})
+    difference = _number(float(rows[0]["value"]) - float(rows[1]["value"]))
+    return AnalyticsResult(
+        operation="road_compare_cities",
+        value={"cities": rows, "difference": difference},
+        unit="count",
+        method=(
+            "published cells of one edition; difference = first city minus second (derived); "
+            "shares = city / published Total row x 100"
+        ),
+        evidence=(evidence(ds, [label, column], 3),),
+        filters={"cities": wanted, "column": column},
+        denominator="published Total row (all million-plus cities in this edition)",
+        caveats=(
+            *CITY_CAVEAT,
+            "Both values come from the same edition and column; no other edition is used.",
+            "Shares are of the published Total row of this edition (null if that Total is 0).",
+            *ds.caveats,
+        ),
+    )
+
+
+__all__ = ["road_city_value", "road_compare_cities", "road_top_cities"]

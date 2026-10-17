@@ -34,8 +34,15 @@ MAX_BODY_BYTES = 8 * 1024
 REQUEST_ID = re.compile(r"[A-Za-z0-9._-]{1,64}")
 
 
-class _TooLarge(Exception):
-    pass
+class _TooLarge(StarletteHTTPException):
+    """413. An HTTPException so FastAPI re-raises it when the limit trips mid-body.
+
+    FastAPI converts any other exception raised while reading a body into
+    "400 There was an error parsing the body"; that hid the limit for chunked uploads.
+    """
+
+    def __init__(self, limit: int = MAX_BODY_BYTES):
+        super().__init__(status_code=413, detail=f"The request body exceeds {limit} bytes.")
 
 
 class RequestContext:
@@ -76,7 +83,7 @@ class RequestContext:
             if message["type"] == "http.request":
                 received += len(message.get("body", b""))
                 if received > self.max_body:
-                    raise _TooLarge
+                    raise _TooLarge(self.max_body)
             return message
 
         try:
@@ -85,7 +92,7 @@ class RequestContext:
             declared = 0
         try:
             if declared > self.max_body:
-                raise _TooLarge
+                raise _TooLarge(self.max_body)
             await self.app(scope, limited_receive, send_with_id)
         except _TooLarge:
             if status["sent"]:

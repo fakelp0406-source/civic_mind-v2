@@ -11,6 +11,14 @@ Bounded and read-only:
 * **Evidence first.** A result is composed only after ``validate_package`` confirms every
   evidence item against the manifests (hash, status, path, period, columns).
 
+* **Catalogue answers.** ``data_coverage`` questions ("which months are available?") are
+  answered from manifest metadata only: no dataset is ingested, no data value is reported and
+  the evidence package has no data items (it still passes ``validate_package`` and the
+  composer's number check).
+* **Coverage.** For water and road questions every answer and refusal carries the catalogue's
+  coverage (trusted periods, latest trusted period, non-trusted periods and why), so a
+  refusal for an unavailable or unnamed period says what is available. It is metadata only.
+
 Nothing is written except by the caller; no network, no language model.
 """
 
@@ -30,9 +38,9 @@ from civicmind.evidence.model import (
     SourceRecord,
     validate_package,
 )
-from civicmind.planner.catalog_index import load_index
+from civicmind.planner.catalog_index import FRESHNESS_NOTE, coverage, load_index
 from civicmind.planner.feasibility import Plan, check
-from civicmind.planner.parser import parse
+from civicmind.planner.parser import detect_domain, parse
 from civicmind.planner.spec import PlanRefusal
 from civicmind.respond.compose import Answer, compose_answer, compose_refusal
 
@@ -47,7 +55,10 @@ DISPATCH: dict[str, Callable[..., AnalyticsResult]] = {
     "water_month_change": water.water_month_change,
     "road_city_value": roads.road_city_value,
     "road_top_cities": roads.road_top_cities,
+    "road_compare_cities": roads.road_compare_cities,
 }
+#: Refusals that describe the request itself; no catalogue coverage is attached to them.
+NO_COVERAGE_CODES = frozenset({"query.empty", "query.too_long", "query.prompt_injection"})
 #: Only this intent may receive reference months (T10 intensity flags).
 ACCEPTS_REFERENCES = frozenset({"water_rank_rows"})
 
@@ -61,6 +72,7 @@ class _Trace:
     def __init__(self, limit: int):
         self.steps: list[str] = []
         self.limit = limit
+        self.coverage: dict | None = None
 
     def step(self, name: str) -> None:
         if len(self.steps) >= self.limit:
@@ -130,15 +142,59 @@ def _package(question: str, plan: Plan, result: AnalyticsResult) -> EvidencePack
     )
 
 
+def _coverage_answer(question: str, plan: Plan, root: Path, trace: _Trace) -> Answer:
+    """Answer an availability question from manifest metadata (no data value is read)."""
+    trace.step("catalogue")
+    cov = coverage(load_index(root), plan.spec.domain, other_tables=True)
+    trace.coverage = cov
+    if cov is None:
+        raise _Stop(Refusal("query.out_of_scope", "planner", "No coverage for this domain."))
+    package = EvidencePackage(
+        question=question,
+        intent=plan.function,
+        operation="data_coverage",
+        value={**cov, "trusted_count": len(cov["trusted_periods"])},
+        unit="periods",
+        method="catalogue metadata from dataset manifests (status, review decision, period, "
+        "portal publication date); no data file is read",
+        denominator=None,
+        caveats=(
+            FRESHNESS_NOTE,
+            "Answered from dataset manifests only: no data value is reported or implied.",
+            "Periods that are quarantined, exploratory only or profile only are never used for "
+            "trusted answers.",
+        ),
+        filters={"domain": cov["domain"]},
+        assumptions=tuple(plan.spec.assumptions),
+        items=(),
+    )
+    trace.step("evidence")
+    report = validate_package(package, sources(root), (), ())
+    if not report.ok:
+        raise _Stop(
+            Refusal("evidence.invalid", "evidence", "; ".join(report.problems), report.problems)
+        )
+    trace.step("compose")
+    return compose_answer(package, report, tuple(trace.steps), coverage=cov)
+
+
 def _run(question: str, root: Path, trace: _Trace) -> Answer:
     trace.step("parse")
     spec = parse(question)
     if isinstance(spec, PlanRefusal):
+        if spec.code not in NO_COVERAGE_CODES:
+            domain = detect_domain(question)
+            if domain is not None:
+                trace.coverage = coverage(load_index(root), domain)
         raise _Stop(_from_plan_refusal(spec))
+    index = load_index(root)
+    trace.coverage = coverage(index, spec.domain)
     trace.step("feasibility")
-    plan = check(spec, load_index(root))
+    plan = check(spec, index)
     if isinstance(plan, PlanRefusal):
         raise _Stop(_from_plan_refusal(plan))
+    if plan.function == "data_coverage":
+        return _coverage_answer(question, plan, root, trace)
     if plan.function not in DISPATCH:
         raise _Stop(Refusal("query.unsupported_operation", "pipeline", "intent not allowlisted"))
     if plan.reference_ids and plan.function not in ACCEPTS_REFERENCES:
@@ -175,7 +231,7 @@ def _run(question: str, root: Path, trace: _Trace) -> Answer:
             Refusal("evidence.invalid", "evidence", "; ".join(report.problems), report.problems)
         )
     trace.step("compose")
-    return compose_answer(package, report, tuple(trace.steps))
+    return compose_answer(package, report, tuple(trace.steps), coverage=trace.coverage)
 
 
 def answer_question(question: str, root: str | Path = ROOT, max_steps: int = MAX_STEPS) -> Answer:
@@ -183,7 +239,7 @@ def answer_question(question: str, root: str | Path = ROOT, max_steps: int = MAX
     try:
         return _run(question, Path(root), trace)
     except _Stop as stop:
-        return compose_refusal(question, stop.refusal, tuple(trace.steps))
+        return compose_refusal(question, stop.refusal, tuple(trace.steps), trace.coverage)
     except Exception as exc:  # noqa: BLE001 - fail closed: an error is never an answer
         # The exception text can contain local paths or data; it is not shown to the user.
         refusal = Refusal(

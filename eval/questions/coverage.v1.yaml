@@ -1,0 +1,234 @@
+# Water & Road-Safety Query Coverage v1: research-classified question set (2026-10-17).
+#
+# Separate from pipeline.v1.yaml (the 55 existing items are unchanged). Every item states the
+# expected outcome; nothing here is re-typed from the system's own output without a check:
+# numeric expectations for road comparisons were derived independently with the standard
+# library csv module from the promoted files (see the INTAKE/coverage report), water totals
+# match eval/golden where they overlap.
+#
+# class (research taxonomy):
+#   answerable_trusted     - a published value or catalogue fact from trusted data
+#   answerable_derived     - needs a derived calculation (sum, difference, change)
+#   requires_documents     - needs official documents (definitions, policy); no RAG yet
+#   requires_relationships - needs links across entities/datasets; no join authority
+#   underspecified         - a required parameter is missing or relative ("current")
+#   unsupported_by_data    - outside the catalogue (period, table, metric, operation)
+#   blocked_by_trust       - data exists but is quarantined, exploratory or modelled
+#
+# expect: status, and either (code) for refusals or (operation, datasets, checks) for
+# answers. checks: dotted path into the answer -> expected value ("value.difference": 630);
+# caveat_contains: substrings that must appear in some caveat. coverage: true when the
+# response must carry the catalogue coverage block (water or road questions).
+version: 1
+items:
+  # --- answerable from trusted data ------------------------------------------------------
+  - id: C01
+    question: How many over-speeding accidents did Bengaluru record in 2021?
+    class: answerable_trusted
+    expect: {status: answered, operation: road_city_value, datasets: [ROAD-RA2021-A47],
+             value_basis: published_and_derived, checks: {value.value: 3041}}
+    coverage: true
+  - id: C02
+    question: Top 3 cities by over-speeding deaths in 2024
+    class: answerable_trusted
+    expect: {status: answered, operation: road_top_cities, datasets: [ROAD-RA2024-A47],
+             value_basis: published, checks: {value.0.city: Bengaluru, value.0.value: 776}}
+    coverage: true
+  - id: C03
+    question: Which months of water data are available?
+    class: answerable_trusted
+    expect: {status: answered, operation: data_coverage, datasets: [], value_basis: catalogue,
+             checks: {value.trusted_count: 8, value.latest_trusted_period: "2026-03",
+                      value.latest_trusted_dataset: WATER-BWSSB-2026-03}}
+    coverage: true
+  - id: C04
+    question: Which editions of road accident data are available?
+    class: answerable_trusted
+    expect: {status: answered, operation: data_coverage, datasets: [], value_basis: catalogue,
+             checks: {value.trusted_count: 6, value.latest_trusted_period: "2024"}}
+    coverage: true
+  - id: C05
+    question: What is the latest edition of road accident data?
+    class: answerable_trusted
+    expect: {status: answered, operation: data_coverage, datasets: [], value_basis: catalogue,
+             checks: {value.latest_trusted_period: "2024", value.latest_trusted_dataset: ROAD-RA2024-A47}}
+    coverage: true
+  - id: C06
+    question: Is water consumption data available for June 2025?
+    class: answerable_trusted
+    expect: {status: answered, operation: data_coverage, datasets: [], value_basis: catalogue,
+             checks: {value.not_trusted.2.period: "2025-06", value.not_trusted.2.trust: quarantined,
+                      value.not_trusted.3.period: "2026-01", value.not_trusted.3.trust: exploratory_only}}
+    coverage: true
+
+  # --- answerable only through a derived calculation -----------------------------------
+  - id: C07
+    question: What was water consumption in July 2025?
+    class: answerable_derived
+    expect: {status: answered, operation: water_total, datasets: [WATER-BWSSB-2025-07],
+             value_basis: derived, checks: {value: 30457.44}}
+    coverage: true
+  - id: C08
+    question: Compare over-speeding deaths in Bengaluru and Chennai in 2024
+    class: answerable_derived
+    expect: {status: answered, operation: road_compare_cities, datasets: [ROAD-RA2024-A47],
+             value_basis: published_and_derived,
+             checks: {value.cities.0.value: 776, value.cities.1.value: 146, value.difference: 630,
+                      value.cities.0.share_of_total_pct: 7.1225}}
+    coverage: true
+  - id: C09
+    question: Compare over-speeding accidents in Bengaluru and Pune in 2021
+    class: answerable_derived
+    expect: {status: answered, operation: road_compare_cities, datasets: [ROAD-RA2021-A47],
+             value_basis: published_and_derived,
+             checks: {value.cities.1.value: 0, value.difference: 3041},
+             caveat_contains: ["SOURCE CAVEAT: Pune"]}
+    coverage: true
+  - id: C10
+    question: What is the difference between drunken driving accidents in Mumbai and Delhi in 2022?
+    class: answerable_derived
+    expect: {status: answered, operation: road_compare_cities, datasets: [ROAD-RA2022-A47],
+             value_basis: published_and_derived,
+             checks: {value.cities.0.value: 11, value.cities.1.value: 196, value.difference: -185}}
+    coverage: true
+  - id: C11
+    question: Compare red light deaths in Bengaluru and Hyderabad in 2023
+    class: answerable_derived
+    expect: {status: answered, operation: road_compare_cities, datasets: [ROAD-RA2023-A47],
+             value_basis: published_and_derived, checks: {value.difference: 3}}
+    coverage: true
+  - id: C12
+    question: Chennai vs Bengaluru over-speeding accidents 2020
+    class: answerable_derived
+    expect: {status: answered, operation: road_compare_cities, datasets: [ROAD-RA2020-A47],
+             value_basis: published_and_derived,
+             checks: {value.cities.0.value: 2839, value.cities.1.value: 2993, value.difference: -154},
+             caveat_contains: ["Tamil Nadu"]}
+    coverage: true
+  - id: C13
+    question: How did water consumption change from August 2025 to March 2026?
+    class: answerable_derived
+    expect: {status: answered, operation: water_month_change,
+             datasets: [WATER-BWSSB-2025-08, WATER-BWSSB-2026-03], value_basis: derived}
+    coverage: true
+  - id: C14
+    question: What was water consumption in November 2025?
+    class: answerable_derived
+    expect: {status: answered, operation: water_total, datasets: [WATER-BWSSB-2025-11],
+             value_basis: derived, caveat_contains: ["series.swing", "Chowdeshwari Ward"]}
+    coverage: true
+
+  # --- underspecified ------------------------------------------------------------------
+  - id: C15
+    question: What is the current water consumption?
+    class: underspecified
+    expect: {status: refused, code: query.period_missing}
+    coverage: true
+  - id: C16
+    question: How many over-speeding accidents did Bengaluru record this year?
+    class: underspecified
+    expect: {status: refused, code: query.period_missing}
+    coverage: true
+  - id: C17
+    question: What were the latest over-speeding accidents in Bengaluru?
+    class: underspecified
+    expect: {status: refused, code: query.period_missing}
+    coverage: true
+  - id: C18
+    question: How many over-speeding accidents did Bengaluru record?
+    class: underspecified
+    expect: {status: refused, code: query.period_missing}
+    coverage: true
+  - id: C19
+    question: Compare over-speeding accidents in Bengaluru, Chennai and Delhi in 2024
+    class: underspecified
+    expect: {status: refused, code: query.entity_ambiguous}
+    coverage: true
+  - id: C20
+    question: How many drunken driving deaths were there in Delhi and Mumbai in 2024?
+    class: underspecified
+    expect: {status: refused, code: query.entity_ambiguous}
+    coverage: true
+
+  # --- unsupported by the available data -------------------------------------------------
+  - id: C21
+    question: What was water consumption in April 2026?
+    class: unsupported_by_data
+    expect: {status: refused, code: period.unavailable}
+    coverage: true
+  - id: C22
+    question: How many over-speeding accidents did Bengaluru record in 2018?
+    class: unsupported_by_data
+    expect: {status: refused, code: period.unavailable}
+    coverage: true
+  - id: C23
+    question: How many accidents did Bengaluru record in 2024 across all categories?
+    class: unsupported_by_data
+    expect: {status: refused, code: query.metric_missing}
+    coverage: true
+  - id: C24
+    question: How many T-junction accidents did Bengaluru record in 2024?
+    class: unsupported_by_data
+    expect: {status: refused, code: query.metric_missing}
+    coverage: true
+  - id: C25
+    question: Compare over-speeding accidents in Bengaluru between 2019 and 2024.
+    class: unsupported_by_data
+    expect: {status: refused, code: query.cross_edition}
+    coverage: true
+  - id: C26
+    question: What is the over-speeding accident growth rate in Bengaluru from 2019 to 2024?
+    class: unsupported_by_data
+    expect: {status: refused, code: query.unsupported_operation}
+    coverage: true
+  - id: C27
+    question: Compare over-speeding accidents in Bengaluru and Gotham in 2024
+    class: unsupported_by_data
+    expect: {status: refused, code: city.not_found}
+    coverage: true
+
+  # --- blocked by data-quality or trust restrictions -----------------------------------
+  - id: C28
+    question: What was water consumption in June 2025?
+    class: blocked_by_trust
+    expect: {status: refused, code: status.quarantined}
+    coverage: true
+  - id: C29
+    question: What was water consumption in January 2026?
+    class: blocked_by_trust
+    expect: {status: refused, code: dataset.not_trusted}
+    coverage: true
+  - id: C30
+    question: What is the population of Bengaluru in 2026?
+    class: blocked_by_trust
+    expect: {status: refused, code: status.quarantined}
+    coverage: false
+  - id: C31
+    question: Rank Bengaluru wards by waste collection efficiency.
+    class: blocked_by_trust
+    expect: {status: refused, code: modelled.not_trusted}
+    coverage: false
+
+  # --- would require official documents (no RAG in this milestone) ------------------------
+  - id: C32
+    question: What does MoRTH define as a grievous injury?
+    class: requires_documents
+    expect: {status: refused, code: query.period_missing}
+    coverage: true
+  - id: C33
+    question: What is the BWSSB tariff for domestic connections?
+    class: requires_documents
+    expect: {status: refused, code: query.unrecognised_terms}
+    coverage: true
+
+  # --- would require relationships across entities or datasets ---------------------------
+  - id: C34
+    question: Which wards with high water consumption also have many road accidents?
+    class: requires_relationships
+    expect: {status: refused, code: query.cross_domain}
+    coverage: false
+  - id: C35
+    question: Which ward does Horamavu belong to in the GBA ward scheme for water consumption?
+    class: requires_relationships
+    expect: {status: refused, code: query.unrecognised_terms}
+    coverage: true

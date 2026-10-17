@@ -25,7 +25,7 @@ ROAD_CATEGORY_PREFIX = {
 }
 #: Intents bound to one source table. The road analytics read MoRTH Annexure 47 only, so a
 #: road question never resolves to another annexure of the same year (A1, A2, A49, ...).
-INTENT_TABLE = {"road_city_value": "A47", "road_top_cities": "A47"}
+INTENT_TABLE = {"road_city_value": "A47", "road_top_cities": "A47", "road_compare_cities": "A47"}
 ROAD_METRIC_PARTS = {
     "accidents": ("numberofaccidents",),
     "killed": ("personskilled",),
@@ -122,6 +122,10 @@ def _road_column(entry: DatasetEntry, category: str, metric: str) -> str | PlanR
 
 
 def check(spec: QuerySpec, index) -> Plan | PlanRefusal:
+    if spec.intent == "data_coverage":
+        # Catalogue metadata only: no dataset is read, so nothing needs to be trusted here.
+        # The orchestrator answers from manifests and cites no data evidence.
+        return Plan(spec=spec, function="data_coverage", dataset_ids=(), kwargs={})
     if spec.intent == "dataset_family":
         entries = [e for e in index if e.family == spec.domain]
         if not entries:
@@ -158,6 +162,8 @@ def check(spec: QuerySpec, index) -> Plan | PlanRefusal:
             return column
         if spec.intent == "road_city_value":
             kwargs = {"city": p["city"], "column": column}
+        elif spec.intent == "road_compare_cities":
+            kwargs = {"cities": tuple(p["cities"]), "column": column}
         else:
             kwargs = {"column": column, "n": p["n"]}
     return Plan(

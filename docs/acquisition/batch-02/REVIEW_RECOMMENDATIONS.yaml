@@ -1,0 +1,118 @@
+# DRAFT review recommendations for Batch 02 (prepared 2026-10-17). NOT a decisions file:
+# no processor reads this file and nothing is applied or promoted from it. To decide, the owner
+# copies the entries they approve into docs/acquisition/batch-02/REVIEW_DECISIONS.yaml (Batch 01
+# format: decision accept|quarantine|keep_profiled|reject, bound to sha256, every warning code
+# listed in accepted_caveats). "hold" = no decision requested in this stage.
+prepared_by: Claude Code session (recommendation only)
+recommendations:
+  ROAD-RA2020-A47:
+    recommendation: accept
+    sha256: 279575421cb29ea90c08e5290355c00c170674ba4d43491e01780e08337684be
+    caveats_to_accept: []
+    note: Tamil Nadu 2017-2020 data was under revision per the publisher (2021 resource note); Chennai,
+      Coimbatore, Madurai, Tiruchirapalli values may be superseded.
+    blocked_until:
+    - schema version registered in catalog/schemas.py
+    - city alias table for cross-edition use
+  ROAD-RA2021-A47:
+    recommendation: accept
+    sha256: 8da252e5a6edb7db6ec4303730826c8da207665d22a82a333b92871891aa08a5
+    caveats_to_accept:
+    - casualties.zero_accidents
+    note: 'casualties.zero_accidents: Pune Over-Speeding 0 accidents, 6 killed, 15 injured; unresolved
+      source inconsistency, kept as published.'
+    blocked_until:
+    - schema version registered in catalog/schemas.py
+    - city alias table for cross-edition use
+  ROAD-RA2022-A47:
+    recommendation: accept
+    sha256: d4300164f267d72cffdf60139c84f87c590eacd38195994dee4943f9a52877f0
+    caveats_to_accept: []
+    blocked_until:
+    - schema version registered in catalog/schemas.py
+    - city alias table for cross-edition use
+  ROAD-RA2023-A47:
+    recommendation: accept
+    sha256: aa3aece258183067f32fb29bdb34389854982472e6fa26f50c4ca61c68b56004
+    caveats_to_accept: []
+    blocked_until:
+    - schema version registered in catalog/schemas.py
+    - city alias table for cross-edition use
+  ROAD-RA2024-A1:
+    recommendation: hold
+    sha256: 1780d0a58496a8906036cd0128b1ae403a3d0ed3eef6ce7d0106d5dd5b7cc96c
+    note: Separate family morth_national_a1; needs schema registration, validator and reviewed questions
+      before any decision.
+  ROAD-RA2024-A2:
+    recommendation: hold
+    sha256: fdfa67d0a031e5494178ed409ae41fb3be8063ca97f4ac8a1486de3020eab6c7
+    note: Separate family morth_state_a2; as above.
+  ROAD-RA2024-A49:
+    recommendation: hold
+    sha256: 4a01cd8fd842ca44b2a4a42ad7e75f9a33fdffcdce82a828d4aaff0d6775a257
+    note: Separate family morth_city_a49; as above. Junction types are not a partition of all accidents.
+  WATER-BWSSB-2025-06:
+    recommendation: quarantine
+    sha256: b198f725f5ca7e49624a7a63df2db5b6ec9515bb3ba4a72b3e10d803517e56e8
+    note: Misspelt header Number of Connectionss (schema.columns error) and ward 40 Doddabidirakalu Consumption
+      in ML = -2.00E-06 (consumption_ml.negative error); not corrected. Same defects as the quarantined
+      May 2025 file.
+  WATER-BWSSB-2025-07:
+    recommendation: accept
+    sha256: 0034b08291e591ca0d94a535db172eea408746c35c3681551e58b39d316698b3
+    caveats_to_accept:
+    - consumption_ml.zero
+    - file.newline_style
+    - ward.duplicated
+  WATER-BWSSB-2025-09:
+    recommendation: accept
+    sha256: 3f5ef8d0dc3ed08e2b593ba8a48ef584f913824a01eb80b34eb5584de1117b48
+    caveats_to_accept:
+    - consumption_ml.zero
+    - file.newline_style
+    - ward.duplicated
+  WATER-BWSSB-2025-10:
+    recommendation: accept
+    sha256: 84e0b2ca373327ae7555078ee2b1a1af86cc88a96035a218f78ac8fb971e4da6
+    caveats_to_accept:
+    - consumption_ml.zero
+    - file.newline_style
+    - ward.duplicated
+  WATER-BWSSB-2025-11:
+    recommendation: accept
+    sha256: d4ccfb00a970c13320b3a911fde69b959b92c83c8b0a17818523a90de5730012
+    caveats_to_accept:
+    - consumption_ml.zero
+    - file.newline_style
+    - series.swing
+    - ward.duplicated
+    note: 'series.swing: Chowdeshwari Ward ML 17.36 -> 62.34 (+259%); cause not established.'
+  WATER-BWSSB-2025-12:
+    recommendation: accept
+    sha256: deb04248fe61aaa1019bbbd51592d2aa8c2838d26af5c75bc7bc52768dd24476
+    caveats_to_accept:
+    - consumption_ml.zero
+    - file.newline_style
+    - series.swing
+    - ward.duplicated
+    note: 'series.swing: Varthur (ward 85) ML 71.10 -> 92.63 (+30%).'
+  WATER-BWSSB-2026-01:
+    recommendation: accept
+    sha256: 39d38c1b41f156d64fdd7cb9b87614bd920e1d596acdb04edb4a0e72df015b2f
+    caveats_to_accept:
+    - consumption_ml.zero
+    - file.newline_style
+    - series.swing
+    - ward.duplicated
+    note: 'OWNER DECISION POINT. series.swing: Horamavu connections 14,384 -> 8,867 (-38%) while ML did
+      not fall (119.40 -> 131.31); isolated cell; unexplained. Alternative: keep_profiled until BWSSB
+      confirms.'
+  WATER-BWSSB-2026-02:
+    recommendation: accept
+    sha256: a5ea2b8c60a0f54ebbe2b141222e48a0c5844496feafbd6fa74710f034166525
+    caveats_to_accept:
+    - consumption_ml.zero
+    - file.newline_style
+    - series.swing
+    - ward.duplicated
+    note: 'series.swing: Horamavu connections 8,867 -> 15,565 (recovery) and Varthur (85) ML +38%.'

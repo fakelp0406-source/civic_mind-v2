@@ -133,4 +133,74 @@ def validate(frame: pd.DataFrame, raw_header: list[str]) -> list[Finding]:
     return findings
 
 
-__all__ = ["EXPECTED_COLUMNS", "validate"]
+#: Relative change between adjacent months that is flagged for review, and the floors below
+#: which small rows are ignored (a 3 -> 5 connection change is not informative).
+SWING_THRESHOLD = 0.30
+SWING_FLOORS = {"connections": 200.0, "consumption_ml": 10.0}
+
+
+def series_swing(
+    previous: pd.DataFrame,
+    current: pd.DataFrame,
+    previous_label: str,
+    current_label: str,
+    threshold: float = SWING_THRESHOLD,
+) -> list[Finding]:
+    """Rows whose connections or consumption changed by >= ``threshold`` from the prior month.
+
+    Cross-month evidence for a person to review: a warning only. Rows are compared by
+    position, and only when both months publish the identical (ward number, ward name)
+    sequence; otherwise nothing is compared and that is reported instead. Values are never
+    changed, and a large change is not treated as an error (it may be a real operational
+    change).
+    """
+    keys = []
+    for frame in (previous, current):
+        ward_col, name_col = frame.columns[:2]
+        pairs = zip(frame[ward_col].str.strip(), frame[name_col].str.strip(), strict=True)
+        keys.append(list(pairs))
+    if keys[0] != keys[1]:
+        return [
+            Finding(
+                "series.not_comparable",
+                "warning",
+                f"(ward number, ward name) rows differ from {previous_label}; no row compared",
+                {"previous": previous_label},
+            )
+        ]
+    rows = []
+    for position, label in ((2, "connections"), (3, "consumption_ml")):
+        before = to_number(previous.iloc[:, position])
+        after = to_number(current.iloc[:, position])
+        for i in range(len(current)):
+            x, y = before.iat[i], after.iat[i]
+            if pd.isna(x) or pd.isna(y) or x == 0 or max(x, y) < SWING_FLOORS[label]:
+                continue
+            change = (y - x) / x
+            if abs(change) >= threshold:
+                ward, name = keys[1][i]
+                rows.append(
+                    {
+                        "row": i + 1,
+                        "ward": ward,
+                        "name": name,
+                        "column": label,
+                        previous_label: float(x),
+                        current_label: float(y),
+                        "relative_change": round(float(change), 3),
+                    }
+                )
+    if not rows:
+        return []
+    return [
+        Finding(
+            "series.swing",
+            "warning",
+            f"{len(rows)} values changed by >= {threshold:.0%} from {previous_label} "
+            "(published as-is; cause not established)",
+            {"previous": previous_label, "rows": rows},
+        )
+    ]
+
+
+__all__ = ["EXPECTED_COLUMNS", "SWING_THRESHOLD", "series_swing", "validate"]

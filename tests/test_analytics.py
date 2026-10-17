@@ -46,13 +46,17 @@ ROWS = [
 ]
 
 
-def _road(tmp_path, header, rows, sub):
+def _road(tmp_path, header, rows, sub, caveats=()):
     m = _manifest(
         tmp_path / sub,
         _csv(header, rows),
         domain="roads",
         semantic_checks={"validator": "morth_city@v1"},
     )
+    if caveats:
+        m = m.model_copy(
+            update={"review": m.review.model_copy(update={"accepted_caveats": list(caveats)})}
+        )
     return ingest(m, tmp_path / sub)
 
 
@@ -258,7 +262,8 @@ def test_share_is_null_when_the_published_total_is_zero(tmp_path):
     col = RA2024.index(ACCIDENTS)
     for row in rows:
         row[col] = 0
-    ds = _road(tmp_path, RA2024, rows, "r")
+    # Zero accidents beside non-zero deaths is flagged (warning) and must be accepted.
+    ds = _road(tmp_path, RA2024, rows, "r", caveats=["casualties.zero_accidents"])
     assert roads.road_city_value(ds, "City A", ACCIDENTS).value["share_of_total_pct"] is None
 
 

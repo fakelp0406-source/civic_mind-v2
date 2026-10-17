@@ -1,0 +1,943 @@
+{
+  "water": {
+    "months": [
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03"
+    ],
+    "reference_month": "2025-08",
+    "row_key_identical_to_reference_month": {
+      "2025-04": false,
+      "2025-05": true,
+      "2025-06": true,
+      "2025-07": true,
+      "2025-08": true,
+      "2025-09": true,
+      "2025-10": true,
+      "2025-11": true,
+      "2025-12": true,
+      "2026-01": true,
+      "2026-02": true,
+      "2026-03": true
+    },
+    "totals": {
+      "2025-06": {
+        "rows": 202,
+        "connections": 1034634,
+        "consumption_ml": 30754.88,
+        "ml_per_1000_connections": 29.725,
+        "max_decimals_ml": 6,
+        "non_plain_ml_values": [
+          "-2.00E-06"
+        ]
+      },
+      "2025-07": {
+        "rows": 202,
+        "connections": 1042929,
+        "consumption_ml": 30457.44,
+        "ml_per_1000_connections": 29.204,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2025-09": {
+        "rows": 202,
+        "connections": 1052878,
+        "consumption_ml": 30346.23,
+        "ml_per_1000_connections": 28.822,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2025-10": {
+        "rows": 202,
+        "connections": 1057711,
+        "consumption_ml": 30173.56,
+        "ml_per_1000_connections": 28.527,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2025-11": {
+        "rows": 202,
+        "connections": 1060063,
+        "consumption_ml": 30016.61,
+        "ml_per_1000_connections": 28.316,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2025-12": {
+        "rows": 202,
+        "connections": 1064713,
+        "consumption_ml": 29809.7,
+        "ml_per_1000_connections": 27.998,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2026-01": {
+        "rows": 202,
+        "connections": 1062756,
+        "consumption_ml": 30891.96,
+        "ml_per_1000_connections": 29.068,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2026-02": {
+        "rows": 202,
+        "connections": 1073424,
+        "consumption_ml": 30928.22,
+        "ml_per_1000_connections": 28.813,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2025-04": {
+        "rows": 202,
+        "connections": 1023813,
+        "consumption_ml": 31608.71,
+        "ml_per_1000_connections": 30.874,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2025-05": {
+        "rows": 202,
+        "connections": 1029539,
+        "consumption_ml": 30816.5,
+        "ml_per_1000_connections": 29.932,
+        "max_decimals_ml": 6,
+        "non_plain_ml_values": [
+          "-2.00E-06"
+        ]
+      },
+      "2025-08": {
+        "rows": 202,
+        "connections": 1047734,
+        "consumption_ml": 30580.05,
+        "ml_per_1000_connections": 29.187,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      },
+      "2026-03": {
+        "rows": 202,
+        "connections": 1077862,
+        "consumption_ml": 29732.45,
+        "ml_per_1000_connections": 27.585,
+        "max_decimals_ml": 2,
+        "non_plain_ml_values": []
+      }
+    },
+    "identical_content_pairs": [],
+    "swings_ge_30pct": [
+      {
+        "from": "2025-06",
+        "to": "2025-07",
+        "row": 2,
+        "ward": 2,
+        "name": "Chowdeshwari Ward",
+        "column": "ml",
+        "before": 9.808984,
+        "after": 25.69,
+        "relative_change": 1.619
+      },
+      {
+        "from": "2025-06",
+        "to": "2025-07",
+        "row": 26,
+        "ward": 25,
+        "name": "Horamavu",
+        "column": "connections",
+        "before": 6532.0,
+        "after": 10381.0,
+        "relative_change": 0.589
+      },
+      {
+        "from": "2025-10",
+        "to": "2025-11",
+        "row": 2,
+        "ward": 2,
+        "name": "Chowdeshwari Ward",
+        "column": "ml",
+        "before": 17.36,
+        "after": 62.34,
+        "relative_change": 2.591
+      },
+      {
+        "from": "2025-11",
+        "to": "2025-12",
+        "row": 87,
+        "ward": 85,
+        "name": "Varthur",
+        "column": "ml",
+        "before": 71.1,
+        "after": 92.63,
+        "relative_change": 0.303
+      },
+      {
+        "from": "2025-12",
+        "to": "2026-01",
+        "row": 26,
+        "ward": 25,
+        "name": "Horamavu",
+        "column": "connections",
+        "before": 14384.0,
+        "after": 8867.0,
+        "relative_change": -0.384
+      },
+      {
+        "from": "2026-01",
+        "to": "2026-02",
+        "row": 26,
+        "ward": 25,
+        "name": "Horamavu",
+        "column": "connections",
+        "before": 8867.0,
+        "after": 15565.0,
+        "relative_change": 0.755
+      },
+      {
+        "from": "2026-01",
+        "to": "2026-02",
+        "row": 87,
+        "ward": 85,
+        "name": "Varthur",
+        "column": "ml",
+        "before": 74.84,
+        "after": 102.93,
+        "relative_change": 0.375
+      }
+    ],
+    "swing_trajectories": {
+      "2 Chowdeshwari Ward": {
+        "2025-05": {
+          "connections": 460.0,
+          "ml": 9.834984
+        },
+        "2025-06": {
+          "connections": 460.0,
+          "ml": 9.808984
+        },
+        "2025-07": {
+          "connections": 461.0,
+          "ml": 25.69
+        },
+        "2025-08": {
+          "connections": 463.0,
+          "ml": 23.62
+        },
+        "2025-09": {
+          "connections": 464.0,
+          "ml": 18.95
+        },
+        "2025-10": {
+          "connections": 465.0,
+          "ml": 17.36
+        },
+        "2025-11": {
+          "connections": 466.0,
+          "ml": 62.34
+        },
+        "2025-12": {
+          "connections": 466.0,
+          "ml": 56.86
+        },
+        "2026-01": {
+          "connections": 467.0,
+          "ml": 73.73
+        },
+        "2026-02": {
+          "connections": 467.0,
+          "ml": 74.08
+        },
+        "2026-03": {
+          "connections": 467.0,
+          "ml": 56.01
+        }
+      },
+      "25 Horamavu": {
+        "2025-05": {
+          "connections": 5956.0,
+          "ml": 111.875924
+        },
+        "2025-06": {
+          "connections": 6532.0,
+          "ml": 122.770924
+        },
+        "2025-07": {
+          "connections": 10381.0,
+          "ml": 146.72
+        },
+        "2025-08": {
+          "connections": 11232.0,
+          "ml": 156.55
+        },
+        "2025-09": {
+          "connections": 11889.0,
+          "ml": 148.35
+        },
+        "2025-10": {
+          "connections": 12789.0,
+          "ml": 104.67
+        },
+        "2025-11": {
+          "connections": 12820.0,
+          "ml": 97.26
+        },
+        "2025-12": {
+          "connections": 14384.0,
+          "ml": 119.4
+        },
+        "2026-01": {
+          "connections": 8867.0,
+          "ml": 131.31
+        },
+        "2026-02": {
+          "connections": 15565.0,
+          "ml": 140.77
+        },
+        "2026-03": {
+          "connections": 16181.0,
+          "ml": 165.27
+        }
+      },
+      "85 Varthur": {
+        "2025-05": {
+          "connections": 874.0,
+          "ml": 80.608999
+        },
+        "2025-06": {
+          "connections": 1000.0,
+          "ml": 90.128999
+        },
+        "2025-07": {
+          "connections": 1081.0,
+          "ml": 84.51
+        },
+        "2025-08": {
+          "connections": 1353.0,
+          "ml": 94.25
+        },
+        "2025-09": {
+          "connections": 1643.0,
+          "ml": 85.34
+        },
+        "2025-10": {
+          "connections": 1958.0,
+          "ml": 76.14
+        },
+        "2025-11": {
+          "connections": 1998.0,
+          "ml": 71.1
+        },
+        "2025-12": {
+          "connections": 2151.0,
+          "ml": 92.63
+        },
+        "2026-01": {
+          "connections": 2181.0,
+          "ml": 74.84
+        },
+        "2026-02": {
+          "connections": 2339.0,
+          "ml": 102.93
+        },
+        "2026-03": {
+          "connections": 2403.0,
+          "ml": 102.27
+        }
+      }
+    }
+  },
+  "baselines": {
+    "WATER-BWSSB-2025-04 (quarantined)": {
+      "sha256": "0bafa2d91c821db63161c213c7fe0def179d10e53eed87ab72e325ef77dc20ee",
+      "header": [
+        "Ward number ",
+        "Ward Name",
+        "Number of Connectionss",
+        "Consumption in ML"
+      ],
+      "newline": "mixed"
+    },
+    "WATER-BWSSB-2025-05 (quarantined)": {
+      "sha256": "d266a3a27c8f01c5c4d005bdeab018ccf19aa76ce83f268a80c2bbdb7c31da56",
+      "header": [
+        "Ward number ",
+        "Ward Name",
+        "Number of Connectionss",
+        "Consumption in ML"
+      ],
+      "newline": "mixed"
+    },
+    "WATER-BWSSB-2025-08 (trusted)": {
+      "sha256": "108639ce30129414e1dbd3d67b8403dcc83878bf2c2dc674b58d895f2adca974",
+      "header": [
+        "Ward number ",
+        "Ward Name",
+        "Number of Connections",
+        "Consumption in ML"
+      ],
+      "newline": "CRLF"
+    },
+    "WATER-BWSSB-2026-03 (trusted)": {
+      "sha256": "798243f90aad7697d4c5fb9e76bc2ef32c1e91b75b9e987be52685c115d8bc3c",
+      "header": [
+        "Ward number ",
+        "Ward Name",
+        "Number of Connections",
+        "Consumption in ML"
+      ],
+      "newline": "mixed"
+    },
+    "ROAD-RA2019-A47 (trusted)": {
+      "sha256": "40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc",
+      "header": [
+        "States/UTs",
+        "Over-Speeding - Number of Accidents - Number",
+        "Over-Speeding - Number of Accidents - Rank",
+        "Over-Speeding - Persons Killed - Number",
+        "Over-Speeding - Persons Killed - Rank",
+        "Over-Speeding - Persons Injured - Greviously Injured",
+        "Over-Speeding - Persons Injured - Minor Injury",
+        "Over-Speeding - Persons Injured - Total Injured",
+        "Drunken Driving/ Consumption of alcohol and drug  - Number of Accidents",
+        "Drunken Driving/ Consumption of alcohol and drug  - Persons Killed",
+        "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Greviously Injured",
+        "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Minor Injury",
+        "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Total Injured",
+        "Driving on Wrong side - Number of Accidents",
+        "Driving on Wrong side - Persons Killed",
+        "Driving on Wrong side - Persons Injured - Greviously Injured",
+        "Driving on Wrong side - Persons Injured - Minor Injury",
+        "Driving on Wrong side - Persons Injured - Total Injured",
+        "Jumping Red Light - Number of Accidents",
+        "Jumping Red Light - Persons Killed",
+        "Jumping Red Light - Persons Injured - Greviously Injured",
+        "Jumping Red Light - Persons Injured - Minor Injury",
+        "Jumping Red Light - Persons Injured - Total Injured",
+        "Use of Mobile Phone - Number of Accidents",
+        "Use of Mobile Phone - Persons Killed",
+        "Use of Mobile Phone - Persons Injured - Greviously Injured",
+        "Use of Mobile Phone - Persons Injured - Minor Injury",
+        "Use of Mobile Phone - Persons Injured - Total Injured",
+        "Others - Number of Accidents",
+        "Others - Persons Killed",
+        "Others - Persons Injured - Greviously Injured",
+        "Others - Persons Injured - Minor Injury",
+        "Others - Persons Injured - Total Injured"
+      ],
+      "newline": "CRLF"
+    },
+    "ROAD-RA2024-A47 (trusted)": {
+      "sha256": "702f75f332a273e9c09eb500a7d2f90c2ae71eec3bf06fe01d48a6fc56bd37e9",
+      "header": [
+        "Sl. No.",
+        "Million Plus Cities",
+        "Over-Speeding - Number of Accidents - Number",
+        "Over-Speeding - Number of Accidents - Rank",
+        "Over-Speeding - Persons Killed - Number",
+        "Over-Speeding - Persons Killed - Rank",
+        "Over-Speeding - Persons Injured - Grievously Injured",
+        "Over-Speeding - Persons Injured - Minor Injury",
+        "Over-Speeding - Persons Injured - Total Injured",
+        "Drunken Driving/Consumption of Alcohol and Drug - Number of Accidents",
+        "Drunken Driving/Consumption of Alcohol and Drug - Persons Killed",
+        "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Grievously Injured",
+        "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Minor Injury",
+        "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Total Injured",
+        "Driving on Wrong Side - Number of Accidents",
+        "Driving on Wrong Side - Persons Killed",
+        "Driving on Wrong Side - Persons Injured - Grievously Injured",
+        "Driving on Wrong Side - Persons Injured - Minor Injury",
+        "Driving on Wrong Side - Persons Injured - Total Injured",
+        "Jumping Red Light - Number of Accidents",
+        "Jumping Red Light - Persons Killed",
+        "Jumping Red Light - Persons Injured - Grievously Injured",
+        "Jumping Red Light - Persons Injured - Minor Injury",
+        "Jumping Red Light - Persons Injured - Total Injured",
+        "Use of Mobile Phone - Number of Accidents",
+        "Use of Mobile Phone - Persons Killed",
+        "Use of Mobile Phone - Persons Injured - Grievously Injured",
+        "Use of Mobile Phone - Persons Injured - Minor Injury",
+        "Use of Mobile Phone - Persons Injured - Total Injured",
+        "Others - Number of Accidents",
+        "Others - Persons Killed",
+        "Others - Persons Injured - Grievously Injured",
+        "Others - Persons Injured - Minor Injury",
+        "Others - Persons Injured - Total Injured"
+      ],
+      "newline": "CRLF"
+    }
+  },
+  "a47": {
+    "years": [
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024"
+    ],
+    "categories_by_year": {
+      "2019": [
+        "driving on wrong side",
+        "drunken driving/consumption of alcohol and drug",
+        "jumping red light",
+        "others",
+        "over-speeding",
+        "use of mobile phone"
+      ],
+      "2020": [
+        "driving on wrong side",
+        "drunken driving/consumption of alcohol and drug",
+        "jumping red light",
+        "others",
+        "over-speeding",
+        "use of mobile phone"
+      ],
+      "2021": [
+        "driving on wrong side",
+        "drunken driving/consumption of alcohol and drug",
+        "jumping red light",
+        "others",
+        "over-speeding",
+        "use of mobile phone"
+      ],
+      "2022": [
+        "driving on wrong side",
+        "drunken driving/consumption of alcohol and drug",
+        "jumping red light",
+        "others",
+        "over-speeding",
+        "use of mobile phone"
+      ],
+      "2023": [
+        "driving on wrong side",
+        "drunken driving/consumption of alcohol and drug",
+        "jumping red light",
+        "others",
+        "over-speeding",
+        "use of mobile phone"
+      ],
+      "2024": [
+        "driving on wrong side",
+        "drunken driving/consumption of alcohol and drug",
+        "jumping red light",
+        "others",
+        "over-speeding",
+        "use of mobile phone"
+      ]
+    },
+    "column_count_by_year": {
+      "2019": 33,
+      "2020": 33,
+      "2021": 33,
+      "2022": 34,
+      "2023": 34,
+      "2024": 34
+    },
+    "header_drift_vs_2024": {
+      "2019": {
+        "only_in_old": [
+          "Driving on Wrong Side - Number of Accidents",
+          "Driving on Wrong Side - Persons Injured - Grievously Injured",
+          "Driving on Wrong Side - Persons Injured - Minor Injury",
+          "Driving on Wrong Side - Persons Injured - Total Injured",
+          "Driving on Wrong Side - Persons Killed",
+          "Drunken Driving/Consumption of Alcohol and Drug - Number of Accidents",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Grievously Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Minor Injury",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Total Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Killed",
+          "Jumping Red Light - Persons Injured - Grievously Injured",
+          "Million Plus Cities",
+          "Others - Persons Injured - Grievously Injured",
+          "Over-Speeding - Persons Injured - Grievously Injured",
+          "Sl. No.",
+          "Use of Mobile Phone - Persons Injured - Grievously Injured"
+        ],
+        "only_in_new": [
+          "Driving on Wrong side - Number of Accidents",
+          "Driving on Wrong side - Persons Injured - Greviously Injured",
+          "Driving on Wrong side - Persons Injured - Minor Injury",
+          "Driving on Wrong side - Persons Injured - Total Injured",
+          "Driving on Wrong side - Persons Killed",
+          "Drunken Driving/ Consumption of alcohol and drug  - Number of Accidents",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Greviously Injured",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Minor Injury",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Total Injured",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Killed",
+          "Jumping Red Light - Persons Injured - Greviously Injured",
+          "Others - Persons Injured - Greviously Injured",
+          "Over-Speeding - Persons Injured - Greviously Injured",
+          "States/UTs",
+          "Use of Mobile Phone - Persons Injured - Greviously Injured"
+        ],
+        "common": [
+          "Jumping Red Light - Number of Accidents",
+          "Jumping Red Light - Persons Injured - Minor Injury",
+          "Jumping Red Light - Persons Injured - Total Injured",
+          "Jumping Red Light - Persons Killed",
+          "Others - Number of Accidents",
+          "Others - Persons Injured - Minor Injury",
+          "Others - Persons Injured - Total Injured",
+          "Others - Persons Killed",
+          "Over-Speeding - Number of Accidents - Number",
+          "Over-Speeding - Number of Accidents - Rank",
+          "Over-Speeding - Persons Injured - Minor Injury",
+          "Over-Speeding - Persons Injured - Total Injured",
+          "Over-Speeding - Persons Killed - Number",
+          "Over-Speeding - Persons Killed - Rank",
+          "Use of Mobile Phone - Number of Accidents",
+          "Use of Mobile Phone - Persons Injured - Minor Injury",
+          "Use of Mobile Phone - Persons Injured - Total Injured",
+          "Use of Mobile Phone - Persons Killed"
+        ]
+      },
+      "2020": {
+        "only_in_old": [
+          "Driving on Wrong Side - Number of Accidents",
+          "Driving on Wrong Side - Persons Injured - Grievously Injured",
+          "Driving on Wrong Side - Persons Injured - Minor Injury",
+          "Driving on Wrong Side - Persons Injured - Total Injured",
+          "Driving on Wrong Side - Persons Killed",
+          "Drunken Driving/Consumption of Alcohol and Drug - Number of Accidents",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Grievously Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Minor Injury",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Total Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Killed",
+          "Jumping Red Light - Persons Injured - Grievously Injured",
+          "Others - Persons Injured - Grievously Injured",
+          "Over-Speeding - Persons Injured - Grievously Injured",
+          "Sl. No.",
+          "Use of Mobile Phone - Persons Injured - Grievously Injured"
+        ],
+        "only_in_new": [
+          "Driving on Wrong side - Number of Accidents",
+          "Driving on Wrong side - Persons Injured - Greviously Injured",
+          "Driving on Wrong side - Persons Injured - Minor Injury",
+          "Driving on Wrong side - Persons Injured - Total Injured",
+          "Driving on Wrong side - Persons Killed",
+          "Drunken Driving/ Consumption of alcohol and drug  - Number of Accidents",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Greviously Injured",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Minor Injury",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Total Injured",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Killed",
+          "Jumping Red Light - Persons Injured - Greviously Injured",
+          "Others - Persons Injured - Greviously Injured",
+          "Over-Speeding - Persons Injured - Greviously Injured",
+          "Use of Mobile Phone - Persons Injured - Greviously Injured"
+        ],
+        "common": [
+          "Jumping Red Light - Number of Accidents",
+          "Jumping Red Light - Persons Injured - Minor Injury",
+          "Jumping Red Light - Persons Injured - Total Injured",
+          "Jumping Red Light - Persons Killed",
+          "Million Plus Cities",
+          "Others - Number of Accidents",
+          "Others - Persons Injured - Minor Injury",
+          "Others - Persons Injured - Total Injured",
+          "Others - Persons Killed",
+          "Over-Speeding - Number of Accidents - Number",
+          "Over-Speeding - Number of Accidents - Rank",
+          "Over-Speeding - Persons Injured - Minor Injury",
+          "Over-Speeding - Persons Injured - Total Injured",
+          "Over-Speeding - Persons Killed - Number",
+          "Over-Speeding - Persons Killed - Rank",
+          "Use of Mobile Phone - Number of Accidents",
+          "Use of Mobile Phone - Persons Injured - Minor Injury",
+          "Use of Mobile Phone - Persons Injured - Total Injured",
+          "Use of Mobile Phone - Persons Killed"
+        ]
+      },
+      "2021": {
+        "only_in_old": [
+          "Driving on Wrong Side - Number of Accidents",
+          "Driving on Wrong Side - Persons Injured - Grievously Injured",
+          "Driving on Wrong Side - Persons Injured - Minor Injury",
+          "Driving on Wrong Side - Persons Injured - Total Injured",
+          "Driving on Wrong Side - Persons Killed",
+          "Drunken Driving/Consumption of Alcohol and Drug - Number of Accidents",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Grievously Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Minor Injury",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Total Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Killed",
+          "Jumping Red Light - Persons Injured - Grievously Injured",
+          "Others - Persons Injured - Grievously Injured",
+          "Over-Speeding - Persons Injured - Grievously Injured",
+          "Sl. No.",
+          "Use of Mobile Phone - Persons Injured - Grievously Injured"
+        ],
+        "only_in_new": [
+          "Driving on Wrong side - Number of Accidents",
+          "Driving on Wrong side - Persons Injured - Greviously Injured",
+          "Driving on Wrong side - Persons Injured - Minor Injury",
+          "Driving on Wrong side - Persons Injured - Total Injured",
+          "Driving on Wrong side - Persons Killed",
+          "Drunken Driving/ Consumption of alcohol and drug  - Number of Accidents",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Greviously Injured",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Minor Injury",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Total Injured",
+          "Drunken Driving/ Consumption of alcohol and drug  - Persons Killed",
+          "Jumping Red Light - Persons Injured - Greviously Injured",
+          "Others - Persons Injured - Greviously Injured",
+          "Over-Speeding - Persons Injured - Greviously Injured",
+          "Use of Mobile Phone - Persons Injured - Greviously Injured"
+        ],
+        "common": [
+          "Jumping Red Light - Number of Accidents",
+          "Jumping Red Light - Persons Injured - Minor Injury",
+          "Jumping Red Light - Persons Injured - Total Injured",
+          "Jumping Red Light - Persons Killed",
+          "Million Plus Cities",
+          "Others - Number of Accidents",
+          "Others - Persons Injured - Minor Injury",
+          "Others - Persons Injured - Total Injured",
+          "Others - Persons Killed",
+          "Over-Speeding - Number of Accidents - Number",
+          "Over-Speeding - Number of Accidents - Rank",
+          "Over-Speeding - Persons Injured - Minor Injury",
+          "Over-Speeding - Persons Injured - Total Injured",
+          "Over-Speeding - Persons Killed - Number",
+          "Over-Speeding - Persons Killed - Rank",
+          "Use of Mobile Phone - Number of Accidents",
+          "Use of Mobile Phone - Persons Injured - Minor Injury",
+          "Use of Mobile Phone - Persons Injured - Total Injured",
+          "Use of Mobile Phone - Persons Killed"
+        ]
+      },
+      "2022": {
+        "only_in_old": [
+          "Driving on Wrong Side - Number of Accidents",
+          "Driving on Wrong Side - Persons Injured - Grievously Injured",
+          "Driving on Wrong Side - Persons Injured - Minor Injury",
+          "Driving on Wrong Side - Persons Injured - Total Injured",
+          "Driving on Wrong Side - Persons Killed",
+          "Drunken Driving/Consumption of Alcohol and Drug - Number of Accidents",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Grievously Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Minor Injury",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Total Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Killed"
+        ],
+        "only_in_new": [
+          "Driving on Wrong side - Number of Accidents",
+          "Driving on Wrong side - Persons Injured - Grievously Injured",
+          "Driving on Wrong side - Persons Injured - Minor Injury",
+          "Driving on Wrong side - Persons Injured - Total Injured",
+          "Driving on Wrong side - Persons Killed",
+          "Drunken Driving/ Consumption of alcohol and drug - Number of Accidents",
+          "Drunken Driving/ Consumption of alcohol and drug - Persons Injured - Grievously Injured",
+          "Drunken Driving/ Consumption of alcohol and drug - Persons Injured - Minor Injury",
+          "Drunken Driving/ Consumption of alcohol and drug - Persons Injured - Total Injured",
+          "Drunken Driving/ Consumption of alcohol and drug - Persons Killed"
+        ],
+        "common": [
+          "Jumping Red Light - Number of Accidents",
+          "Jumping Red Light - Persons Injured - Grievously Injured",
+          "Jumping Red Light - Persons Injured - Minor Injury",
+          "Jumping Red Light - Persons Injured - Total Injured",
+          "Jumping Red Light - Persons Killed",
+          "Million Plus Cities",
+          "Others - Number of Accidents",
+          "Others - Persons Injured - Grievously Injured",
+          "Others - Persons Injured - Minor Injury",
+          "Others - Persons Injured - Total Injured",
+          "Others - Persons Killed",
+          "Over-Speeding - Number of Accidents - Number",
+          "Over-Speeding - Number of Accidents - Rank",
+          "Over-Speeding - Persons Injured - Grievously Injured",
+          "Over-Speeding - Persons Injured - Minor Injury",
+          "Over-Speeding - Persons Injured - Total Injured",
+          "Over-Speeding - Persons Killed - Number",
+          "Over-Speeding - Persons Killed - Rank",
+          "Sl. No.",
+          "Use of Mobile Phone - Number of Accidents",
+          "Use of Mobile Phone - Persons Injured - Grievously Injured",
+          "Use of Mobile Phone - Persons Injured - Minor Injury",
+          "Use of Mobile Phone - Persons Injured - Total Injured",
+          "Use of Mobile Phone - Persons Killed"
+        ]
+      },
+      "2023": {
+        "only_in_old": [
+          "Driving on Wrong Side - Number of Accidents",
+          "Driving on Wrong Side - Persons Injured - Grievously Injured",
+          "Driving on Wrong Side - Persons Injured - Minor Injury",
+          "Driving on Wrong Side - Persons Injured - Total Injured",
+          "Driving on Wrong Side - Persons Killed",
+          "Drunken Driving/Consumption of Alcohol and Drug - Number of Accidents",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Grievously Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Minor Injury",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Total Injured",
+          "Drunken Driving/Consumption of Alcohol and Drug - Persons Killed",
+          "Sl. No."
+        ],
+        "only_in_new": [
+          "Driving on Wrong side - Number of Accidents",
+          "Driving on Wrong side - Persons Injured - Grievously Injured",
+          "Driving on Wrong side - Persons Injured - Minor Injury",
+          "Driving on Wrong side - Persons Injured - Total Injured",
+          "Driving on Wrong side - Persons Killed",
+          "Drunken Driving/ Consumption of alcohol & drug - Number of Accidents",
+          "Drunken Driving/ Consumption of alcohol & drug - Persons Injured - Grievously Injured",
+          "Drunken Driving/ Consumption of alcohol & drug - Persons Injured - Minor Injury",
+          "Drunken Driving/ Consumption of alcohol & drug - Persons Injured - Total Injured",
+          "Drunken Driving/ Consumption of alcohol & drug - Persons Killed",
+          "Sl. No"
+        ],
+        "common": [
+          "Jumping Red Light - Number of Accidents",
+          "Jumping Red Light - Persons Injured - Grievously Injured",
+          "Jumping Red Light - Persons Injured - Minor Injury",
+          "Jumping Red Light - Persons Injured - Total Injured",
+          "Jumping Red Light - Persons Killed",
+          "Million Plus Cities",
+          "Others - Number of Accidents",
+          "Others - Persons Injured - Grievously Injured",
+          "Others - Persons Injured - Minor Injury",
+          "Others - Persons Injured - Total Injured",
+          "Others - Persons Killed",
+          "Over-Speeding - Number of Accidents - Number",
+          "Over-Speeding - Number of Accidents - Rank",
+          "Over-Speeding - Persons Injured - Grievously Injured",
+          "Over-Speeding - Persons Injured - Minor Injury",
+          "Over-Speeding - Persons Injured - Total Injured",
+          "Over-Speeding - Persons Killed - Number",
+          "Over-Speeding - Persons Killed - Rank",
+          "Use of Mobile Phone - Number of Accidents",
+          "Use of Mobile Phone - Persons Injured - Grievously Injured",
+          "Use of Mobile Phone - Persons Injured - Minor Injury",
+          "Use of Mobile Phone - Persons Injured - Total Injured",
+          "Use of Mobile Phone - Persons Killed"
+        ]
+      }
+    },
+    "city_set_after_observed_aliases": {
+      "2019": {
+        "count": 50,
+        "missing_vs_2024": [],
+        "extra_vs_2024": []
+      },
+      "2020": {
+        "count": 50,
+        "missing_vs_2024": [],
+        "extra_vs_2024": []
+      },
+      "2021": {
+        "count": 50,
+        "missing_vs_2024": [],
+        "extra_vs_2024": []
+      },
+      "2022": {
+        "count": 50,
+        "missing_vs_2024": [],
+        "extra_vs_2024": []
+      },
+      "2023": {
+        "count": 50,
+        "missing_vs_2024": [],
+        "extra_vs_2024": []
+      },
+      "2024": {
+        "count": 50,
+        "missing_vs_2024": [],
+        "extra_vs_2024": []
+      }
+    },
+    "observed_alias_map": {
+      "Allahabad(Prayagraj)": "Allahabad (Prayagraj)",
+      "Khozikode": "Kozhikode",
+      "Thiruvanthapuram": "Thiruvananthapuram",
+      "Tiruchirapalli": "Tiruchirappalli",
+      "Vadodra": "Vadodara",
+      "Vijaywada city": "Vijayawada city",
+      "Vizaq": "Vishakhapatnam"
+    },
+    "bengaluru": {
+      "2019": {
+        "accidents": 4684,
+        "killed": 768
+      },
+      "2020": {
+        "accidents": 3233,
+        "killed": 646
+      },
+      "2021": {
+        "accidents": 3213,
+        "killed": 654
+      },
+      "2022": {
+        "accidents": 3822,
+        "killed": 772
+      },
+      "2023": {
+        "accidents": 4974,
+        "killed": 915
+      },
+      "2024": {
+        "accidents": 4769,
+        "killed": 894
+      }
+    },
+    "all_city_sum_of_categories": {
+      "2019": {
+        "accidents": 82781.0,
+        "killed": 17798.0
+      },
+      "2020": {
+        "accidents": 58736.0,
+        "killed": 13542.0
+      },
+      "2021": {
+        "accidents": 67301.0,
+        "killed": 15350.0
+      },
+      "2022": {
+        "accidents": 76752.0,
+        "killed": 17089.0
+      },
+      "2023": {
+        "accidents": 81144.0,
+        "killed": 17255.0
+      },
+      "2024": {
+        "accidents": 82127.0,
+        "killed": 17186.0
+      }
+    },
+    "bengaluru_rank_by_sum_of_categories": {
+      "2019": 3,
+      "2020": 3,
+      "2021": 5,
+      "2022": 4,
+      "2023": 2,
+      "2024": 2
+    }
+  },
+  "a1_vs_a2": [
+    {
+      "year": "2021",
+      "a1_accidents": "412432",
+      "a2_total": "412432"
+    },
+    {
+      "year": "2022",
+      "a1_accidents": "461312",
+      "a2_total": "461312"
+    },
+    {
+      "year": "2023",
+      "a1_accidents": "480583",
+      "a2_total": "480583"
+    },
+    {
+      "year": "2024",
+      "a1_accidents": "487707",
+      "a2_total": "487707"
+    }
+  ]
+}

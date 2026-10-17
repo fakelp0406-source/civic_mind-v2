@@ -1,0 +1,215 @@
+dataset_id: ROAD-RA2024-A49
+manifest_version: 1
+title: Million Plus City-wise Accidents Classified According to Type of Junctions during 2024
+publisher: Ministry of Road Transport and Highways
+host_portal: data.gov.in
+source_class: official
+resource_page: https://www.data.gov.in/resource/million-plus-city-wise-accidents-classified-according-type-junctions-during-2024
+download_url: https://www.data.gov.in/files/ogdpv2dms/s3fs-public/604807642/Version_1/Transport_2024_Annexure_49.csv
+portal_published: '2026-06-18'
+portal_updated: '2026-06-18'
+licence:
+  name: Government Open Data License - India
+  url: https://www.data.gov.in/Godl
+  evidence: Portal footer on each resource page read 2026-10-17 ('licensed under the Government Open Data
+    License-India'); GODL text recorded in data/external/verify_2026-10-17/licence/GODL_evidence_note.md
+  attribution: 'Ministry of Road Transport and Highways, 2026, Million Plus City-wise Accidents Classified
+    According to Type of Junctions during 2024, Open Government Data Platform India, 18/06, https://www.data.gov.in/resource/million-plus-city-wise-accidents-classified-according-type-junctions-during-2024.
+    Published under Government Open Data License - India: https://www.data.gov.in/Godl.'
+  exemptions_checked: true
+retrieval:
+  retrieved_at: '2026-10-17T18:04:21+05:30'
+  retrieved_by: UNKNOWN (not yet provided by the project owner)
+  method: UNKNOWN (not yet provided by the project owner)
+  http_status: null
+  content_type: null
+  original_filename: Transport_2024_Annexure_49.csv
+  local_path: data/external/batch-02/roads/Transport_2024_Annexure_49.csv
+  note: Copied byte-identically (hash-checked) from the project owner's Downloads folder into data/external/batch-02/.
+    retrieved_at is that Downloads file's modification time, not a confirmed download time. Who downloaded
+    the file and by which route is UNKNOWN until the project owner provides it.
+integrity:
+  bytes: 5762
+  portal_stated_bytes: 5762
+  size_matches_portal: true
+  sha256: 4a01cd8fd842ca44b2a4a42ad7e75f9a33fdffcdce82a828d4aaff0d6775a257
+  format: csv
+  encoding: utf-8
+  bom: false
+  newline: CRLF
+  newline_counts:
+    CRLF: 52
+    LF: 0
+    CR: 0
+  delimiter: ','
+  looks_like_html: false
+  passed: true
+schema:
+- name: Sl. No.
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Million Plus Cities
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: T-Junction - Total Number of Accidents - Number
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: T-Junction - Total Number of Accidents - Rank
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: T-Junction - Persons Killed - Number
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: T-Junction - Persons Killed - Rank
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: T-Junction - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: T-Junction - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: T-Junction - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Y-Junction - Total Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Y-Junction - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Y-Junction - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Y-Junction - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Y-Junction - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Four Arm Junction - Total Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Four Arm Junction - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Four Arm Junction - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Four Arm Junction - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Four Arm Junction - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Staggered Junction - Total Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Staggered Junction - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Staggered Junction - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Staggered Junction - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Staggered Junction - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Round about Junction - Total Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Round about Junction - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Round about Junction - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Round about Junction - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Round about Junction - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+row_count: 51
+period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+  granularity: year
+  as_on: null
+geography:
+  country: India
+  state: null
+  city: null
+  level: million-plus city
+ward_scheme: null
+identifier_evidence: null
+sensitivity: public
+contains_personal_data: false
+semantic_checks:
+  validator: null
+  note: No validator family for this table; profiled only. Not eligible for promotion until a family validator
+    is approved and passes.
+compatibility:
+  portal_catalogue: Road Accidents in India 2024
+  portal_listed_size: 5.6 KB
+  portal_metadata_evidence: Resource page rendered in a browser on 2026-10-17 (metadata only; no file
+    downloaded by this session). Listed file size is rounded to 0.1 KB on the page.
+  publisher_note: Data Figures are in Number. NA - Not Available
+findings:
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
+value_nature: unknown
+human_review: pending
+review:
+  decision: keep_profiled
+  reviewed_by: project owner
+  reviewed_on: '2026-10-17'
+  sha256: 4a01cd8fd842ca44b2a4a42ad7e75f9a33fdffcdce82a828d4aaff0d6775a257
+  accepted_caveats: []
+  permitted_uses: []
+  note: Kept separate from Annexure 47; no analytics in this milestone (owner item 9).
+status: integrity_passed
+promoted_to: null
+git_tracked: false
+same_bytes_as: null
+known_limitations:
+- City-level only; MoRTH's city boundary definition is not established - never join to ward data.
+- Later editions may restate earlier years; cite the edition.
+- No analytics are enabled for this table (owner decision).
+- 'Five junction types only (no ''not at junction''/''others''): not a partition of all city accidents;
+  never combine with Annexure 47.'

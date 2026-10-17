@@ -23,6 +23,9 @@ ROAD_CATEGORY_PREFIX = {
     "mobile_phone": "useofmobilephone",
     "others": "others",
 }
+#: Intents bound to one source table. The road analytics read MoRTH Annexure 47 only, so a
+#: road question never resolves to another annexure of the same year (A1, A2, A49, ...).
+INTENT_TABLE = {"road_city_value": "A47", "road_top_cities": "A47"}
 ROAD_METRIC_PARTS = {
     "accidents": ("numberofaccidents",),
     "killed": ("personskilled",),
@@ -72,19 +75,24 @@ def _trusted(entry: DatasetEntry) -> PlanRefusal | None:
     return None
 
 
-def _resolve(family: str, period: str, index) -> DatasetEntry | PlanRefusal:
-    matches = [e for e in index if e.family == family and e.period_key == period]
+def _resolve(
+    family: str, period: str, index, table: str | None = None
+) -> DatasetEntry | PlanRefusal:
+    """The one entry of ``family`` (and source ``table``, when the intent needs one) for period."""
+    pool = [e for e in index if e.family == family and (table is None or e.table == table)]
+    label = f"{family} {table}" if table else family
+    matches = [e for e in pool if e.period_key == period]
     if not matches:
-        available = sorted(f"{e.period_key} ({e.status})" for e in index if e.family == family)
+        available = sorted(f"{e.period_key} ({e.status})" for e in pool)
         return _refuse(
             "period.unavailable",
-            f"No {family} dataset covers {period}. Catalogued: {', '.join(available)}.",
+            f"No {label} dataset covers {period}. Catalogued: {', '.join(available)}.",
             available,
         )
     if len(matches) > 1:  # never pick one silently
         return _refuse(
             "period.unavailable",
-            f"More than one {family} dataset claims {period}; none is chosen.",
+            f"More than one {label} dataset claims {period}; none is chosen.",
             [e.dataset_id for e in matches],
         )
     return matches[0]
@@ -130,7 +138,7 @@ def check(spec: QuerySpec, index) -> Plan | PlanRefusal:
     family = spec.domain
     resolved = []
     for period in (*spec.periods, *spec.reference_periods):
-        entry = _resolve(family, period, index)
+        entry = _resolve(family, period, index, INTENT_TABLE.get(spec.intent))
         if isinstance(entry, PlanRefusal):
             return entry
         refusal = _trusted(entry)

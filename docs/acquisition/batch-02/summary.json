@@ -1,0 +1,420 @@
+[
+  {
+    "dataset_id": "WATER-BWSSB-2025-06",
+    "status": "quarantined",
+    "human_review": "rejected",
+    "review_decision": "quarantine",
+    "permitted_uses": [],
+    "sha256": "b198f725f5ca7e49624a7a63df2db5b6ec9515bb3ba4a72b3e10d803517e56e8",
+    "bytes": 6624,
+    "local_path": "data/quarantine/batch-02/Water_Consumption_Data_June_2025.csv",
+    "promoted_to": null,
+    "errors": 2,
+    "warnings": [
+      "file.newline_style",
+      "ward.duplicated"
+    ],
+    "gate_reasons": [
+      "status is 'quarantined', not 'validated'",
+      "no accepted person review",
+      "no validator run with 0 errors",
+      "source is not under data/external/: 'data/quarantine/batch-02/Water_Consumption_Data_June_2025.csv'"
+    ],
+    "ingest": {
+      "trusted": {
+        "result": "refused",
+        "code": "status.quarantined"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "status.quarantined"
+      }
+    }
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2025-07",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "0034b08291e591ca0d94a535db172eea408746c35c3681551e58b39d316698b3",
+    "bytes": 5844,
+    "local_path": "data/external/batch-02/water/Water_Consumption_Data_July_2025_0.csv",
+    "promoted_to": "data/raw/water/Water_Consumption_Data_July_2025_0.csv",
+    "errors": 0,
+    "warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "bwssb_monthly/v1"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2025-09",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "3f5ef8d0dc3ed08e2b593ba8a48ef584f913824a01eb80b34eb5584de1117b48",
+    "bytes": 5845,
+    "local_path": "data/external/batch-02/water/Water_Consumption_Data_Sept_25_4.csv",
+    "promoted_to": "data/raw/water/Water_Consumption_Data_Sept_25_4.csv",
+    "errors": 0,
+    "warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "bwssb_monthly/v1"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2025-10",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "84e0b2ca373327ae7555078ee2b1a1af86cc88a96035a218f78ac8fb971e4da6",
+    "bytes": 5844,
+    "local_path": "data/external/batch-02/water/Water_Consumption_Data_Oct_25_3.csv",
+    "promoted_to": "data/raw/water/Water_Consumption_Data_Oct_25_3.csv",
+    "errors": 0,
+    "warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "bwssb_monthly/v1"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2025-11",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "d4ccfb00a970c13320b3a911fde69b959b92c83c8b0a17818523a90de5730012",
+    "bytes": 5841,
+    "local_path": "data/external/batch-02/water/Water_Consumption_Data_Nov_25_2.csv",
+    "promoted_to": "data/raw/water/Water_Consumption_Data_Nov_25_2.csv",
+    "errors": 0,
+    "warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "bwssb_monthly/v1"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2025-12",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "deb04248fe61aaa1019bbbd51592d2aa8c2838d26af5c75bc7bc52768dd24476",
+    "bytes": 5843,
+    "local_path": "data/external/batch-02/water/Water_Consumption_Data_Dec_25_5.csv",
+    "promoted_to": "data/raw/water/Water_Consumption_Data_Dec_25_5.csv",
+    "errors": 0,
+    "warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "bwssb_monthly/v1"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2026-01",
+    "status": "validated",
+    "human_review": "pending",
+    "review_decision": "keep_profiled",
+    "permitted_uses": [
+      "exploratory"
+    ],
+    "sha256": "39d38c1b41f156d64fdd7cb9b87614bd920e1d596acdb04edb4a0e72df015b2f",
+    "bytes": 5845,
+    "local_path": "data/external/batch-02/water/Water_Consumption_Data_Jan_26_0_0.csv",
+    "promoted_to": null,
+    "errors": 0,
+    "warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ],
+    "gate_reasons": [
+      "no accepted person review"
+    ],
+    "ingest": {
+      "trusted": {
+        "result": "refused",
+        "code": "status.not_trusted"
+      },
+      "exploratory": {
+        "result": "ingested",
+        "schema_version": "bwssb_monthly/v1"
+      }
+    }
+  },
+  {
+    "dataset_id": "WATER-BWSSB-2026-02",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "a5ea2b8c60a0f54ebbe2b141222e48a0c5844496feafbd6fa74710f034166525",
+    "bytes": 5848,
+    "local_path": "data/external/batch-02/water/Water_Consumption_Data_Feb_26_0_1.csv",
+    "promoted_to": "data/raw/water/Water_Consumption_Data_Feb_26_0_1.csv",
+    "errors": 0,
+    "warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "bwssb_monthly/v1"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "ROAD-RA2020-A47",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "279575421cb29ea90c08e5290355c00c170674ba4d43491e01780e08337684be",
+    "bytes": 6607,
+    "local_path": "data/external/batch-02/roads/RA2020_A47.csv",
+    "promoted_to": "data/raw/roads/RA2020_A47.csv",
+    "errors": 0,
+    "warnings": [],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "morth_city_a47/ra2020_2021"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "ROAD-RA2021-A47",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "8da252e5a6edb7db6ec4303730826c8da207665d22a82a333b92871891aa08a5",
+    "bytes": 6640,
+    "local_path": "data/external/batch-02/roads/RA2021_A47.csv",
+    "promoted_to": "data/raw/roads/RA2021_A47.csv",
+    "errors": 0,
+    "warnings": [
+      "casualties.zero_accidents"
+    ],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "morth_city_a47/ra2020_2021"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "ROAD-RA2022-A47",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "d4300164f267d72cffdf60139c84f87c590eacd38195994dee4943f9a52877f0",
+    "bytes": 6870,
+    "local_path": "data/external/batch-02/roads/Transport_2022_Annexure_47.csv",
+    "promoted_to": "data/raw/roads/Transport_2022_Annexure_47.csv",
+    "errors": 0,
+    "warnings": [],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "morth_city_a47/ra2022"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "ROAD-RA2023-A47",
+    "status": "promoted",
+    "human_review": "accepted",
+    "review_decision": "accept",
+    "permitted_uses": [],
+    "sha256": "aa3aece258183067f32fb29bdb34389854982472e6fa26f50c4ca61c68b56004",
+    "bytes": 6918,
+    "local_path": "data/external/batch-02/roads/Transport_2023_Annexure_47.csv",
+    "promoted_to": "data/raw/roads/Transport_2023_Annexure_47.csv",
+    "errors": 0,
+    "warnings": [],
+    "gate_reasons": [],
+    "ingest": {
+      "trusted": {
+        "result": "ingested",
+        "schema_version": "morth_city_a47/ra2023"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "ROAD-RA2024-A1",
+    "status": "integrity_passed",
+    "human_review": "pending",
+    "review_decision": "keep_profiled",
+    "permitted_uses": [],
+    "sha256": "1780d0a58496a8906036cd0128b1ae403a3d0ed3eef6ce7d0106d5dd5b7cc96c",
+    "bytes": 3939,
+    "local_path": "data/external/batch-02/roads/Transport_2024_Annexure_1.csv",
+    "promoted_to": null,
+    "errors": null,
+    "warnings": [],
+    "gate_reasons": [
+      "status is 'integrity_passed', not 'validated'",
+      "no accepted person review",
+      "no validator run with 0 errors"
+    ],
+    "ingest": {
+      "trusted": {
+        "result": "refused",
+        "code": "status.not_trusted"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "ROAD-RA2024-A2",
+    "status": "integrity_passed",
+    "human_review": "pending",
+    "review_decision": "keep_profiled",
+    "permitted_uses": [],
+    "sha256": "fdfa67d0a031e5494178ed409ae41fb3be8063ca97f4ac8a1486de3020eab6c7",
+    "bytes": 4074,
+    "local_path": "data/external/batch-02/roads/Transport_2024_Annexure_2.csv",
+    "promoted_to": null,
+    "errors": null,
+    "warnings": [],
+    "gate_reasons": [
+      "status is 'integrity_passed', not 'validated'",
+      "no accepted person review",
+      "no validator run with 0 errors"
+    ],
+    "ingest": {
+      "trusted": {
+        "result": "refused",
+        "code": "status.not_trusted"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  },
+  {
+    "dataset_id": "ROAD-RA2024-A49",
+    "status": "integrity_passed",
+    "human_review": "pending",
+    "review_decision": "keep_profiled",
+    "permitted_uses": [],
+    "sha256": "4a01cd8fd842ca44b2a4a42ad7e75f9a33fdffcdce82a828d4aaff0d6775a257",
+    "bytes": 5762,
+    "local_path": "data/external/batch-02/roads/Transport_2024_Annexure_49.csv",
+    "promoted_to": null,
+    "errors": null,
+    "warnings": [],
+    "gate_reasons": [
+      "status is 'integrity_passed', not 'validated'",
+      "no accepted person review",
+      "no validator run with 0 errors"
+    ],
+    "ingest": {
+      "trusted": {
+        "result": "refused",
+        "code": "status.not_trusted"
+      },
+      "exploratory": {
+        "result": "refused",
+        "code": "exploratory.not_permitted"
+      }
+    }
+  }
+]

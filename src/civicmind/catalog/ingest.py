@@ -6,9 +6,9 @@ at the first failed check:
 
 1. **Status.** ``trusted`` mode needs ``status: promoted``, an ``accept`` review bound to the
    same SHA-256, and ``value_nature`` other than ``modelled``; it reads ``promoted_to``.
-   ``exploratory`` mode needs a ``keep_profiled`` review whose ``permitted_uses`` includes
-   ``exploratory``; it reads ``retrieval.local_path``. Quarantined, rejected or any other
-   status is refused.
+   ``exploratory`` mode needs ``status`` ``integrity_passed`` or ``validated`` and a
+   ``keep_profiled`` review whose ``permitted_uses`` includes ``exploratory``; it reads
+   ``retrieval.local_path``. Quarantined, rejected, promoted or any other status is refused.
 2. **File.** Exists inside the repository; size and SHA-256 equal the manifest; encoding,
    BOM, line-ending style and delimiter equal the manifest; not HTML, no NUL bytes.
 3. **CSV structure.** Decodes; parses; header present with no duplicate names; every row
@@ -161,7 +161,7 @@ def _source(m: Manifest, mode: Mode) -> str:
         return m.promoted_to
     if mode == "exploratory":
         if (
-            m.status != "integrity_passed"
+            m.status not in ("integrity_passed", "validated")
             or m.review is None
             or m.review.decision != "keep_profiled"
             or "exploratory" not in m.review.permitted_uses
@@ -319,7 +319,13 @@ def ingest(manifest: Manifest, root: str | Path, mode: Mode = "trusted") -> Inge
     caveats = [*m.known_limitations]
     caveats += [f"{f.code}: {f.message}" for f in findings if f.severity == "warning"]
     if mode == "exploratory":
-        caveats.insert(0, "EXPLORATORY: modelled or profile-only values; not measurements.")
+        caveats.insert(
+            0,
+            "EXPLORATORY: modelled or profile-only values; not measurements."
+            if m.value_nature == "modelled"
+            else "EXPLORATORY: not promoted to trusted use (review decision keep_profiled); "
+            "values as published, review caveats not accepted.",
+        )
     return IngestedDataset(
         dataset_id=m.dataset_id,
         mode=mode,

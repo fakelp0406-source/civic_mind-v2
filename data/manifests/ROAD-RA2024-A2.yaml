@@ -1,0 +1,168 @@
+dataset_id: ROAD-RA2024-A2
+manifest_version: 1
+title: State/UT-wise Number of Road Accidents in India from 2021 to 2024
+publisher: Ministry of Road Transport and Highways
+host_portal: data.gov.in
+source_class: official
+resource_page: https://www.data.gov.in/resource/stateut-wise-number-road-accidents-india-2021-2024
+download_url: https://www.data.gov.in/files/ogdpv2dms/s3fs-public/604807238/Version_1/Transport_2024_Annexure_2.csv
+portal_published: '2026-06-19'
+portal_updated: '2026-06-19'
+licence:
+  name: Government Open Data License - India
+  url: https://www.data.gov.in/Godl
+  evidence: Portal footer on each resource page read 2026-10-17 ('licensed under the Government Open Data
+    License-India'); GODL text recorded in data/external/verify_2026-10-17/licence/GODL_evidence_note.md
+  attribution: 'Ministry of Road Transport and Highways, 2026, State/UT-wise Number of Road Accidents
+    in India from 2021 to 2024, Open Government Data Platform India, 19/06, https://www.data.gov.in/resource/stateut-wise-number-road-accidents-india-2021-2024.
+    Published under Government Open Data License - India: https://www.data.gov.in/Godl.'
+  exemptions_checked: true
+retrieval:
+  retrieved_at: '2026-10-17T18:05:20+05:30'
+  retrieved_by: UNKNOWN (not yet provided by the project owner)
+  method: UNKNOWN (not yet provided by the project owner)
+  http_status: null
+  content_type: null
+  original_filename: Transport_2024_Annexure_2.csv
+  local_path: data/external/batch-02/roads/Transport_2024_Annexure_2.csv
+  note: Copied byte-identically (hash-checked) from the project owner's Downloads folder into data/external/batch-02/.
+    retrieved_at is that Downloads file's modification time, not a confirmed download time. Who downloaded
+    the file and by which route is UNKNOWN until the project owner provides it.
+integrity:
+  bytes: 4074
+  portal_stated_bytes: 4074
+  size_matches_portal: true
+  sha256: fdfa67d0a031e5494178ed409ae41fb3be8063ca97f4ac8a1486de3020eab6c7
+  format: csv
+  encoding: utf-8
+  bom: false
+  newline: CRLF
+  newline_counts:
+    CRLF: 38
+    LF: 0
+    CR: 0
+  delimiter: ','
+  looks_like_html: false
+  passed: true
+schema:
+- name: Sl. No.
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: State/UT
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: State / UT - wise Total Number of Road Accidents during - 2021
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: State / UT - wise Total Number of Road Accidents during - 2022
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: State / UT - wise Total Number of Road Accidents during - 2023
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: State / UT - wise Total Number of Road Accidents during - 2024 - Number
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: State / UT - wise Total Number of Road Accidents during - 2024 - Rank
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Share of States / UTs in Total Number of Road Accidents - 2021
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Share of States / UTs in Total Number of Road Accidents - 2022
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Share of States / UTs in Total Number of Road Accidents - 2023
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Share of States / UTs in Total Number of Road Accidents - 2024
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Accidents Per Lakh Population - 2021
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Accidents Per Lakh Population - 2022
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Accidents Per Lakh Population - 2023
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Accidents Per Lakh Population - 2024
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Road Accidents per 10,000 Vehicles - 2022
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Road Accidents per 10,000 Km of Roads - 2022 (P)
+  type: text (unparsed)
+  unit: null
+  key: null
+row_count: 37
+period:
+  start: '2021-01-01'
+  end: '2024-12-31'
+  granularity: year
+  as_on: null
+geography:
+  country: India
+  state: null
+  city: null
+  level: state
+ward_scheme: null
+identifier_evidence: null
+sensitivity: public
+contains_personal_data: false
+semantic_checks:
+  validator: null
+  note: No validator family for this table; profiled only. Not eligible for promotion until a family validator
+    is approved and passes.
+compatibility:
+  portal_catalogue: Road Accidents in India 2024
+  portal_listed_size: 4.0 KB
+  portal_metadata_evidence: Resource page rendered in a browser on 2026-10-17 (metadata only; no file
+    downloaded by this session). Listed file size is rounded to 0.1 KB on the page.
+  publisher_note: 1. Road length is exclusive of all roads constructed under Jawahar Rozgar Yojana. 2.
+    Road Length for year 2022 is provisional. (P) - Provisional. NA - Not Available.
+findings:
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
+value_nature: unknown
+human_review: pending
+review:
+  decision: keep_profiled
+  reviewed_by: project owner
+  reviewed_on: '2026-10-17'
+  sha256: fdfa67d0a031e5494178ed409ae41fb3be8063ca97f4ac8a1486de3020eab6c7
+  accepted_caveats: []
+  permitted_uses: []
+  note: Kept separate from Annexure 47; no analytics in this milestone (owner item 9).
+status: integrity_passed
+promoted_to: null
+git_tracked: false
+same_bytes_as: null
+known_limitations:
+- City-level only; MoRTH's city boundary definition is not established - never join to ward data.
+- Later editions may restate earlier years; cite the edition.
+- No analytics are enabled for this table (owner decision).
+- State/UT level; 2021-2023 values as restated in the 2024 edition; 2022 per-km rates provisional (P);
+  Ladakh per-vehicle rate NA.

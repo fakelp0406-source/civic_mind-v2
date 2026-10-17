@@ -1,0 +1,204 @@
+{
+  "note": "Simulated accept reviews in a temporary directory; nothing promoted.",
+  "WATER-BWSSB-2025-07": {
+    "result": "ingested",
+    "schema_version": "bwssb_monthly/v1",
+    "rows": 202,
+    "ingest_warnings": [
+      "consumption_ml.zero",
+      "ward.duplicated"
+    ],
+    "manifest_warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ],
+    "accepted_caveats_simulated": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ]
+  },
+  "WATER-BWSSB-2025-09": {
+    "result": "ingested",
+    "schema_version": "bwssb_monthly/v1",
+    "rows": 202,
+    "ingest_warnings": [
+      "consumption_ml.zero",
+      "ward.duplicated"
+    ],
+    "manifest_warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ],
+    "accepted_caveats_simulated": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ]
+  },
+  "WATER-BWSSB-2025-10": {
+    "result": "ingested",
+    "schema_version": "bwssb_monthly/v1",
+    "rows": 202,
+    "ingest_warnings": [
+      "consumption_ml.zero",
+      "ward.duplicated"
+    ],
+    "manifest_warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ],
+    "accepted_caveats_simulated": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "ward.duplicated"
+    ]
+  },
+  "WATER-BWSSB-2025-11": {
+    "result": "ingested",
+    "schema_version": "bwssb_monthly/v1",
+    "rows": 202,
+    "ingest_warnings": [
+      "consumption_ml.zero",
+      "ward.duplicated"
+    ],
+    "manifest_warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ],
+    "accepted_caveats_simulated": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ]
+  },
+  "WATER-BWSSB-2025-12": {
+    "result": "ingested",
+    "schema_version": "bwssb_monthly/v1",
+    "rows": 202,
+    "ingest_warnings": [
+      "consumption_ml.zero",
+      "ward.duplicated"
+    ],
+    "manifest_warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ],
+    "accepted_caveats_simulated": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ]
+  },
+  "WATER-BWSSB-2026-01": {
+    "result": "ingested",
+    "schema_version": "bwssb_monthly/v1",
+    "rows": 202,
+    "ingest_warnings": [
+      "consumption_ml.zero",
+      "ward.duplicated"
+    ],
+    "manifest_warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ],
+    "accepted_caveats_simulated": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ]
+  },
+  "WATER-BWSSB-2026-02": {
+    "result": "ingested",
+    "schema_version": "bwssb_monthly/v1",
+    "rows": 202,
+    "ingest_warnings": [
+      "consumption_ml.zero",
+      "ward.duplicated"
+    ],
+    "manifest_warnings": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ],
+    "accepted_caveats_simulated": [
+      "consumption_ml.zero",
+      "file.newline_style",
+      "series.swing",
+      "ward.duplicated"
+    ]
+  },
+  "ROAD-RA2020-A47": {
+    "result": "ingested",
+    "schema_version": "morth_city_a47/ra2020",
+    "rows": 51,
+    "ingest_warnings": [],
+    "manifest_warnings": [],
+    "accepted_caveats_simulated": []
+  },
+  "ROAD-RA2021-A47": {
+    "result": "ingested",
+    "schema_version": "morth_city_a47/ra2020",
+    "rows": 51,
+    "ingest_warnings": [],
+    "manifest_warnings": [
+      "casualties.zero_accidents"
+    ],
+    "accepted_caveats_simulated": [
+      "casualties.zero_accidents"
+    ]
+  },
+  "ROAD-RA2022-A47": {
+    "result": "ingested",
+    "schema_version": "morth_city_a47/ra2022",
+    "rows": 51,
+    "ingest_warnings": [],
+    "manifest_warnings": [],
+    "accepted_caveats_simulated": []
+  },
+  "ROAD-RA2023-A47": {
+    "result": "ingested",
+    "schema_version": "morth_city_a47/ra2023",
+    "rows": 51,
+    "ingest_warnings": [],
+    "manifest_warnings": [],
+    "accepted_caveats_simulated": []
+  },
+  "CONTROL June 2025 forced through as promoted": {
+    "result": "refused",
+    "code": "schema.unknown",
+    "details": null,
+    "accepted_caveats_simulated": [
+      "file.newline_style",
+      "ward.duplicated"
+    ]
+  },
+  "CONTROL Jan 2026 with no caveats accepted": {
+    "result": "refused",
+    "code": "validation.unaccepted_warnings",
+    "details": [
+      "consumption_ml.zero",
+      "ward.duplicated"
+    ],
+    "accepted_caveats_simulated": []
+  },
+  "CONTROL A49 with no registered schema": {
+    "result": "refused",
+    "code": "schema.unknown",
+    "details": null,
+    "accepted_caveats_simulated": []
+  }
+}

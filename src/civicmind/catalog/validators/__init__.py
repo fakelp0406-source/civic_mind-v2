@@ -1,9 +1,9 @@
-"""Dataset-specific validators, one module per dataset family (not yet implemented).
+"""Dataset-specific validators, one module per dataset family.
 
-Planned examples from the discovery and audit findings:
-- MoRTH tables: the ``Total`` row equals the sum of the other rows; negative counts flagged.
-- BWSSB monthly ward files: duplicated ward numbers reported; schema identical across months.
-- BBMP solid-waste snapshots: units (MT/year vs TPD) and ward keys checked.
+- ``bwssb_monthly``: BWSSB monthly ward water consumption (duplicates reported, not resolved).
+- ``morth_city_table``: MoRTH million-plus city tables (Total row vs sum of rows).
+- ``census_ward_profile``: 2011 ward demographic profile (name cycle, unit label, empty columns).
+- ``swm_gcp``: solid waste generated/collected/processed (modelled-value signature).
 
 A file that parses is not thereby valid. Validators report findings; they never rewrite data.
 """

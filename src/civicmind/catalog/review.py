@@ -34,6 +34,7 @@ class Decision(_Strict):
     accepted_caveats: list[str] = Field(default_factory=list)
     value_nature: Literal["measured", "modelled", "unknown"] | None = None
     add_limitations: list[str] = Field(default_factory=list)
+    permitted_uses: list[Literal["exploratory"]] = Field(default_factory=list)
     note: str | None = None
 
 
@@ -95,6 +96,7 @@ def apply_review(manifest: Manifest, decisions: DecisionsFile | None) -> Manifes
         reviewed_on=decisions.reviewed_on,
         sha256=d.sha256,
         accepted_caveats=d.accepted_caveats,
+        permitted_uses=d.permitted_uses,
         note=d.note,
     ).model_dump()
     data["human_review"] = HUMAN_REVIEW[d.decision]

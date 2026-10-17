@@ -114,7 +114,13 @@ semantic_checks:
   note: No validator for this dataset family yet; profiled only. Not eligible for promotion until a validator
     is approved and passes.
 compatibility: {}
-findings: []
+findings:
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
 value_nature: unknown
 human_review: rejected
 review:
@@ -123,6 +129,7 @@ review:
   reviewed_on: '2026-10-17'
   sha256: ec32966c4d43b24bd5b98ff3718e65b6dcd398d2968310c6d9d8ab720e266e37
   accepted_caveats: []
+  permitted_uses: []
   note: Quarantined. Find another official ward-population source for the BBMP-198 scheme.
 status: quarantined
 promoted_to: null

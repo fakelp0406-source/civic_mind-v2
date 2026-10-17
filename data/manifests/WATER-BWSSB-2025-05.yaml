@@ -145,6 +145,12 @@ findings:
   message: Column total of consumption_ml (all rows, duplicates included)
   details:
     total: 30816.503
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
 value_nature: unknown
 human_review: rejected
 review:
@@ -153,6 +159,7 @@ review:
   reviewed_on: '2026-10-17'
   sha256: d266a3a27c8f01c5c4d005bdeab018ccf19aa76ce83f268a80c2bbdb7c31da56
   accepted_caveats: []
+  permitted_uses: []
   note: 'Kept quarantined: misspelt header ''Number of Connectionss''; ward 40 consumption -2.00E-06.
     Neither is corrected.'
 status: quarantined

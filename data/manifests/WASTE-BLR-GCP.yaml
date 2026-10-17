@@ -119,7 +119,13 @@ semantic_checks:
   note: No validator for this dataset family yet; profiled only. Not eligible for promotion until a validator
     is approved and passes.
 compatibility: {}
-findings: []
+findings:
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
 value_nature: modelled
 human_review: pending
 review:
@@ -128,6 +134,7 @@ review:
   reviewed_on: '2026-10-17'
   sha256: 7c51dc6a3c8dfdef0a0174e4e7f60b3444acdab13e7024a71293013fd074e394
   accepted_caveats: []
+  permitted_uses: []
   note: Kept, labelled as modelled estimates. Not eligible for promotion until a swm_gcp validator is
     approved and passes, and a further review accepts it.
 status: integrity_passed

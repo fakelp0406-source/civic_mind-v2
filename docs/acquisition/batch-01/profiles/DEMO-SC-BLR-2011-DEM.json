@@ -250,6 +250,16 @@
       }
     ]
   },
-  "findings": [],
+  "findings": [
+    {
+      "code": "sensitivity.header_scan",
+      "severity": "info",
+      "message": "No column name suggests personal data",
+      "details": {
+        "method": "header-name scan sensitivity@v1 (column names only; cell values not inspected)",
+        "matched": []
+      }
+    }
+  ],
   "status": "quarantined"
 }

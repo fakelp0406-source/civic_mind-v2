@@ -145,6 +145,12 @@ findings:
   message: Column total of consumption_ml (all rows, duplicates included)
   details:
     total: 31608.71
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
 value_nature: unknown
 human_review: rejected
 review:
@@ -153,6 +159,7 @@ review:
   reviewed_on: '2026-10-17'
   sha256: 0bafa2d91c821db63161c213c7fe0def179d10e53eed87ab72e325ef77dc20ee
   accepted_caveats: []
+  permitted_uses: []
   note: 'Kept quarantined: header ''Number of Connectionss'' (misspelt). Not corrected or aliased. Revisit
     only if BWSSB republishes or a header-alias rule is approved.'
 status: quarantined

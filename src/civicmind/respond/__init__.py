@@ -1,6 +1,9 @@
 """Response composition and verification.
 
-Responsibilities (not yet implemented):
+Implemented: ``compose`` (deterministic templates; every number in the text must occur in
+the evidence package). No language model.
+
+Responsibilities:
 - Compose answers from an evidence package with a deterministic template: direct answer,
   geography and period, units and method, citations, caveats, and a human-review note for
   recommendations.

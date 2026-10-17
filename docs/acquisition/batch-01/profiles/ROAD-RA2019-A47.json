@@ -670,6 +670,15 @@
       "severity": "info",
       "message": "Total row equals the sum of entity rows for every count column",
       "details": {}
+    },
+    {
+      "code": "sensitivity.header_scan",
+      "severity": "info",
+      "message": "No column name suggests personal data",
+      "details": {
+        "method": "header-name scan sensitivity@v1 (column names only; cell values not inspected)",
+        "matched": []
+      }
     }
   ],
   "status": "promoted"

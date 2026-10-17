@@ -7,6 +7,8 @@ numbers are excluded from the total check. Nothing is corrected.
 
 from __future__ import annotations
 
+import re
+
 import pandas as pd
 
 from civicmind.catalog.validators.base import Finding, to_number
@@ -118,7 +120,46 @@ def validate(frame: pd.DataFrame, raw_header: list[str]) -> list[Finding]:
                 "Total row equals the sum of entity rows for every count column",
             )
         )
+    findings.extend(_injury_identity(frame, label))
     return findings
+
+
+_INJURED = re.compile(r"^(?P<cat>.+?)\s*-\s*Persons Injured\s*-\s*(?P<part>.+?)\s*$")
+
+
+def _injury_identity(frame: pd.DataFrame, label: str) -> list[Finding]:
+    """Grievous + minor injured must equal total injured, per category and row.
+
+    Only reported when violated (a published inconsistency, kept as-is). Column spellings
+    differ by edition ("Greviously"/"Grievously"), so parts are matched per header.
+    """
+    groups: dict[str, dict[str, str]] = {}
+    for col in frame.columns:
+        m = _INJURED.match(col)
+        if m:
+            part = m.group("part").lower()
+            key = "grievous" if part.startswith(("grev", "griev")) else part
+            groups.setdefault(m.group("cat").strip(), {})[key] = col
+    bad = []
+    for cat, cols in groups.items():
+        if not {"grievous", "minor injury", "total injured"} <= set(cols):
+            continue
+        g, mi, t = (
+            to_number(frame[cols[k]]) for k in ("grievous", "minor injury", "total injured")
+        )
+        off = (g + mi - t).abs() > 1e-9
+        for name in frame.loc[off, label].str.strip():
+            bad.append({"category": cat, "row": name})
+    if not bad:
+        return []
+    return [
+        Finding(
+            "injured.sum_mismatch",
+            "warning",
+            f"{len(bad)} rows where grievous + minor injured != total injured (published as-is)",
+            {"rows": bad[:20]},
+        )
+    ]
 
 
 def schema_drift(old_header: list[str], new_header: list[str]) -> dict[str, list[str]]:

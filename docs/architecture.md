@@ -1,6 +1,8 @@
 # CivicMind AI — Architecture (skeleton stage)
 
-Status: boundaries only. No layer is implemented. Decisions marked **provisional** are
+Status (2026-10-17): catalog, analytics (water, traffic), planner, orchestrator (pipeline),
+evidence and respond are implemented for the water + traffic slice; rag, graph and api are
+not. `tests/test_pipeline.py` enforces the import boundaries below for the new layers. Decisions marked **provisional** are
 open for revision once data and evaluations exist.
 
 ## Data flow

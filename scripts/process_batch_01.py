@@ -1,7 +1,14 @@
 """Process acquisition batch 01: fingerprint, profile, validate, write manifests.
 
 Usage (from the repository root):
-    .venv-py313/Scripts/python.exe scripts/process_batch_01.py
+    .venv-py313/Scripts/python.exe scripts/process_batch_01.py [--legacy-raw DIR]
+
+Optional legacy comparison: pass --legacy-raw DIR, or set CIVICMIND_LEGACY_RAW=DIR, to the
+read-only legacy clone's data/raw folder (lp-0406/civicmind-ai at e3b194f).
+The CLI argument wins over the variable. When neither is set, or the folder or a reference
+file is missing, the comparison is skipped with a printed note (never an error); a
+``same_bytes_as`` value already recorded in the previous manifest for the same SHA-256 is
+kept, because it was verified earlier and the bytes have not changed.
 
 Reads downloads from data/external/verify_2026-10-17/, the automated download log and the
 manual-download log. Writes manifests to data/manifests/ and machine-readable reports to
@@ -19,19 +26,23 @@ identifier assessments never join anything.
 
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
-import shutil
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
 from civicmind.catalog.fingerprint import fingerprint
 from civicmind.catalog.identifiers import assess_identifiers, names_shared_by_multiple_ids
-from civicmind.catalog.manifest import Manifest, write_manifest
+from civicmind.catalog.manifest import Manifest, read_manifest, write_manifest
 from civicmind.catalog.profile import profile_frame, read_raw_header, read_text_table
 from civicmind.catalog.promote import gate_reasons, promote
+from civicmind.catalog.quarantine import move_to_quarantine
 from civicmind.catalog.review import DecisionsFile, apply_review, load_decisions
+from civicmind.catalog.sensitivity import METHOD as SENSITIVITY_METHOD
+from civicmind.catalog.sensitivity import scan_header
 from civicmind.catalog.validators import bwssb_monthly, morth_city_table
 from civicmind.catalog.validators.base import has_errors
 
@@ -41,7 +52,7 @@ QUARANTINE = ROOT / "data/quarantine/batch-01"
 MANIFESTS = ROOT / "data/manifests"
 REPORTS = ROOT / "docs/acquisition/batch-01"
 DECISIONS = REPORTS / "REVIEW_DECISIONS.yaml"
-LEGACY_RAW = Path("C:/Desktop/civicmind-ai-main/repo/data/raw")  # read-only reference
+LEGACY_ENV = "CIVICMIND_LEGACY_RAW"  # optional read-only legacy data/raw folder
 
 GODL = {
     "name": "Government Open Data License - India",
@@ -271,19 +282,56 @@ def locate(p: Planned) -> Path | None:
     return None
 
 
-def legacy_identity(filename: str, sha256: str) -> str | None:
-    legacy = LEGACY_RAW / filename
-    if legacy.exists() and hashlib.sha256(legacy.read_bytes()).hexdigest() == sha256:
-        return f"{LEGACY_REF}{filename} (byte-identical, sha256 {sha256})"
+def legacy_identity(
+    filename: str, sha256: str, legacy_raw: Path | None
+) -> tuple[bool, str | None]:
+    """Compare with the legacy copy. Returns (compared, same_bytes_as); never raises."""
+    if legacy_raw is None:
+        return False, None
+    legacy = legacy_raw / filename
+    if not legacy.is_file():
+        print(f"note: legacy comparison skipped for {filename}: no reference file at {legacy}")
+        return False, None
+    if hashlib.sha256(legacy.read_bytes()).hexdigest() == sha256:
+        return True, f"{LEGACY_REF}{filename} (byte-identical, sha256 {sha256})"
+    print(f"note: {filename} differs from the legacy reference {legacy}")
+    return True, None
+
+
+def previous_same_bytes_as(dataset_id: str, sha256: str) -> str | None:
+    """same_bytes_as from the existing manifest, only if it describes the same bytes."""
+    path = MANIFESTS / f"{dataset_id}.yaml"
+    if not path.is_file():
+        return None
+    try:
+        old = read_manifest(path)
+    except (OSError, ValueError) as exc:
+        print(f"note: could not read previous manifest {path.name}: {exc}")
+        return None
+    if old.integrity is not None and old.integrity.sha256 == sha256:
+        return old.same_bytes_as
     return None
 
 
+def resolve_legacy_raw(cli_value: str | None) -> Path | None:
+    value = cli_value or os.environ.get(LEGACY_ENV) or None
+    if value is None:
+        print(
+            f"note: legacy comparison skipped (pass --legacy-raw DIR or set {LEGACY_ENV}); "
+            "previously recorded same_bytes_as values are kept when the SHA-256 is unchanged"
+        )
+        return None
+    path = Path(value)
+    if not path.is_dir():
+        print(f"note: legacy comparison skipped: folder not found: {path}")
+        return None
+    print(f"legacy comparison against (read-only): {path}")
+    return path
+
+
 def quarantine(path: Path) -> Path:
-    QUARANTINE.mkdir(parents=True, exist_ok=True)
-    target = QUARANTINE / path.name
-    if path != target:
-        shutil.move(str(path), target)
-    return target
+    # Never overwrites: a name collision in the quarantine folder stops the run.
+    return move_to_quarantine(path, QUARANTINE)
 
 
 def attribution(p: Planned) -> str:
@@ -300,6 +348,7 @@ def process(
     log: dict[str, dict],
     manual: dict[str, dict],
     decisions: DecisionsFile | None = None,
+    legacy_raw: Path | None = None,
 ) -> tuple[Manifest, dict]:
     entry = log.get(p.download_url, {})
     manual_entry = manual.get(p.dataset_id)
@@ -352,8 +401,9 @@ def process(
         "geography": p.geography,
         "ward_scheme": p.ward_scheme,
         "identifier_evidence": "none" if p.ward_scheme else None,
-        "sensitivity": "public",
-        "contains_personal_data": False,
+        # Unknown until the header has been screened below: fail safe, never "public" by default.
+        "sensitivity": "restricted",
+        "contains_personal_data": True,
         "known_limitations": list(p.limitations),
     }
     report: dict = {"dataset_id": p.dataset_id}
@@ -387,7 +437,8 @@ def process(
         "passed": integrity_ok,
     }
     report["fingerprint"] = fp.to_dict()
-    base["same_bytes_as"] = legacy_identity(p.filename, fp.sha256)
+    compared, same = legacy_identity(p.filename, fp.sha256, legacy_raw)
+    base["same_bytes_as"] = same if compared else previous_same_bytes_as(p.dataset_id, fp.sha256)
     if not integrity_ok:
         target = quarantine(local)
         retrieval["local_path"] = target.relative_to(ROOT).as_posix()
@@ -414,6 +465,21 @@ def process(
                 fp.newline_counts,
             ),
         )
+    hits = scan_header(header)
+    base["sensitivity"] = "personal_data" if hits else "public"
+    base["contains_personal_data"] = bool(hits)
+    findings.append(
+        _finding(
+            "sensitivity.personal_data_suspected" if hits else "sensitivity.header_scan",
+            "warning" if hits else "info",
+            (
+                "Column names suggest personal data; needs review before any use"
+                if hits
+                else "No column name suggests personal data"
+            ),
+            {"method": SENSITIVITY_METHOD, "matched": hits},
+        )
+    )
     report.update(profile=prof.to_dict(), findings=[f.to_dict() for f in findings])
     schema = [{"name": c, "type": "text (unparsed)"} for c in header]
     if validator is None:
@@ -581,7 +647,15 @@ def cross_dataset_checks() -> dict:
     return out
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument(
+        "--legacy-raw",
+        metavar="DIR",
+        help=f"read-only legacy data/raw folder for byte-identity checks (or set {LEGACY_ENV})",
+    )
+    args = parser.parse_args(argv)
+    legacy_raw = resolve_legacy_raw(args.legacy_raw)
     MANIFESTS.mkdir(parents=True, exist_ok=True)
     (REPORTS / "profiles").mkdir(parents=True, exist_ok=True)
     log = download_log()
@@ -589,7 +663,7 @@ def main() -> None:
     decisions = load_decisions(DECISIONS) if DECISIONS.exists() else None
     summary = []
     for p in PLAN:
-        manifest, report = process(p, log, manual, decisions)
+        manifest, report = process(p, log, manual, decisions, legacy_raw)
         manifest = apply_review(manifest, decisions)
         if not gate_reasons(manifest):
             manifest = promote(manifest, ROOT)

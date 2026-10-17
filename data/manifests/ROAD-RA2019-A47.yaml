@@ -260,6 +260,12 @@ findings:
   severity: info
   message: Total row equals the sum of entity rows for every count column
   details: {}
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
 value_nature: unknown
 human_review: accepted
 review:
@@ -268,6 +274,7 @@ review:
   reviewed_on: '2026-10-17'
   sha256: 40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc
   accepted_caveats: []
+  permitted_uses: []
   note: null
 status: promoted
 promoted_to: data/raw/roads/RA2019_A47.csv

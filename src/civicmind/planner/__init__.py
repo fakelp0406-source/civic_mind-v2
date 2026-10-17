@@ -1,6 +1,10 @@
 """Query planning: turn a question into a validated, inspectable query specification.
 
-Responsibilities (not yet implemented):
+Implemented (water + traffic slice): ``spec`` (QuerySpec, PlanRefusal, stable codes),
+``parser`` (deterministic, closed-vocabulary), ``catalog_index`` (manifest metadata) and
+``feasibility`` (period, status and column resolution -> Plan).
+
+Responsibilities:
 - ``QuerySpec``: intent, metric, entities, geography (with ward scheme), period, filters,
   desired output.
 - Resolve entities against the actual data vocabulary and alias tables. Unresolved

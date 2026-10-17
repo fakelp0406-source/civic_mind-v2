@@ -1,15 +1,19 @@
 # Data provenance register
 
-This file will be generated from `data/manifests/*.yaml` once datasets are registered.
+The authoritative record for each dataset is its manifest in `data/manifests/*.yaml`: source
+URL, publisher, licence evidence, retrieval, SHA-256, size, encoding, schema, findings,
+person review (bound to the SHA-256), status and promotion target.
 
 ## Current state (2026-10-17)
 
 | Category | Count | Where |
 |---|---|---|
-| Verified datasets in this repository (downloaded, hash-pinned, validated, manifest) | **0** | `data/manifests/` (empty) |
-| Candidate sources with portal-metadata evidence | 124 records | `docs/discovery/civicmind_dataset_catalog.csv` (see its `status` column) |
-| Unverified legacy files | 1 (BWSSB Aug 2025 CSV) | kept **outside** this repo, in the legacy clone; quarantine policy |
-| Legacy files with verified official resources (by name and size only, not yet by hash) | 3 exact-size matches (RA2019 A2, A47, A49); A52 differs by 13 bytes; BWSSB Aug 2025 matches a Karnataka OGD resource by name and size | see `docs/audit/` and `docs/discovery/` |
+| Datasets with manifests (batch 01) | 8 | `data/manifests/` |
+| Trusted (promoted, review accepted) | 4: BWSSB Aug 2025, Mar 2026; MoRTH RA2019 A47, RA2024 A47 | `data/raw/` (git-ignored) |
+| Quarantined | 3: BWSSB Apr 2025, May 2025; 2011 census ward profile | `data/quarantine/batch-01/` (git-ignored) |
+| Modelled, profile only | 1: solid waste 2015–18 | `data/external/verify_2026-10-17/waste/` (git-ignored) |
+| Byte-identical to a legacy file | 2: BWSSB Aug 2025, RA2019 A47 (`same_bytes_as`) | legacy clone, read-only |
+| Candidate sources (portal metadata only) | 124 records | `docs/discovery/civicmind_dataset_catalog.csv` |
 
-"Candidate" means a portal page or catalogue entry was checked. It does not mean the data
-has been downloaded, validated or approved for use.
+"Candidate" means a portal page or catalogue entry was checked. It does not mean the data has
+been downloaded, validated or approved for use.

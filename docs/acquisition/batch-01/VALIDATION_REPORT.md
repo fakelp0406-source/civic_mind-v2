@@ -38,6 +38,11 @@ All files are UTF-8 without a BOM.
   - **WATER-BWSSB-2025-08 is byte-identical to the legacy repository's quarantined `BWSSB_Water_Consumption_August_2025.csv`.** The legacy file is therefore the official Karnataka OGD resource.
   - **ROAD-RA2019-A47 is byte-identical to the legacy `RA2019_A47.csv`.**
   - Both manifests record this in `same_bytes_as`.
+  - **Re-checking it is optional.** Pass `--legacy-raw DIR` to `scripts/process_batch_01.py`, or
+    set `CIVICMIND_LEGACY_RAW=DIR`, pointing at the read-only legacy clone's `data/raw`. If
+    neither is set, or the folder or a reference file is missing, the comparison is skipped
+    with a printed note. In that case the `same_bytes_as` already recorded is kept only if the
+    file's SHA-256 is unchanged.
 - **Licence:** GODL-India for all 8 files. The attribution string is filled into each manifest; the evidence note is in `data/external/verify_2026-10-17/licence/`.
 
 ## 3. Semantic validation (Stage B)

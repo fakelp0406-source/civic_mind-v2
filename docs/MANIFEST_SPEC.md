@@ -46,7 +46,7 @@ its manifest passes **every gate** below.
 | | `findings` | ✅ | List; empty only if truly none |
 | | `value_nature` | ✅ | `measured` / `modelled` / `unknown` (default). `modelled` = derived estimates, e.g. fixed growth factors |
 | Review | `human_review` | ✅ | `pending` / `accepted` / `rejected`, set only from a recorded decision (section 3) |
-| | `review` | when reviewed | decision, reviewer, date, the SHA-256 reviewed, accepted caveats (warning codes), note |
+| | `review` | when reviewed | decision, reviewer, date, the SHA-256 reviewed, accepted caveats (warning codes), `permitted_uses` (only `exploratory`), note |
 | Lifecycle | `status` | ✅ | `received` → `integrity_passed` → `validated` → `promoted` (or `rejected`) |
 | | `promoted_to` | when promoted | `data/raw/...` path |
 | | `git_tracked` | ✅ | `false` unless an explicit allowlist line was approved |
@@ -132,10 +132,58 @@ finding is `review.stale`). An `accept` applies only to a `validated` manifest
 
 Promotion sets `status: promoted` and `promoted_to`. It does **not** change `git_tracked`.
 
+Also refused by the gate: `value_nature: modelled`.
+
+### Sensitivity evidence and quarantine safety
+- `sensitivity` and `contains_personal_data` come from a header-name scan
+  (`catalog/sensitivity.py`), recorded as a `sensitivity.header_scan` (info) or
+  `sensitivity.personal_data_suspected` (warning) finding with its method. A file that has
+  not been scanned defaults to `restricted` / `true`. The scan reads column names only.
+- `catalog/quarantine.py` moves files with `os.rename` and refuses (`QuarantineConflict`) when
+  the quarantine folder already holds a file of the same name, even with identical bytes.
+
 Tracking in Git additionally requires: `sensitivity: public`, known licence, small size, and
 an explicit `!data/raw/...` line approved for that one file.
 
-## 4. Example (draft values, not yet true)
+## 4. Ingestion (`civicmind.catalog.ingest`)
+
+Other layers read values only through `ingest(manifest, root, mode)`. It re-verifies the file
+on every call and fails closed with `IngestionRefused` and a stable `code`.
+
+| Mode | Allowed when | Reads | Output label |
+|---|---|---|---|
+| `trusted` | `status: promoted`, `accept` review for the same SHA-256, `value_nature` not `modelled` | `promoted_to` | `trusted` |
+| `exploratory` | `status: integrity_passed`, `keep_profiled` review with `permitted_uses: [exploratory]` | `retrieval.local_path` | `exploratory`; caveat starts `EXPLORATORY`; restricted |
+
+Quarantined, rejected and every other status are refused in both modes.
+
+Checks, in order (refusal code in brackets): status and review (`status.*`, `review.stale`,
+`modelled.not_trusted`, `exploratory.not_permitted`); path under `data/raw/` or
+`data/external/` (`path.unsafe`); file exists (`file.missing`); size and SHA-256
+(`integrity.size_mismatch`, `integrity.hash_mismatch`); encoding, BOM, line-ending style and
+delimiter equal the manifest (`integrity.*_mismatch`); not HTML (`file.not_csv`); decodes and
+parses (`csv.decode_error`, `csv.malformed`, `csv.empty`); no duplicate header names
+(`schema.duplicate_columns`); every record has the header's field count (`csv.ragged_rows`);
+header equals the manifest schema (`schema.manifest_mismatch`) and exactly one registered
+schema version in `catalog.schemas` (`schema.unknown`, `schema.family_mismatch`); family
+validator in trusted mode has no errors (`validation.errors`) and every warning is an
+accepted caveat (`validation.unaccepted_warnings`).
+
+Registered schema versions (verbatim headers, never aliased): `bwssb_monthly/v1`,
+`census_ward_profile/v1`, `swm_gcp/v1`, `morth_city_a47/ra2019`, `morth_city_a47/ra2024`.
+
+The result keeps `raw` (every cell as published text) and `values` (same column names;
+numeric columns parsed, unparseable cells such as `NA` become NaN and are listed in a
+`values.unparsed` finding). Duplicated wards, zeros and negatives are kept. Line endings are
+interpreted in memory only. `restrictions` lists uses analytics must not make
+(`require_use` raises `UseNotPermitted`): every dataset has `no_cross_dataset_join`; exploratory
+or modelled data also has `no_trusted_analytics`, `no_measured_performance`,
+`no_ward_efficiency_ranking` and `no_ward_ranking`.
+
+`scripts/ingest_manifests.py` runs ingestion for every manifest and writes
+`data/processed/ingest/ingest_report.json` (git-ignored, no timestamps, identical across runs).
+
+## 5. Example (draft values, not yet true)
 
 ```yaml
 dataset_id: WATER-BWSSB-2025-08

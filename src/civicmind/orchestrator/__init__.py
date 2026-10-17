@@ -1,6 +1,9 @@
 """Bounded orchestration: execute a plan with read-only tools under explicit limits.
 
-Responsibilities (not yet implemented):
+Implemented: ``pipeline.answer_question`` (allowlisted dispatch, step limit, fail-closed
+refusals, evidence validation before composition). Not yet: audit log, timeouts, retries.
+
+Responsibilities:
 - Tool registry of read-only tools (analytics, rag, graph, catalog) with typed arguments.
 - Limits: maximum steps, per-tool timeouts, at most one repair retry, explicit stop conditions.
 - Collect evidence, check consistency and coverage, then hand an evidence package to ``respond``.

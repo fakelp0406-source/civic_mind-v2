@@ -90,6 +90,7 @@ class Review(_Strict):
     reviewed_on: str
     sha256: str
     accepted_caveats: list[str] = Field(default_factory=list)  # warning finding codes
+    permitted_uses: list[Literal["exploratory"]] = Field(default_factory=list)
     note: str | None = None
 
 

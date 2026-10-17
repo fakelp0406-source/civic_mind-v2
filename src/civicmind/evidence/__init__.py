@@ -1,6 +1,9 @@
 """Evidence model shared by all tools and the response layer.
 
-Responsibilities (not yet implemented):
+Implemented: ``model`` (EvidenceItem, EvidencePackage, SourceRecord, Refusal,
+validate_package). Not yet: passages, graph paths, citation ids.
+
+Responsibilities:
 - Typed evidence items: dataset records (with row ids), calculation traces (operation,
   inputs, units, filters, denominator), document passages (doc id, page, section), and
   graph paths (edges with provenance).

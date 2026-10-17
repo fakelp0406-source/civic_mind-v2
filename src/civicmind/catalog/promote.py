@@ -49,6 +49,8 @@ def gate_reasons(manifest: Manifest) -> list[str]:
         reasons.append("no validator run with 0 errors")
     if not m.licence.name or m.licence.name.strip().upper() == "UNKNOWN":
         reasons.append("licence unknown")
+    if m.value_nature == "modelled":
+        reasons.append("modelled values are never promoted to trusted raw data")
     if m.sensitivity != "public" or m.contains_personal_data:
         reasons.append("not public, or contains personal data")
     local = m.retrieval.local_path or ""

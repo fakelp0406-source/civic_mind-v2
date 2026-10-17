@@ -1,4 +1,14 @@
-# Evaluation (not yet implemented)
+# Evaluation
+
+Implemented so far:
+
+- `golden/batch01_analytics.v1.yaml`: 25 questions for analytics A1-A4 on batch-01 promoted
+  data (13 answerable: numeric, ranking, comparison, including T10 intensity flags; 12 that
+  must be refused). Run by
+  `tests/test_golden_analytics.py`; items skip when the git-ignored source files are absent.
+- `golden/derive_batch01.py`: independent standard-library derivation of the expected values;
+  the golden tests check the YAML against it.
+
 
 Planned contents:
 

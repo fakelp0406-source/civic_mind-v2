@@ -124,6 +124,12 @@ findings:
   message: Column total of consumption_ml (all rows, duplicates included)
   details:
     total: 30580.05
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
 value_nature: unknown
 human_review: accepted
 review:
@@ -134,6 +140,7 @@ review:
   accepted_caveats:
   - ward.duplicated
   - consumption_ml.zero
+  permitted_uses: []
   note: 'Warnings accepted as caveats: ward numbers 14, 85, 153, 191 appear twice (unresolved); ward 40
     Doddabidirakalu has zero consumption.'
 status: promoted

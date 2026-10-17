@@ -128,6 +128,12 @@ findings:
   message: Column total of consumption_ml (all rows, duplicates included)
   details:
     total: 29732.45
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
 value_nature: unknown
 human_review: accepted
 review:
@@ -139,6 +145,7 @@ review:
   - file.newline_style
   - ward.duplicated
   - consumption_ml.zero
+  permitted_uses: []
   note: 'Warnings accepted as caveats: bare-CR line endings (file kept byte-identical); ward numbers 14,
     85, 153, 191 appear twice (unresolved); ward 40 has zero consumption.'
 status: promoted

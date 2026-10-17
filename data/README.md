@@ -43,7 +43,10 @@ Bengaluru data uses different ward schemes: BBMP 198 (2010), 243 (2022), 225 (20
 GBA 369 (2025). Every ward-level manifest must state its scheme. Data on different schemes
 is never joined without an official crosswalk.
 
-## Current state
+## Current state (2026-10-17)
 
-No dataset has been downloaded or registered yet. Candidate sources are listed in
-`docs/discovery/civicmind_dataset_catalog.csv`.
+Batch 01 has 8 manifests: 4 trusted (promoted to `data/raw/`, still git-ignored), 3
+quarantined and 1 modelled/profile-only. See the dataset table in the top-level `README.md`
+and `docs/acquisition/batch-01/`. Each manifest records a header-name personal-data scan
+(`sensitivity.header_scan`); it inspects column names only. The planned pre-commit header
+check for staged CSV/XLSX/JSON files is still not in place.

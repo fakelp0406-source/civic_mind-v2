@@ -7,6 +7,10 @@ A family can hold several source tables with different meanings (MoRTH publishes
 1, 2, 47, 49, ... in the same yearly edition), so each entry also records its source
 ``table``, parsed from the id (``ROAD-RA<edition>-<annexure>``). Feasibility matches on
 family, table and period; a road id that does not parse has no table and never matches.
+
+``coverage`` summarises, for one family, which periods are trusted and why the others are not
+(quarantined, exploratory only, ...). It reads manifests only. "Latest" there means the latest
+trusted file in this catalogue - a static copy as published - never "current conditions".
 """
 
 from __future__ import annotations
@@ -43,6 +47,9 @@ class DatasetEntry:
     title: str
     columns: tuple[str, ...]  # verbatim header recorded in the manifest (metadata)
     table: str | None = None  # source table within the family (roads: "A47"); None otherwise
+    review_decision: str | None = None  # accept | quarantine | keep_profiled | reject
+    permitted_uses: tuple[str, ...] = ()  # e.g. ("exploratory",) from a keep_profiled review
+    portal_published: str | None = None  # publisher's date for this file (manifest metadata)
 
 
 def _family(dataset_id: str) -> str | None:
@@ -83,9 +90,91 @@ def load_index(root: str | Path) -> tuple[DatasetEntry, ...]:
                 title=m.title,
                 columns=tuple(c.name for c in m.schema_),
                 table=source_table(m.dataset_id),
+                review_decision=m.review.decision if m.review else None,
+                permitted_uses=tuple(m.review.permitted_uses) if m.review else (),
+                portal_published=m.portal_published,
             )
         )
     return tuple(entries)
 
 
-__all__ = ["FAMILY_BY_PREFIX", "ROAD_ID", "DatasetEntry", "load_index", "source_table"]
+def trust_label(entry: DatasetEntry) -> str:
+    """One word for how an entry may be used: trusted, exploratory_only, quarantined, ..."""
+    if entry.status == "promoted" and entry.human_review == "accepted":
+        return "trusted"
+    if entry.status in ("quarantined", "rejected"):
+        return entry.status
+    if entry.value_nature == "modelled":
+        return "modelled"
+    if entry.review_decision == "keep_profiled":
+        return "exploratory_only" if "exploratory" in entry.permitted_uses else "profile_only"
+    return "not_reviewed"
+
+
+#: The series each answerable family is about, and the table its analytics read.
+SERIES = {
+    "water": ("BWSSB monthly ward water consumption", None, "month"),
+    "roads": ("MoRTH million-plus city traffic-rule violations (Annexure 47)", "A47", "edition"),
+}
+FRESHNESS_NOTE = (
+    "Static files as published by the portal and copied into this catalogue; there is no live "
+    "data connection. 'Latest' is the latest trusted file here, not current conditions."
+)
+
+
+def coverage(
+    index: tuple[DatasetEntry, ...], family: str, *, other_tables: bool = False
+) -> dict | None:
+    """Trusted and non-trusted periods of one answerable family (metadata only), or None.
+
+    ``other_tables`` lists same-family tables that are never used for this series (e.g. MoRTH
+    Annexures 1, 2, 49). It is off by default so that ordinary answers about Annexure 47 never
+    mention another annexure; availability questions ask for it explicitly.
+    """
+    if family not in SERIES:
+        return None
+    series, table, unit = SERIES[family]
+    members = [e for e in index if e.family == family]
+    in_series = sorted(
+        (e for e in members if table is None or e.table == table), key=lambda e: e.period_key
+    )
+    trusted = [e for e in in_series if trust_label(e) == "trusted"]
+    latest = trusted[-1] if trusted else None
+    return {
+        "domain": family,
+        "series": series,
+        "period_unit": unit,
+        "trusted_periods": [e.period_key for e in trusted],
+        "latest_trusted_period": latest.period_key if latest else None,
+        "latest_trusted_dataset": latest.dataset_id if latest else None,
+        "latest_trusted_portal_published": latest.portal_published if latest else None,
+        "not_trusted": [
+            {"period": e.period_key, "dataset_id": e.dataset_id, "trust": trust_label(e)}
+            for e in in_series
+            if trust_label(e) != "trusted"
+        ],
+        "other_tables": [  # same family, different table: never used for this series
+            {
+                "edition": m.group("edition") if (m := ROAD_ID.match(e.dataset_id)) else None,
+                "table": e.table,
+                "dataset_id": e.dataset_id,
+                "trust": trust_label(e),
+            }
+            for e in sorted(members, key=lambda e: e.dataset_id)
+            if other_tables and table is not None and e.table != table
+        ],
+        "freshness_note": FRESHNESS_NOTE,
+    }
+
+
+__all__ = [
+    "FAMILY_BY_PREFIX",
+    "FRESHNESS_NOTE",
+    "ROAD_ID",
+    "SERIES",
+    "DatasetEntry",
+    "coverage",
+    "load_index",
+    "source_table",
+    "trust_label",
+]

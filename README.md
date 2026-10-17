@@ -109,7 +109,7 @@ keys are needed.
 ```
 
 In order, these:
-1. run the tests. With all promoted files present: 367 pass (Milestone 03). On a fresh
+1. run the tests. With all promoted files present: 438 pass (Query Coverage v1). On a fresh
    clone without data, the data-dependent tests **skip** with a reason (the skip count
    has not been re-measured since batch 01);
 2. run the lint check;
@@ -132,10 +132,22 @@ In order, these:
   rows** by consumption, connections or litres per connection per day, optionally flagged
   against another trusted month; the change in city totals between two months;
 - traffic: one city's count for one violation category and measure in one edition, with its
-  share of the published Total row; top-n cities.
+  share of the published Total row; top-n cities; **two cities compared within one edition**
+  (both published counts, their shares, and a derived difference);
+- data coverage: **which months or editions are available**, the latest trusted period, and
+  why other periods are not used (answered from manifests only; no data value is read).
+
+Every answer states its `value_basis` (`published`, `derived`, `published_and_derived` or
+`catalogue`), and water and road answers **and refusals** carry the catalogue coverage. The
+full inventory, including candidates that were deliberately not implemented, is in
+[docs/query_capabilities.md](docs/query_capabilities.md).
 
 **Refused, each with a code:**
 - quarantined, modelled or unavailable periods;
+- "current", "now", "this year" or "the latest month's" values without a named period: the
+  newest local file is never treated as current (the coverage section names the latest
+  trusted period);
+- all-violation accident totals (the categories are not an established partition);
 - unique-ward rankings (ward numbers repeat), single-ward or per-ward water figures, and named
   wards;
 - cross-edition MoRTH comparisons, and cross-domain questions;
@@ -187,6 +199,11 @@ Response (`status` is `answered` or `refused`):
   "trace": ["parse", "feasibility", "ingest:ROAD-RA2021-A47", "analytics:road_city_value", "evidence", "compose"]
 }
 ```
+
+`result.value_basis` and a `coverage` object (trusted periods, `latest_trusted_period`,
+non-trusted periods with their reason, and a freshness note) were added in Query Coverage
+v1; both are additive. `coverage` is `null` for questions outside water and roads and for
+empty, oversized or instruction-like questions.
 
 A refusal has `"result": null`, no evidence, and
 `"refusal": {"code": "dataset.not_trusted", "stage": "feasibility", "reason": "…"}` (for

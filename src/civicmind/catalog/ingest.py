@@ -256,6 +256,36 @@ def _restrictions(m: Manifest, mode: Mode) -> tuple[str, ...]:
     return tuple(sorted(out))
 
 
+def _accepted_manifest_caveats(m: Manifest, emitted: set[str]) -> list[str]:
+    """Review-accepted warnings recorded in the manifest that ingestion does not re-derive.
+
+    Some warnings come from batch-level checks (e.g. ``series.swing`` compares a file with the
+    previous month; ``file.newline_style`` describes the bytes). They are accepted caveats of
+    the review and must reach every answer that uses the file. Text only; nothing is changed.
+    """
+    if m.review is None:
+        return []
+    out = []
+    for f in m.findings:
+        code = f.get("code")
+        if f.get("severity") != "warning" or code not in m.review.accepted_caveats:
+            continue
+        if code in emitted:
+            continue
+        note = f"{code}: {f.get('message', '')} [accepted at review]"
+        rows = (f.get("details") or {}).get("rows") if isinstance(f.get("details"), dict) else None
+        if isinstance(rows, list) and rows and all(isinstance(r, dict) for r in rows):
+            named = []
+            for r in rows[:5]:
+                change = r.get("relative_change")
+                pct = f" {change:+.0%}" if isinstance(change, int | float) else ""
+                named.append(f"{r.get('name', r.get('row', '?'))} ({r.get('column', '?')}{pct})")
+            more = f" and {len(rows) - 5} more" if len(rows) > 5 else ""
+            note += f" Rows: {', '.join(named)}{more}."
+        out.append(note)
+    return out
+
+
 def ingest(manifest: Manifest, root: str | Path, mode: Mode = "trusted") -> IngestedDataset:
     m = manifest
     root = Path(root)
@@ -318,6 +348,7 @@ def ingest(manifest: Manifest, root: str | Path, mode: Mode = "trusted") -> Inge
         )
     caveats = [*m.known_limitations]
     caveats += [f"{f.code}: {f.message}" for f in findings if f.severity == "warning"]
+    caveats += _accepted_manifest_caveats(m, {f.code for f in findings})
     if mode == "exploratory":
         caveats.insert(
             0,

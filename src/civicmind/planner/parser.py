@@ -12,6 +12,14 @@ and the city total returned. For roads, the unknown words form the city phrase; 
 exactly against the edition's labels later (analytics), never here.
 
 Every default the parser applies (for example n = 10) is recorded in ``assumptions``.
+
+Coverage and "latest" (checked once the domain is known, before domain-specific parsing):
+
+* Availability questions ("which months are available?", "latest edition of road data") are
+  answered from the catalogue (``data_coverage``); no data value is read.
+* A request for a *value* "now", "currently" or for "the latest month/edition" without naming
+  the period is refused (``query.period_missing``): the newest local file is never silently
+  treated as current. The response's coverage block names the latest trusted period.
 """
 
 from __future__ import annotations
@@ -105,6 +113,29 @@ WATER_BAD_UNITS = [
     r"\blakh litres\b",
     r"\bmld\b",
 ]
+#: Questions about which periods exist (answered from the catalogue, any period wording).
+AVAILABILITY = [
+    r"\b(available|availability|coverage)\b",
+    r"\b(which|what) (months?|years?|editions?|periods?)\b",
+]
+#: "The latest month/edition": coverage, unless a value is asked for (then period_missing).
+LATEST_PERIOD = [
+    r"\b(latest|most recent|newest|earliest) (\w+ ){0,3}?"
+    r"(month|year|edition|period|data|dataset)s?\b"
+]
+#: Relative time that must never be resolved to "the newest file".
+CURRENT = [
+    r"\b(current|currently|latest|most recent|newest|now|today|present|nowadays)\b",
+    r"\b(this|last|past) (month|year)\b",
+]
+VALUE_WORDS = {
+    "water": [r"\bconsum\w*", r"\bconnections?\b", r"\bml\b", r"\bmegalitres?\b",
+              r"\busage\b", r"\bused\b", r"\blitres?\b", r"\bhow much\b"],
+    "roads": [r"\bhow many\b", r"\bkilled\b", r"\bdeaths?\b", r"\bdied\b",
+              r"\bfatalit\w*", r"\binjur\w*", r"\bgrievous\w*", r"\bminor\w*",
+              r"\bover[\s-]?speed\w*", r"\bspeeding\b", r"\bdrunk\w*", r"\balcohol\b",
+              r"\bwrong side\b", r"\bred light", r"\bmobile\b", r"\bothers?\b"],
+}  # fmt: skip
 ROAD_BAD_UNITS = [
     r"\bper (lakh|1,?00,?000|10,?000|capita|person|km|kilometre|vehicle)",
     r"\brate\b",
@@ -225,6 +256,40 @@ def _domain(tokens: set[str], lower: str) -> set[str]:
     return found
 
 
+def detect_domain(question: str) -> str | None:
+    """The single domain a question is about (water, roads, waste, census), else None.
+
+    Used only to describe catalogue coverage alongside a refusal; never to answer.
+    """
+    text = (question or "").strip()
+    if not text or len(text) > MAX_LENGTH:
+        return None
+    lower = " ".join(text.lower().split())
+    domains = _domain({t.lower() for t in TOKEN.findall(text)}, lower)
+    return domains.pop() if len(domains) == 1 else None
+
+
+def _coverage_or_current(domain: str, text: str, lower: str) -> QuerySpec | PlanRefusal | None:
+    """Availability questions -> data_coverage; an unnamed 'current/latest' value -> refusal."""
+    if _any(AVAILABILITY, lower):
+        return QuerySpec(intent="data_coverage", domain=domain, periods=(), question=text)
+    named = bool(MONTH_YEAR.search(text)) if domain == "water" else bool(YEAR.search(text))
+    if named:
+        return None
+    asks_value = _any(VALUE_WORDS[domain], lower)
+    if _any(LATEST_PERIOD, lower) and not asks_value:
+        return QuerySpec(intent="data_coverage", domain=domain, periods=(), question=text)
+    if _any(CURRENT, lower) or _any(LATEST_PERIOD, lower):
+        unit = "month and year (e.g. March 2026)" if domain == "water" else "edition year"
+        return _refuse(
+            "query.period_missing",
+            f"Name the {unit}. 'Current' or 'latest' is never resolved to the newest local "
+            "file: these are static published files, not live data. The coverage section "
+            "lists the latest trusted period.",
+        )
+    return None
+
+
 def parse(question: str) -> QuerySpec | PlanRefusal:
     text = (question or "").strip()
     if not text:
@@ -266,6 +331,9 @@ def parse(question: str) -> QuerySpec | PlanRefusal:
     domain = domains.pop()
     if domain in ("waste", "census"):
         return QuerySpec(intent="dataset_family", domain=domain, periods=(), question=text)
+    early = _coverage_or_current(domain, text, lower)
+    if early is not None:
+        return early
     if _any(UNSUPPORTED_OPS, lower):
         return _refuse(
             "query.unsupported_operation",
@@ -543,6 +611,24 @@ def _parse_roads(text: str, lower: str, tokens: list[str]) -> QuerySpec | PlanRe
             assumptions=tuple(assumptions),
             question=text,
         )
+    comparing = _any([r"\b(compare[ds]?|comparison|versus|vs|between|difference|differ)\b"],
+                     lower)  # fmt: skip
+    if comparing and (len(cities) > 2 or any("," in c for c in cities)):
+        return _refuse("query.entity_ambiguous", "Compare exactly two cities at a time.", cities)
+    if comparing and len(cities) == 2:
+        if cities[0].strip() == cities[1].strip():
+            return _refuse("query.entity_ambiguous", "Name two different cities.", cities)
+        return QuerySpec(
+            intent="road_compare_cities",
+            domain="roads",
+            periods=(years[0],),
+            params={**params, "cities": tuple(cities)},
+            assumptions=(
+                "City labels matched exactly as written (no alias table).",
+                "Both cities from the same edition; difference = first city minus second.",
+            ),
+            question=text,
+        )
     if not cities:
         return _refuse(
             "query.entity_missing", "Name one million-plus city, or ask for a ranking of cities."
@@ -563,4 +649,4 @@ def _parse_roads(text: str, lower: str, tokens: list[str]) -> QuerySpec | PlanRe
     )
 
 
-__all__ = ["parse"]
+__all__ = ["detect_domain", "parse"]

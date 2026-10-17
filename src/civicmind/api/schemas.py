@@ -48,6 +48,13 @@ class RefusalOut(_Strict):
 class ResultOut(_Strict):
     operation: str
     value: Any = Field(description="Deterministic analytics output, exactly as computed.")
+    value_basis: Literal["published", "derived", "published_and_derived", "catalogue"] | None = (
+        Field(
+            default=None,
+            description="published cells, a derived calculation, a published count with a "
+            "derived share/difference, or catalogue metadata (no data value).",
+        )
+    )
     unit: str | None
     metric: str | None
     periods: list[str]
@@ -67,6 +74,34 @@ class EvidenceOut(_Strict):
     rows_used: int
 
 
+class PeriodTrustOut(_Strict):
+    period: str
+    dataset_id: str
+    trust: str = Field(description="quarantined | exploratory_only | profile_only | ...")
+
+
+class OtherTableOut(_Strict):
+    edition: str | None
+    table: str | None
+    dataset_id: str
+    trust: str
+
+
+class CoverageOut(_Strict):
+    """Catalogue coverage for the question's domain (manifest metadata; not live data)."""
+
+    domain: str
+    series: str
+    period_unit: str
+    trusted_periods: list[str]
+    latest_trusted_period: str | None
+    latest_trusted_dataset: str | None
+    latest_trusted_portal_published: str | None
+    not_trusted: list[PeriodTrustOut]
+    other_tables: list[OtherTableOut]
+    freshness_note: str
+
+
 class QueryResponse(_Strict):
     request_id: str
     status: Literal["answered", "refused"]
@@ -78,6 +113,11 @@ class QueryResponse(_Strict):
     assumptions: list[str] = Field(default_factory=list)
     evidence: list[EvidenceOut] = Field(default_factory=list)
     trace: list[str] = Field(default_factory=list)
+    coverage: CoverageOut | None = Field(
+        default=None,
+        description="Trusted and non-trusted periods for water or road questions (null "
+        "otherwise). Static catalogue metadata, not a freshness guarantee.",
+    )
 
 
 class ErrorBody(_Strict):
@@ -120,6 +160,7 @@ def from_answer(answer: Any, request_id: str) -> QueryResponse:
         result=ResultOut(
             operation=answer.operation,
             value=answer.value,
+            value_basis=answer.value_basis,
             unit=answer.unit,
             metric=answer.metric,
             periods=list(answer.periods),
@@ -135,12 +176,14 @@ def from_answer(answer: Any, request_id: str) -> QueryResponse:
             for item in answer.evidence
         ],
         trace=list(answer.trace),
+        coverage=CoverageOut(**answer.coverage) if answer.coverage else None,
     )
 
 
 __all__ = [
     "MAX_QUESTION_CHARS",
     "ErrorBody",
+    "CoverageOut",
     "ErrorResponse",
     "EvidenceOut",
     "HealthResponse",

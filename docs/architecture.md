@@ -1,8 +1,9 @@
 # CivicMind AI — Architecture (skeleton stage)
 
 Status (2026-10-17): catalog, analytics (water, traffic), planner, orchestrator (pipeline),
-evidence and respond are implemented for the water + traffic slice; rag, graph and api are
-not. `tests/test_pipeline.py` enforces the import boundaries below for the new layers. Decisions marked **provisional** are
+evidence and respond are implemented for the water + traffic slice; api exposes that
+pipeline over HTTP (`GET /health`, `GET /api/v1/ready`, `POST /api/v1/query`); rag and
+graph are not. `tests/test_pipeline.py` enforces the import boundaries below for the new layers. Decisions marked **provisional** are
 open for revision once data and evaluations exist.
 
 ## Data flow
@@ -32,7 +33,7 @@ question
 | `planner` | catalog (metadata) | route an unmatched question to a "nearest" intent |
 | `orchestrator` | planner, analytics, rag, graph, catalog, evidence | write data; contact third parties; exceed step/time limits |
 | `respond` | evidence | change computed values; invent citations |
-| `api` | orchestrator, respond, catalog | expose secrets; let the browser reach data or model providers directly |
+| `api` | orchestrator, respond, catalog | expose secrets, paths or exception text; accept dataset selectors; use exploratory data; let the browser reach data or model providers directly |
 
 The smoke test enforces only lightweight imports for now. Boundary tests will be added as
 layers are implemented.

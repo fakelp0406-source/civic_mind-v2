@@ -341,6 +341,7 @@ ALLOWED = {
     "planner": {"catalog", "planner"},
     "respond": {"evidence", "respond"},
     "orchestrator": {"planner", "analytics", "catalog", "evidence", "respond", "orchestrator"},
+    "api": {"orchestrator", "respond", "catalog", "api"},
 }
 
 

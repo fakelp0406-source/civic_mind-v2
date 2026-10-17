@@ -1,9 +1,9 @@
-"""HTTP API (FastAPI): the only interface the future website will use.
+"""HTTP API (FastAPI): a thin, versioned layer over the deterministic pipeline.
 
-Planned endpoints (not yet implemented): ``/health``, ``/ask``, ``/datasets``,
-``/datasets/{id}``, ``/documents``, ``/feedback``. Typed request and response schemas
-expose the answer, evidence, citations, plan/tool summary and abstention reason.
+Endpoints: ``GET /health`` (liveness), ``GET /api/v1/ready`` (catalogue readiness) and
+``POST /api/v1/query`` (answers via ``orchestrator.pipeline.answer_question``). Modules:
+``app`` (factory ``create_app``), ``routes``, ``schemas``, ``errors``.
 
-Boundary: depends on ``orchestrator``, ``respond`` and ``catalog``. Built by an app factory,
-so importing this package loads no data and starts no server. Secrets stay server-side.
+Boundary: depends on ``orchestrator``, ``respond`` and ``catalog``. Importing this package
+loads nothing (FastAPI is imported only by its submodules); secrets stay server-side.
 """

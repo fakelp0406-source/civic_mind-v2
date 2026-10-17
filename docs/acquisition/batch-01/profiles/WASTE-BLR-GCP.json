@@ -1,0 +1,275 @@
+{
+  "dataset_id": "WASTE-BLR-GCP",
+  "fingerprint": {
+    "path": "data/external/verify_2026-10-17/waste/Solid_Waste_Generated_Collected_Processed_Data_Bengaluru_from_2015-16to2017-18_1.csv",
+    "bytes": 23868,
+    "sha256": "7c51dc6a3c8dfdef0a0174e4e7f60b3444acdab13e7024a71293013fd074e394",
+    "encoding": "utf-8",
+    "bom": false,
+    "newline": "CRLF",
+    "newline_counts": {
+      "CRLF": 199,
+      "LF": 0,
+      "CR": 0
+    },
+    "delimiter": ",",
+    "looks_like_html": false,
+    "contains_nul": false
+  },
+  "profile": {
+    "rows": 198,
+    "columns": 13,
+    "column_names": [
+      "City_Name",
+      "Zone_Name",
+      "Ward_Name",
+      "Ward_No.",
+      "Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2015-16",
+      "Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2016-17",
+      "Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2017-18",
+      "Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2015-16",
+      "Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2016-17",
+      "Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2017-18",
+      "Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2015-16",
+      "Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2016-17",
+      "Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2017-18"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_column_names": [],
+    "names_with_outer_whitespace": [],
+    "header_rows_repeated_in_body": 0,
+    "columns_detail": [
+      {
+        "name": "City_Name",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 1,
+        "numeric": 0,
+        "non_numeric_values": [
+          "Bengaluru"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "Bengaluru"
+        ]
+      },
+      {
+        "name": "Zone_Name",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 9,
+        "numeric": 0,
+        "non_numeric_values": [
+          "BOMMANAHALLI",
+          "BOMMANHALLI",
+          "DASARAHALLI",
+          "EAST",
+          "MAHADEVPURA",
+          "RR_NAGAR",
+          "SOUTH",
+          "WEST",
+          "YALAHANKA"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "YALAHANKA",
+          "DASARAHALLI",
+          "RR_NAGAR"
+        ]
+      },
+      {
+        "name": "Ward_Name",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 198,
+        "numeric": 0,
+        "non_numeric_values": [
+          "ADUGODI",
+          "AGARAM",
+          "AGRAHARA_DASARAHALLI",
+          "ANJANAPURA",
+          "ARAKERE",
+          "ARAMANENAGAR",
+          "ATTIGUPPE",
+          "ATTURU",
+          "AZAD_NAGAR",
+          "A_NARAYANAPURA"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "KEMPEGOWDA_",
+          "CHOWDESHWARI",
+          "ATTURU"
+        ]
+      },
+      {
+        "name": "Ward_No.",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 198,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 1.0,
+        "maximum": 198.0,
+        "negatives": 0,
+        "samples": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "name": "Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2015-16",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 1961.4213,
+        "maximum": 14945.4,
+        "negatives": 0,
+        "samples": [
+          "6075.63",
+          "5285.4732",
+          "8506.5318"
+        ]
+      },
+      {
+        "name": "Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2016-17",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 2064.654,
+        "maximum": 15732.0,
+        "negatives": 0,
+        "samples": [
+          "6395.4",
+          "5563.656",
+          "8954.244"
+        ]
+      },
+      {
+        "name": "Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2017-18",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 2543.27544,
+        "maximum": 7463.52,
+        "negatives": 0,
+        "samples": [
+          "4102.344",
+          "3802.91616",
+          "5023.52784"
+        ]
+      },
+      {
+        "name": "Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2015-16",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 1961.4213,
+        "maximum": 14945.4,
+        "negatives": 0,
+        "samples": [
+          "6075.63",
+          "5285.4732",
+          "8506.5318"
+        ]
+      },
+      {
+        "name": "Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2016-17",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 2064.654,
+        "maximum": 15732.0,
+        "negatives": 0,
+        "samples": [
+          "6395.4",
+          "5563.656",
+          "8954.244"
+        ]
+      },
+      {
+        "name": "Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2017-18",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 2173.32,
+        "maximum": 16560.0,
+        "negatives": 0,
+        "samples": [
+          "6732",
+          "5856.48",
+          "9425.52"
+        ]
+      },
+      {
+        "name": "Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2015-16",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 1176.85278,
+        "maximum": 8967.24,
+        "negatives": 0,
+        "samples": [
+          "3645.378",
+          "3171.28392",
+          "5103.91908"
+        ]
+      },
+      {
+        "name": "Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2016-17",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 1342.0251,
+        "maximum": 10225.8,
+        "negatives": 0,
+        "samples": [
+          "4157.01",
+          "3616.3764",
+          "5820.2586"
+        ]
+      },
+      {
+        "name": "Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2017-18",
+        "non_empty": 198,
+        "empty": 0,
+        "distinct": 192,
+        "numeric": 198,
+        "non_numeric_values": [],
+        "minimum": 1521.324,
+        "maximum": 11592.0,
+        "negatives": 0,
+        "samples": [
+          "4712.4",
+          "4099.536",
+          "6597.864"
+        ]
+      }
+    ]
+  },
+  "findings": [],
+  "status": "integrity_passed"
+}

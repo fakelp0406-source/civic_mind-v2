@@ -1,0 +1,280 @@
+dataset_id: ROAD-RA2024-A47
+manifest_version: 1
+title: Million Plus City-wise Accidents Classified According to Type of Traffic Rule Violations during
+  2024
+publisher: Ministry of Road Transport and Highways
+host_portal: data.gov.in
+source_class: official
+resource_page: https://www.data.gov.in/resource/million-plus-city-wise-accidents-classified-according-type-traffic-rule-violations-during
+download_url: https://www.data.gov.in/files/ogdpv2dms/s3fs-public/604807629/Version_1/Transport_2024_Annexure_47.csv
+portal_published: '2026-06-18'
+portal_updated: '2026-06-18'
+licence:
+  name: Government Open Data License - India
+  url: https://www.data.gov.in/Godl
+  evidence: Catalogue field 'Released under NDSAP' / portal footer; GODL text rendered at https://www.data.gov.in/Godl
+    on 2026-10-17 (raw HTML in this batch is an app shell; see data/external/verify_2026-10-17/licence/GODL_evidence_note.md)
+  attribution: 'Ministry of Road Transport and Highways, 2026, Million Plus City-wise Accidents Classified
+    According to Type of Traffic Rule Violations during 2024, Open Government Data Platform India, 18/06,
+    https://www.data.gov.in/resource/million-plus-city-wise-accidents-classified-according-type-traffic-rule-violations-during.
+    Published under Government Open Data License - India: https://www.data.gov.in/Godl.'
+  exemptions_checked: true
+retrieval:
+  retrieved_at: '2026-10-17T10:43:49+05:30'
+  retrieved_by: Claude Code session (plain HTTPS GET of the catalogue direct URL; no form)
+  method: direct file URL from data.gov.in catalogue API
+  http_status: 200
+  content_type: text/csv
+  original_filename: Transport_2024_Annexure_47.csv
+  local_path: data/external/verify_2026-10-17/roads/Transport_2024_Annexure_47.csv
+  note: null
+integrity:
+  bytes: 6925
+  portal_stated_bytes: 6925
+  size_matches_portal: true
+  sha256: 702f75f332a273e9c09eb500a7d2f90c2ae71eec3bf06fe01d48a6fc56bd37e9
+  format: csv
+  encoding: utf-8
+  bom: false
+  newline: CRLF
+  newline_counts:
+    CRLF: 52
+    LF: 0
+    CR: 0
+  delimiter: ','
+  looks_like_html: false
+  passed: true
+schema:
+- name: Sl. No.
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Million Plus Cities
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Number of Accidents - Number
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Number of Accidents - Rank
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Killed - Number
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Killed - Rank
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Over-Speeding - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/Consumption of Alcohol and Drug - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/Consumption of Alcohol and Drug - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Drunken Driving/Consumption of Alcohol and Drug - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong Side - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong Side - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong Side - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong Side - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Driving on Wrong Side - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Jumping Red Light - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Use of Mobile Phone - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Number of Accidents
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Persons Killed
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Persons Injured - Grievously Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Persons Injured - Minor Injury
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Others - Persons Injured - Total Injured
+  type: text (unparsed)
+  unit: null
+  key: null
+row_count: 51
+period:
+  start: '2024-01-01'
+  end: '2024-12-31'
+  granularity: year
+  as_on: null
+geography:
+  country: India
+  state: null
+  city: null
+  level: million-plus city
+ward_scheme: null
+identifier_evidence: null
+sensitivity: public
+contains_personal_data: false
+semantic_checks:
+  validator: morth_city@v1
+  errors: 0
+  warnings: 0
+compatibility: {}
+findings:
+- code: entities.count
+  severity: info
+  message: 50 entity rows (excluding Total)
+  details:
+    label_column: Million Plus Cities
+    entities:
+    - Agra
+    - Ahmedabad
+    - Allahabad (Prayagraj)
+    - Amritsar
+    - Asansol Durgapur
+    - Aurangabad
+    - Bengaluru
+    - Bhopal
+    - Chandigarh
+    - Coimbatore
+    - Chennai
+    - Delhi
+    - Dhanbad
+    - Faridabad
+    - Ghaziabad
+    - Gwalior
+    - Hyderabad
+    - Indore
+    - Jabalpur
+    - Jaipur
+    - Jamshedpur
+    - Jodhpur
+    - Kannur
+    - Kanpur
+    - Kozhikode
+    - Kochi
+    - Kolkata
+    - Kollam
+    - Kota
+    - Lucknow
+    - Ludhiana
+    - Madurai
+    - Mallapuram
+    - Meerut
+    - Mumbai
+    - Nagpur
+    - Nashik
+    - Patna
+    - Pune
+    - Raipur
+    - Rajkot
+    - Srinagar
+    - Surat
+    - Thiruvananthapuram
+    - Thrissur
+    - Tiruchirappalli
+    - Vadodara
+    - Varanasi
+    - Vijayawada city
+    - Vishakhapatnam
+- code: total.consistent
+  severity: info
+  message: Total row equals the sum of entity rows for every count column
+  details: {}
+value_nature: unknown
+human_review: accepted
+review:
+  decision: accept
+  reviewed_by: project owner
+  reviewed_on: '2026-10-17'
+  sha256: 702f75f332a273e9c09eb500a7d2f90c2ae71eec3bf06fe01d48a6fc56bd37e9
+  accepted_caveats: []
+  note: null
+status: promoted
+promoted_to: data/raw/roads/Transport_2024_Annexure_47.csv
+git_tracked: false
+same_bytes_as: null
+known_limitations:
+- City-level only; MoRTH's city boundary definition is not established - never join to ward data.
+- Later editions may restate earlier years; cite the edition.

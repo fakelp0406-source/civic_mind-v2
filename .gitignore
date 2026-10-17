@@ -218,3 +218,100 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ===========================================================================
+# CivicMind AI additions (the Python template above is kept unchanged)
+# ===========================================================================
+
+# Secrets and local environment files: keep only the shareable template.
+# (.env, .envrc and .venv are already ignored by the template above.)
+.env.*
+!.env.example
+
+# Side-by-side virtual environments (e.g. .venv-py313/). The template only covers ".venv".
+.venv*/
+
+# Manual downloads awaiting verification: never committed.
+data/external/*
+!data/external/.gitkeep
+
+# Unverified or unknown-provenance files (e.g. the legacy BWSSB copy): never committed.
+data/quarantine/*
+!data/quarantine/.gitkeep
+
+# RAG source documents: recorded in manifests by URL + SHA-256, not committed.
+data/docs/*
+!data/docs/.gitkeep
+
+# Promoted source data: DEFAULT-DENY. Nothing under data/raw/ is tracked unless it is
+# allowlisted at the end of this file, one explicit line per approved file, after its
+# manifest shows: hash pinned, validation passed, licence recorded, sensitivity "public",
+# and size reviewed. CSV and KML are deliberately NOT ignored elsewhere in the repo.
+data/raw/**
+!data/raw/**/
+!data/raw/**/.gitkeep
+
+# PDFs anywhere, any letter case: documents are re-fetched from their source URL and
+# pinned by SHA-256 in a manifest. (Character classes make the rule behave the same on
+# case-insensitive Windows and case-sensitive Linux/CI.)
+*.[Pp][Dd][Ff]
+
+# Civic-service records that can identify people (e.g. grievance exports with staff names
+# and free-text remarks) - anywhere in the repo, any letter case, data-file extensions only,
+# so source code such as grievances.py stays trackable. Reviewed aggregate tables may be
+# committed only through an explicit allowlist line after a sensitivity review.
+**/*[Gg][Rr][Ii][Ee][Vv]*.[Cc][Ss][Vv]
+**/*[Gg][Rr][Ii][Ee][Vv]*.[Tt][Ss][Vv]
+**/*[Gg][Rr][Ii][Ee][Vv]*.[Xx][Ll][Ss]*
+**/*[Gg][Rr][Ii][Ee][Vv]*.[Jj][Ss][Oo][Nn]*
+**/*[Gg][Rr][Ii][Ee][Vv]*.[Pp][Aa][Rr][Qq][Uu][Ee][Tt]
+**/*[Gg][Rr][Ii][Ee][Vv]*.[Zz][Ii][Pp]
+**/*[Cc][Oo][Mm][Pp][Ll][Aa][Ii][Nn]*.[Cc][Ss][Vv]
+**/*[Cc][Oo][Mm][Pp][Ll][Aa][Ii][Nn]*.[Tt][Ss][Vv]
+**/*[Cc][Oo][Mm][Pp][Ll][Aa][Ii][Nn]*.[Xx][Ll][Ss]*
+**/*[Cc][Oo][Mm][Pp][Ll][Aa][Ii][Nn]*.[Jj][Ss][Oo][Nn]*
+**/*[Cc][Oo][Mm][Pp][Ll][Aa][Ii][Nn]*.[Pp][Aa][Rr][Qq][Uu][Ee][Tt]
+**/*[Cc][Oo][Mm][Pp][Ll][Aa][Ii][Nn]*.[Zz][Ii][Pp]
+**/*[Ss][Aa][Hh][Aa][Aa][Yy][Aa]*.[Cc][Ss][Vv]
+**/*[Ss][Aa][Hh][Aa][Aa][Yy][Aa]*.[Xx][Ll][Ss]*
+**/*[Ss][Aa][Hh][Aa][Aa][Yy][Aa]*.[Jj][Ss][Oo][Nn]*
+
+# Credentials that are not .env files.
+*.[Pp][Ee][Mm]
+*.[Kk][Ee][Yy]
+*.[Pp]12
+*.[Pp][Ff][Xx]
+id_rsa*
+id_ed25519*
+*[Cc]redentials*.json
+*service-account*.json
+secrets.json
+secrets.toml
+.netrc
+
+# LIMITATION: these rules match file NAMES only. A file with an innocuous name that contains
+# personal or restricted data (e.g. tests/fixtures/ward_issues.csv holding real records)
+# is NOT caught here. Content checks (header scan for sensitive columns) and the rule that
+# test fixtures are synthetic are documented in data/README.md.
+
+# Generated outputs
+artifacts/
+logs/
+eval/results/
+data/interim/
+data/processed/
+
+# Future website (web/) build outputs
+web/node_modules/
+web/dist/
+web/.vite/
+
+# ---------------------------------------------------------------------------
+# Re-includes. These must stay LAST so that no rule above can hide them.
+# ---------------------------------------------------------------------------
+# Manifests describe datasets and never contain records, so they stay trackable.
+!data/manifests/*.yaml
+
+# Approved raw files: one line per file, added only after its manifest review.
+# Example (not approved): !data/raw/morth/Transport_2024_Annexure_47.csv
+# (none approved yet)

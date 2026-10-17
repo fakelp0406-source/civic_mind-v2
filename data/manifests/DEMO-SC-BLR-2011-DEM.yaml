@@ -1,0 +1,137 @@
+dataset_id: DEMO-SC-BLR-2011-DEM
+manifest_version: 1
+title: 'Demographic Profile: Bengaluru as on 01-03-2011'
+publisher: Bruhat Bengaluru Mahanagara Palike (published via Smart Cities Mission, MoHUA)
+host_portal: smartcities.data.gov.in
+source_class: official
+resource_page: https://www.data.gov.in/resource/demographic-profile-bengaluru-01-03-2011
+download_url: https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/Demographic_Profile_Bengaluru_ason_01-03-2011_1.csv
+portal_published: '2019-04-23'
+portal_updated: '2025-02-17'
+licence:
+  name: Government Open Data License - India
+  url: https://www.data.gov.in/Godl
+  evidence: Catalogue field 'Released under NDSAP' / portal footer; GODL text rendered at https://www.data.gov.in/Godl
+    on 2026-10-17 (raw HTML in this batch is an app shell; see data/external/verify_2026-10-17/licence/GODL_evidence_note.md)
+  attribution: 'Bruhat Bengaluru Mahanagara Palike (published via Smart Cities Mission, MoHUA), 2019,
+    Demographic Profile: Bengaluru as on 01-03-2011, Open Government Data Platform India, 23/04, https://www.data.gov.in/resource/demographic-profile-bengaluru-01-03-2011.
+    Published under Government Open Data License - India: https://www.data.gov.in/Godl.'
+  exemptions_checked: true
+retrieval:
+  retrieved_at: '2026-10-17T11:38:39+05:30'
+  retrieved_by: project owner (manual download; CAPTCHA completed by a person)
+  method: resource page Data > CSV Download (usage/purpose form)
+  http_status: null
+  content_type: null
+  original_filename: Demographic_Profile_Bengaluru_ason_01-03-2011_1.csv
+  local_path: data/quarantine/batch-01/Demographic_Profile_Bengaluru_ason_01-03-2011_1.csv
+  note: Browser saved the file as 'Demographic_Profile_Bengaluru_ason_01-03-2011_1.csv'; copied byte-identically
+    (sha256 ec32966c4d43b24bd5b98ff3718e65b6dcd398d2968310c6d9d8ab720e266e37) and stored under the served
+    name. retrieved_at is the downloaded file's modification time. An earlier automated GET of the catalogue
+    direct URL returned HTTP 403.
+integrity:
+  bytes: 14921
+  portal_stated_bytes: 14921
+  size_matches_portal: true
+  sha256: ec32966c4d43b24bd5b98ff3718e65b6dcd398d2968310c6d9d8ab720e266e37
+  format: csv
+  encoding: utf-8
+  bom: false
+  newline: CRLF
+  newline_counts:
+    CRLF: 199
+    LF: 0
+    CR: 0
+  delimiter: ','
+  looks_like_html: false
+  passed: true
+schema:
+- name: City Name
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Zone Name
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Ward Name
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Ward No.
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Area (in sq km)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Population (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Population - Male (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Population - female (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: population - children aged 0-14 (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Population - youth aged 15-24 (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Population - adults aged 25-60 (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Population - Senior citizens aged 60+ (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+row_count: 198
+period:
+  start: null
+  end: null
+  granularity: decadal
+  as_on: '2011-03-01'
+geography:
+  country: India
+  state: Karnataka
+  city: Bengaluru
+  level: ward
+ward_scheme: UNKNOWN
+identifier_evidence: none
+sensitivity: public
+contains_personal_data: false
+semantic_checks:
+  validator: null
+  note: No validator for this dataset family yet; profiled only. Not eligible for promotion until a validator
+    is approved and passes.
+compatibility: {}
+findings: []
+value_nature: unknown
+human_review: rejected
+review:
+  decision: quarantine
+  reviewed_by: project owner
+  reviewed_on: '2026-10-17'
+  sha256: ec32966c4d43b24bd5b98ff3718e65b6dcd398d2968310c6d9d8ab720e266e37
+  accepted_caveats: []
+  note: Quarantined. Find another official ward-population source for the BBMP-198 scheme.
+status: quarantined
+promoted_to: null
+git_tracked: false
+same_bytes_as: null
+known_limitations:
+- Census 2011 population; population in thousands.
+- 'DEFECTIVE: only 67 distinct ward names for 198 ward numbers (the names cycle at wards 68 and 135);
+  not usable as a ward reference.'
+- The column labelled 'Total Population (in thousands)' ranges 21,171-95,368, which looks like persons;
+  the publisher's unit label is not trusted.
+- Youth, adult and senior columns contain only NA; ward areas look shuffled.

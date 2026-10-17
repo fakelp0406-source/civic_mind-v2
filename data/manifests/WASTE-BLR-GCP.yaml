@@ -1,0 +1,144 @@
+dataset_id: WASTE-BLR-GCP
+manifest_version: 1
+title: Solid Waste Generated, Collected, Processed Data Bengaluru from 2015-16 to 2017-18
+publisher: Bruhat Bengaluru Mahanagara Palike (published via Smart Cities Mission, MoHUA)
+host_portal: smartcities.data.gov.in
+source_class: official
+resource_page: https://www.data.gov.in/resource/solid-waste-generated-collected-processed-data-bengaluru-2015-16-2017-18
+download_url: https://data.gov.in/files/ogdpv2dms/s3fs-public/datafile/Solid_Waste_Generated_Collected_Processed_Data_Bengaluru_from_2015-16to2017-18_1.csv
+portal_published: '2019-04-23'
+portal_updated: '2025-02-17'
+licence:
+  name: Government Open Data License - India
+  url: https://www.data.gov.in/Godl
+  evidence: Catalogue field 'Released under NDSAP' / portal footer; GODL text rendered at https://www.data.gov.in/Godl
+    on 2026-10-17 (raw HTML in this batch is an app shell; see data/external/verify_2026-10-17/licence/GODL_evidence_note.md)
+  attribution: 'Bruhat Bengaluru Mahanagara Palike (published via Smart Cities Mission, MoHUA), 2019,
+    Solid Waste Generated, Collected, Processed Data Bengaluru from 2015-16 to 2017-18, Open Government
+    Data Platform India, 23/04, https://www.data.gov.in/resource/solid-waste-generated-collected-processed-data-bengaluru-2015-16-2017-18.
+    Published under Government Open Data License - India: https://www.data.gov.in/Godl.'
+  exemptions_checked: true
+retrieval:
+  retrieved_at: '2026-10-17T11:40:17+05:30'
+  retrieved_by: project owner (manual download; CAPTCHA completed by a person)
+  method: resource page Data > CSV Download (usage/purpose form)
+  http_status: null
+  content_type: null
+  original_filename: Solid_Waste_Generated_Collected_Processed_Data_Bengaluru_from_2015-16to2017-18_1.csv
+  local_path: data/external/verify_2026-10-17/waste/Solid_Waste_Generated_Collected_Processed_Data_Bengaluru_from_2015-16to2017-18_1.csv
+  note: Browser saved the file as 'Solid_Waste_Generated_Collected_Processed_Data_Bengaluru_from_2015-16to2017-18_1.csv';
+    copied byte-identically (sha256 7c51dc6a3c8dfdef0a0174e4e7f60b3444acdab13e7024a71293013fd074e394)
+    and stored under the served name. retrieved_at is the downloaded file's modification time. An earlier
+    automated GET of the catalogue direct URL returned HTTP 403.
+integrity:
+  bytes: 23868
+  portal_stated_bytes: 23868
+  size_matches_portal: true
+  sha256: 7c51dc6a3c8dfdef0a0174e4e7f60b3444acdab13e7024a71293013fd074e394
+  format: csv
+  encoding: utf-8
+  bom: false
+  newline: CRLF
+  newline_counts:
+    CRLF: 199
+    LF: 0
+    CR: 0
+  delimiter: ','
+  looks_like_html: false
+  passed: true
+schema:
+- name: City_Name
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Zone_Name
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Ward_Name
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Ward_No.
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2015-16
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2016-17
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total_quantum_of_MSW_generated_in_the_city_(in_Metric_tonnes)_-_2017-18
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2015-16
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2016-17
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total_quantum_of_MSW_collected_by_the_ULB_or_private_operator_(in_Metric_tonnes)_-_2017-18
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2015-16
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2016-17
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Average_quantum_of_MSW_that_is_processed_or_recycled_(in_Metric_tonnes)_-_2017-18
+  type: text (unparsed)
+  unit: null
+  key: null
+row_count: 198
+period:
+  start: '2015-04-01'
+  end: '2018-03-31'
+  granularity: financial_year
+  as_on: null
+geography:
+  country: India
+  state: Karnataka
+  city: Bengaluru
+  level: ward
+ward_scheme: UNKNOWN
+identifier_evidence: none
+sensitivity: public
+contains_personal_data: false
+semantic_checks:
+  validator: null
+  note: No validator for this dataset family yet; profiled only. Not eligible for promotion until a validator
+    is approved and passes.
+compatibility: {}
+findings: []
+value_nature: modelled
+human_review: pending
+review:
+  decision: keep_profiled
+  reviewed_by: project owner
+  reviewed_on: '2026-10-17'
+  sha256: 7c51dc6a3c8dfdef0a0174e4e7f60b3444acdab13e7024a71293013fd074e394
+  accepted_caveats: []
+  note: Kept, labelled as modelled estimates. Not eligible for promotion until a swm_gcp validator is
+    approved and passes, and a further review accepts it.
+status: integrity_passed
+promoted_to: null
+git_tracked: false
+same_bytes_as: null
+known_limitations:
+- 2015-2018 data under SWM Rules 2016; no post-2019 ward waste data.
+- 'MODELLED ESTIMATES, not ward measurements: generated 2016-17 = 2015-16 x 1.052632 and collected 2017-18
+  = 2016-17 x 1.052632 in all 198 wards; processed = 60% / 65% / 70%.'
+- Do not compare collection or processing efficiency between wards (collected equals generated in every
+  ward for 2015-16 and 2016-17).
+- The 2017-18 'generated' column is inconsistent with 'collected' (collected exceeds generated in 197
+  of 198 wards).

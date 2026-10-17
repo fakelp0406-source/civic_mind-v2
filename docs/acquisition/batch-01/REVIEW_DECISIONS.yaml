@@ -1,0 +1,73 @@
+# Person review decisions for acquisition batch 01.
+# Read by scripts/process_batch_01.py and applied by civicmind.catalog.review.apply_review.
+# Each decision is bound to the file's SHA-256. If the bytes change, the decision no longer
+# applies (finding "review.stale"). An "accept" must list every warning finding code as an
+# accepted caveat, or it is not applied (finding "review.incomplete").
+# Decisions were given by the project owner in the Claude Code session of 2026-10-17.
+reviewed_by: project owner
+reviewed_on: '2026-10-17'
+decisions:
+  WATER-BWSSB-2025-08:
+    decision: accept
+    sha256: 108639ce30129414e1dbd3d67b8403dcc83878bf2c2dc674b58d895f2adca974
+    accepted_caveats: [ward.duplicated, consumption_ml.zero]
+    note: >-
+      Warnings accepted as caveats: ward numbers 14, 85, 153, 191 appear twice (unresolved);
+      ward 40 Doddabidirakalu has zero consumption.
+  WATER-BWSSB-2026-03:
+    decision: accept
+    sha256: 798243f90aad7697d4c5fb9e76bc2ef32c1e91b75b9e987be52685c115d8bc3c
+    accepted_caveats: [file.newline_style, ward.duplicated, consumption_ml.zero]
+    note: >-
+      Warnings accepted as caveats: bare-CR line endings (file kept byte-identical); ward
+      numbers 14, 85, 153, 191 appear twice (unresolved); ward 40 has zero consumption.
+  ROAD-RA2019-A47:
+    decision: accept
+    sha256: 40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc
+    accepted_caveats: []
+  ROAD-RA2024-A47:
+    decision: accept
+    sha256: 702f75f332a273e9c09eb500a7d2f90c2ae71eec3bf06fe01d48a6fc56bd37e9
+    accepted_caveats: []
+  WATER-BWSSB-2025-04:
+    decision: quarantine
+    sha256: 0bafa2d91c821db63161c213c7fe0def179d10e53eed87ab72e325ef77dc20ee
+    note: >-
+      Kept quarantined: header 'Number of Connectionss' (misspelt). Not corrected or aliased.
+      Revisit only if BWSSB republishes or a header-alias rule is approved.
+  WATER-BWSSB-2025-05:
+    decision: quarantine
+    sha256: d266a3a27c8f01c5c4d005bdeab018ccf19aa76ce83f268a80c2bbdb7c31da56
+    note: >-
+      Kept quarantined: misspelt header 'Number of Connectionss'; ward 40 consumption
+      -2.00E-06. Neither is corrected.
+  DEMO-SC-BLR-2011-DEM:
+    decision: quarantine
+    sha256: ec32966c4d43b24bd5b98ff3718e65b6dcd398d2968310c6d9d8ab720e266e37
+    add_limitations:
+      - >-
+        DEFECTIVE: only 67 distinct ward names for 198 ward numbers (the names cycle at wards
+        68 and 135); not usable as a ward reference.
+      - >-
+        The column labelled 'Total Population (in thousands)' ranges 21,171-95,368, which looks
+        like persons; the publisher's unit label is not trusted.
+      - Youth, adult and senior columns contain only NA; ward areas look shuffled.
+    note: >-
+      Quarantined. Find another official ward-population source for the BBMP-198 scheme.
+  WASTE-BLR-GCP:
+    decision: keep_profiled
+    sha256: 7c51dc6a3c8dfdef0a0174e4e7f60b3444acdab13e7024a71293013fd074e394
+    value_nature: modelled
+    add_limitations:
+      - >-
+        MODELLED ESTIMATES, not ward measurements: generated 2016-17 = 2015-16 x 1.052632 and
+        collected 2017-18 = 2016-17 x 1.052632 in all 198 wards; processed = 60% / 65% / 70%.
+      - >-
+        Do not compare collection or processing efficiency between wards (collected equals
+        generated in every ward for 2015-16 and 2016-17).
+      - >-
+        The 2017-18 'generated' column is inconsistent with 'collected' (collected exceeds
+        generated in 197 of 198 wards).
+    note: >-
+      Kept, labelled as modelled estimates. Not eligible for promotion until a swm_gcp
+      validator is approved and passes, and a further review accepts it.

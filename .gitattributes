@@ -1,0 +1,32 @@
+# Line-ending and byte-preservation rules (Windows and Linux alike).
+
+# Text files: stored with LF in the repository and checked out with LF everywhere.
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Source data must stay byte-identical to the publisher's file so SHA-256 pins remain valid:
+# no end-of-line conversion and no text diff/merge.
+data/raw/** -text
+data/external/** -text
+data/quarantine/** -text
+data/docs/** -text
+
+# Archival copies whose SHA-256 is recorded in docs/audit/README.md and docs/discovery/README.md.
+docs/audit/PHASE1_AUDIT_REPORT.md -text
+docs/discovery/DATASET_DISCOVERY_REPORT.md -text
+docs/discovery/civicmind_dataset_catalog.csv -text
+
+# Binary formats.
+*.pdf binary
+*.PDF binary
+*.xlsx binary
+*.xls binary
+*.zip binary
+*.parquet binary
+*.png binary
+*.jpg binary
+*.jpeg binary

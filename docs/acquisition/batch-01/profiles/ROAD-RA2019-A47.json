@@ -1,0 +1,676 @@
+{
+  "dataset_id": "ROAD-RA2019-A47",
+  "fingerprint": {
+    "path": "data/external/verify_2026-10-17/roads/RA2019_A47.csv",
+    "bytes": 6807,
+    "sha256": "40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc",
+    "encoding": "utf-8",
+    "bom": false,
+    "newline": "CRLF",
+    "newline_counts": {
+      "CRLF": 52,
+      "LF": 0,
+      "CR": 0
+    },
+    "delimiter": ",",
+    "looks_like_html": false,
+    "contains_nul": false
+  },
+  "profile": {
+    "rows": 51,
+    "columns": 33,
+    "column_names": [
+      "States/UTs",
+      "Over-Speeding - Number of Accidents - Number",
+      "Over-Speeding - Number of Accidents - Rank",
+      "Over-Speeding - Persons Killed - Number",
+      "Over-Speeding - Persons Killed - Rank",
+      "Over-Speeding - Persons Injured - Greviously Injured",
+      "Over-Speeding - Persons Injured - Minor Injury",
+      "Over-Speeding - Persons Injured - Total Injured",
+      "Drunken Driving/ Consumption of alcohol and drug  - Number of Accidents",
+      "Drunken Driving/ Consumption of alcohol and drug  - Persons Killed",
+      "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Greviously Injured",
+      "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Minor Injury",
+      "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Total Injured",
+      "Driving on Wrong side - Number of Accidents",
+      "Driving on Wrong side - Persons Killed",
+      "Driving on Wrong side - Persons Injured - Greviously Injured",
+      "Driving on Wrong side - Persons Injured - Minor Injury",
+      "Driving on Wrong side - Persons Injured - Total Injured",
+      "Jumping Red Light - Number of Accidents",
+      "Jumping Red Light - Persons Killed",
+      "Jumping Red Light - Persons Injured - Greviously Injured",
+      "Jumping Red Light - Persons Injured - Minor Injury",
+      "Jumping Red Light - Persons Injured - Total Injured",
+      "Use of Mobile Phone - Number of Accidents",
+      "Use of Mobile Phone - Persons Killed",
+      "Use of Mobile Phone - Persons Injured - Greviously Injured",
+      "Use of Mobile Phone - Persons Injured - Minor Injury",
+      "Use of Mobile Phone - Persons Injured - Total Injured",
+      "Others - Number of Accidents",
+      "Others - Persons Killed",
+      "Others - Persons Injured - Greviously Injured",
+      "Others - Persons Injured - Minor Injury",
+      "Others - Persons Injured - Total Injured"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_column_names": [],
+    "names_with_outer_whitespace": [],
+    "header_rows_repeated_in_body": 0,
+    "columns_detail": [
+      {
+        "name": "States/UTs",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 51,
+        "numeric": 0,
+        "non_numeric_values": [
+          "Agra",
+          "Ahmedabad",
+          "Allahabad(Prayagraj)",
+          "Amritsar",
+          "Asansol Durgapur",
+          "Aurangabad",
+          "Bengaluru",
+          "Bhopal",
+          "Chandigarh",
+          "Chennai"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "Agra",
+          "Ahmedabad",
+          "Allahabad(Prayagraj)"
+        ]
+      },
+      {
+        "name": "Over-Speeding - Number of Accidents - Number",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 51,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 16.0,
+        "maximum": 53366.0,
+        "negatives": 0,
+        "samples": [
+          "477",
+          "1358",
+          "297"
+        ]
+      },
+      {
+        "name": "Over-Speeding - Number of Accidents - Rank",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 51,
+        "numeric": 50,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 1.0,
+        "maximum": 50.0,
+        "negatives": 0,
+        "samples": [
+          "33",
+          "16",
+          "38"
+        ]
+      },
+      {
+        "name": "Over-Speeding - Persons Killed - Number",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 47,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 11.0,
+        "maximum": 10885.0,
+        "negatives": 0,
+        "samples": [
+          "271",
+          "433",
+          "120"
+        ]
+      },
+      {
+        "name": "Over-Speeding - Persons Killed - Rank",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 47,
+        "numeric": 50,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 1.0,
+        "maximum": 50.0,
+        "negatives": 0,
+        "samples": [
+          "14",
+          "6",
+          "31"
+        ]
+      },
+      {
+        "name": "Over-Speeding - Persons Injured - Greviously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 48,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 19064.0,
+        "negatives": 0,
+        "samples": [
+          "223",
+          "583",
+          "123"
+        ]
+      },
+      {
+        "name": "Over-Speeding - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 48,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 29216.0,
+        "negatives": 0,
+        "samples": [
+          "93",
+          "547",
+          "76"
+        ]
+      },
+      {
+        "name": "Over-Speeding - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 51,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 4.0,
+        "maximum": 48280.0,
+        "negatives": 0,
+        "samples": [
+          "316",
+          "1130",
+          "199"
+        ]
+      },
+      {
+        "name": "Drunken Driving/ Consumption of alcohol and drug  - Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 2337.0,
+        "negatives": 0,
+        "samples": [
+          "169",
+          "3",
+          "230"
+        ]
+      },
+      {
+        "name": "Drunken Driving/ Consumption of alcohol and drug  - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 20,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 586.0,
+        "negatives": 0,
+        "samples": [
+          "74",
+          "1",
+          "96"
+        ]
+      },
+      {
+        "name": "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Greviously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 23,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 872.0,
+        "negatives": 0,
+        "samples": [
+          "145",
+          "2",
+          "102"
+        ]
+      },
+      {
+        "name": "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 26,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1148.0,
+        "negatives": 0,
+        "samples": [
+          "54",
+          "0",
+          "62"
+        ]
+      },
+      {
+        "name": "Drunken Driving/ Consumption of alcohol and drug  - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 28,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 2020.0,
+        "negatives": 0,
+        "samples": [
+          "199",
+          "2",
+          "164"
+        ]
+      },
+      {
+        "name": "Driving on Wrong side - Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 40,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 3695.0,
+        "negatives": 0,
+        "samples": [
+          "203",
+          "13",
+          "267"
+        ]
+      },
+      {
+        "name": "Driving on Wrong side - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 25,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 951.0,
+        "negatives": 0,
+        "samples": [
+          "123",
+          "4",
+          "113"
+        ]
+      },
+      {
+        "name": "Driving on Wrong side - Persons Injured - Greviously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 33,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1343.0,
+        "negatives": 0,
+        "samples": [
+          "143",
+          "4",
+          "110"
+        ]
+      },
+      {
+        "name": "Driving on Wrong side - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 33,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 2044.0,
+        "negatives": 0,
+        "samples": [
+          "39",
+          "7",
+          "53"
+        ]
+      },
+      {
+        "name": "Driving on Wrong side - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 39,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 3387.0,
+        "negatives": 0,
+        "samples": [
+          "182",
+          "11",
+          "163"
+        ]
+      },
+      {
+        "name": "Jumping Red Light - Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 24,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 2151.0,
+        "negatives": 0,
+        "samples": [
+          "102",
+          "0",
+          "233"
+        ]
+      },
+      {
+        "name": "Jumping Red Light - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 13,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 541.0,
+        "negatives": 0,
+        "samples": [
+          "59",
+          "0",
+          "98"
+        ]
+      },
+      {
+        "name": "Jumping Red Light - Persons Injured - Greviously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 19,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 694.0,
+        "negatives": 0,
+        "samples": [
+          "85",
+          "0",
+          "97"
+        ]
+      },
+      {
+        "name": "Jumping Red Light - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 20,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1222.0,
+        "negatives": 0,
+        "samples": [
+          "25",
+          "0",
+          "60"
+        ]
+      },
+      {
+        "name": "Jumping Red Light - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 23,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1916.0,
+        "negatives": 0,
+        "samples": [
+          "110",
+          "0",
+          "157"
+        ]
+      },
+      {
+        "name": "Use of Mobile Phone - Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 20,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1938.0,
+        "negatives": 0,
+        "samples": [
+          "134",
+          "1",
+          "246"
+        ]
+      },
+      {
+        "name": "Use of Mobile Phone - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 16,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 718.0,
+        "negatives": 0,
+        "samples": [
+          "89",
+          "1",
+          "102"
+        ]
+      },
+      {
+        "name": "Use of Mobile Phone - Persons Injured - Greviously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 19,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 772.0,
+        "negatives": 0,
+        "samples": [
+          "86",
+          "0",
+          "113"
+        ]
+      },
+      {
+        "name": "Use of Mobile Phone - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 18,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 785.0,
+        "negatives": 0,
+        "samples": [
+          "39",
+          "0",
+          "54"
+        ]
+      },
+      {
+        "name": "Use of Mobile Phone - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 21,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1557.0,
+        "negatives": 0,
+        "samples": [
+          "125",
+          "0",
+          "167"
+        ]
+      },
+      {
+        "name": "Others - Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 36,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 19294.0,
+        "negatives": 0,
+        "samples": [
+          "0",
+          "140",
+          "38"
+        ]
+      },
+      {
+        "name": "Others - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 35,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 4117.0,
+        "negatives": 0,
+        "samples": [
+          "0",
+          "70",
+          "33"
+        ]
+      },
+      {
+        "name": "Others - Persons Injured - Greviously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 36,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 8721.0,
+        "negatives": 0,
+        "samples": [
+          "0",
+          "67",
+          "17"
+        ]
+      },
+      {
+        "name": "Others - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 35,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 8239.0,
+        "negatives": 0,
+        "samples": [
+          "0",
+          "48",
+          "9"
+        ]
+      },
+      {
+        "name": "Others - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 35,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 16960.0,
+        "negatives": 0,
+        "samples": [
+          "0",
+          "115",
+          "26"
+        ]
+      }
+    ]
+  },
+  "findings": [
+    {
+      "code": "entities.count",
+      "severity": "info",
+      "message": "50 entity rows (excluding Total)",
+      "details": {
+        "label_column": "States/UTs",
+        "entities": [
+          "Agra",
+          "Ahmedabad",
+          "Allahabad(Prayagraj)",
+          "Amritsar",
+          "Asansol Durgapur",
+          "Aurangabad",
+          "Bengaluru",
+          "Bhopal",
+          "Chandigarh",
+          "Coimbatore",
+          "Chennai",
+          "Delhi",
+          "Dhanbad",
+          "Faridabad",
+          "Ghaziabad",
+          "Gwalior",
+          "Hyderabad",
+          "Indore",
+          "Jabalpur",
+          "Jaipur",
+          "Jamshedpur",
+          "Jodhpur",
+          "Kannur",
+          "Kanpur",
+          "Khozikode",
+          "Kochi",
+          "Kolkata",
+          "Kollam",
+          "Kota",
+          "Lucknow",
+          "Ludhiana",
+          "Madurai",
+          "Mallapuram",
+          "Meerut",
+          "Mumbai",
+          "Nagpur",
+          "Nashik",
+          "Patna",
+          "Pune",
+          "Raipur",
+          "Rajkot",
+          "Srinagar",
+          "Surat",
+          "Thiruvanthapuram",
+          "Thrissur",
+          "Tiruchirapalli",
+          "Vadodra",
+          "Varanasi",
+          "Vijaywada city",
+          "Vizaq"
+        ]
+      }
+    },
+    {
+      "code": "total.consistent",
+      "severity": "info",
+      "message": "Total row equals the sum of entity rows for every count column",
+      "details": {}
+    }
+  ],
+  "status": "promoted"
+}

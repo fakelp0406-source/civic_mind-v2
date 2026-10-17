@@ -1,0 +1,658 @@
+{
+  "dataset_id": "ROAD-RA2024-A49",
+  "staged_path": "data/external/batch-02/roads/Transport_2024_Annexure_49.csv",
+  "period_label_from_filename_or_content": "2024",
+  "fingerprint": {
+    "path": "data/external/batch-02/roads/Transport_2024_Annexure_49.csv",
+    "bytes": 5762,
+    "sha256": "4a01cd8fd842ca44b2a4a42ad7e75f9a33fdffcdce82a828d4aaff0d6775a257",
+    "encoding": "utf-8",
+    "bom": false,
+    "newline": "CRLF",
+    "newline_counts": {
+      "CRLF": 52,
+      "LF": 0,
+      "CR": 0
+    },
+    "delimiter": ",",
+    "looks_like_html": false,
+    "contains_nul": false
+  },
+  "raw_header": [
+    "Sl. No.",
+    "Million Plus Cities",
+    "T-Junction - Total Number of Accidents - Number",
+    "T-Junction - Total Number of Accidents - Rank",
+    "T-Junction - Persons Killed - Number",
+    "T-Junction - Persons Killed - Rank",
+    "T-Junction - Persons Injured - Grievously Injured",
+    "T-Junction - Persons Injured - Minor Injury",
+    "T-Junction - Persons Injured - Total Injured",
+    "Y-Junction - Total Number of Accidents",
+    "Y-Junction - Persons Killed",
+    "Y-Junction - Persons Injured - Grievously Injured",
+    "Y-Junction - Persons Injured - Minor Injury",
+    "Y-Junction - Persons Injured - Total Injured",
+    "Four Arm Junction - Total Number of Accidents",
+    "Four Arm Junction - Persons Killed",
+    "Four Arm Junction - Persons Injured - Grievously Injured",
+    "Four Arm Junction - Persons Injured - Minor Injury",
+    "Four Arm Junction - Persons Injured - Total Injured",
+    "Staggered Junction - Total Number of Accidents",
+    "Staggered Junction - Persons Killed",
+    "Staggered Junction - Persons Injured - Grievously Injured",
+    "Staggered Junction - Persons Injured - Minor Injury",
+    "Staggered Junction - Persons Injured - Total Injured",
+    "Round about Junction - Total Number of Accidents",
+    "Round about Junction - Persons Killed",
+    "Round about Junction - Persons Injured - Grievously Injured",
+    "Round about Junction - Persons Injured - Minor Injury",
+    "Round about Junction - Persons Injured - Total Injured"
+  ],
+  "profile": {
+    "rows": 51,
+    "columns": 29,
+    "column_names": [
+      "Sl. No.",
+      "Million Plus Cities",
+      "T-Junction - Total Number of Accidents - Number",
+      "T-Junction - Total Number of Accidents - Rank",
+      "T-Junction - Persons Killed - Number",
+      "T-Junction - Persons Killed - Rank",
+      "T-Junction - Persons Injured - Grievously Injured",
+      "T-Junction - Persons Injured - Minor Injury",
+      "T-Junction - Persons Injured - Total Injured",
+      "Y-Junction - Total Number of Accidents",
+      "Y-Junction - Persons Killed",
+      "Y-Junction - Persons Injured - Grievously Injured",
+      "Y-Junction - Persons Injured - Minor Injury",
+      "Y-Junction - Persons Injured - Total Injured",
+      "Four Arm Junction - Total Number of Accidents",
+      "Four Arm Junction - Persons Killed",
+      "Four Arm Junction - Persons Injured - Grievously Injured",
+      "Four Arm Junction - Persons Injured - Minor Injury",
+      "Four Arm Junction - Persons Injured - Total Injured",
+      "Staggered Junction - Total Number of Accidents",
+      "Staggered Junction - Persons Killed",
+      "Staggered Junction - Persons Injured - Grievously Injured",
+      "Staggered Junction - Persons Injured - Minor Injury",
+      "Staggered Junction - Persons Injured - Total Injured",
+      "Round about Junction - Total Number of Accidents",
+      "Round about Junction - Persons Killed",
+      "Round about Junction - Persons Injured - Grievously Injured",
+      "Round about Junction - Persons Injured - Minor Injury",
+      "Round about Junction - Persons Injured - Total Injured"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_column_names": [],
+    "names_with_outer_whitespace": [],
+    "header_rows_repeated_in_body": 0,
+    "columns_detail": [
+      {
+        "name": "Sl. No.",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 51,
+        "numeric": 50,
+        "non_numeric_values": [
+          "Total"
+        ],
+        "minimum": 1.0,
+        "maximum": 50.0,
+        "negatives": 0,
+        "samples": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "name": "Million Plus Cities",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 51,
+        "numeric": 0,
+        "non_numeric_values": [
+          "Agra",
+          "Ahmedabad",
+          "Allahabad (Prayagraj)",
+          "Amritsar",
+          "Asansol Durgapur",
+          "Aurangabad",
+          "Bengaluru",
+          "Bhopal",
+          "Chandigarh",
+          "Chennai"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "Agra",
+          "Ahmedabad",
+          "Allahabad (Prayagraj)"
+        ]
+      },
+      {
+        "name": "T-Junction - Total Number of Accidents - Number",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 44,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 9116.0,
+        "negatives": 0,
+        "samples": [
+          "122",
+          "87",
+          "43"
+        ]
+      },
+      {
+        "name": "T-Junction - Total Number of Accidents - Rank",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 44,
+        "numeric": 50,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 1.0,
+        "maximum": 49.0,
+        "negatives": 0,
+        "samples": [
+          "19",
+          "24",
+          "32"
+        ]
+      },
+      {
+        "name": "T-Junction - Persons Killed - Number",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 35,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1427.0,
+        "negatives": 0,
+        "samples": [
+          "69",
+          "18",
+          "22"
+        ]
+      },
+      {
+        "name": "T-Junction - Persons Killed - Rank",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 35,
+        "numeric": 50,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 1.0,
+        "maximum": 49.0,
+        "negatives": 0,
+        "samples": [
+          "6",
+          "20",
+          "17"
+        ]
+      },
+      {
+        "name": "T-Junction - Persons Injured - Grievously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 39,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 3641.0,
+        "negatives": 0,
+        "samples": [
+          "53",
+          "44",
+          "18"
+        ]
+      },
+      {
+        "name": "T-Junction - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 37,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 5131.0,
+        "negatives": 0,
+        "samples": [
+          "15",
+          "19",
+          "6"
+        ]
+      },
+      {
+        "name": "T-Junction - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 42,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 8772.0,
+        "negatives": 0,
+        "samples": [
+          "68",
+          "63",
+          "24"
+        ]
+      },
+      {
+        "name": "Y-Junction - Total Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 38,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 3062.0,
+        "negatives": 0,
+        "samples": [
+          "140",
+          "18",
+          "31"
+        ]
+      },
+      {
+        "name": "Y-Junction - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 24,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 594.0,
+        "negatives": 0,
+        "samples": [
+          "63",
+          "3",
+          "16"
+        ]
+      },
+      {
+        "name": "Y-Junction - Persons Injured - Grievously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1361.0,
+        "negatives": 0,
+        "samples": [
+          "59",
+          "11",
+          "14"
+        ]
+      },
+      {
+        "name": "Y-Junction - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 29,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1354.0,
+        "negatives": 0,
+        "samples": [
+          "28",
+          "1",
+          "7"
+        ]
+      },
+      {
+        "name": "Y-Junction - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 38,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 2715.0,
+        "negatives": 0,
+        "samples": [
+          "87",
+          "12",
+          "21"
+        ]
+      },
+      {
+        "name": "Four Arm Junction - Total Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 44,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 1.0,
+        "maximum": 6587.0,
+        "negatives": 0,
+        "samples": [
+          "133",
+          "240",
+          "40"
+        ]
+      },
+      {
+        "name": "Four Arm Junction - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 33,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1076.0,
+        "negatives": 0,
+        "samples": [
+          "54",
+          "36",
+          "24"
+        ]
+      },
+      {
+        "name": "Four Arm Junction - Persons Injured - Grievously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 38,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 2437.0,
+        "negatives": 0,
+        "samples": [
+          "63",
+          "104",
+          "15"
+        ]
+      },
+      {
+        "name": "Four Arm Junction - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 41,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 3189.0,
+        "negatives": 0,
+        "samples": [
+          "16",
+          "69",
+          "7"
+        ]
+      },
+      {
+        "name": "Four Arm Junction - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 46,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 5626.0,
+        "negatives": 0,
+        "samples": [
+          "79",
+          "173",
+          "22"
+        ]
+      },
+      {
+        "name": "Staggered Junction - Total Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 33,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 2173.0,
+        "negatives": 0,
+        "samples": [
+          "144",
+          "8",
+          "78"
+        ]
+      },
+      {
+        "name": "Staggered Junction - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 20,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 631.0,
+        "negatives": 0,
+        "samples": [
+          "73",
+          "2",
+          "47"
+        ]
+      },
+      {
+        "name": "Staggered Junction - Persons Injured - Grievously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 25,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 789.0,
+        "negatives": 0,
+        "samples": [
+          "61",
+          "4",
+          "30"
+        ]
+      },
+      {
+        "name": "Staggered Junction - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 24,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 968.0,
+        "negatives": 0,
+        "samples": [
+          "21",
+          "4",
+          "8"
+        ]
+      },
+      {
+        "name": "Staggered Junction - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 29,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1757.0,
+        "negatives": 0,
+        "samples": [
+          "82",
+          "8",
+          "38"
+        ]
+      },
+      {
+        "name": "Round about Junction - Total Number of Accidents",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 35,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 3675.0,
+        "negatives": 0,
+        "samples": [
+          "117",
+          "36",
+          "43"
+        ]
+      },
+      {
+        "name": "Round about Junction - Persons Killed",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 23,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 775.0,
+        "negatives": 0,
+        "samples": [
+          "63",
+          "6",
+          "21"
+        ]
+      },
+      {
+        "name": "Round about Junction - Persons Injured - Grievously Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 25,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 1285.0,
+        "negatives": 0,
+        "samples": [
+          "42",
+          "11",
+          "19"
+        ]
+      },
+      {
+        "name": "Round about Junction - Persons Injured - Minor Injury",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 28,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 2505.0,
+        "negatives": 0,
+        "samples": [
+          "23",
+          "13",
+          "10"
+        ]
+      },
+      {
+        "name": "Round about Junction - Persons Injured - Total Injured",
+        "non_empty": 51,
+        "empty": 0,
+        "distinct": 35,
+        "numeric": 51,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 3790.0,
+        "negatives": 0,
+        "samples": [
+          "65",
+          "24",
+          "29"
+        ]
+      }
+    ]
+  },
+  "validator_family": "morth_city",
+  "findings": [
+    {
+      "code": "entities.count",
+      "severity": "info",
+      "message": "50 entity rows (excluding Total)",
+      "details": {
+        "label_column": "Million Plus Cities",
+        "entities": [
+          "Agra",
+          "Ahmedabad",
+          "Allahabad (Prayagraj)",
+          "Amritsar",
+          "Asansol Durgapur",
+          "Aurangabad",
+          "Bengaluru",
+          "Bhopal",
+          "Chandigarh",
+          "Coimbatore",
+          "Chennai",
+          "Delhi",
+          "Dhanbad",
+          "Faridabad",
+          "Ghaziabad",
+          "Gwalior",
+          "Hyderabad",
+          "Indore",
+          "Jabalpur",
+          "Jaipur",
+          "Jamshedpur",
+          "Jodhpur",
+          "Kannur",
+          "Kanpur",
+          "Kozhikode",
+          "Kochi",
+          "Kolkata",
+          "Kollam",
+          "Kota",
+          "Lucknow",
+          "Ludhiana",
+          "Madurai",
+          "Mallapuram",
+          "Meerut",
+          "Mumbai",
+          "Nagpur",
+          "Nashik",
+          "Patna",
+          "Pune",
+          "Raipur",
+          "Rajkot",
+          "Srinagar",
+          "Surat",
+          "Thiruvananthapuram",
+          "Thrissur",
+          "Tiruchirappalli",
+          "Vadodara",
+          "Varanasi",
+          "Vijayawada city",
+          "Vishakhapatnam"
+        ]
+      }
+    },
+    {
+      "code": "total.consistent",
+      "severity": "info",
+      "message": "Total row equals the sum of entity rows for every count column",
+      "details": {}
+    }
+  ],
+  "sensitivity_header_scan": [],
+  "extra_checks": {
+    "rank_check": [
+      {
+        "rank_column": "T-Junction - Total Number of Accidents - Rank",
+        "value_column": "T-Junction - Total Number of Accidents - Number",
+        "mismatched_rows": []
+      },
+      {
+        "rank_column": "T-Junction - Persons Killed - Rank",
+        "value_column": "T-Junction - Persons Killed - Number",
+        "mismatched_rows": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "dataset_id": "WATER-BWSSB-2025-09",
+  "staged_path": "data/external/batch-02/water/Water_Consumption_Data_Sept_25_4.csv",
+  "period_label_from_filename_or_content": "2025-09",
+  "fingerprint": {
+    "path": "data/external/batch-02/water/Water_Consumption_Data_Sept_25_4.csv",
+    "bytes": 5845,
+    "sha256": "3f5ef8d0dc3ed08e2b593ba8a48ef584f913824a01eb80b34eb5584de1117b48",
+    "encoding": "utf-8",
+    "bom": false,
+    "newline": "mixed",
+    "newline_counts": {
+      "CRLF": 1,
+      "LF": 0,
+      "CR": 202
+    },
+    "delimiter": ",",
+    "looks_like_html": false,
+    "contains_nul": false
+  },
+  "raw_header": [
+    "Ward number ",
+    "Ward Name",
+    "Number of Connections",
+    "Consumption in ML"
+  ],
+  "profile": {
+    "rows": 202,
+    "columns": 4,
+    "column_names": [
+      "Ward number ",
+      "Ward Name",
+      "Number of Connections",
+      "Consumption in ML"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_column_names": [],
+    "names_with_outer_whitespace": [
+      "Ward number "
+    ],
+    "header_rows_repeated_in_body": 0,
+    "columns_detail": [
+      {
+        "name": "Ward number ",
+        "non_empty": 202,
+        "empty": 0,
+        "distinct": 198,
+        "numeric": 202,
+        "non_numeric_values": [],
+        "minimum": 1.0,
+        "maximum": 198.0,
+        "negatives": 0,
+        "samples": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "name": "Ward Name",
+        "non_empty": 202,
+        "empty": 0,
+        "distinct": 201,
+        "numeric": 0,
+        "non_numeric_values": [
+          "A. Narayanapura",
+          "Adugodi",
+          "Agaram",
+          "Agrahara Dasarahalli",
+          "Anjanapura",
+          "Arakere",
+          "Aramane Nagar",
+          "Attiguppe",
+          "Attur",
+          "Azadnagar"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "Kempegowda Ward",
+          "Chowdeshwari Ward",
+          "Attur"
+        ]
+      },
+      {
+        "name": "Number of Connections",
+        "non_empty": 202,
+        "empty": 0,
+        "distinct": 195,
+        "numeric": 202,
+        "non_numeric_values": [],
+        "minimum": 1.0,
+        "maximum": 16579.0,
+        "negatives": 0,
+        "samples": [
+          "4286",
+          "464",
+          "6362"
+        ]
+      },
+      {
+        "name": "Consumption in ML",
+        "non_empty": 202,
+        "empty": 0,
+        "distinct": 201,
+        "numeric": 202,
+        "non_numeric_values": [],
+        "minimum": 0.0,
+        "maximum": 601.54,
+        "negatives": 0,
+        "samples": [
+          "110.18",
+          "18.95",
+          "169.50"
+        ]
+      }
+    ]
+  },
+  "validator_family": "bwssb",
+  "findings": [
+    {
+      "code": "ward.range",
+      "severity": "info",
+      "message": "Ward number range and count",
+      "details": {
+        "min": 1,
+        "max": 198,
+        "distinct": 198,
+        "rows": 202
+      }
+    },
+    {
+      "code": "ward.duplicated",
+      "severity": "warning",
+      "message": "4 ward numbers appear on more than one row (left unresolved)",
+      "details": {
+        "ward_numbers": {
+          "14": [
+            "Bagalagunte",
+            "sidedahalli"
+          ],
+          "85": [
+            "Doddanekkundi",
+            "Varthur"
+          ],
+          "153": [
+            "Jayanagar",
+            "Jayangar"
+          ],
+          "191": [
+            "Singasandra",
+            "Singsandra"
+          ]
+        }
+      }
+    },
+    {
+      "code": "connections.total",
+      "severity": "info",
+      "message": "Column total of connections (all rows, duplicates included)",
+      "details": {
+        "total": 1052878.0
+      }
+    },
+    {
+      "code": "consumption_ml.zero",
+      "severity": "warning",
+      "message": "1 rows with zero consumption_ml",
+      "details": {
+        "wards": [
+          "Doddabidirakalu"
+        ]
+      }
+    },
+    {
+      "code": "consumption_ml.total",
+      "severity": "info",
+      "message": "Column total of consumption_ml (all rows, duplicates included)",
+      "details": {
+        "total": 30346.23
+      }
+    }
+  ],
+  "sensitivity_header_scan": [],
+  "extra_checks": {}
+}

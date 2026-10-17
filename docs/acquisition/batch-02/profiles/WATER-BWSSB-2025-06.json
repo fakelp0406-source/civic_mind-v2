@@ -1,0 +1,206 @@
+{
+  "dataset_id": "WATER-BWSSB-2025-06",
+  "staged_path": "data/external/batch-02/water/Water_Consumption_Data_June_2025.csv",
+  "period_label_from_filename_or_content": "2025-06",
+  "fingerprint": {
+    "path": "data/external/batch-02/water/Water_Consumption_Data_June_2025.csv",
+    "bytes": 6624,
+    "sha256": "b198f725f5ca7e49624a7a63df2db5b6ec9515bb3ba4a72b3e10d803517e56e8",
+    "encoding": "utf-8",
+    "bom": false,
+    "newline": "mixed",
+    "newline_counts": {
+      "CRLF": 1,
+      "LF": 0,
+      "CR": 202
+    },
+    "delimiter": ",",
+    "looks_like_html": false,
+    "contains_nul": false
+  },
+  "raw_header": [
+    "Ward number ",
+    "Ward Name",
+    "Number of Connectionss",
+    "Consumption in ML"
+  ],
+  "profile": {
+    "rows": 202,
+    "columns": 4,
+    "column_names": [
+      "Ward number ",
+      "Ward Name",
+      "Number of Connectionss",
+      "Consumption in ML"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_column_names": [],
+    "names_with_outer_whitespace": [
+      "Ward number "
+    ],
+    "header_rows_repeated_in_body": 0,
+    "columns_detail": [
+      {
+        "name": "Ward number ",
+        "non_empty": 202,
+        "empty": 0,
+        "distinct": 198,
+        "numeric": 202,
+        "non_numeric_values": [],
+        "minimum": 1.0,
+        "maximum": 198.0,
+        "negatives": 0,
+        "samples": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "name": "Ward Name",
+        "non_empty": 202,
+        "empty": 0,
+        "distinct": 201,
+        "numeric": 0,
+        "non_numeric_values": [
+          "A. Narayanapura",
+          "Adugodi",
+          "Agaram",
+          "Agrahara Dasarahalli",
+          "Anjanapura",
+          "Arakere",
+          "Aramane Nagar",
+          "Attiguppe",
+          "Attur",
+          "Azadnagar"
+        ],
+        "minimum": null,
+        "maximum": null,
+        "negatives": 0,
+        "samples": [
+          "Kempegowda Ward",
+          "Chowdeshwari Ward",
+          "Attur"
+        ]
+      },
+      {
+        "name": "Number of Connectionss",
+        "non_empty": 202,
+        "empty": 0,
+        "distinct": 197,
+        "numeric": 202,
+        "non_numeric_values": [],
+        "minimum": 1.0,
+        "maximum": 16297.0,
+        "negatives": 0,
+        "samples": [
+          "4218",
+          "460",
+          "6109"
+        ]
+      },
+      {
+        "name": "Consumption in ML",
+        "non_empty": 202,
+        "empty": 0,
+        "distinct": 202,
+        "numeric": 202,
+        "non_numeric_values": [],
+        "minimum": -2e-06,
+        "maximum": 572.166949,
+        "negatives": 1,
+        "samples": [
+          "112.883906",
+          "9.808984",
+          "170.257709"
+        ]
+      }
+    ]
+  },
+  "validator_family": "bwssb",
+  "findings": [
+    {
+      "code": "schema.columns",
+      "severity": "error",
+      "message": "Header differs from the expected BWSSB monthly schema",
+      "details": {
+        "expected": [
+          "Ward number ",
+          "Ward Name",
+          "Number of Connections",
+          "Consumption in ML"
+        ],
+        "found": [
+          "Ward number ",
+          "Ward Name",
+          "Number of Connectionss",
+          "Consumption in ML"
+        ]
+      }
+    },
+    {
+      "code": "ward.range",
+      "severity": "info",
+      "message": "Ward number range and count",
+      "details": {
+        "min": 1,
+        "max": 198,
+        "distinct": 198,
+        "rows": 202
+      }
+    },
+    {
+      "code": "ward.duplicated",
+      "severity": "warning",
+      "message": "4 ward numbers appear on more than one row (left unresolved)",
+      "details": {
+        "ward_numbers": {
+          "14": [
+            "Bagalagunte",
+            "sidedahalli"
+          ],
+          "85": [
+            "Doddanekkundi",
+            "Varthur"
+          ],
+          "153": [
+            "Jayanagar",
+            "Jayangar"
+          ],
+          "191": [
+            "Singasandra",
+            "Singsandra"
+          ]
+        }
+      }
+    },
+    {
+      "code": "connections.total",
+      "severity": "info",
+      "message": "Column total of connections (all rows, duplicates included)",
+      "details": {
+        "total": 1034634.0
+      }
+    },
+    {
+      "code": "consumption_ml.negative",
+      "severity": "error",
+      "message": "1 negative consumption_ml values",
+      "details": {
+        "wards": [
+          "Doddabidirakalu"
+        ]
+      }
+    },
+    {
+      "code": "consumption_ml.total",
+      "severity": "info",
+      "message": "Column total of consumption_ml (all rows, duplicates included)",
+      "details": {
+        "total": 30754.875
+      }
+    }
+  ],
+  "sensitivity_header_scan": [],
+  "extra_checks": {}
+}

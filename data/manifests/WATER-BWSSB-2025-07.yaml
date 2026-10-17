@@ -1,0 +1,170 @@
+dataset_id: WATER-BWSSB-2025-07
+manifest_version: 1
+title: BWSSB Water consumption data for the month of July-2025
+publisher: Bangalore Water Supply and Sewerage Board
+host_portal: karnataka.data.gov.in
+source_class: official
+resource_page: https://www.data.gov.in/resource/bwssb-water-consumption-data-month-july-2025
+download_url: https://www.data.gov.in/files/ogdpv2dms/s3fs-public/Water_Consumption_Data_July_2025_0.csv
+portal_published: '2025-08-30'
+portal_updated: '2025-08-30'
+licence:
+  name: Government Open Data License - India
+  url: https://www.data.gov.in/Godl
+  evidence: Portal footer on each resource page read 2026-10-17 ('licensed under the Government Open Data
+    License-India'); GODL text recorded in data/external/verify_2026-10-17/licence/GODL_evidence_note.md
+  attribution: 'Bangalore Water Supply and Sewerage Board, 2025, BWSSB Water consumption data for the
+    month of July-2025, Open Government Data Platform India, 30/08, https://www.data.gov.in/resource/bwssb-water-consumption-data-month-july-2025.
+    Published under Government Open Data License - India: https://www.data.gov.in/Godl.'
+  exemptions_checked: true
+retrieval:
+  retrieved_at: '2026-10-17T17:57:32+05:30'
+  retrieved_by: UNKNOWN (not yet provided by the project owner)
+  method: UNKNOWN (not yet provided by the project owner)
+  http_status: null
+  content_type: null
+  original_filename: Water_Consumption_Data_July_2025_0.csv
+  local_path: data/external/batch-02/water/Water_Consumption_Data_July_2025_0.csv
+  note: Copied byte-identically (hash-checked) from the project owner's Downloads folder into data/external/batch-02/.
+    retrieved_at is that Downloads file's modification time, not a confirmed download time. Who downloaded
+    the file and by which route is UNKNOWN until the project owner provides it.
+integrity:
+  bytes: 5844
+  portal_stated_bytes: 5844
+  size_matches_portal: true
+  sha256: 0034b08291e591ca0d94a535db172eea408746c35c3681551e58b39d316698b3
+  format: csv
+  encoding: utf-8
+  bom: false
+  newline: mixed
+  newline_counts:
+    CRLF: 1
+    LF: 0
+    CR: 202
+  delimiter: ','
+  looks_like_html: false
+  passed: true
+schema:
+- name: 'Ward number '
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Ward Name
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Connections
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Consumption in ML
+  type: text (unparsed)
+  unit: null
+  key: null
+row_count: 202
+period:
+  start: '2025-07-01'
+  end: '2025-07-31'
+  granularity: month
+  as_on: null
+geography:
+  country: India
+  state: Karnataka
+  city: Bengaluru
+  level: ward
+ward_scheme: UNKNOWN
+identifier_evidence: none
+sensitivity: public
+contains_personal_data: false
+semantic_checks:
+  validator: bwssb@v1
+  errors: 0
+  warnings: 3
+compatibility:
+  portal_catalogue: Water consumption data
+  portal_listed_size: 5.7 KB
+  portal_metadata_evidence: Resource page rendered in a browser on 2026-10-17 (metadata only; no file
+    downloaded by this session). Listed file size is rounded to 0.1 KB on the page.
+findings:
+- code: file.newline_style
+  severity: warning
+  message: Unusual line endings (mixed); parsed with universal newlines in memory, file unchanged
+  details:
+    CRLF: 1
+    LF: 0
+    CR: 202
+- code: ward.range
+  severity: info
+  message: Ward number range and count
+  details:
+    min: 1
+    max: 198
+    distinct: 198
+    rows: 202
+- code: ward.duplicated
+  severity: warning
+  message: 4 ward numbers appear on more than one row (left unresolved)
+  details:
+    ward_numbers:
+      '14':
+      - Bagalagunte
+      - sidedahalli
+      '85':
+      - Doddanekkundi
+      - Varthur
+      '153':
+      - Jayanagar
+      - Jayangar
+      '191':
+      - Singasandra
+      - Singsandra
+- code: connections.total
+  severity: info
+  message: Column total of connections (all rows, duplicates included)
+  details:
+    total: 1042929.0
+- code: consumption_ml.zero
+  severity: warning
+  message: 1 rows with zero consumption_ml
+  details:
+    wards:
+    - Doddabidirakalu
+- code: consumption_ml.total
+  severity: info
+  message: Column total of consumption_ml (all rows, duplicates included)
+  details:
+    total: 30457.44
+- code: series.not_compared
+  severity: info
+  message: No trusted or staged file for 2025-06 (quarantined or not acquired); month-to-month swing check
+    not run
+  details:
+    previous: 2025-06
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
+value_nature: unknown
+human_review: accepted
+review:
+  decision: accept
+  reviewed_by: project owner
+  reviewed_on: '2026-10-17'
+  sha256: 0034b08291e591ca0d94a535db172eea408746c35c3681551e58b39d316698b3
+  accepted_caveats:
+  - consumption_ml.zero
+  - file.newline_style
+  - ward.duplicated
+  permitted_uses: []
+  note: 'Approved for trusted promotion (owner item 3). Caveats: ward 40 Doddabidirakalu zero consumption;
+    ward numbers 14, 85, 153, 191 on two rows each (unresolved); bare-CR line endings (file kept byte-identical).
+    Month-to-month check not run: June 2025 is quarantined.'
+status: promoted
+promoted_to: data/raw/water/Water_Consumption_Data_July_2025_0.csv
+git_tracked: false
+same_bytes_as: null
+known_limitations:
+- Recorded consumption, not supply; bulk and commercial connections included.
+- Ward numbering (1-198) does not by itself establish the BBMP-2010 scheme.

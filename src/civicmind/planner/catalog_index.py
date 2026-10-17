@@ -2,10 +2,16 @@
 
 Built only from manifests (``data/manifests/*.yaml``); never from data values. A dataset's
 family comes from its id prefix (documented below), not from its contents.
+
+A family can hold several source tables with different meanings (MoRTH publishes Annexures
+1, 2, 47, 49, ... in the same yearly edition), so each entry also records its source
+``table``, parsed from the id (``ROAD-RA<edition>-<annexure>``). Feasibility matches on
+family, table and period; a road id that does not parse has no table and never matches.
 """
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -18,6 +24,9 @@ FAMILY_BY_PREFIX = (
     ("WASTE-", "waste"),
     ("DEMO-", "census"),
 )
+
+#: ``ROAD-RA2024-A47`` -> edition 2024, table "A47" (the MoRTH annexure number).
+ROAD_ID = re.compile(r"^ROAD-RA(?P<edition>\d{4})-(?P<table>A\d+)$")
 
 
 @dataclass(frozen=True)
@@ -33,10 +42,17 @@ class DatasetEntry:
     review_note: str | None
     title: str
     columns: tuple[str, ...]  # verbatim header recorded in the manifest (metadata)
+    table: str | None = None  # source table within the family (roads: "A47"); None otherwise
 
 
 def _family(dataset_id: str) -> str | None:
     return next((fam for prefix, fam in FAMILY_BY_PREFIX if dataset_id.startswith(prefix)), None)
+
+
+def source_table(dataset_id: str) -> str | None:
+    """The source table a dataset id names: the annexure for MoRTH ids, else ``None``."""
+    match = ROAD_ID.match(dataset_id)
+    return match.group("table") if match else None
 
 
 def load_index(root: str | Path) -> tuple[DatasetEntry, ...]:
@@ -66,9 +82,10 @@ def load_index(root: str | Path) -> tuple[DatasetEntry, ...]:
                 review_note=m.review.note if m.review else None,
                 title=m.title,
                 columns=tuple(c.name for c in m.schema_),
+                table=source_table(m.dataset_id),
             )
         )
     return tuple(entries)
 
 
-__all__ = ["FAMILY_BY_PREFIX", "DatasetEntry", "load_index"]
+__all__ = ["FAMILY_BY_PREFIX", "ROAD_ID", "DatasetEntry", "load_index", "source_table"]

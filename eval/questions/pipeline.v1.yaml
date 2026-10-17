@@ -195,12 +195,13 @@ items:
     expect: {status: refused, stage: feasibility, code: modelled.not_trusted}
 
   # --- unavailable periods ------------------------------------------------------------------
+  # Batch 02 (2026-10-17) catalogued these periods; the refusal now names the actual reason.
   - id: P60
     question: What was water consumption in June 2025?
     category: unavailable_period
-    expect: {status: refused, stage: feasibility, code: period.unavailable}
-  - id: P61
-    question: How many over-speeding accidents did Bengaluru record in 2021?
+    expect: {status: refused, stage: feasibility, code: status.quarantined}
+  - id: P61  # 2021 was promoted in batch 02; 2018 is not catalogued
+    question: How many over-speeding accidents did Bengaluru record in 2018?
     category: unavailable_period
     expect: {status: refused, stage: feasibility, code: period.unavailable}
 

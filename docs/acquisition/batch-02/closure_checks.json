@@ -1,0 +1,472 @@
+{
+  "manifest_hash_matches_files": {
+    "checked": 37,
+    "failed": []
+  },
+  "review_decisions_applied": {
+    "decisions": 15,
+    "mismatches": [],
+    "by_dataset": {
+      "ROAD-RA2020-A47": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "ROAD-RA2021-A47": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "ROAD-RA2022-A47": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "ROAD-RA2023-A47": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "WATER-BWSSB-2025-07": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "WATER-BWSSB-2025-09": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "WATER-BWSSB-2025-10": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "WATER-BWSSB-2025-11": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "WATER-BWSSB-2025-12": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "WATER-BWSSB-2026-02": {
+        "decision": "accept",
+        "status": "promoted"
+      },
+      "WATER-BWSSB-2026-01": {
+        "decision": "keep_profiled",
+        "status": "validated"
+      },
+      "WATER-BWSSB-2025-06": {
+        "decision": "quarantine",
+        "status": "quarantined"
+      },
+      "ROAD-RA2024-A1": {
+        "decision": "keep_profiled",
+        "status": "integrity_passed"
+      },
+      "ROAD-RA2024-A2": {
+        "decision": "keep_profiled",
+        "status": "integrity_passed"
+      },
+      "ROAD-RA2024-A49": {
+        "decision": "keep_profiled",
+        "status": "integrity_passed"
+      }
+    }
+  },
+  "batch02_status": {
+    "ROAD-RA2020-A47": "promoted",
+    "ROAD-RA2021-A47": "promoted",
+    "ROAD-RA2022-A47": "promoted",
+    "ROAD-RA2023-A47": "promoted",
+    "ROAD-RA2024-A1": "integrity_passed",
+    "ROAD-RA2024-A2": "integrity_passed",
+    "ROAD-RA2024-A49": "integrity_passed",
+    "WATER-BWSSB-2025-06": "quarantined",
+    "WATER-BWSSB-2025-07": "promoted",
+    "WATER-BWSSB-2025-09": "promoted",
+    "WATER-BWSSB-2025-10": "promoted",
+    "WATER-BWSSB-2025-11": "promoted",
+    "WATER-BWSSB-2025-12": "promoted",
+    "WATER-BWSSB-2026-01": "validated",
+    "WATER-BWSSB-2026-02": "promoted"
+  },
+  "download_method_unknown": true,
+  "source_caveats_present": {
+    "ROAD-RA2020-A47": true,
+    "ROAD-RA2021-A47": true,
+    "ROAD-RA2022-A47": true,
+    "ROAD-RA2023-A47": true
+  },
+  "batch01_manifests_equal_git_head": {
+    "DEMO-SC-BLR-2011-DEM": true,
+    "ROAD-RA2019-A47": true,
+    "ROAD-RA2024-A47": true,
+    "WASTE-BLR-GCP": true,
+    "WATER-BWSSB-2025-04": true,
+    "WATER-BWSSB-2025-05": true,
+    "WATER-BWSSB-2025-08": true,
+    "WATER-BWSSB-2026-03": true
+  },
+  "batch01_trusted_a47_hashes": {
+    "ROAD-RA2019-A47": true,
+    "ROAD-RA2024-A47": true
+  },
+  "a47_query_resolution": {
+    "catalogued_road_tables": {
+      "ROAD-RA2019-A47": "A47",
+      "ROAD-RA2020-A47": "A47",
+      "ROAD-RA2021-A47": "A47",
+      "ROAD-RA2022-A47": "A47",
+      "ROAD-RA2023-A47": "A47",
+      "ROAD-RA2024-A1": "A1",
+      "ROAD-RA2024-A2": "A2",
+      "ROAD-RA2024-A47": "A47",
+      "ROAD-RA2024-A49": "A49"
+    },
+    "city_value_by_year": {
+      "2019": "ROAD-RA2019-A47",
+      "2020": "ROAD-RA2020-A47",
+      "2021": "ROAD-RA2021-A47",
+      "2022": "ROAD-RA2022-A47",
+      "2023": "ROAD-RA2023-A47",
+      "2024": "ROAD-RA2024-A47"
+    },
+    "top_cities_2024": "ROAD-RA2024-A47",
+    "non_a47_ever_selected": false
+  },
+  "eval_set": {
+    "items": 55,
+    "answered_expected": 13,
+    "refused_expected": 42,
+    "status_and_code_match": 55,
+    "mismatches": [],
+    "results": [
+      {
+        "id": "P01",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P02",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P03",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P04",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P05",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P06",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P07",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P08",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P09",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P10",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P11",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P12",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P20",
+        "expected": "query.entity_ambiguous",
+        "actual": "query.entity_ambiguous",
+        "ok": true
+      },
+      {
+        "id": "P21",
+        "expected": "city.not_found",
+        "actual": "city.not_found",
+        "ok": true
+      },
+      {
+        "id": "P22",
+        "expected": "query.unrecognised_terms",
+        "actual": "query.unrecognised_terms",
+        "ok": true
+      },
+      {
+        "id": "P23",
+        "expected": "ward.identifiers_not_unique",
+        "actual": "ward.identifiers_not_unique",
+        "ok": true
+      },
+      {
+        "id": "P24",
+        "expected": "query.unsupported_operation",
+        "actual": "query.unsupported_operation",
+        "ok": true
+      },
+      {
+        "id": "P25",
+        "expected": "query.unrecognised_terms",
+        "actual": "query.unrecognised_terms",
+        "ok": true
+      },
+      {
+        "id": "P26",
+        "expected": "query.unsupported_operation",
+        "actual": "query.unsupported_operation",
+        "ok": true
+      },
+      {
+        "id": "P27",
+        "expected": "query.unsupported_operation",
+        "actual": "query.unsupported_operation",
+        "ok": true
+      },
+      {
+        "id": "P28",
+        "expected": "query.unsupported_operation",
+        "actual": "query.unsupported_operation",
+        "ok": true
+      },
+      {
+        "id": "P13",
+        "expected": "answered",
+        "actual": "answered",
+        "ok": true
+      },
+      {
+        "id": "P30",
+        "expected": "query.period_missing",
+        "actual": "query.period_missing",
+        "ok": true
+      },
+      {
+        "id": "P31",
+        "expected": "query.period_ambiguous",
+        "actual": "query.period_ambiguous",
+        "ok": true
+      },
+      {
+        "id": "P32",
+        "expected": "query.metric_missing",
+        "actual": "query.metric_missing",
+        "ok": true
+      },
+      {
+        "id": "P33",
+        "expected": "query.entity_missing",
+        "actual": "query.entity_missing",
+        "ok": true
+      },
+      {
+        "id": "P34",
+        "expected": "query.period_missing",
+        "actual": "query.period_missing",
+        "ok": true
+      },
+      {
+        "id": "P35",
+        "expected": "query.metric_missing",
+        "actual": "query.metric_missing",
+        "ok": true
+      },
+      {
+        "id": "P40",
+        "expected": "query.unit_unsupported",
+        "actual": "query.unit_unsupported",
+        "ok": true
+      },
+      {
+        "id": "P41",
+        "expected": "query.unit_unsupported",
+        "actual": "query.unit_unsupported",
+        "ok": true
+      },
+      {
+        "id": "P42",
+        "expected": "query.unit_unsupported",
+        "actual": "query.unit_unsupported",
+        "ok": true
+      },
+      {
+        "id": "P50",
+        "expected": "status.quarantined",
+        "actual": "status.quarantined",
+        "ok": true
+      },
+      {
+        "id": "P51",
+        "expected": "status.quarantined",
+        "actual": "status.quarantined",
+        "ok": true
+      },
+      {
+        "id": "P52",
+        "expected": "status.quarantined",
+        "actual": "status.quarantined",
+        "ok": true
+      },
+      {
+        "id": "P53",
+        "expected": "status.quarantined",
+        "actual": "status.quarantined",
+        "ok": true
+      },
+      {
+        "id": "P54",
+        "expected": "modelled.not_trusted",
+        "actual": "modelled.not_trusted",
+        "ok": true
+      },
+      {
+        "id": "P60",
+        "expected": "status.quarantined",
+        "actual": "status.quarantined",
+        "ok": true
+      },
+      {
+        "id": "P61",
+        "expected": "period.unavailable",
+        "actual": "period.unavailable",
+        "ok": true
+      },
+      {
+        "id": "P70",
+        "expected": "query.prompt_injection",
+        "actual": "query.prompt_injection",
+        "ok": true
+      },
+      {
+        "id": "P71",
+        "expected": "query.prompt_injection",
+        "actual": "query.prompt_injection",
+        "ok": true
+      },
+      {
+        "id": "P72",
+        "expected": "query.prompt_injection",
+        "actual": "query.prompt_injection",
+        "ok": true
+      },
+      {
+        "id": "P73",
+        "expected": "query.prompt_injection",
+        "actual": "query.prompt_injection",
+        "ok": true
+      },
+      {
+        "id": "P74",
+        "expected": "query.prompt_injection",
+        "actual": "query.prompt_injection",
+        "ok": true
+      },
+      {
+        "id": "P75",
+        "expected": "query.prompt_injection",
+        "actual": "query.prompt_injection",
+        "ok": true
+      },
+      {
+        "id": "P80",
+        "expected": "query.causal",
+        "actual": "query.causal",
+        "ok": true
+      },
+      {
+        "id": "P81",
+        "expected": "query.causal",
+        "actual": "query.causal",
+        "ok": true
+      },
+      {
+        "id": "P82",
+        "expected": "query.predictive",
+        "actual": "query.predictive",
+        "ok": true
+      },
+      {
+        "id": "P83",
+        "expected": "query.predictive",
+        "actual": "query.predictive",
+        "ok": true
+      },
+      {
+        "id": "P84",
+        "expected": "query.cross_edition",
+        "actual": "query.cross_edition",
+        "ok": true
+      },
+      {
+        "id": "P85",
+        "expected": "query.unsupported_operation",
+        "actual": "query.unsupported_operation",
+        "ok": true
+      },
+      {
+        "id": "P86",
+        "expected": "query.unsupported_operation",
+        "actual": "query.unsupported_operation",
+        "ok": true
+      },
+      {
+        "id": "P87",
+        "expected": "query.cross_domain",
+        "actual": "query.cross_domain",
+        "ok": true
+      },
+      {
+        "id": "P88",
+        "expected": "query.unsupported_operation",
+        "actual": "query.unsupported_operation",
+        "ok": true
+      },
+      {
+        "id": "P90",
+        "expected": "query.out_of_scope",
+        "actual": "query.out_of_scope",
+        "ok": true
+      },
+      {
+        "id": "P91",
+        "expected": "query.empty",
+        "actual": "query.empty",
+        "ok": true
+      }
+    ]
+  }
+}

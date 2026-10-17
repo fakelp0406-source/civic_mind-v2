@@ -1,0 +1,417 @@
+{
+  "dataset_id": "ROAD-RA2024-A1",
+  "staged_path": "data/external/batch-02/roads/Transport_2024_Annexure_1.csv",
+  "period_label_from_filename_or_content": "1970-2024",
+  "fingerprint": {
+    "path": "data/external/batch-02/roads/Transport_2024_Annexure_1.csv",
+    "bytes": 3939,
+    "sha256": "1780d0a58496a8906036cd0128b1ae403a3d0ed3eef6ce7d0106d5dd5b7cc96c",
+    "encoding": "utf-8",
+    "bom": false,
+    "newline": "CRLF",
+    "newline_counts": {
+      "CRLF": 35,
+      "LF": 0,
+      "CR": 0
+    },
+    "delimiter": ",",
+    "looks_like_html": false,
+    "contains_nul": false
+  },
+  "raw_header": [
+    "Years",
+    "Total Number of Road Accidents (in numbers)",
+    "Total Number of Persons Killed (in numbers)",
+    "Total Number of Persons Injured (in numbers)",
+    "Population of India (in thousands)",
+    "Total Number of Registered Motor Vehicles (in thousands)",
+    "Road Length (in kms)",
+    "Number of Accidents per Lakh Population",
+    "Number of Accidents per Ten Thousand Vehicles",
+    "Number of Accidents per Ten Thousand Kms of Roads",
+    "Number of Persons Killed Per Lakh Population",
+    "Number of Persons Killed Per Ten Thousand Vehicles",
+    "Number of Persons Killed per Ten Thousand Kms of Roads",
+    "Number of Persons Injured per Lakh Population",
+    "Number of Persons Injured Per Ten Thousand Vehicles",
+    "Number of Persons Injured Per Ten Thousand Kms of Roads"
+  ],
+  "profile": {
+    "rows": 34,
+    "columns": 16,
+    "column_names": [
+      "Years",
+      "Total Number of Road Accidents (in numbers)",
+      "Total Number of Persons Killed (in numbers)",
+      "Total Number of Persons Injured (in numbers)",
+      "Population of India (in thousands)",
+      "Total Number of Registered Motor Vehicles (in thousands)",
+      "Road Length (in kms)",
+      "Number of Accidents per Lakh Population",
+      "Number of Accidents per Ten Thousand Vehicles",
+      "Number of Accidents per Ten Thousand Kms of Roads",
+      "Number of Persons Killed Per Lakh Population",
+      "Number of Persons Killed Per Ten Thousand Vehicles",
+      "Number of Persons Killed per Ten Thousand Kms of Roads",
+      "Number of Persons Injured per Lakh Population",
+      "Number of Persons Injured Per Ten Thousand Vehicles",
+      "Number of Persons Injured Per Ten Thousand Kms of Roads"
+    ],
+    "duplicate_rows": 0,
+    "duplicate_column_names": [],
+    "names_with_outer_whitespace": [],
+    "header_rows_repeated_in_body": 0,
+    "columns_detail": [
+      {
+        "name": "Years",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 34,
+        "numeric": 33,
+        "non_numeric_values": [
+          "CAGR 2014/2024"
+        ],
+        "minimum": 1970.0,
+        "maximum": 2024.0,
+        "negatives": 0,
+        "samples": [
+          "1970",
+          "1980",
+          "1990"
+        ]
+      },
+      {
+        "name": "Total Number of Road Accidents (in numbers)",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 34,
+        "numeric": 34,
+        "non_numeric_values": [],
+        "minimum": -0.03,
+        "maximum": 505770.0,
+        "negatives": 1,
+        "samples": [
+          "114100",
+          "153200",
+          "282600"
+        ]
+      },
+      {
+        "name": "Total Number of Persons Killed (in numbers)",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 34,
+        "numeric": 34,
+        "non_numeric_values": [],
+        "minimum": 2.41,
+        "maximum": 177175.0,
+        "negatives": 0,
+        "samples": [
+          "14500",
+          "24000",
+          "54100"
+        ]
+      },
+      {
+        "name": "Total Number of Persons Injured (in numbers)",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 34,
+        "numeric": 34,
+        "non_numeric_values": [],
+        "minimum": -0.46,
+        "maximum": 527512.0,
+        "negatives": 1,
+        "samples": [
+          "70100",
+          "109100",
+          "244100"
+        ]
+      },
+      {
+        "name": "Population of India (in thousands)",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 34,
+        "numeric": 34,
+        "non_numeric_values": [],
+        "minimum": 1.24,
+        "maximum": 1400754.0,
+        "negatives": 0,
+        "samples": [
+          "539000",
+          "673000",
+          "835000"
+        ]
+      },
+      {
+        "name": "Total Number of Registered Motor Vehicles (in thousands)",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 31,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 1401.0,
+        "maximum": 354018.0,
+        "negatives": 0,
+        "samples": [
+          "1401",
+          "4521",
+          "19152"
+        ]
+      },
+      {
+        "name": "Road Length (in kms)",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 31,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 914979.0,
+        "maximum": 6592801.0,
+        "negatives": 0,
+        "samples": [
+          "914979",
+          "1485421",
+          "1983867"
+        ]
+      },
+      {
+        "name": "Number of Accidents per Lakh Population",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 29,
+        "numeric": 33,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 21.2,
+        "maximum": 42.5,
+        "negatives": 0,
+        "samples": [
+          "21.2",
+          "22.8",
+          "33.8"
+        ]
+      },
+      {
+        "name": "Number of Accidents per Ten Thousand Vehicles",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 31,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 11.4,
+        "maximum": 814.4,
+        "negatives": 0,
+        "samples": [
+          "814.4",
+          "338.9",
+          "147.6"
+        ]
+      },
+      {
+        "name": "Number of Accidents per Ten Thousand Kms of Roads",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 31,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 585.2,
+        "maximum": 1424.5,
+        "negatives": 0,
+        "samples": [
+          "959.8",
+          "1026.9",
+          "1424.5"
+        ]
+      },
+      {
+        "name": "Number of Persons Killed Per Lakh Population",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 27,
+        "numeric": 33,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 2.7,
+        "maximum": 12.6,
+        "negatives": 0,
+        "samples": [
+          "2.7",
+          "3.6",
+          "6.5"
+        ]
+      },
+      {
+        "name": "Number of Persons Killed Per Ten Thousand Vehicles",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 31,
+        "numeric": 31,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 4.2,
+        "maximum": 103.5,
+        "negatives": 0,
+        "samples": [
+          "103.5",
+          "53.1",
+          "28.2"
+        ]
+      },
+      {
+        "name": "Number of Persons Killed per Ten Thousand Kms of Roads",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 31,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 122.0,
+        "maximum": 304.7,
+        "negatives": 0,
+        "samples": [
+          "122.0",
+          "160.9",
+          "272.7"
+        ]
+      },
+      {
+        "name": "Number of Persons Injured per Lakh Population",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 33,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 13.0,
+        "maximum": 45.7,
+        "negatives": 0,
+        "samples": [
+          "13.0",
+          "16.2",
+          "29.2"
+        ]
+      },
+      {
+        "name": "Number of Persons Injured Per Ten Thousand Vehicles",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 31,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 10.6,
+        "maximum": 500.4,
+        "negatives": 0,
+        "samples": [
+          "500.4",
+          "241.3",
+          "127.5"
+        ]
+      },
+      {
+        "name": "Number of Persons Injured Per Ten Thousand Kms of Roads",
+        "non_empty": 34,
+        "empty": 0,
+        "distinct": 32,
+        "numeric": 31,
+        "non_numeric_values": [
+          "NA"
+        ],
+        "minimum": 545.2,
+        "maximum": 1282.7,
+        "negatives": 0,
+        "samples": [
+          "589.7",
+          "731.3",
+          "1230.4"
+        ]
+      }
+    ]
+  },
+  "validator_family": "morth_national",
+  "findings": [],
+  "sensitivity_header_scan": [],
+  "extra_checks": {
+    "a1": {
+      "year_rows": 33,
+      "first_year": "1970",
+      "last_year": "2024",
+      "years_missing_from_1970_2024": [
+        1971,
+        1972,
+        1973,
+        1974,
+        1975,
+        1976,
+        1977,
+        1978,
+        1979,
+        1981,
+        1982,
+        1983,
+        1984,
+        1985,
+        1986,
+        1987,
+        1988,
+        1989,
+        1991,
+        1992,
+        1993,
+        1994
+      ],
+      "non_year_rows": [
+        "CAGR 2014/2024"
+      ],
+      "rate_recomputation": {
+        "accidents_per_lakh_pop": {
+          "rows_checked": 33,
+          "rows_off_by_more_than_0.1": [],
+          "max_abs_diff": 0.044
+        },
+        "accidents_per_10k_vehicles": {
+          "rows_checked": 31,
+          "rows_off_by_more_than_0.1": [],
+          "max_abs_diff": 0.057
+        },
+        "accidents_per_10k_km": {
+          "rows_checked": 31,
+          "rows_off_by_more_than_0.1": [
+            "1970",
+            "1980"
+          ],
+          "max_abs_diff": 287.223
+        }
+      },
+      "NA_cells_by_column": {
+        "Total Number of Registered Motor Vehicles (in thousands)": 3,
+        "Road Length (in kms)": 3,
+        "Number of Accidents per Lakh Population": 1,
+        "Number of Accidents per Ten Thousand Vehicles": 3,
+        "Number of Accidents per Ten Thousand Kms of Roads": 3,
+        "Number of Persons Killed Per Lakh Population": 1,
+        "Number of Persons Killed Per Ten Thousand Vehicles": 3,
+        "Number of Persons Killed per Ten Thousand Kms of Roads": 3,
+        "Number of Persons Injured per Lakh Population": 1,
+        "Number of Persons Injured Per Ten Thousand Vehicles": 3,
+        "Number of Persons Injured Per Ten Thousand Kms of Roads": 3
+      }
+    }
+  }
+}

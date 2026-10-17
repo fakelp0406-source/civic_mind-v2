@@ -1,0 +1,173 @@
+dataset_id: ROAD-RA2024-A1
+manifest_version: 1
+title: Year-wise Details of Road Accidents, Persons Killed and Injured from 1970 to 2024
+publisher: Ministry of Road Transport and Highways
+host_portal: data.gov.in
+source_class: official
+resource_page: https://www.data.gov.in/resource/year-wise-details-road-accidents-persons-killed-and-injured-1970-2024
+download_url: https://www.data.gov.in/files/ogdpv2dms/s3fs-public/604807230/Version_1/Transport_2024_Annexure_1.csv
+portal_published: '2026-06-19'
+portal_updated: '2026-06-19'
+licence:
+  name: Government Open Data License - India
+  url: https://www.data.gov.in/Godl
+  evidence: Portal footer on each resource page read 2026-10-17 ('licensed under the Government Open Data
+    License-India'); GODL text recorded in data/external/verify_2026-10-17/licence/GODL_evidence_note.md
+  attribution: 'Ministry of Road Transport and Highways, 2026, Year-wise Details of Road Accidents, Persons
+    Killed and Injured from 1970 to 2024, Open Government Data Platform India, 19/06, https://www.data.gov.in/resource/year-wise-details-road-accidents-persons-killed-and-injured-1970-2024.
+    Published under Government Open Data License - India: https://www.data.gov.in/Godl.'
+  exemptions_checked: true
+retrieval:
+  retrieved_at: '2026-10-17T18:04:50+05:30'
+  retrieved_by: UNKNOWN (not yet provided by the project owner)
+  method: UNKNOWN (not yet provided by the project owner)
+  http_status: null
+  content_type: null
+  original_filename: Transport_2024_Annexure_1.csv
+  local_path: data/external/batch-02/roads/Transport_2024_Annexure_1.csv
+  note: Copied byte-identically (hash-checked) from the project owner's Downloads folder into data/external/batch-02/.
+    retrieved_at is that Downloads file's modification time, not a confirmed download time. Who downloaded
+    the file and by which route is UNKNOWN until the project owner provides it.
+integrity:
+  bytes: 3939
+  portal_stated_bytes: 3939
+  size_matches_portal: true
+  sha256: 1780d0a58496a8906036cd0128b1ae403a3d0ed3eef6ce7d0106d5dd5b7cc96c
+  format: csv
+  encoding: utf-8
+  bom: false
+  newline: CRLF
+  newline_counts:
+    CRLF: 35
+    LF: 0
+    CR: 0
+  delimiter: ','
+  looks_like_html: false
+  passed: true
+schema:
+- name: Years
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Road Accidents (in numbers)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Persons Killed (in numbers)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Persons Injured (in numbers)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Population of India (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Total Number of Registered Motor Vehicles (in thousands)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Road Length (in kms)
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Accidents per Lakh Population
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Accidents per Ten Thousand Vehicles
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Accidents per Ten Thousand Kms of Roads
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Persons Killed Per Lakh Population
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Persons Killed Per Ten Thousand Vehicles
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Persons Killed per Ten Thousand Kms of Roads
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Persons Injured per Lakh Population
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Persons Injured Per Ten Thousand Vehicles
+  type: text (unparsed)
+  unit: null
+  key: null
+- name: Number of Persons Injured Per Ten Thousand Kms of Roads
+  type: text (unparsed)
+  unit: null
+  key: null
+row_count: 34
+period:
+  start: '1970-01-01'
+  end: '2024-12-31'
+  granularity: year
+  as_on: null
+geography:
+  country: India
+  state: null
+  city: null
+  level: national
+ward_scheme: null
+identifier_evidence: null
+sensitivity: public
+contains_personal_data: false
+semantic_checks:
+  validator: null
+  note: No validator family for this table; profiled only. Not eligible for promotion until a family validator
+    is approved and passes.
+compatibility:
+  portal_catalogue: Road Accidents in India 2024
+  portal_listed_size: 3.8 KB
+  portal_metadata_evidence: Resource page rendered in a browser on 2026-10-17 (metadata only; no file
+    downloaded by this session). Listed file size is rounded to 0.1 KB on the page.
+  publisher_note: 'Sources - 1. Accidents - State Police Authorities. 2. Population- For year 2021 onwards,
+    as per projections of Registrar General of India (July, 2020). 3. Road Length - Basic Road Statistics
+    (M/o Road Transport and Highways). 4. Vehicles - Road Transport Year Book (M/o Road Transport and
+    Highways). 1. Road length is inclusive of all roads constructed under Jawahar Rozgar Yojana. 2. Road
+    Length for year 2021 and 2022 is provisional. 3. Data have been reconciled for West Bengal for the
+    calendar year 2015 to 2017, 2019 & 2020 and Tamil Nadu for the calendar year 2017 to 2020. 4. Data
+    for Road Length and Registered Motor Vehicles is for the financial year. 5. Data for Road Accident
+    is for the calendar year. * Figures for road length for the year 2023 and 2024 are not available.
+    # Data for the year 1971. ## Data for the year 1981. Kilometers (kms). CAGR - Compound Annual Growth
+    Rate. NA - Not Available.'
+findings:
+- code: sensitivity.header_scan
+  severity: info
+  message: No column name suggests personal data
+  details:
+    method: header-name scan sensitivity@v1 (column names only; cell values not inspected)
+    matched: []
+value_nature: unknown
+human_review: pending
+review:
+  decision: keep_profiled
+  reviewed_by: project owner
+  reviewed_on: '2026-10-17'
+  sha256: 1780d0a58496a8906036cd0128b1ae403a3d0ed3eef6ce7d0106d5dd5b7cc96c
+  accepted_caveats: []
+  permitted_uses: []
+  note: Kept separate from Annexure 47; no analytics in this milestone (owner item 9). No permitted uses.
+status: integrity_passed
+promoted_to: null
+git_tracked: false
+same_bytes_as: null
+known_limitations:
+- City-level only; MoRTH's city boundary definition is not established - never join to ward data.
+- Later editions may restate earlier years; cite the edition.
+- No analytics are enabled for this table (owner decision).
+- 'National series; irregular years (1970, 1980, 1990, 1995-2024); the ''CAGR 2014/2024'' row is not a
+  year. Publisher footnotes ''# Data for the year 1971. ## Data for the year 1981.'' are not carried in
+  the CSV.'

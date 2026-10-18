@@ -11,7 +11,9 @@ import civicmind
 SRC_DIR = Path(__file__).resolve().parents[1] / "src"
 
 #: Third-party stacks that must never be loaded merely by importing ``civicmind``.
-HEAVY_MODULES = ("pandas", "numpy", "fastapi", "pydantic", "yaml", "torch", "transformers")
+HEAVY_MODULES = (
+    "pandas", "numpy", "fastapi", "pydantic", "yaml", "torch", "transformers", "pypdf",
+)  # fmt: skip
 
 
 def heavy_modules_loaded_in_fresh_interpreter(heavy=HEAVY_MODULES, extra_code=""):

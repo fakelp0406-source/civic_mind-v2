@@ -1,0 +1,88 @@
+[
+  {
+    "document_id": "DOC-MORTH-RA2024",
+    "status": "planned",
+    "human_review": "pending",
+    "sha256": null,
+    "pages": null,
+    "pages_with_text": null,
+    "errors": [],
+    "warnings": [
+      "source.secondary_mirror"
+    ],
+    "gate": [
+      "status is 'planned', not 'validated'",
+      "no approving person review",
+      "integrity not passed or hash missing",
+      "no extracted page text",
+      "licence unknown",
+      "not public, or contains personal data",
+      "source is not under data/external/: ''",
+      "original_filename 'not yet retrieved' is not a .pdf"
+    ],
+    "promoted_to": null
+  },
+  {
+    "document_id": "DOC-MORTH-RA2019",
+    "status": "planned",
+    "human_review": "pending",
+    "sha256": null,
+    "pages": null,
+    "pages_with_text": null,
+    "errors": [],
+    "warnings": [],
+    "gate": [
+      "status is 'planned', not 'validated'",
+      "no approving person review",
+      "integrity not passed or hash missing",
+      "no extracted page text",
+      "licence unknown",
+      "not public, or contains personal data",
+      "source is not under data/external/: ''",
+      "original_filename 'not yet retrieved' is not a .pdf"
+    ],
+    "promoted_to": null
+  },
+  {
+    "document_id": "DOC-SLB-HANDBOOK",
+    "status": "planned",
+    "human_review": "pending",
+    "sha256": null,
+    "pages": null,
+    "pages_with_text": null,
+    "errors": [],
+    "warnings": [],
+    "gate": [
+      "status is 'planned', not 'validated'",
+      "no approving person review",
+      "integrity not passed or hash missing",
+      "no extracted page text",
+      "licence unknown",
+      "not public, or contains personal data",
+      "source is not under data/external/: ''",
+      "original_filename 'not yet retrieved' is not a .pdf"
+    ],
+    "promoted_to": null
+  },
+  {
+    "document_id": "DOC-MV-ACT",
+    "status": "planned",
+    "human_review": "pending",
+    "sha256": null,
+    "pages": null,
+    "pages_with_text": null,
+    "errors": [],
+    "warnings": [],
+    "gate": [
+      "status is 'planned', not 'validated'",
+      "no approving person review",
+      "integrity not passed or hash missing",
+      "no extracted page text",
+      "licence unknown",
+      "not public, or contains personal data",
+      "source is not under data/external/: ''",
+      "original_filename 'not yet retrieved' is not a .pdf"
+    ],
+    "promoted_to": null
+  }
+]

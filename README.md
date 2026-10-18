@@ -22,7 +22,15 @@ question, it refuses with a stable code and a reason instead of guessing.
 | HTTP API | FastAPI app factory: `GET /health`, `GET /api/v1/ready`, `POST /api/v1/query` over the same pipeline; typed responses, request ids, safe errors | `src/civicmind/api` |
 | Evaluation | 25 golden analytics questions (re-derived by an independent standard-library script); 55 end-to-end pipeline questions | `eval/`, `tests/` |
 
-Planned, **not implemented**: RAG over official PDFs, a source-supported knowledge graph,
+**Document catalogue (Milestone 05, stage 1):** official PDFs go through the same kind of
+person-gated workflow as datasets: intake, SHA-256 integrity, page-text extraction with page
+numbers (pypdf, no OCR), screening for AI-directed text, personal-data patterns and non-English
+pages, a review bound to the file's hash, and a promotion gate to `data/docs/`. No document has
+been acquired yet, and nothing retrieves or cites documents. See
+[docs/DOCUMENT_MANIFEST_SPEC.md](docs/DOCUMENT_MANIFEST_SPEC.md) and the approved design
+[docs/design/M05_RAG_DESIGN.md](docs/design/M05_RAG_DESIGN.md).
+
+Planned, **not implemented**: retrieval and cited answers over approved documents (RAG), a source-supported knowledge graph,
 optional LLM phrasing behind a claim verifier, and a React website (see
 [docs/architecture.md](docs/architecture.md)).
 
@@ -90,10 +98,10 @@ Python 3.11+ is declared; development and testing use **Python 3.13.15** only.
 
 ```bash
 py -3.13 -m venv .venv-py313
-.venv-py313/Scripts/python.exe -m pip install -e ".[api,dev]" -c constraints-py313.txt
+.venv-py313/Scripts/python.exe -m pip install -e ".[api,dev,rag]" -c constraints-py313.txt
 ```
 
-`constraints-py313.txt` pins the exact versions resolved on Windows / Python 3.13 (31
+`constraints-py313.txt` pins the exact versions resolved on Windows / Python 3.13 (32
 packages). On another platform, regenerate it rather than reusing it. No credentials or API
 keys are needed.
 
@@ -106,10 +114,11 @@ keys are needed.
 .venv-py313/Scripts/python.exe -I eval/golden/derive_batch01.py
 .venv-py313/Scripts/python.exe scripts/process_batch_01.py
 .venv-py313/Scripts/python.exe scripts/ingest_manifests.py
+.venv-py313/Scripts/python.exe scripts/process_doc_batch.py docs-01
 ```
 
 In order, these:
-1. run the tests. With all promoted files present: 438 pass (Query Coverage v1). On a fresh
+1. run the tests. With all promoted files present: 562 pass (Milestone 05 stage 1). On a fresh
    clone without data, the data-dependent tests **skip** with a reason (the skip count
    has not been re-measured since batch 01);
 2. run the lint check;
@@ -118,7 +127,10 @@ In order, these:
    compare them with `eval/golden/`);
 5. re-verify, re-validate and re-promote. This needs the files in `data/external/`;
    `--legacy-raw DIR` optionally compares against a legacy clone;
-6. write `data/processed/ingest/ingest_report.json` (git-ignored; identical across runs).
+6. write `data/processed/ingest/ingest_report.json` (git-ignored; identical across runs);
+7. process the document batch: manifests in `data/doc_manifests/`, a summary in
+   `docs/acquisition/docs-01/document_summary.json` (entries without a downloaded file stay
+   `planned`).
 
 ## Asking questions
 

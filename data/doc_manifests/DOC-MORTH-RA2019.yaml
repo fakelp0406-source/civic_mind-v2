@@ -1,0 +1,47 @@
+document_id: DOC-MORTH-RA2019
+manifest_version: 1
+title: Road Accidents in India 2019
+issuing_authority: Ministry of Road Transport and Highways, Government of India
+publisher: Ministry of Road Transport and Highways (Transport Research Wing)
+document_type: statistical_report
+language: en
+domains:
+- roads
+source_class: official
+resource_page: https://morth.nic.in/sites/default/files/RA_Uploading.pdf
+download_url: https://morth.nic.in/sites/default/files/RA_Uploading.pdf
+publication_date: null
+effective_from: null
+effective_to: null
+edition: '2019'
+version_label: null
+licence:
+  name: UNKNOWN
+  url: null
+  evidence: not yet recorded
+  attribution: not yet recorded
+  exemptions_checked: false
+retrieval:
+  retrieved_at: null
+  retrieved_by: null
+  method: not yet retrieved
+  http_status: null
+  content_type: null
+  original_filename: not yet retrieved
+  local_path: null
+  note: null
+integrity: null
+extraction: null
+relates_to_datasets:
+- ROAD-RA2019-A47
+supersedes: []
+superseded_by: []
+same_bytes_as: null
+sensitivity: restricted
+contains_personal_data: true
+findings: []
+human_review: pending
+review: null
+status: planned
+promoted_to: null
+known_limitations: []

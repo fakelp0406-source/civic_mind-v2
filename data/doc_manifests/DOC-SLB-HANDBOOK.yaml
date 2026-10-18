@@ -1,0 +1,46 @@
+document_id: DOC-SLB-HANDBOOK
+manifest_version: 1
+title: Handbook on Service Level Benchmarks
+issuing_authority: Ministry of Urban Development (now Ministry of Housing and Urban Affairs)
+publisher: Ministry of Housing and Urban Affairs
+document_type: handbook_manual
+language: en
+domains:
+- water
+source_class: official
+resource_page: https://mohua.gov.in/upload/uploadfiles/files/SLB_FAQ06.pdf
+download_url: null
+publication_date: null
+effective_from: null
+effective_to: null
+edition: null
+version_label: null
+licence:
+  name: UNKNOWN
+  url: null
+  evidence: not yet recorded
+  attribution: not yet recorded
+  exemptions_checked: false
+retrieval:
+  retrieved_at: null
+  retrieved_by: null
+  method: not yet retrieved
+  http_status: null
+  content_type: null
+  original_filename: not yet retrieved
+  local_path: null
+  note: null
+integrity: null
+extraction: null
+relates_to_datasets: []
+supersedes: []
+superseded_by: []
+same_bytes_as: null
+sensitivity: restricted
+contains_personal_data: true
+findings: []
+human_review: pending
+review: null
+status: planned
+promoted_to: null
+known_limitations: []

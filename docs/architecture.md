@@ -2,8 +2,10 @@
 
 Status (2026-10-17): catalog, analytics (water, traffic), planner, orchestrator (pipeline),
 evidence and respond are implemented for the water + traffic slice; api exposes that
-pipeline over HTTP (`GET /health`, `GET /api/v1/ready`, `POST /api/v1/query`); rag and
-graph are not. `tests/test_pipeline.py` enforces the import boundaries below for the new layers. Decisions marked **provisional** are
+pipeline over HTTP (`GET /health`, `GET /api/v1/ready`, `POST /api/v1/query`). Milestone 05
+stage 1 adds the document catalogue (document manifests, extraction, screening, review and
+promotion; see docs/DOCUMENT_MANIFEST_SPEC.md and docs/design/M05_RAG_DESIGN.md); retrieval,
+indexing and the graph are not implemented. `tests/test_pipeline.py` enforces the import boundaries below for the new layers. Decisions marked **provisional** are
 open for revision once data and evaluations exist.
 
 ## Data flow

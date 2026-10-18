@@ -243,6 +243,11 @@ data/quarantine/*
 data/docs/*
 !data/docs/.gitkeep
 
+# Pretrained model files (e.g. ONNX embedding models): downloaded on approval, pinned by commit
+# and SHA-256 in code (civicmind.rag.embed), never committed.
+data/models/*
+*.[Oo][Nn][Nn][Xx]
+
 # Promoted source data: DEFAULT-DENY. Nothing under data/raw/ is tracked unless it is
 # allowlisted at the end of this file, one explicit line per approved file, after its
 # manifest shows: hash pinned, validation passed, licence recorded, sensitivity "public",

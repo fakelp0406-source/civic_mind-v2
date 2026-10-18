@@ -76,8 +76,9 @@ def _pdf(path: Path, pages=PAGES) -> bytes:
 
 def _approve(m: DocumentManifest) -> DocumentManifest:
     decisions = {"reviewed_by": "t", "reviewed_on": "2026-10-18",
-                 "decisions": {m.document_id: {"decision": "approve",
-                                               "sha256": m.integrity.sha256}}}  # fmt: skip
+                 "decisions": {m.document_id: {
+                     "decision": "approve", "sha256": m.integrity.sha256,
+                     "extraction_sha256": m.extraction.output_sha256}}}  # fmt: skip
     return apply_document_review(m, DocumentDecisionsFile.model_validate(decisions))
 
 
@@ -94,6 +95,13 @@ def _link_dir(link: Path, target: Path) -> str:
 
         _winapi.CreateJunction(str(target), str(link))
         return "junction"
+
+
+def _approval(root: Path, data: bytes) -> dict:
+    """An approve decision for the bytes ``data`` at ``LOCAL`` and their extracted text."""
+    text_sha = build_document_manifest(_intake(), root).extraction.output_sha256
+    return {"decision": "approve", "sha256": hashlib.sha256(data).hexdigest(),
+            "extraction_sha256": text_sha}  # fmt: skip
 
 
 def _files(folder: Path) -> list[str]:
@@ -261,8 +269,7 @@ def test_planted_copy_with_other_bytes_blocks_promotion_until_removed(tmp_path):
     data = _pdf(root / LOCAL)
     (root / PROMOTED).parent.mkdir(parents=True)
     (root / PROMOTED).write_bytes(b"%PDF-1.4 planted, different bytes")
-    sha = hashlib.sha256(data).hexdigest()
-    _batch(root, "b", [_intake()], {"DOC-T": {"decision": "approve", "sha256": sha}})
+    _batch(root, "b", [_intake()], {"DOC-T": _approval(root, data)})
     process = _processor()
     [first] = process("b", root)
     assert first["status"] == "validated" and "promotion.refused" in first["warnings"]
@@ -276,8 +283,7 @@ def test_planted_copy_with_other_bytes_blocks_promotion_until_removed(tmp_path):
 def test_stale_review_never_promotes_new_bytes(tmp_path):
     root = tmp_path / "repo"
     old = _pdf(root / LOCAL)
-    sha = hashlib.sha256(old).hexdigest()
-    _batch(root, "b", [_intake()], {"DOC-T": {"decision": "approve", "sha256": sha}})
+    _batch(root, "b", [_intake()], {"DOC-T": _approval(root, old)})
     process = _processor()
     assert process("b", root)[0]["status"] == "approved"
     _pdf(root / LOCAL, ["Replaced after the review with different, long enough text."])
@@ -330,22 +336,40 @@ def test_planned_manifests_claim_no_download_ingestion_or_trust():
         assert not m.error_codes()
 
 
-def test_pilot_batch_is_entirely_planned_and_nothing_is_promoted():
-    summary = json.loads(
-        (ROOT / "docs/acquisition/docs-01/document_summary.json").read_text(encoding="utf-8")
+def test_pilot_batch_trust_follows_recorded_decisions_only():
+    """Nothing in docs-01 is approved, promoted or trusted unless a person's decision for those
+    exact bytes and that exact page file is recorded; unretrieved entries stay planned."""
+    batch = ROOT / "docs/acquisition/docs-01"
+    summary = json.loads((batch / "document_summary.json").read_text(encoding="utf-8"))
+    intake = yaml.safe_load((batch / "DOCUMENT_INTAKE.yaml").read_text(encoding="utf-8"))
+    decisions_file = batch / "DOCUMENT_REVIEW_DECISIONS.yaml"
+    decisions = (
+        yaml.safe_load(decisions_file.read_text(encoding="utf-8"))["decisions"]
+        if decisions_file.is_file()
+        else {}
     )
-    assert {r["document_id"] for r in summary} == {
-        "DOC-MORTH-RA2024",
-        "DOC-MORTH-RA2019",
-        "DOC-SLB-HANDBOOK",
-        "DOC-MV-ACT",
-    }
-    for row in summary:
-        assert row["status"] == "planned" and row["human_review"] == "pending"
-        assert row["sha256"] is None and row["pages"] is None and row["promoted_to"] is None
-    assert {m.document_id: m.status for m in _repo_manifests()} == {
-        r["document_id"]: "planned" for r in summary
-    }
+    manifests = {m.document_id: m for m in _repo_manifests()}
+    assert [r["document_id"] for r in summary] == [d["document_id"] for d in intake["documents"]]
+    for row, entry in zip(summary, intake["documents"], strict=True):
+        m = manifests[row["document_id"]]
+        assert (row["status"], row["human_review"], row["promoted_to"]) == (
+            m.status,
+            m.human_review,
+            m.promoted_to,
+        )
+        if not entry.get("local_path"):
+            assert m.status == "planned" and m.integrity is None and m.extraction is None
+            assert row["sha256"] is None and row["extraction_sha256"] is None
+            continue
+        assert row["sha256"] == m.integrity.sha256
+        assert row["extraction_sha256"] == m.extraction.output_sha256
+        decision = decisions.get(m.document_id)
+        if m.human_review == "accepted" or m.status == "approved" or m.promoted_to:
+            assert decision is not None and decision["decision"] == "approve", m.document_id
+            assert decision["sha256"] == m.integrity.sha256
+            assert decision["extraction_sha256"] == m.extraction.output_sha256
+        if decision is None:
+            assert m.human_review == "pending" and m.status != "approved" and not m.promoted_to
 
 
 def test_every_file_in_data_docs_is_claimed_by_an_approved_manifest():
@@ -507,13 +531,13 @@ def test_filesystem_error_while_building_aborts_before_any_manifest_is_written(
 ):
     import civicmind.rag.doc_intake as doc_intake
 
-    def denied(_path):
+    def denied(*_args, **_kwargs):
         raise PermissionError("access denied")
 
     root = tmp_path / "repo"
     _pdf(root / LOCAL)
     _batch(root, "b", [_intake()])
-    monkeypatch.setattr(doc_intake, "sha256_of", denied)
+    monkeypatch.setattr(doc_intake, "read_verified", denied)  # the single verified read
     with pytest.raises(PermissionError):
         _processor()("b", root)
     assert not (root / "data/doc_manifests").exists()

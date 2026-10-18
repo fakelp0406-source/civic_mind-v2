@@ -1,0 +1,83 @@
+# Document review decisions for batch docs-01 (applied by scripts/process_doc_batch.py).
+#
+# Proposed in the Claude Code session of 2026-10-18 and confirmed by the project owner in chat
+# ("Confirmed: rename the proposal to DOCUMENT_REVIEW_DECISIONS.yaml, run the processor ...").
+#
+# Decisions given by the project owner in the Claude Code session of 2026-10-18 ("Record the
+# following proposed document-review decisions for batch docs-01"). Hashes are copied from the
+# current manifests (data/doc_manifests/) and REVIEW_PACKAGE.md: `sha256` is the PDF as
+# received; `extraction_sha256` is the page file the review covered (docprep@v2, pypdf 6.21.1).
+#
+# Schema limits (stated, not worked around):
+# - Exclusions are page-level only. Legacy-font Hindi in RA2019 is confined to pages 2-7
+#   (identified by the AABook/AAState fonts on exactly those pages and by the transliterated
+#   tokens they produce); excluding those pages also drops the English front matter on them
+#   (minister's message, foreword, preface). Passage-level exclusion is not available.
+# - "Publication date unverified" and "publisher licence unverified" have no field of their
+#   own; they are recorded in add_limitations (shown with every answer that uses the document)
+#   and in the note. The licence recorded in the manifest is the OpenCity mirror's statement.
+# - "Do not index pages without extractable text" needs no exclusion: such pages are never
+#   indexed or cited by design (warning extraction.no_text_pages, accepted as a caveat).
+reviewed_by: project owner
+reviewed_on: '2026-10-18'
+decisions:
+  DOC-MORTH-RA2024:
+    decision: quarantine
+    sha256: b45b0e4d8e14a8d4653790f9080a01b9b95b79008359ba93dc12497064be69b2
+    extraction_sha256: d6099c729c8cbcb6bace4e9dacd2f31f5b2c04cc14706efc5c963bcdb78fd866
+    note: >-
+      Quarantined by the project owner. The secondary-mirror copy (PDF producer iLovePDF) has 102
+      vector-outlined annexure/appendix pages (164-265) with no text layer, six image-only
+      front-matter pages (4, 6, 8, 10, 12, 14), incomplete text coverage (127 of 266 pages) and
+      unresolved source and licensing provenance (official morth.nic.in link served HTML; licence
+      only as stated by the mirror). Not to be indexed or embedded.
+  DOC-MORTH-RA2023:
+    decision: approve
+    sha256: 901505420d5b387052ac51e36b4bdce0274f6326b614f9ebcee6e7954d45b5b0
+    extraction_sha256: 44330171085614c9002eb59141838e3fd43b98c626418b2c7232bdfa577389f6
+    accepted_caveats:
+      - source.secondary_mirror
+      - extraction.no_text_pages
+      - content.personal_data_suspected
+    excluded_pages: []
+    add_limitations:
+      - >-
+        Copy obtained from the OpenCity mirror (data.opencity.in), not from MoRTH directly.
+      - Publication date not verified.
+      - >-
+        Licence as stated by the OpenCity catalogue ("Other (Public Domain)"); the publisher's
+        licence is not verified.
+      - >-
+        Pages without extractable text (3-8 front matter, and section dividers 24, 43, 72, 87, 98,
+        116, 122, 127, 131, 138) are never indexed or cited.
+    note: >-
+      Approved with caveats by the project owner, subject to the validation and promotion gates.
+      Accepted: secondary-mirror provenance; the no-text-page limitation; the screening findings
+      on pages 79, 81, 82, 89, 103-107 and 119, reviewed as numeric table cells and chart axes,
+      not personal data. Publication date and publisher licence remain unverified.
+  DOC-MORTH-RA2019:
+    decision: approve
+    sha256: b656c762ee4b5c6067b5e374d9786a70d645a1515e7039a79a52a3d6d0b09e3e
+    extraction_sha256: 67109e87e8704ab07aa837cd3c5be7ae22f5863164ae20480dd5938aea8eb105
+    accepted_caveats:
+      - source.secondary_mirror
+      - extraction.no_text_pages
+      - content.personal_data_suspected
+    excluded_pages: [2, 3, 4, 5, 6, 7]
+    add_limitations:
+      - >-
+        Copy obtained from the OpenCity mirror (data.opencity.in), not from MoRTH directly.
+      - Publication date not verified.
+      - >-
+        Licence as stated by the OpenCity catalogue ("Other (Public Domain)"); the publisher's
+        licence is not verified.
+      - >-
+        Pages 2-7 are excluded: they contain Hindi set in legacy (non-Unicode) fonts that extract
+        as meaningless Latin characters. The English foreword and preface on those pages are
+        excluded with them. Pages without extractable text (1, 94, 213) are never indexed.
+    note: >-
+      Approved with caveats by the project owner, subject to the validation and promotion gates.
+      Accepted: secondary-mirror provenance; the no-text-page limitation; the screening findings
+      on pages 4-7, reviewed as official nic.in contact e-mail addresses. Legacy-font Hindi
+      passages are kept out of retrieval by excluding pages 2-7 (page-level exclusion is the only
+      mechanism available). Publication date and publisher licence remain unverified.

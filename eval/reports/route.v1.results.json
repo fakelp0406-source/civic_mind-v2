@@ -1,0 +1,3494 @@
+{
+  "chosen_gate_on_calibration": "bm25",
+  "index": {
+    "chunker": "chunk@v1",
+    "chunks": 2394,
+    "corpus_digest": "662b88ce9529f21902ea0515f628168f1f9432e5e43c9efaa1208055dc6a58dd",
+    "documents": [
+      "DOC-MORTH-RA2019",
+      "DOC-MORTH-RA2023"
+    ],
+    "embedding": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "index_id": "f10ba588d120b144"
+  },
+  "labels": {
+    "items": 65,
+    "path": "eval/questions/rag.v1.yaml",
+    "sha256": "3abd425762429179869390ef744f08a65eee4f8783c9234f6e87e93271d3e85f",
+    "split": {
+      "calibration": 34,
+      "test": 31
+    }
+  },
+  "performance": {
+    "bm25@calibrated": {
+      "deterministic_memoised": false,
+      "p50_route_ms": 677.4,
+      "router_init_s": 3.08
+    },
+    "bm25@provisional": {
+      "deterministic_memoised": true,
+      "p50_route_ms": 0.1,
+      "router_init_s": 3.01
+    },
+    "dense@calibrated": {
+      "deterministic_memoised": true,
+      "p50_route_ms": 0.1,
+      "router_init_s": 2.97
+    },
+    "dense@provisional": {
+      "deterministic_memoised": true,
+      "p50_route_ms": 0.1,
+      "router_init_s": 3.09
+    }
+  },
+  "routers": {
+    "bm25@calibrated": {
+      "all": {
+        "abstain_items": 18,
+        "abstain_rate": 1.0,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 6,
+        "balanced_accuracy": 0.5921,
+        "evidence_supported_rate": 0.1842,
+        "supported_answered": 7,
+        "supported_items": 38,
+        "unsupported_answers": 0
+      },
+      "by_category": {
+        "absent": {
+          "codes": {
+            "modelled.not_trusted": 1,
+            "query.out_of_scope": 4,
+            "query.unit_unsupported": 1,
+            "rag.no_eligible_documents": 1,
+            "rag.no_evidence": 1
+          },
+          "items": 8,
+          "outcomes": {
+            "correct": 8
+          },
+          "routes": {
+            "refused": 8
+          }
+        },
+        "analytics": {
+          "codes": {},
+          "items": 6,
+          "outcomes": {
+            "correct": 6
+          },
+          "routes": {
+            "analytics": 6
+          }
+        },
+        "composite": {
+          "codes": {
+            "query.unit_unsupported": 1,
+            "route.mixed_unsupported": 2
+          },
+          "items": 3,
+          "outcomes": {
+            "unscored": 3
+          },
+          "routes": {
+            "refused": 3
+          }
+        },
+        "edition_absent": {
+          "codes": {
+            "query.causal": 1,
+            "query.metric_missing": 1,
+            "rag.edition_unavailable": 1
+          },
+          "items": 3,
+          "outcomes": {
+            "correct": 3
+          },
+          "routes": {
+            "refused": 3
+          }
+        },
+        "edition_latest": {
+          "codes": {
+            "query.period_missing": 1
+          },
+          "items": 1,
+          "outcomes": {
+            "correct": 1
+          },
+          "routes": {
+            "refused": 1
+          }
+        },
+        "misleading": {
+          "codes": {
+            "query.causal": 1,
+            "query.cross_domain": 1,
+            "query.metric_missing": 1,
+            "query.period_missing": 1,
+            "rag.no_evidence": 2
+          },
+          "items": 6,
+          "outcomes": {
+            "correct": 6
+          },
+          "routes": {
+            "refused": 6
+          }
+        },
+        "supported": {
+          "codes": {
+            "city.not_found": 1,
+            "query.causal": 8,
+            "query.metric_missing": 10,
+            "query.period_missing": 2,
+            "query.unrecognised_terms": 1,
+            "rag.no_evidence": 8,
+            "status.quarantined": 1
+          },
+          "items": 38,
+          "outcomes": {
+            "abstained": 31,
+            "correct": 7
+          },
+          "routes": {
+            "documents": 7,
+            "refused": 31
+          }
+        }
+      },
+      "calibration": {
+        "abstain_items": 10,
+        "abstain_rate": 1.0,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 3,
+        "balanced_accuracy": 0.6052,
+        "evidence_supported_rate": 0.2105,
+        "supported_answered": 4,
+        "supported_items": 19,
+        "unsupported_answers": 0
+      },
+      "per_item": {
+        "A01": {
+          "citations": [],
+          "code": "rag.no_eligible_documents",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A02": {
+          "citations": [],
+          "code": "query.unit_unsupported",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A03": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A04": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A05": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A06": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A07": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A08": {
+          "citations": [],
+          "code": "modelled.not_trusted",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C01": {
+          "citations": [],
+          "code": "route.mixed_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [
+            {
+              "code": null,
+              "route": "analytics",
+              "status": "answered"
+            },
+            {
+              "code": "rag.no_evidence",
+              "route": "refused",
+              "status": "refused"
+            }
+          ],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C02": {
+          "citations": [],
+          "code": "route.mixed_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [
+            {
+              "code": null,
+              "route": "analytics",
+              "status": "answered"
+            },
+            {
+              "code": "query.period_missing",
+              "route": "refused",
+              "status": "refused"
+            }
+          ],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C03": {
+          "citations": [],
+          "code": "query.unit_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E01": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E02": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E03": {
+          "citations": [],
+          "code": "rag.edition_unavailable",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E04": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M01": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M02": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M03": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M04": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M05": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M06": {
+          "citations": [],
+          "code": "query.cross_domain",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "R01": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R02": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R03": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R04": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R05": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R06": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "S01": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S02": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S03": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S04": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S05": {
+          "citations": [
+            "DOC-MORTH-RA2023:p22",
+            "DOC-MORTH-RA2023:p22",
+            "DOC-MORTH-RA2019:p20"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S06": {
+          "citations": [
+            "DOC-MORTH-RA2023:p132",
+            "DOC-MORTH-RA2019:p20",
+            "DOC-MORTH-RA2023:p9"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S07": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S08": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S09": {
+          "citations": [
+            "DOC-MORTH-RA2019:p21"
+          ],
+          "code": null,
+          "editions": [
+            "2019"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S10": {
+          "citations": [
+            "DOC-MORTH-RA2023:p128",
+            "DOC-MORTH-RA2023:p22",
+            "DOC-MORTH-RA2019:p80"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S11": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S12": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S13": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S14": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S15": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S16": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S17": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S18": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S19": {
+          "citations": [],
+          "code": "city.not_found",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S20": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S21": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S22": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S23": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S24": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S25": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S26": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S27": {
+          "citations": [],
+          "code": "query.unrecognised_terms",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S28": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S29": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S30": {
+          "citations": [],
+          "code": "status.quarantined",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S31": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S32": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S33": {
+          "citations": [
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p28",
+            "DOC-MORTH-RA2019:p91"
+          ],
+          "code": null,
+          "editions": [
+            "2019"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S34": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S35": {
+          "citations": [
+            "DOC-MORTH-RA2019:p18",
+            "DOC-MORTH-RA2019:p82",
+            "DOC-MORTH-RA2019:p84"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S36": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S37": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S38": {
+          "citations": [
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p93"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        }
+      },
+      "test": {
+        "abstain_items": 8,
+        "abstain_rate": 1.0,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 3,
+        "balanced_accuracy": 0.5789,
+        "evidence_supported_rate": 0.1579,
+        "supported_answered": 3,
+        "supported_items": 19,
+        "unsupported_answers": 0
+      }
+    },
+    "bm25@provisional": {
+      "all": {
+        "abstain_items": 18,
+        "abstain_rate": 0.8333,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 6,
+        "balanced_accuracy": 0.5614,
+        "evidence_supported_rate": 0.2895,
+        "supported_answered": 15,
+        "supported_items": 38,
+        "unsupported_answers": 7
+      },
+      "by_category": {
+        "absent": {
+          "codes": {
+            "modelled.not_trusted": 1,
+            "query.out_of_scope": 4,
+            "query.unit_unsupported": 1,
+            "rag.no_eligible_documents": 1
+          },
+          "items": 8,
+          "outcomes": {
+            "correct": 7,
+            "unsupported_answer": 1
+          },
+          "routes": {
+            "documents": 1,
+            "refused": 7
+          }
+        },
+        "analytics": {
+          "codes": {},
+          "items": 6,
+          "outcomes": {
+            "correct": 6
+          },
+          "routes": {
+            "analytics": 6
+          }
+        },
+        "composite": {
+          "codes": {
+            "query.unit_unsupported": 1,
+            "route.mixed_unsupported": 1
+          },
+          "items": 3,
+          "outcomes": {
+            "unscored": 3
+          },
+          "routes": {
+            "mixed": 1,
+            "refused": 2
+          }
+        },
+        "edition_absent": {
+          "codes": {
+            "query.causal": 1,
+            "query.metric_missing": 1,
+            "rag.edition_unavailable": 1
+          },
+          "items": 3,
+          "outcomes": {
+            "correct": 3
+          },
+          "routes": {
+            "refused": 3
+          }
+        },
+        "edition_latest": {
+          "codes": {
+            "query.period_missing": 1
+          },
+          "items": 1,
+          "outcomes": {
+            "correct": 1
+          },
+          "routes": {
+            "refused": 1
+          }
+        },
+        "misleading": {
+          "codes": {
+            "query.causal": 1,
+            "query.cross_domain": 1,
+            "query.metric_missing": 1,
+            "query.period_missing": 1
+          },
+          "items": 6,
+          "outcomes": {
+            "correct": 4,
+            "unsupported_answer": 2
+          },
+          "routes": {
+            "documents": 2,
+            "refused": 4
+          }
+        },
+        "supported": {
+          "codes": {
+            "city.not_found": 1,
+            "query.causal": 8,
+            "query.metric_missing": 10,
+            "query.period_missing": 2,
+            "query.unrecognised_terms": 1,
+            "status.quarantined": 1
+          },
+          "items": 38,
+          "outcomes": {
+            "abstained": 23,
+            "correct": 11,
+            "unsupported_answer": 4
+          },
+          "routes": {
+            "documents": 15,
+            "refused": 23
+          }
+        }
+      },
+      "calibration": {
+        "abstain_items": 10,
+        "abstain_rate": 0.7,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 3,
+        "balanced_accuracy": 0.5079,
+        "evidence_supported_rate": 0.3158,
+        "supported_answered": 8,
+        "supported_items": 19,
+        "unsupported_answers": 5
+      },
+      "per_item": {
+        "A01": {
+          "citations": [],
+          "code": "rag.no_eligible_documents",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A02": {
+          "citations": [],
+          "code": "query.unit_unsupported",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A03": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A04": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A05": {
+          "citations": [
+            "DOC-MORTH-RA2023:p270",
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2019:p86"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "A06": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A07": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A08": {
+          "citations": [],
+          "code": "modelled.not_trusted",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C01": {
+          "citations": [
+            "DOC-MORTH-RA2023:p20",
+            "DOC-MORTH-RA2023:p54",
+            "DOC-MORTH-RA2023:p55"
+          ],
+          "code": null,
+          "editions": [
+            "2023"
+          ],
+          "outcome": "unscored",
+          "parts": [
+            {
+              "code": null,
+              "route": "analytics",
+              "status": "answered"
+            },
+            {
+              "code": null,
+              "route": "documents",
+              "status": "answered"
+            }
+          ],
+          "route": "mixed",
+          "status": "answered"
+        },
+        "C02": {
+          "citations": [],
+          "code": "route.mixed_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [
+            {
+              "code": null,
+              "route": "analytics",
+              "status": "answered"
+            },
+            {
+              "code": "query.period_missing",
+              "route": "refused",
+              "status": "refused"
+            }
+          ],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C03": {
+          "citations": [],
+          "code": "query.unit_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E01": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E02": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E03": {
+          "citations": [],
+          "code": "rag.edition_unavailable",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E04": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M01": {
+          "citations": [
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p84",
+            "DOC-MORTH-RA2019:p84"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "M02": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M03": {
+          "citations": [
+            "DOC-MORTH-RA2019:p50",
+            "DOC-MORTH-RA2023:p129",
+            "DOC-MORTH-RA2019:p16"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "M04": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M05": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M06": {
+          "citations": [],
+          "code": "query.cross_domain",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "R01": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R02": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R03": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R04": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R05": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R06": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "S01": {
+          "citations": [
+            "DOC-MORTH-RA2019:p91",
+            "DOC-MORTH-RA2019:p80",
+            "DOC-MORTH-RA2019:p25"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S02": {
+          "citations": [
+            "DOC-MORTH-RA2019:p205",
+            "DOC-MORTH-RA2023:p263",
+            "DOC-MORTH-RA2019:p199"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S03": {
+          "citations": [
+            "DOC-MORTH-RA2019:p205",
+            "DOC-MORTH-RA2019:p199",
+            "DOC-MORTH-RA2023:p257"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S04": {
+          "citations": [
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2023:p270",
+            "DOC-MORTH-RA2019:p211"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S05": {
+          "citations": [
+            "DOC-MORTH-RA2023:p22",
+            "DOC-MORTH-RA2023:p22",
+            "DOC-MORTH-RA2019:p20"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S06": {
+          "citations": [
+            "DOC-MORTH-RA2023:p132",
+            "DOC-MORTH-RA2019:p20",
+            "DOC-MORTH-RA2023:p9"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S07": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S08": {
+          "citations": [
+            "DOC-MORTH-RA2023:p134",
+            "DOC-MORTH-RA2023:p22",
+            "DOC-MORTH-RA2023:p128"
+          ],
+          "code": null,
+          "editions": [
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S09": {
+          "citations": [
+            "DOC-MORTH-RA2019:p21",
+            "DOC-MORTH-RA2019:p15",
+            "DOC-MORTH-RA2019:p21"
+          ],
+          "code": null,
+          "editions": [
+            "2019"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S10": {
+          "citations": [
+            "DOC-MORTH-RA2023:p128",
+            "DOC-MORTH-RA2023:p22",
+            "DOC-MORTH-RA2019:p80"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S11": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S12": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S13": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S14": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S15": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S16": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S17": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S18": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S19": {
+          "citations": [],
+          "code": "city.not_found",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S20": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S21": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S22": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S23": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S24": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S25": {
+          "citations": [
+            "DOC-MORTH-RA2023:p21",
+            "DOC-MORTH-RA2019:p18",
+            "DOC-MORTH-RA2023:p21"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S26": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S27": {
+          "citations": [],
+          "code": "query.unrecognised_terms",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S28": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S29": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S30": {
+          "citations": [],
+          "code": "status.quarantined",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S31": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S32": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S33": {
+          "citations": [
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p28",
+            "DOC-MORTH-RA2019:p91"
+          ],
+          "code": null,
+          "editions": [
+            "2019"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S34": {
+          "citations": [
+            "DOC-MORTH-RA2023:p128",
+            "DOC-MORTH-RA2019:p80",
+            "DOC-MORTH-RA2023:p271"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S35": {
+          "citations": [
+            "DOC-MORTH-RA2019:p18",
+            "DOC-MORTH-RA2019:p82",
+            "DOC-MORTH-RA2019:p84"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S36": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S37": {
+          "citations": [
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2023:p270",
+            "DOC-MORTH-RA2023:p44"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S38": {
+          "citations": [
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p93"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        }
+      },
+      "test": {
+        "abstain_items": 8,
+        "abstain_rate": 1.0,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 3,
+        "balanced_accuracy": 0.6316,
+        "evidence_supported_rate": 0.2632,
+        "supported_answered": 7,
+        "supported_items": 19,
+        "unsupported_answers": 2
+      }
+    },
+    "dense@calibrated": {
+      "all": {
+        "abstain_items": 18,
+        "abstain_rate": 1.0,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 6,
+        "balanced_accuracy": 0.6184,
+        "evidence_supported_rate": 0.2368,
+        "supported_answered": 10,
+        "supported_items": 38,
+        "unsupported_answers": 1
+      },
+      "by_category": {
+        "absent": {
+          "codes": {
+            "modelled.not_trusted": 1,
+            "query.out_of_scope": 4,
+            "query.unit_unsupported": 1,
+            "rag.no_eligible_documents": 1,
+            "rag.no_evidence": 1
+          },
+          "items": 8,
+          "outcomes": {
+            "correct": 8
+          },
+          "routes": {
+            "refused": 8
+          }
+        },
+        "analytics": {
+          "codes": {},
+          "items": 6,
+          "outcomes": {
+            "correct": 6
+          },
+          "routes": {
+            "analytics": 6
+          }
+        },
+        "composite": {
+          "codes": {
+            "query.unit_unsupported": 1,
+            "route.mixed_unsupported": 2
+          },
+          "items": 3,
+          "outcomes": {
+            "unscored": 3
+          },
+          "routes": {
+            "refused": 3
+          }
+        },
+        "edition_absent": {
+          "codes": {
+            "query.causal": 1,
+            "query.metric_missing": 1,
+            "rag.edition_unavailable": 1
+          },
+          "items": 3,
+          "outcomes": {
+            "correct": 3
+          },
+          "routes": {
+            "refused": 3
+          }
+        },
+        "edition_latest": {
+          "codes": {
+            "query.period_missing": 1
+          },
+          "items": 1,
+          "outcomes": {
+            "correct": 1
+          },
+          "routes": {
+            "refused": 1
+          }
+        },
+        "misleading": {
+          "codes": {
+            "query.causal": 1,
+            "query.cross_domain": 1,
+            "query.metric_missing": 1,
+            "query.period_missing": 1,
+            "rag.no_evidence": 2
+          },
+          "items": 6,
+          "outcomes": {
+            "correct": 6
+          },
+          "routes": {
+            "refused": 6
+          }
+        },
+        "supported": {
+          "codes": {
+            "city.not_found": 1,
+            "query.causal": 8,
+            "query.metric_missing": 10,
+            "query.period_missing": 2,
+            "query.unrecognised_terms": 1,
+            "rag.no_evidence": 5,
+            "status.quarantined": 1
+          },
+          "items": 38,
+          "outcomes": {
+            "abstained": 28,
+            "correct": 9,
+            "unsupported_answer": 1
+          },
+          "routes": {
+            "documents": 10,
+            "refused": 28
+          }
+        }
+      },
+      "calibration": {
+        "abstain_items": 10,
+        "abstain_rate": 1.0,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 3,
+        "balanced_accuracy": 0.6052,
+        "evidence_supported_rate": 0.2105,
+        "supported_answered": 5,
+        "supported_items": 19,
+        "unsupported_answers": 1
+      },
+      "per_item": {
+        "A01": {
+          "citations": [],
+          "code": "rag.no_eligible_documents",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A02": {
+          "citations": [],
+          "code": "query.unit_unsupported",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A03": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A04": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A05": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A06": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A07": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A08": {
+          "citations": [],
+          "code": "modelled.not_trusted",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C01": {
+          "citations": [],
+          "code": "route.mixed_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [
+            {
+              "code": null,
+              "route": "analytics",
+              "status": "answered"
+            },
+            {
+              "code": "rag.no_evidence",
+              "route": "refused",
+              "status": "refused"
+            }
+          ],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C02": {
+          "citations": [],
+          "code": "route.mixed_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [
+            {
+              "code": null,
+              "route": "analytics",
+              "status": "answered"
+            },
+            {
+              "code": "query.period_missing",
+              "route": "refused",
+              "status": "refused"
+            }
+          ],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C03": {
+          "citations": [],
+          "code": "query.unit_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E01": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E02": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E03": {
+          "citations": [],
+          "code": "rag.edition_unavailable",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E04": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M01": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M02": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M03": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M04": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M05": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M06": {
+          "citations": [],
+          "code": "query.cross_domain",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "R01": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R02": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R03": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R04": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R05": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R06": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "S01": {
+          "citations": [
+            "DOC-MORTH-RA2019:p8",
+            "DOC-MORTH-RA2019:p211"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S02": {
+          "citations": [
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2019:p26"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S03": {
+          "citations": [
+            "DOC-MORTH-RA2023:p270",
+            "DOC-MORTH-RA2019:p211"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S04": {
+          "citations": [
+            "DOC-MORTH-RA2023:p270",
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2019:p211"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S05": {
+          "citations": [
+            "DOC-MORTH-RA2023:p132",
+            "DOC-MORTH-RA2019:p23",
+            "DOC-MORTH-RA2019:p20"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S06": {
+          "citations": [
+            "DOC-MORTH-RA2023:p132",
+            "DOC-MORTH-RA2023:p132",
+            "DOC-MORTH-RA2019:p20"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S07": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S08": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S09": {
+          "citations": [
+            "DOC-MORTH-RA2019:p80",
+            "DOC-MORTH-RA2019:p21",
+            "DOC-MORTH-RA2019:p15"
+          ],
+          "code": null,
+          "editions": [
+            "2019"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S10": {
+          "citations": [
+            "DOC-MORTH-RA2023:p128",
+            "DOC-MORTH-RA2023:p25",
+            "DOC-MORTH-RA2019:p80"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S11": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S12": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S13": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S14": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S15": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S16": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S17": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S18": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S19": {
+          "citations": [],
+          "code": "city.not_found",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S20": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S21": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S22": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S23": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S24": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S25": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S26": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S27": {
+          "citations": [],
+          "code": "query.unrecognised_terms",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S28": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S29": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S30": {
+          "citations": [],
+          "code": "status.quarantined",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S31": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S32": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S33": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S34": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S35": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S36": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S37": {
+          "citations": [
+            "DOC-MORTH-RA2023:p270"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S38": {
+          "citations": [
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p88"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        }
+      },
+      "test": {
+        "abstain_items": 8,
+        "abstain_rate": 1.0,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 3,
+        "balanced_accuracy": 0.6316,
+        "evidence_supported_rate": 0.2632,
+        "supported_answered": 5,
+        "supported_items": 19,
+        "unsupported_answers": 0
+      }
+    },
+    "dense@provisional": {
+      "all": {
+        "abstain_items": 18,
+        "abstain_rate": 0.8889,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 6,
+        "balanced_accuracy": 0.6024,
+        "evidence_supported_rate": 0.3158,
+        "supported_answered": 15,
+        "supported_items": 38,
+        "unsupported_answers": 5
+      },
+      "by_category": {
+        "absent": {
+          "codes": {
+            "modelled.not_trusted": 1,
+            "query.out_of_scope": 4,
+            "query.unit_unsupported": 1,
+            "rag.no_eligible_documents": 1,
+            "rag.no_evidence": 1
+          },
+          "items": 8,
+          "outcomes": {
+            "correct": 8
+          },
+          "routes": {
+            "refused": 8
+          }
+        },
+        "analytics": {
+          "codes": {},
+          "items": 6,
+          "outcomes": {
+            "correct": 6
+          },
+          "routes": {
+            "analytics": 6
+          }
+        },
+        "composite": {
+          "codes": {
+            "query.unit_unsupported": 1,
+            "route.mixed_unsupported": 1
+          },
+          "items": 3,
+          "outcomes": {
+            "unscored": 3
+          },
+          "routes": {
+            "mixed": 1,
+            "refused": 2
+          }
+        },
+        "edition_absent": {
+          "codes": {
+            "query.causal": 1,
+            "query.metric_missing": 1,
+            "rag.edition_unavailable": 1
+          },
+          "items": 3,
+          "outcomes": {
+            "correct": 3
+          },
+          "routes": {
+            "refused": 3
+          }
+        },
+        "edition_latest": {
+          "codes": {
+            "query.period_missing": 1
+          },
+          "items": 1,
+          "outcomes": {
+            "correct": 1
+          },
+          "routes": {
+            "refused": 1
+          }
+        },
+        "misleading": {
+          "codes": {
+            "query.causal": 1,
+            "query.cross_domain": 1,
+            "query.metric_missing": 1,
+            "query.period_missing": 1
+          },
+          "items": 6,
+          "outcomes": {
+            "correct": 4,
+            "unsupported_answer": 2
+          },
+          "routes": {
+            "documents": 2,
+            "refused": 4
+          }
+        },
+        "supported": {
+          "codes": {
+            "city.not_found": 1,
+            "query.causal": 8,
+            "query.metric_missing": 10,
+            "query.period_missing": 2,
+            "query.unrecognised_terms": 1,
+            "status.quarantined": 1
+          },
+          "items": 38,
+          "outcomes": {
+            "abstained": 23,
+            "correct": 12,
+            "unsupported_answer": 3
+          },
+          "routes": {
+            "documents": 15,
+            "refused": 23
+          }
+        }
+      },
+      "calibration": {
+        "abstain_items": 10,
+        "abstain_rate": 0.8,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 3,
+        "balanced_accuracy": 0.5316,
+        "evidence_supported_rate": 0.2632,
+        "supported_answered": 8,
+        "supported_items": 19,
+        "unsupported_answers": 5
+      },
+      "per_item": {
+        "A01": {
+          "citations": [],
+          "code": "rag.no_eligible_documents",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A02": {
+          "citations": [],
+          "code": "query.unit_unsupported",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A03": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A04": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A05": {
+          "citations": [],
+          "code": "rag.no_evidence",
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A06": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A07": {
+          "citations": [],
+          "code": "query.out_of_scope",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "A08": {
+          "citations": [],
+          "code": "modelled.not_trusted",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C01": {
+          "citations": [
+            "DOC-MORTH-RA2023:p109",
+            "DOC-MORTH-RA2023:p20",
+            "DOC-MORTH-RA2023:p54"
+          ],
+          "code": null,
+          "editions": [
+            "2023"
+          ],
+          "outcome": "unscored",
+          "parts": [
+            {
+              "code": null,
+              "route": "analytics",
+              "status": "answered"
+            },
+            {
+              "code": null,
+              "route": "documents",
+              "status": "answered"
+            }
+          ],
+          "route": "mixed",
+          "status": "answered"
+        },
+        "C02": {
+          "citations": [],
+          "code": "route.mixed_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [
+            {
+              "code": null,
+              "route": "analytics",
+              "status": "answered"
+            },
+            {
+              "code": "query.period_missing",
+              "route": "refused",
+              "status": "refused"
+            }
+          ],
+          "route": "refused",
+          "status": "refused"
+        },
+        "C03": {
+          "citations": [],
+          "code": "query.unit_unsupported",
+          "editions": [],
+          "outcome": "unscored",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E01": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E02": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E03": {
+          "citations": [],
+          "code": "rag.edition_unavailable",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "E04": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M01": {
+          "citations": [
+            "DOC-MORTH-RA2023:p156",
+            "DOC-MORTH-RA2019:p186",
+            "DOC-MORTH-RA2019:p114"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "M02": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M03": {
+          "citations": [
+            "DOC-MORTH-RA2019:p50",
+            "DOC-MORTH-RA2023:p63",
+            "DOC-MORTH-RA2019:p93"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "M04": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M05": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "M06": {
+          "citations": [],
+          "code": "query.cross_domain",
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "R01": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R02": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R03": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R04": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R05": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "R06": {
+          "citations": [],
+          "code": null,
+          "editions": [],
+          "outcome": "correct",
+          "parts": [],
+          "route": "analytics",
+          "status": "answered"
+        },
+        "S01": {
+          "citations": [
+            "DOC-MORTH-RA2019:p8",
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2023:p269"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S02": {
+          "citations": [
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2019:p26",
+            "DOC-MORTH-RA2023:p270"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S03": {
+          "citations": [
+            "DOC-MORTH-RA2023:p270",
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2019:p211"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S04": {
+          "citations": [
+            "DOC-MORTH-RA2023:p270",
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2019:p211"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S05": {
+          "citations": [
+            "DOC-MORTH-RA2023:p132",
+            "DOC-MORTH-RA2019:p23",
+            "DOC-MORTH-RA2019:p20"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S06": {
+          "citations": [
+            "DOC-MORTH-RA2023:p132",
+            "DOC-MORTH-RA2023:p132",
+            "DOC-MORTH-RA2019:p20"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S07": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S08": {
+          "citations": [
+            "DOC-MORTH-RA2023:p128"
+          ],
+          "code": null,
+          "editions": [
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S09": {
+          "citations": [
+            "DOC-MORTH-RA2019:p80",
+            "DOC-MORTH-RA2019:p21",
+            "DOC-MORTH-RA2019:p15"
+          ],
+          "code": null,
+          "editions": [
+            "2019"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S10": {
+          "citations": [
+            "DOC-MORTH-RA2023:p128",
+            "DOC-MORTH-RA2023:p25",
+            "DOC-MORTH-RA2019:p80"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S11": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S12": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S13": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S14": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S15": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S16": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S17": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S18": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S19": {
+          "citations": [],
+          "code": "city.not_found",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S20": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S21": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S22": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S23": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S24": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S25": {
+          "citations": [
+            "DOC-MORTH-RA2023:p15",
+            "DOC-MORTH-RA2023:p100",
+            "DOC-MORTH-RA2019:p66"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S26": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S27": {
+          "citations": [],
+          "code": "query.unrecognised_terms",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S28": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S29": {
+          "citations": [],
+          "code": "query.metric_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S30": {
+          "citations": [],
+          "code": "status.quarantined",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S31": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S32": {
+          "citations": [],
+          "code": "query.causal",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S33": {
+          "citations": [
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p88"
+          ],
+          "code": null,
+          "editions": [
+            "2019"
+          ],
+          "outcome": "unsupported_answer",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S34": {
+          "citations": [
+            "DOC-MORTH-RA2023:p80",
+            "DOC-MORTH-RA2023:p128",
+            "DOC-MORTH-RA2019:p86"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S35": {
+          "citations": [
+            "DOC-MORTH-RA2019:p18",
+            "DOC-MORTH-RA2019:p84",
+            "DOC-MORTH-RA2019:p84"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S36": {
+          "citations": [],
+          "code": "query.period_missing",
+          "editions": [],
+          "outcome": "abstained",
+          "parts": [],
+          "route": "refused",
+          "status": "refused"
+        },
+        "S37": {
+          "citations": [
+            "DOC-MORTH-RA2023:p270",
+            "DOC-MORTH-RA2019:p211",
+            "DOC-MORTH-RA2019:p205"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        },
+        "S38": {
+          "citations": [
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p88",
+            "DOC-MORTH-RA2019:p88"
+          ],
+          "code": null,
+          "editions": [
+            "2019",
+            "2023"
+          ],
+          "outcome": "correct",
+          "parts": [],
+          "route": "documents",
+          "status": "answered"
+        }
+      },
+      "test": {
+        "abstain_items": 8,
+        "abstain_rate": 1.0,
+        "analytics_identical_rate": 1.0,
+        "analytics_items": 3,
+        "balanced_accuracy": 0.6842,
+        "evidence_supported_rate": 0.3684,
+        "supported_answered": 7,
+        "supported_items": 19,
+        "unsupported_answers": 0
+      }
+    }
+  },
+  "stage_e_raw_retrieval_test": {
+    "bm25": {
+      "abstain_items": 8,
+      "abstain_rate": 1.0,
+      "answer_rate": 0.5789,
+      "balanced_accuracy": 0.7106,
+      "chunk_supported_rate": 0.4211,
+      "citation_page_precision": 0.5652,
+      "edition_accuracy": 0.6667,
+      "evidence_supported_rate": 0.4211,
+      "supported_given_answered": 0.7273,
+      "supported_items": 19,
+      "threshold": 21.775342,
+      "unsupported_answer_rate": 0.0
+    },
+    "dense": {
+      "abstain_items": 8,
+      "abstain_rate": 0.75,
+      "answer_rate": 0.8421,
+      "balanced_accuracy": 0.6381,
+      "chunk_supported_rate": 0.4211,
+      "citation_page_precision": 0.3902,
+      "edition_accuracy": 0.9167,
+      "evidence_supported_rate": 0.5263,
+      "supported_given_answered": 0.625,
+      "supported_items": 19,
+      "threshold": 0.638919,
+      "unsupported_answer_rate": 0.25
+    }
+  },
+  "thresholds": {
+    "calibrated": {
+      "bm25": 21.775342,
+      "dense": 0.638919
+    },
+    "provisional": {
+      "bm25": 4.0,
+      "dense": 0.45
+    }
+  }
+}

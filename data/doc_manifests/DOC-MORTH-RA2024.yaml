@@ -9,29 +9,190 @@ domains:
 - roads
 source_class: secondary_mirror
 resource_page: https://data.opencity.in/dataset/road-accidents-in-india-2024
-download_url: null
+download_url: https://data.opencity.in/dataset/33d29ab0-f9e8-4fc7-b404-c93c1ed8e1b8/resource/30af828c-3513-4c74-a919-8daa708f077d/download/road-accidents-in-india-2024.pdf
 publication_date: null
 effective_from: null
 effective_to: null
 edition: '2024'
 version_label: null
 licence:
-  name: UNKNOWN
+  name: Other (Public Domain)
   url: null
-  evidence: not yet recorded
-  attribution: not yet recorded
+  evidence: data.opencity.in CKAN catalogue, package road-accidents-in-india-2024, license_title, read
+    2026-10-18 (mirror's statement; the MoRTH publication itself not checked)
+  attribution: Ministry of Road Transport and Highways, Transport Research Wing, Road Accidents in India
+    2024; copy obtained from OpenCity (data.opencity.in).
   exemptions_checked: false
 retrieval:
-  retrieved_at: null
-  retrieved_by: null
-  method: not yet retrieved
-  http_status: null
-  content_type: null
-  original_filename: not yet retrieved
-  local_path: null
+  retrieved_at: '2026-10-18T06:22:33Z'
+  retrieved_by: Claude Code session (download approved by the project owner in chat)
+  method: bounded HTTPS GET (curl) of the OpenCity resource download URL
+  http_status: 200
+  content_type: application/pdf
+  original_filename: road-accidents-in-india-2024.pdf
+  local_path: data/external/verify_docs-01/docs/roads/road-accidents-in-india-2024.pdf
   note: null
-integrity: null
-extraction: null
+integrity:
+  bytes: 21376701
+  stated_bytes: 21376701
+  size_matches_stated: true
+  sha256: b45b0e4d8e14a8d4653790f9080a01b9b95b79008359ba93dc12497064be69b2
+  format: pdf
+  pdf_header: true
+  pdf_version: '1.6'
+  pages: 266
+  encrypted: false
+  producer: iLovePDF
+  passed: true
+extraction:
+  extractor: pypdf
+  extractor_version: 6.21.1
+  pages: 266
+  pages_with_text: 127
+  pages_without_text:
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 27
+  - 32
+  - 33
+  - 52
+  - 53
+  - 72
+  - 86
+  - 87
+  - 101
+  - 102
+  - 103
+  - 115
+  - 116
+  - 117
+  - 135
+  - 136
+  - 137
+  - 143
+  - 144
+  - 145
+  - 150
+  - 151
+  - 156
+  - 157
+  - 164
+  - 165
+  - 166
+  - 167
+  - 168
+  - 169
+  - 170
+  - 171
+  - 172
+  - 173
+  - 174
+  - 175
+  - 176
+  - 177
+  - 178
+  - 179
+  - 180
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  - 188
+  - 189
+  - 190
+  - 191
+  - 192
+  - 193
+  - 194
+  - 195
+  - 196
+  - 197
+  - 198
+  - 199
+  - 200
+  - 201
+  - 202
+  - 203
+  - 204
+  - 205
+  - 206
+  - 207
+  - 208
+  - 209
+  - 210
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 220
+  - 221
+  - 222
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  - 234
+  - 235
+  - 236
+  - 237
+  - 238
+  - 239
+  - 240
+  - 241
+  - 242
+  - 243
+  - 244
+  - 245
+  - 246
+  - 247
+  - 248
+  - 249
+  - 250
+  - 251
+  - 252
+  - 253
+  - 254
+  - 255
+  - 256
+  - 257
+  - 258
+  - 259
+  - 260
+  - 261
+  - 262
+  - 263
+  - 264
+  - 265
+  characters: 186762
+  output_path: data/processed/rag/extracted/DOC-MORTH-RA2024/b45b0e4d8e14a8d4-docprep-v2-pypdf-6.21.1.jsonl
+  output_sha256: d6099c729c8cbcb6bace4e9dacd2f31f5b2c04cc14706efc5c963bcdb78fd866
+  preparation_version: docprep@v2
 relates_to_datasets:
 - ROAD-RA2024-A47
 - ROAD-RA2024-A1
@@ -48,8 +209,189 @@ findings:
   message: Copy obtained from a mirror, not the issuing authority; every answer will carry this caveat
   details:
     resource_page: https://data.opencity.in/dataset/road-accidents-in-india-2024
-human_review: pending
-review: null
-status: planned
+- code: extraction.no_text_pages
+  severity: warning
+  message: Pages without extractable text are never indexed or cited
+  details:
+    pages:
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 27
+    - 32
+    - 33
+    - 52
+    - 53
+    - 72
+    - 86
+    - 87
+    - 101
+    - 102
+    - 103
+    - 115
+    - 116
+    - 117
+    - 135
+    - 136
+    - 137
+    - 143
+    - 144
+    - 145
+    - 150
+    - 151
+    - 156
+    - 157
+    - 164
+    - 165
+    - 166
+    - 167
+    - 168
+    - 169
+    - 170
+    - 171
+    - 172
+    - 173
+    - 174
+    - 175
+    - 176
+    - 177
+    - 178
+    - 179
+    - 180
+    - 181
+    - 182
+    - 183
+    - 184
+    - 185
+    - 186
+    - 187
+    - 188
+    - 189
+    - 190
+    - 191
+    - 192
+    - 193
+    - 194
+    - 195
+    - 196
+    - 197
+    - 198
+    - 199
+    - 200
+    - 201
+    - 202
+    - 203
+    - 204
+    - 205
+    - 206
+    - 207
+    - 208
+    - 209
+    - 210
+    - 211
+    - 212
+    - 213
+    - 214
+    - 215
+    - 216
+    - 217
+    - 218
+    - 219
+    - 220
+    - 221
+    - 222
+    - 223
+    - 224
+    - 225
+    - 226
+    - 227
+    - 228
+    - 229
+    - 230
+    - 231
+    - 232
+    - 233
+    - 234
+    - 235
+    - 236
+    - 237
+    - 238
+    - 239
+    - 240
+    - 241
+    - 242
+    - 243
+    - 244
+    - 245
+    - 246
+    - 247
+    - 248
+    - 249
+    - 250
+    - 251
+    - 252
+    - 253
+    - 254
+    - 255
+    - 256
+    - 257
+    - 258
+    - 259
+    - 260
+    - 261
+    - 262
+    - 263
+    - 264
+    - 265
+- code: content.personal_data_suspected
+  severity: warning
+  message: Patterns that may be personal data (values not recorded); accept as official contact details
+    or exclude the pages
+  details:
+    pages:
+    - 122
+    - 123
+    - 125
+    - 126
+    - 140
+    kinds:
+      aadhaar_like:
+      - 122
+      - 123
+      - 125
+      - 126
+      - 140
+- code: content.screen
+  severity: info
+  message: Extracted text screened
+  details:
+    method: extracted-text pattern screen docscreen@v2 (regular expressions per page; matched personal
+      values are not recorded)
+    pages_screened: 127
+human_review: rejected
+review:
+  decision: quarantine
+  reviewed_by: project owner
+  reviewed_on: '2026-10-18'
+  sha256: b45b0e4d8e14a8d4653790f9080a01b9b95b79008359ba93dc12497064be69b2
+  extraction_sha256: d6099c729c8cbcb6bace4e9dacd2f31f5b2c04cc14706efc5c963bcdb78fd866
+  accepted_caveats: []
+  excluded_pages: []
+  note: Quarantined by the project owner. The secondary-mirror copy (PDF producer iLovePDF) has 102 vector-outlined
+    annexure/appendix pages (164-265) with no text layer, six image-only front-matter pages (4, 6, 8,
+    10, 12, 14), incomplete text coverage (127 of 266 pages) and unresolved source and licensing provenance
+    (official morth.nic.in link served HTML; licence only as stated by the mirror). Not to be indexed
+    or embedded.
+status: quarantined
 promoted_to: null
 known_limitations: []

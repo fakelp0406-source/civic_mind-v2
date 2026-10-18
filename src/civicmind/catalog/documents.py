@@ -76,7 +76,8 @@ class Extraction(_Strict):
     pages_without_text: list[int] = Field(default_factory=list)  # 1-based page numbers
     characters: int
     output_path: str | None = None  # data/processed/rag/extracted/... (git-ignored)
-    output_sha256: str | None = None
+    output_sha256: str | None = None  # the reviewed text artifact; approvals bind to it
+    preparation_version: str | None = None  # e.g. docprep@v2; None for stage-1 records
 
 
 class DocumentReview(_Strict):
@@ -86,6 +87,9 @@ class DocumentReview(_Strict):
     reviewed_by: str
     reviewed_on: str
     sha256: str
+    #: SHA-256 of the extracted page file the reviewer read (``extraction.output_sha256``).
+    #: Required for ``approve``: an approval binds both the source bytes and their text.
+    extraction_sha256: str | None = None
     accepted_caveats: list[str] = Field(default_factory=list)  # warning finding codes
     excluded_pages: list[int] = Field(default_factory=list)  # never indexed or cited
     note: str | None = None

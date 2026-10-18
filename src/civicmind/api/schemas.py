@@ -102,6 +102,59 @@ class CoverageOut(_Strict):
     freshness_note: str
 
 
+class CitationOut(_Strict):
+    """One verbatim passage from an approved document (stage 2F). Never a CivicMind value."""
+
+    n: int = Field(description="Citation number used in answer_text, e.g. [1].")
+    document_id: str
+    title: str
+    edition: str | None
+    issuing_authority: str
+    source_class: str = Field(description="official | secondary_mirror | ... (provenance class)")
+    resource_page: str
+    download_url: str | None
+    publication_date: str | None = Field(description="null when the date is unverified.")
+    page: int = Field(description="1-based PDF page; excluded and textless pages never appear.")
+    chunk_id: str
+    chunk_sha256: str
+    document_sha256: str
+    extraction_sha256: str
+    score: float = Field(description="BM25 relevance score (topical relevance, not truth).")
+    quote: str = Field(description="Verbatim excerpt of the indexed page text.")
+
+
+class RoutePartOut(_Strict):
+    """One clause of a combined question, routed on its own."""
+
+    kind: Literal["analytics", "documents", "refused"]
+    status: Literal["answered", "refused"]
+    question: str
+    answer_text: str
+    code: str | None = Field(description="This part's refusal code (null when answered).")
+    result: ResultOut | None = None
+    evidence: list[EvidenceOut] = Field(default_factory=list)
+    citations: list[CitationOut] = Field(default_factory=list)
+
+
+class RouteOut(_Strict):
+    """How the router handled a question the deterministic pipeline refused (stage 2F).
+
+    ``refusal.code`` always stays the deterministic pipeline's code; ``code`` here is the
+    router's own outcome (``rag.*`` / ``route.*``), e.g. why documents could not answer either.
+    """
+
+    kind: Literal["documents", "mixed", "refused"]
+    code: str | None = Field(description="Router outcome code; null when answered.")
+    reason: str | None = None
+    gate: Literal["bm25"] = "bm25"
+    index_id: str | None = Field(description="Verified index the evidence came from.")
+    editions: list[str] = Field(
+        default_factory=list, description="Editions retrieval was restricted to."
+    )
+    parts: list[RoutePartOut] = Field(default_factory=list)
+    trace: list[str] = Field(default_factory=list)
+
+
 class QueryResponse(_Strict):
     request_id: str
     status: Literal["answered", "refused"]
@@ -118,6 +171,20 @@ class QueryResponse(_Strict):
         description="Trusted and non-trusted periods for water or road questions (null "
         "otherwise). Static catalogue metadata, not a freshness guarantee.",
     )
+    route: RouteOut | None = Field(
+        default=None,
+        description="Present only when the question went past the deterministic pipeline "
+        "(document retrieval or a combined question). Absent responses are exactly the "
+        "deterministic pipeline's.",
+    )
+    citations: list[CitationOut] | None = Field(
+        default=None,
+        description="Document passages behind a document or mixed answer (present with route).",
+    )
+
+
+#: Fields added in stage 2F; omitted from a response when the router added nothing.
+ROUTE_FIELDS = frozenset({"route", "citations"})
 
 
 class ErrorBody(_Strict):
@@ -137,6 +204,21 @@ class HealthResponse(_Strict):
     status: Literal["ok"]
 
 
+class RetrievalReadiness(_Strict):
+    """Document retrieval state. Its failure never makes the structured-data API not ready;
+    document questions then refuse with ``route.code`` set to ``code``."""
+
+    status: Literal["ready", "unavailable", "disabled"]
+    code: str | None = Field(
+        default=None,
+        description="rag.index_unavailable | rag.index_stale | rag.corpus_integrity (or null).",
+    )
+    gate: Literal["bm25"] = "bm25"
+    index_id: str | None = None
+    documents: list[str] = Field(default_factory=list, description="Approved, indexed ids.")
+    chunks: int = 0
+
+
 class ReadinessResponse(_Strict):
     status: Literal["ready", "not_ready"]
     reason: str | None = None
@@ -144,6 +226,7 @@ class ReadinessResponse(_Strict):
         default_factory=dict, description="Promoted (trusted) datasets per family."
     )
     manifests: int = 0
+    retrieval: RetrievalReadiness | None = None
 
 
 def from_answer(answer: Any, request_id: str) -> QueryResponse:
@@ -182,6 +265,8 @@ def from_answer(answer: Any, request_id: str) -> QueryResponse:
 
 __all__ = [
     "MAX_QUESTION_CHARS",
+    "ROUTE_FIELDS",
+    "CitationOut",
     "ErrorBody",
     "CoverageOut",
     "ErrorResponse",
@@ -192,5 +277,8 @@ __all__ = [
     "ReadinessResponse",
     "RefusalOut",
     "ResultOut",
+    "RetrievalReadiness",
+    "RouteOut",
+    "RoutePartOut",
     "from_answer",
 ]

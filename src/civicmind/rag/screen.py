@@ -7,7 +7,8 @@ manifest findings for the reviewer. It never edits text and never decides anythi
   previous instructions", "system prompt", chat-role tags). Official documents rarely contain
   this; when they do, the reviewer must accept it as a caveat or exclude the pages.
 * ``content.personal_data_suspected`` - e-mail addresses, Indian mobile numbers and
-  Aadhaar-like 12-digit groups. Official contact details often match; the reviewer decides.
+  Aadhaar-like 12-digit groups (a group of three years such as "2019 2020 2021", common in
+  statistical tables, is not counted). Official contact details often match; the reviewer decides.
   **Matched values are never recorded**, only their kind and page numbers.
 * ``content.non_english`` - pages where Devanagari, Kannada or Tamil letters are more than
   ``NON_LATIN_SHARE`` of all letters. Milestone 05 retrieval is English only.
@@ -22,7 +23,7 @@ import re
 from collections.abc import Iterable
 
 METHOD = (
-    "extracted-text pattern screen docscreen@v1 (regular expressions per page; matched "
+    "extracted-text pattern screen docscreen@v2 (regular expressions per page; matched "
     "personal values are not recorded)"
 )
 
@@ -31,8 +32,12 @@ INSTRUCTION_PATTERNS = (
                         r"(previous|prior|above|earlier|preceding)\s+(instructions?|prompts?|"
                         r"rules|messages?|context)\b"),
     ("system_prompt", r"\bsystem\s+prompt\b"),
-    ("model_address", r"\b(you\s+are\s+(now\s+)?(an?\s+|the\s+)?(ai|assistant|language\s+model|"
-                      r"chatbot|llm)|as\s+an\s+ai\b|dear\s+(ai|assistant|language\s+model))"),
+    ("model_address", r"\b(you\s+are\s+(now\s+)?(an?\s+|the\s+)?(\w+\s+){0,2}(ai|assistant|"
+                      r"language\s+model|chatbot|llm)\b|as\s+an\s+ai\b|dear\s+(ai|assistant|"
+                      r"language\s+model))"),
+    # A role label followed by a directive anywhere in the text (chunks are single lines).
+    ("role_directive", r"\b(system|assistant|developer)\s*:\s*(you\s|ignore\b|disregard\b|"
+                       r"reveal\b|pretend\b|act\s+as\b|forget\b)"),
     ("chat_role_tag", r"<\s*/?\s*(system|assistant|user|instructions?)\s*>|^\s*(system|"
                       r"assistant)\s*:"),
     ("jailbreak", r"\b(jailbreak|developer\s+mode|dan\s+mode)\b"),
@@ -83,6 +88,18 @@ def non_english(text: str) -> list[str]:
     return sorted(name for name, n in counts.items() if n)
 
 
+def _is_year(group: str) -> bool:
+    return 1900 <= int(group) <= 2099
+
+
+def _counts(kind: str, matched: str) -> bool:
+    """Whether a match counts. Statistical tables print runs of years ("2019 2020 2021"),
+    which have the shape of an Aadhaar number; a group made only of years is not counted."""
+    if kind == "aadhaar_like":
+        return not all(_is_year(g) for g in matched.split())
+    return True
+
+
 def screen_pages(pages: Iterable[tuple[int, str]]) -> list[dict]:
     """Findings for a document's pages (``(page_number, text)`` pairs, 1-based)."""
     instruction: dict[str, set[int]] = {}
@@ -96,7 +113,7 @@ def screen_pages(pages: Iterable[tuple[int, str]]) -> list[dict]:
             if re.search(pattern, lower, re.MULTILINE):
                 instruction.setdefault(name, set()).add(number)
         for name, pattern in PERSONAL_PATTERNS:
-            if re.search(pattern, text):
+            if any(_counts(name, m.group()) for m in re.finditer(pattern, text)):
                 personal.setdefault(name, set()).add(number)
         scripts = non_english(text)
         if scripts:

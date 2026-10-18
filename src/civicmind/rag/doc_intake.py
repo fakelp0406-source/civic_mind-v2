@@ -6,6 +6,13 @@ it was saved. ``build_document_manifest`` adds what the bytes say: size and SHA-
 page-text extraction (written to ``data/processed/rag/extracted/``) and screening findings, and
 derives the lifecycle status. It records findings and never edits the file.
 
+The file is read **once**, through a handle verified to lie inside ``data/external/`` or
+``data/quarantine/`` (``catalog.safe_fs``), and bounded by ``PreparationLimits``. The SHA-256,
+the PDF inspection and the extracted text are all computed from that single byte sequence, so
+the recorded hash always describes exactly the bytes whose text was extracted and screened. The
+page file's name and content carry the source hash, the extractor version and the preparation
+version; its own SHA-256 (``extraction.output_sha256``) is what an approval binds to.
+
 Status after a build (before review): no file -> ``planned``; integrity failed -> ``received``;
 the PDF cannot be read -> ``integrity_passed``; text extracted but an error finding exists ->
 ``extracted``; no error findings -> ``validated`` (ready for person review).
@@ -13,12 +20,14 @@ the PDF cannot be read -> ``integrity_passed``; text extracted but an error find
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Literal
 
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+from civicmind.catalog.doc_limits import DEFAULT_LIMITS, PreparationLimits
 from civicmind.catalog.documents import (
     DOCUMENT_ID_PATTERN,
     DocumentDomain,
@@ -30,9 +39,9 @@ from civicmind.catalog.documents import (
     path_problem,
     resolves_within,
 )
-from civicmind.catalog.fingerprint import sha256_of
 from civicmind.catalog.manifest import Licence, Retrieval
-from civicmind.rag.extract import read_pdf, write_pages
+from civicmind.catalog.safe_fs import TooLarge, UnsafePath, read_verified, write_or_match_verified
+from civicmind.rag.extract import PREPARATION_VERSION, pages_bytes, read_pdf_bytes
 from civicmind.rag.screen import screen_pages
 
 EXTRACTED_DIR = "data/processed/rag/extracted"
@@ -65,6 +74,8 @@ class DocumentIntake(_Strict):
     retrieved_at: str | None = None
     retrieved_by: str | None = None
     retrieval_method: str = "manual download by a person"
+    http_status: int | None = None  # as observed at retrieval, if recorded
+    content_type: str | None = None
     original_filename: str | None = None
     local_path: str | None = None  # relative to the project root, under data/external/
     stated_bytes: int | None = None
@@ -97,6 +108,12 @@ class DocumentIntake(_Strict):
 
 #: Where a document's bytes may be read from, after links are resolved.
 READABLE_DIRS = ("data/external", "data/quarantine")
+
+
+def extraction_path(document_id: str, sha256: str, extractor_version: str) -> str:
+    """Page-file path: one file per (document, exact bytes, extractor, preparation version)."""
+    prep = PREPARATION_VERSION.replace("@", "-")
+    return f"{EXTRACTED_DIR}/{document_id}/{sha256[:16]}-{prep}-pypdf-{extractor_version}.jsonl"
 
 
 class DocumentIntakeFile(_Strict):
@@ -136,6 +153,8 @@ def _base(intake: DocumentIntake) -> dict:
             retrieved_at=intake.retrieved_at,
             retrieved_by=intake.retrieved_by,
             method=intake.retrieval_method,
+            http_status=intake.http_status,
+            content_type=intake.content_type,
             original_filename=intake.original_filename or NOT_RETRIEVED,
             local_path=intake.local_path,
         ).model_dump(),
@@ -146,7 +165,10 @@ def _base(intake: DocumentIntake) -> dict:
 
 
 def build_document_manifest(
-    intake: DocumentIntake, root: str | Path, file: str | Path | None = None
+    intake: DocumentIntake,
+    root: str | Path,
+    file: str | Path | None = None,
+    limits: PreparationLimits = DEFAULT_LIMITS,
 ) -> DocumentManifest:
     """Manifest for one intake record. ``file`` overrides where the bytes are read from
     (e.g. a quarantined copy); by default ``root / intake.local_path``."""
@@ -192,9 +214,37 @@ def build_document_manifest(
         return DocumentManifest.model_validate(
             {**data, "findings": findings, "status": "received"}
         )
-    size = path.stat().st_size
-    sha = sha256_of(path)
-    inspection, extraction = read_pdf(path)
+    try:
+        raw = read_verified(root, rel, READABLE_DIRS, limits.max_bytes)
+    except UnsafePath:
+        findings.append(
+            finding(
+                "path.outside_intake",
+                "error",
+                "The opened file is outside data/external/ and data/quarantine/ (or is not a "
+                "regular file); it was not read",
+                {},
+            )
+        )
+        return DocumentManifest.model_validate(
+            {**data, "findings": findings, "status": "received"}
+        )
+    except TooLarge as exc:
+        findings.append(
+            finding(
+                "document.too_large",
+                "error",
+                "The file exceeds the configured size limit; it was not read further",
+                {"bytes_at_least": exc.size, "max_bytes": exc.limit},
+            )
+        )
+        return DocumentManifest.model_validate(
+            {**data, "findings": findings, "status": "received"}
+        )
+    size = len(raw)
+    sha = hashlib.sha256(raw).hexdigest()
+    inspection, extraction = read_pdf_bytes(raw, limits)  # the same bytes that were hashed
+    del raw
     size_ok = None if intake.stated_bytes is None else size == intake.stated_bytes
     if size_ok is False:
         findings.append(
@@ -233,10 +283,17 @@ def build_document_manifest(
     ).model_dump()
     status = "received" if not passed else "integrity_passed"
     if passed and extraction is not None:
-        rel_out = f"{EXTRACTED_DIR}/{intake.document_id}/{sha[:12]}.jsonl"
+        rel_out = extraction_path(intake.document_id, sha, extraction.extractor_version)
         if not resolves_within(root, rel_out, EXTRACTED_DIR):
             raise ValueError(f"{EXTRACTED_DIR} resolves outside the project root")
-        out_sha = write_pages(extraction, intake.document_id, sha, root / rel_out)
+        page_file = pages_bytes(extraction, intake.document_id, sha)
+        try:  # never overwrites: an existing page file must hold exactly these bytes
+            write_or_match_verified(root, rel_out, EXTRACTED_DIR, page_file)
+        except UnsafePath as exc:
+            raise ValueError(
+                f"page file refused ({exc}); outside the project root or altered"
+            ) from exc
+        out_sha = hashlib.sha256(page_file).hexdigest()
         data["extraction"] = Extraction(
             extractor=extraction.extractor,
             extractor_version=extraction.extractor_version,
@@ -246,6 +303,7 @@ def build_document_manifest(
             characters=extraction.characters,
             output_path=rel_out,
             output_sha256=out_sha,
+            preparation_version=PREPARATION_VERSION,
         ).model_dump()
         if extraction.pages_with_text == 0:
             findings.append(
@@ -327,6 +385,7 @@ __all__ = [
     "DocumentIntake",
     "DocumentIntakeFile",
     "build_document_manifest",
+    "extraction_path",
     "link_documents",
     "load_intake",
 ]

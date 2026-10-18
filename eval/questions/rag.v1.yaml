@@ -1,0 +1,722 @@
+# Labelled evaluation set for document retrieval (Milestone 05, stage 2E), version 1.
+#
+# Corpus: the approved docs-01 documents only (DOC-MORTH-RA2019 with pages 2-7 excluded,
+# DOC-MORTH-RA2023); RA2024 is quarantined and not in the corpus.
+#
+# How the labels were made (2026-10-18), before any retriever was run on these questions:
+# - Supported items: the labeller (the Claude Code session that built the system; no second
+#   reviewer) read the extracted page text and chose short key phrases that state the answer.
+#   Gold pages were then computed mechanically: every approved, non-excluded corpus page whose
+#   whitespace-normalised, lower-cased text contains ANY key phrase, restricted to the asked
+#   edition's document when the question names a year. Duplicate pages in RA2019 are therefore
+#   both gold. Disclosure: the labeller had seen retrieval output for one question (grievous
+#   injury, S02) during the stage 2C sanity check.
+# - Absent and misleading items: verification phrases for the asked fact were checked to match
+#   NO corpus page. Misleading items reuse corpus vocabulary on purpose (for example M01: the
+#   corpus mentions speed-limit signs, an 80 kmph car alert and a 40 kmph cap for children on
+#   motorcycles, but no Karnataka highway speed limit).
+# - Edition items: the corpus has no approved 2024 document; "latest" is not resolved silently
+#   (the same policy as the deterministic pipeline), so all four expect abstention.
+# - Analytics and composite items probe routing; they are not scored as document answers.
+#
+# expect: answer | abstain | deterministic | not_supported. Split (calibration / test) is
+# derived deterministically in eval/rag_metrics.py, never edited here.
+# This file is frozen: eval/rag_metrics.py reports its SHA-256 with every result.
+version: 1
+items:
+- id: S01
+  category: supported
+  question: How does the MoRTH road accidents report define a fatal accident?
+  key_phrases:
+  - is a fatal accident
+  - a fatal accident is one in which
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 26
+  - document_id: DOC-MORTH-RA2019
+    page: 27
+  - document_id: DOC-MORTH-RA2019
+    page: 211
+  - document_id: DOC-MORTH-RA2019
+    page: 212
+  - document_id: DOC-MORTH-RA2023
+    page: 26
+  - document_id: DOC-MORTH-RA2023
+    page: 28
+  - document_id: DOC-MORTH-RA2023
+    page: 74
+  - document_id: DOC-MORTH-RA2023
+    page: 270
+  expect: answer
+- id: S02
+  category: supported
+  question: What is a grievous injury accident?
+  key_phrases:
+  - grievous injury accident is one in which
+  - grievous injury accident includes both
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 26
+  - document_id: DOC-MORTH-RA2019
+    page: 27
+  - document_id: DOC-MORTH-RA2019
+    page: 211
+  - document_id: DOC-MORTH-RA2019
+    page: 212
+  - document_id: DOC-MORTH-RA2023
+    page: 28
+  - document_id: DOC-MORTH-RA2023
+    page: 270
+  expect: answer
+- id: S03
+  category: supported
+  question: How is a minor injury accident defined?
+  key_phrases:
+  - minor injury accident is one in which
+  - minor injury accident is when
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 26
+  - document_id: DOC-MORTH-RA2019
+    page: 27
+  - document_id: DOC-MORTH-RA2023
+    page: 28
+  expect: answer
+- id: S04
+  category: supported
+  question: What counts as a serious injury accident?
+  key_phrases:
+  - a serious injury accident is defined
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 211
+  - document_id: DOC-MORTH-RA2019
+    page: 212
+  - document_id: DOC-MORTH-RA2023
+    page: 270
+  expect: answer
+- id: S05
+  category: supported
+  question: Under which international project are the standard accident data formats provided?
+  key_phrases:
+  - asia pacific road accident data
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 15
+  - document_id: DOC-MORTH-RA2019
+    page: 20
+  - document_id: DOC-MORTH-RA2023
+    page: 20
+  - document_id: DOC-MORTH-RA2023
+    page: 132
+  - document_id: DOC-MORTH-RA2023
+    page: 271
+  expect: answer
+- id: S06
+  category: supported
+  question: How many formats does the Transport Research Wing use to collect road accident data?
+  key_phrases:
+  - 21 formats
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 13
+  - document_id: DOC-MORTH-RA2019
+    page: 14
+  - document_id: DOC-MORTH-RA2019
+    page: 20
+  - document_id: DOC-MORTH-RA2023
+    page: 19
+  - document_id: DOC-MORTH-RA2023
+    page: 132
+  expect: answer
+- id: S07
+  category: supported
+  question: Why were three additional data collection formats added?
+  key_phrases:
+  - three additional formats
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 16
+  - document_id: DOC-MORTH-RA2019
+    page: 17
+  - document_id: DOC-MORTH-RA2019
+    page: 20
+  - document_id: DOC-MORTH-RA2023
+    page: 20
+  - document_id: DOC-MORTH-RA2023
+    page: 132
+  expect: answer
+- id: S08
+  category: supported
+  question: What is the e-DAR project described in the 2023 report?
+  edition: '2023'
+  key_phrases:
+  - electronic detailed accident report
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 22
+  - document_id: DOC-MORTH-RA2023
+    page: 23
+  - document_id: DOC-MORTH-RA2023
+    page: 128
+  - document_id: DOC-MORTH-RA2023
+    page: 134
+  expect: answer
+- id: S09
+  category: supported
+  question: What is the Integrated Road Accidents (IRAD) project in the 2019 report?
+  edition: '2019'
+  key_phrases:
+  - integrated road accidents
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 15
+  - document_id: DOC-MORTH-RA2019
+    page: 21
+  - document_id: DOC-MORTH-RA2019
+    page: 22
+  expect: answer
+- id: S10
+  category: supported
+  question: What is the ministry's multi-pronged road safety strategy based on?
+  key_phrases:
+  - education, engineering
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 18
+  - document_id: DOC-MORTH-RA2019
+    page: 19
+  - document_id: DOC-MORTH-RA2023
+    page: 22
+  - document_id: DOC-MORTH-RA2023
+    page: 128
+  expect: answer
+- id: S11
+  category: supported
+  question: Where does India rank in road accident deaths according to World Road Statistics 2018?
+  edition: '2019'
+  key_phrases:
+  - ranks 1st
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 15
+  - document_id: DOC-MORTH-RA2019
+    page: 18
+  - document_id: DOC-MORTH-RA2019
+    page: 19
+  expect: answer
+- id: S12
+  category: supported
+  question: What target for road deaths did India commit to at the Stockholm conference?
+  edition: '2019'
+  key_phrases:
+  - halving deaths
+  - bringing down fatalities from road accidents by 50 percent
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 15
+  - document_id: DOC-MORTH-RA2019
+    page: 80
+  - document_id: DOC-MORTH-RA2019
+    page: 81
+  expect: answer
+- id: S13
+  category: supported
+  question: How many road accidents were reported in 2019?
+  edition: '2019'
+  key_phrases:
+  - 4,49,002 road accidents
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 15
+  - document_id: DOC-MORTH-RA2019
+    page: 26
+  - document_id: DOC-MORTH-RA2019
+    page: 27
+  expect: answer
+- id: S14
+  category: supported
+  question: How many lives were lost in road accidents in 2019?
+  edition: '2019'
+  key_phrases:
+  - claiming 1,51,113 lives
+  - killing 1,51,113
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 15
+  - document_id: DOC-MORTH-RA2019
+    page: 26
+  - document_id: DOC-MORTH-RA2019
+    page: 27
+  expect: answer
+- id: S15
+  category: supported
+  question: How many road accidents were reported in 2023?
+  edition: '2023'
+  key_phrases:
+  - 4,80,583 road accidents
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 20
+  - document_id: DOC-MORTH-RA2023
+    page: 25
+  - document_id: DOC-MORTH-RA2023
+    page: 57
+  - document_id: DOC-MORTH-RA2023
+    page: 58
+  - document_id: DOC-MORTH-RA2023
+    page: 74
+  expect: answer
+- id: S16
+  category: supported
+  question: How many people were killed in road accidents in 2023?
+  edition: '2023'
+  key_phrases:
+  - claiming 1,72,890 lives
+  - 1,72,890 road accident fatalities
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 20
+  - document_id: DOC-MORTH-RA2023
+    page: 21
+  - document_id: DOC-MORTH-RA2023
+    page: 25
+  expect: answer
+- id: S17
+  category: supported
+  question: What share of road accident deaths was due to over speeding in 2019?
+  edition: '2019'
+  key_phrases:
+  - accounting for 67.3% of the persons killed
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 16
+  - document_id: DOC-MORTH-RA2019
+    page: 17
+  expect: answer
+- id: S18
+  category: supported
+  question: What share of deaths in 2019 was caused by driving on the wrong side of the road?
+  edition: '2019'
+  key_phrases:
+  - wrong side of the road which accounted for 6.1%
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 16
+  - document_id: DOC-MORTH-RA2019
+    page: 17
+  expect: answer
+- id: S19
+  category: supported
+  question: What share of road deaths in 2019 involved use of mobile phones?
+  edition: '2019'
+  key_phrases:
+  - use of mobile phones accounted for 3.3%
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 16
+  - document_id: DOC-MORTH-RA2019
+    page: 17
+  expect: answer
+- id: S20
+  category: supported
+  question: What share of persons killed in 2019 was due to drunken driving?
+  edition: '2019'
+  key_phrases:
+  - drunken driving accounting for 3.5%
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 16
+  - document_id: DOC-MORTH-RA2019
+    page: 17
+  expect: answer
+- id: S21
+  category: supported
+  question: Which road user category had the highest share of persons killed in 2019?
+  edition: '2019'
+  key_phrases:
+  - two-wheelers accounted for the highest share
+  - two wheelers accounted for the highest share of 37
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 16
+  - document_id: DOC-MORTH-RA2019
+    page: 17
+  - document_id: DOC-MORTH-RA2019
+    page: 43
+  - document_id: DOC-MORTH-RA2019
+    page: 44
+  expect: answer
+- id: S22
+  category: supported
+  question: What share of deaths did hit and run cases account for in 2019?
+  edition: '2019'
+  key_phrases:
+  - hit and run cases in 2019 accounted for 19.4%
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 16
+  - document_id: DOC-MORTH-RA2019
+    page: 17
+  expect: answer
+- id: S23
+  category: supported
+  question: How many deaths were caused by two wheeler riders not wearing helmets in 2019?
+  edition: '2019'
+  key_phrases:
+  - non-wearing of helmets by two wheeler riders caused 44,666 deaths
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 52
+  - document_id: DOC-MORTH-RA2019
+    page: 53
+  expect: answer
+- id: S24
+  category: supported
+  question: What share of all road accidents happened in million plus cities in 2019?
+  edition: '2019'
+  key_phrases:
+  - million plus cities accounted for 18.44
+  - accounted for 18.4 percent of total road accidents
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 18
+  - document_id: DOC-MORTH-RA2019
+    page: 19
+  - document_id: DOC-MORTH-RA2019
+    page: 28
+  - document_id: DOC-MORTH-RA2019
+    page: 29
+  - document_id: DOC-MORTH-RA2019
+    page: 64
+  - document_id: DOC-MORTH-RA2019
+    page: 65
+  expect: answer
+- id: S25
+  category: supported
+  question: How many million plus cities does the report examine?
+  key_phrases:
+  - fifty in number
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 18
+  - document_id: DOC-MORTH-RA2019
+    page: 19
+  - document_id: DOC-MORTH-RA2023
+    page: 21
+  expect: answer
+- id: S26
+  category: supported
+  question: What share of road accidents occurred in million plus cities in 2023?
+  edition: '2023'
+  key_phrases:
+  - million plus cities accounted for 16.9%
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 21
+  expect: answer
+- id: S27
+  category: supported
+  question: What share of road accident victims in 2023 were young adults aged 18 to 45?
+  edition: '2023'
+  key_phrases:
+  - 18 - 45 years accounted for 66.4%
+  - 18-45 accounted for 66.4%
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 21
+  - document_id: DOC-MORTH-RA2023
+    page: 77
+  expect: answer
+- id: S28
+  category: supported
+  question: What share of accidents on national highways in 2023 was due to over speeding?
+  edition: '2023'
+  key_phrases:
+  - 72.4% of accidents and 72.5% of death
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 54
+  expect: answer
+- id: S29
+  category: supported
+  question: What share of deaths on national highways did two wheelers account for in 2023?
+  edition: '2023'
+  key_phrases:
+  - two wheelers accounted for 42.5%
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 57
+  expect: answer
+- id: S30
+  category: supported
+  question: What share of India's population lives in rural areas according to the report?
+  edition: '2023'
+  key_phrases:
+  - 68.8% of india's population lives in rural areas
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 117
+  expect: answer
+- id: S31
+  category: supported
+  question: What share of accidents in million plus cities was due to over-speeding in 2023?
+  edition: '2023'
+  key_phrases:
+  - over- speeding in the 50 million plus cities accounted for 63.7%
+  gold:
+  - document_id: DOC-MORTH-RA2023
+    page: 109
+  expect: answer
+- id: S32
+  category: supported
+  question: What share of accidents in the 50 million plus cities was due to over speeding in 2019?
+  edition: '2019'
+  key_phrases:
+  - over speeding accounted for 64.5 percent
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 70
+  - document_id: DOC-MORTH-RA2019
+    page: 71
+  expect: answer
+- id: S33
+  category: supported
+  question: Why does the 2019 report call for Good Samaritan laws and golden hour care?
+  edition: '2019'
+  key_phrases:
+  - good samaritan laws and provision of free health care during the golden hour
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 28
+  - document_id: DOC-MORTH-RA2019
+    page: 29
+  expect: answer
+- id: S34
+  category: supported
+  question: What are Driving Training Centres meant to provide?
+  key_phrases:
+  - quality training to commercial vehicle drivers
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 82
+  - document_id: DOC-MORTH-RA2019
+    page: 83
+  - document_id: DOC-MORTH-RA2023
+    page: 80
+  expect: answer
+- id: S35
+  category: supported
+  question: How many black spots did the ministry identify for 2018?
+  edition: '2019'
+  key_phrases:
+  - identified 5583 black spots
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 18
+  - document_id: DOC-MORTH-RA2019
+    page: 19
+  - document_id: DOC-MORTH-RA2019
+    page: 82
+  - document_id: DOC-MORTH-RA2019
+    page: 83
+  expect: answer
+- id: S36
+  category: supported
+  question: Within how many days must death occur for an accident to be counted as fatal?
+  key_phrases:
+  - provided death occurs within 30 days
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 211
+  - document_id: DOC-MORTH-RA2019
+    page: 212
+  - document_id: DOC-MORTH-RA2023
+    page: 270
+  expect: answer
+- id: S37
+  category: supported
+  question: What is a damage only accident?
+  key_phrases:
+  - damage only accident
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 211
+  - document_id: DOC-MORTH-RA2019
+    page: 212
+  - document_id: DOC-MORTH-RA2023
+    page: 270
+  expect: answer
+- id: S38
+  category: supported
+  question: What scheme is planned for cashless treatment of accident victims during the golden hour?
+  edition: '2019'
+  key_phrases:
+  - cashless treatment
+  gold:
+  - document_id: DOC-MORTH-RA2019
+    page: 88
+  - document_id: DOC-MORTH-RA2019
+    page: 89
+  - document_id: DOC-MORTH-RA2019
+    page: 91
+  - document_id: DOC-MORTH-RA2019
+    page: 92
+  - document_id: DOC-MORTH-RA2019
+    page: 93
+  expect: answer
+- id: E01
+  category: edition_absent
+  question: How many road accidents were reported in India in 2024?
+  edition: '2024'
+  expect: abstain
+- id: E02
+  category: edition_absent
+  question: What share of road deaths was due to over speeding in 2024?
+  edition: '2024'
+  expect: abstain
+- id: E03
+  category: edition_absent
+  question: How many road accident deaths did the 2024 report record in million plus cities?
+  edition: '2024'
+  expect: abstain
+- id: E04
+  category: edition_latest
+  question: How many people died in road accidents according to the latest report?
+  expect: abstain
+- id: A01
+  category: absent
+  question: What is the BWSSB water tariff for domestic connections?
+  absent_phrases:
+  - tariff
+  - bwssb
+  expect: abstain
+- id: A02
+  category: absent
+  question: What is the service level benchmark for per capita water supply in litres per day?
+  absent_phrases:
+  - lpcd
+  - per capita water supply
+  - litres per capita
+  expect: abstain
+- id: A03
+  category: absent
+  question: Who won the cricket world cup in 2023?
+  absent_phrases:
+  - cricket
+  - world cup
+  expect: abstain
+- id: A04
+  category: absent
+  question: How many sewage treatment plants does Bengaluru have?
+  absent_phrases:
+  - sewage treatment
+  expect: abstain
+- id: A05
+  category: absent
+  question: What is the property tax rate in BBMP?
+  absent_phrases:
+  - property tax
+  - bbmp
+  expect: abstain
+- id: A06
+  category: absent
+  question: What was the air quality index in Delhi in 2023?
+  absent_phrases:
+  - air quality index
+  expect: abstain
+- id: A07
+  category: absent
+  question: How many metro stations are there in Bengaluru?
+  absent_phrases:
+  - namma metro
+  - bengaluru metro
+  - metro stations in bengaluru
+  expect: abstain
+- id: A08
+  category: absent
+  question: What do the Solid Waste Management Rules 2016 require for segregation?
+  absent_phrases:
+  - solid waste
+  - segregation
+  expect: abstain
+- id: M01
+  category: misleading
+  question: What is the speed limit on national highways in Karnataka?
+  absent_phrases:
+  - speed limit on national highways
+  - speed limit in karnataka
+  - karnataka speed limit
+  expect: abstain
+- id: M02
+  category: misleading
+  question: How many traffic police officers are posted in Bengaluru?
+  absent_phrases:
+  - traffic police officers
+  expect: abstain
+- id: M03
+  category: misleading
+  question: What is the fine for riding without a helmet in Bengaluru?
+  absent_phrases:
+  - fine for
+  - helmet fine
+  expect: abstain
+- id: M04
+  category: misleading
+  question: How many road accidents in 2023 involved electric scooters?
+  absent_phrases:
+  - electric scooter
+  - electric vehicle
+  - e-scooter
+  expect: abstain
+- id: M05
+  category: misleading
+  question: How many accidents were caused by water tankers in Bengaluru?
+  absent_phrases:
+  - water tanker
+  expect: abstain
+- id: M06
+  category: misleading
+  question: What is the water consumption of road construction in million plus cities?
+  absent_phrases:
+  - water consumption
+  expect: abstain
+- id: R01
+  category: analytics
+  question: How many over-speeding accidents did Bengaluru record in 2021?
+  expect: deterministic
+- id: R02
+  category: analytics
+  question: How much water did BWSSB record as consumed in August 2025?
+  expect: deterministic
+- id: R03
+  category: analytics
+  question: Top 3 cities by over-speeding deaths in 2024
+  expect: deterministic
+- id: R04
+  category: analytics
+  question: Which months of water data are available?
+  expect: deterministic
+- id: R05
+  category: analytics
+  question: Compare over-speeding deaths in Bengaluru and Chennai in 2024
+  expect: deterministic
+- id: R06
+  category: analytics
+  question: How many water connections were recorded in March 2026?
+  expect: deterministic
+- id: C01
+  category: composite
+  question: How many over-speeding accidents did Bengaluru record in 2023, and why does the report call
+    over speeding a major killer?
+  expect: not_supported
+- id: C02
+  category: composite
+  question: How many over-speeding deaths did Chennai record in 2023, and what share of accidents happened
+    in million plus cities that year?
+  expect: not_supported
+- id: C03
+  category: composite
+  question: How did water consumption change from August 2025 to March 2026, and what per capita supply
+    benchmark applies?
+  expect: not_supported

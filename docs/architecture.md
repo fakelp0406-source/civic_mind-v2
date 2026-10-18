@@ -4,8 +4,11 @@ Status (2026-10-17): catalog, analytics (water, traffic), planner, orchestrator 
 evidence and respond are implemented for the water + traffic slice; api exposes that
 pipeline over HTTP (`GET /health`, `GET /api/v1/ready`, `POST /api/v1/query`). Milestone 05
 stage 1 adds the document catalogue (document manifests, extraction, screening, review and
-promotion; see docs/DOCUMENT_MANIFEST_SPEC.md and docs/design/M05_RAG_DESIGN.md); retrieval,
-indexing and the graph are not implemented. `tests/test_pipeline.py` enforces the import boundaries below for the new layers. Decisions marked **provisional** are
+promotion; see docs/DOCUMENT_MANIFEST_SPEC.md and docs/design/M05_RAG_DESIGN.md). Stage 2
+adds verified single-read preparation and a retrieval layer over approved documents (BM25 and
+MiniLM vectors; docs/RAG_RETRIEVAL.md) and a router that serves it through the API after the
+deterministic pipeline (stage 2F, BM25 gate; docs/ROUTING.md); the graph is not
+implemented. `tests/test_pipeline.py` enforces the import boundaries below for the new layers. Decisions marked **provisional** are
 open for revision once data and evaluations exist.
 
 ## Data flow

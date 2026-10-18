@@ -1,0 +1,47 @@
+document_id: DOC-MV-ACT
+manifest_version: 1
+title: The Motor Vehicles Act, 1988 (as amended)
+issuing_authority: Legislative Department, Ministry of Law and Justice, Government of India
+publisher: India Code (Legislative Department)
+document_type: act
+language: en
+domains:
+- roads
+source_class: official
+resource_page: https://www.indiacode.nic.in/
+download_url: null
+publication_date: null
+effective_from: null
+effective_to: null
+edition: null
+version_label: null
+licence:
+  name: UNKNOWN
+  url: null
+  evidence: not yet recorded
+  attribution: not yet recorded
+  exemptions_checked: false
+retrieval:
+  retrieved_at: null
+  retrieved_by: null
+  method: not yet retrieved
+  http_status: null
+  content_type: null
+  original_filename: not yet retrieved
+  local_path: null
+  note: null
+integrity: null
+extraction: null
+relates_to_datasets: []
+supersedes: []
+superseded_by: []
+same_bytes_as: null
+sensitivity: restricted
+contains_personal_data: true
+findings: []
+human_review: pending
+review: null
+status: planned
+promoted_to: null
+known_limitations:
+- Legal text is quoted with citations only; answers are not legal advice.

@@ -1,0 +1,124 @@
+# Document intake, batch docs-01 (Milestone 05 pilot documents).
+#
+# Read by scripts/process_doc_batch.py. Holds only what a PERSON records; sizes, hashes, page
+# counts, extraction and screening are computed from the bytes by the processor.
+#
+# Status of this file (2026-10-18): TEMPLATE. Entries were prefilled from
+# docs/discovery/civicmind_dataset_catalog.csv only (ids, catalogue titles, landing URLs).
+# Nothing has been downloaded or opened. Before running the processor on a document:
+#   1. Download the PDF by hand and save it UNCHANGED as
+#      data/external/verify_docs-01/docs/<water|roads>/<original file name>
+#      (tools never download documents or complete portal forms).
+#   2. Fill in: original_filename, local_path, retrieved_at (ISO 8601 with time zone),
+#      retrieved_by, download_url (exact URL used), stated_bytes (if the page states a size).
+#   3. Replace title / publication_date / edition with what is PRINTED on the document.
+#   4. Record licence evidence (where the reuse terms were read). An UNKNOWN licence blocks
+#      promotion.
+#   5. Set source_class to "secondary_mirror" if the copy did not come from the issuing
+#      authority's own site (e.g. data.opencity.in).
+# Then: python scripts/process_doc_batch.py docs-01
+batch: docs-01
+documents:
+  - document_id: DOC-MORTH-RA2024
+    title: Road Accidents in India 2024  # as catalogued; replace with the printed title
+    issuing_authority: Ministry of Road Transport and Highways, Government of India
+    publisher: Ministry of Road Transport and Highways (Transport Research Wing)
+    document_type: statistical_report
+    domains: [roads]
+    # Catalogue found only an OpenCity mirror; the official MoRTH URL is still to confirm.
+    source_class: secondary_mirror
+    resource_page: https://data.opencity.in/dataset/road-accidents-in-india-2024
+    download_url: null
+    publication_date: null
+    edition: '2024'
+    licence:
+      name: UNKNOWN
+      url: null
+      evidence: not yet recorded
+      attribution: not yet recorded
+      exemptions_checked: false
+    retrieved_at: null
+    retrieved_by: null
+    original_filename: null
+    local_path: null
+    stated_bytes: null
+    relates_to_datasets: [ROAD-RA2024-A47, ROAD-RA2024-A1, ROAD-RA2024-A2, ROAD-RA2024-A49]
+    supersedes: []
+  - document_id: DOC-MORTH-RA2019
+    title: Road Accidents in India 2019  # as catalogued; replace with the printed title
+    issuing_authority: Ministry of Road Transport and Highways, Government of India
+    publisher: Ministry of Road Transport and Highways (Transport Research Wing)
+    document_type: statistical_report
+    domains: [roads]
+    source_class: official
+    resource_page: https://morth.nic.in/sites/default/files/RA_Uploading.pdf
+    download_url: https://morth.nic.in/sites/default/files/RA_Uploading.pdf
+    publication_date: null
+    edition: '2019'
+    licence:
+      name: UNKNOWN
+      url: null
+      evidence: not yet recorded
+      attribution: not yet recorded
+      exemptions_checked: false
+    retrieved_at: null
+    retrieved_by: null
+    original_filename: null
+    local_path: null
+    stated_bytes: null
+    relates_to_datasets: [ROAD-RA2019-A47]
+    # Not marked as superseded by the 2024 edition: each edition documents its own tables.
+    supersedes: []
+  - document_id: DOC-SLB-HANDBOOK
+    title: Handbook on Service Level Benchmarks  # as catalogued; replace with the printed title
+    issuing_authority: Ministry of Urban Development (now Ministry of Housing and Urban Affairs)
+    publisher: Ministry of Housing and Urban Affairs
+    document_type: handbook_manual
+    domains: [water]
+    source_class: official
+    # The catalogued URL is an FAQ on mohua.gov.in; the handbook's own URL is still to confirm.
+    resource_page: https://mohua.gov.in/upload/uploadfiles/files/SLB_FAQ06.pdf
+    download_url: null
+    publication_date: null
+    edition: null
+    licence:
+      name: UNKNOWN
+      url: null
+      evidence: not yet recorded
+      attribution: not yet recorded
+      exemptions_checked: false
+    retrieved_at: null
+    retrieved_by: null
+    original_filename: null
+    local_path: null
+    stated_bytes: null
+    relates_to_datasets: []
+    supersedes: []
+  - document_id: DOC-MV-ACT
+    title: The Motor Vehicles Act, 1988 (as amended)  # replace with the printed title and date
+    issuing_authority: Legislative Department, Ministry of Law and Justice, Government of India
+    publisher: India Code (Legislative Department)
+    document_type: act
+    domains: [roads]
+    source_class: official
+    resource_page: https://www.indiacode.nic.in/
+    download_url: null
+    publication_date: null
+    version_label: null  # e.g. "as amended up to <date>", from the document
+    licence:
+      name: UNKNOWN
+      url: null
+      evidence: not yet recorded
+      attribution: not yet recorded
+      exemptions_checked: false
+    retrieved_at: null
+    retrieved_by: null
+    original_filename: null
+    local_path: null
+    stated_bytes: null
+    relates_to_datasets: []
+    supersedes: []
+    known_limitations:
+      - Legal text is quoted with citations only; answers are not legal advice.
+# No BWSSB document (tariff order, BWSSB Act 1964, consumption methodology) is catalogued yet.
+# Add an entry here once an official source is identified.

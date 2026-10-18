@@ -337,6 +337,8 @@ def test_composer_refuses_unvalidated_or_altered_packages():
 # --- architectural boundaries -------------------------------------------------------------
 
 ALLOWED = {
+    "catalog": {"catalog"},
+    "rag": {"catalog", "evidence", "rag"},
     "evidence": set(),
     "planner": {"catalog", "planner"},
     "respond": {"evidence", "respond"},

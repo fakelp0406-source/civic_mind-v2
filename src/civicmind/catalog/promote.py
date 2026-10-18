@@ -33,6 +33,31 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def copy_verified(source: Path, root: Path, rel_target: str, expected: str, ident: str) -> None:
+    """Copy ``source`` to ``root/rel_target`` byte-identically, never overwriting.
+
+    An existing target with the same bytes is left alone (idempotent); one with different
+    bytes raises ``PromotionRefused``. The copy goes to a ``.partial`` file, is hash-checked,
+    then renamed into place.
+    """
+    target = root / rel_target
+    if target.exists():
+        if _sha256(target) != expected:
+            raise PromotionRefused(ident, [f"{rel_target} exists with different bytes"])
+        return
+    target.parent.mkdir(parents=True, exist_ok=True)
+    partial = target.with_name(target.name + ".partial")
+    try:
+        with open(source, "rb") as src, open(partial, "xb") as dst:
+            for chunk in iter(lambda: src.read(1 << 16), b""):
+                dst.write(chunk)
+        if _sha256(partial) != expected:
+            raise PromotionRefused(ident, ["copy hash mismatch"])
+        os.replace(partial, target)
+    finally:
+        partial.unlink(missing_ok=True)
+
+
 def gate_reasons(manifest: Manifest) -> list[str]:
     """Every manifest-level reason promotion is not allowed (empty list = gate open)."""
     m = manifest
@@ -82,27 +107,10 @@ def promote(manifest: Manifest, root: str | Path) -> Manifest:
         raise PromotionRefused(manifest.dataset_id, ["source bytes differ from manifest"])
     domain = PurePosixPath(manifest.retrieval.local_path).parent.name
     rel_target = f"{RAW_DIR}/{domain}/{manifest.retrieval.original_filename}"
-    target = root / rel_target
-    if target.exists():
-        if _sha256(target) != expected:
-            raise PromotionRefused(
-                manifest.dataset_id, [f"{rel_target} exists with different bytes"]
-            )
-    else:
-        target.parent.mkdir(parents=True, exist_ok=True)
-        partial = target.with_name(target.name + ".partial")
-        try:
-            with open(source, "rb") as src, open(partial, "xb") as dst:
-                for chunk in iter(lambda: src.read(1 << 16), b""):
-                    dst.write(chunk)
-            if _sha256(partial) != expected:
-                raise PromotionRefused(manifest.dataset_id, ["copy hash mismatch"])
-            os.replace(partial, target)
-        finally:
-            partial.unlink(missing_ok=True)
+    copy_verified(source, root, rel_target, expected, manifest.dataset_id)
     data = manifest.model_dump(by_alias=True)
     data.update(status="promoted", promoted_to=rel_target)
     return Manifest.model_validate(data)
 
 
-__all__ = ["DOMAINS", "PromotionRefused", "gate_reasons", "promote"]
+__all__ = ["DOMAINS", "PromotionRefused", "copy_verified", "gate_reasons", "promote"]

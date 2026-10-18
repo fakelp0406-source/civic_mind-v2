@@ -1,73 +1,119 @@
 # Document intake, batch docs-01 (Milestone 05 pilot documents).
 #
-# Read by scripts/process_doc_batch.py. Holds only what a PERSON records; sizes, hashes, page
-# counts, extraction and screening are computed from the bytes by the processor.
+# Read by scripts/process_doc_batch.py. Holds only what is RECORDED about each document; sizes,
+# hashes, page counts, extraction and screening are computed from the bytes by the processor.
 #
-# Status of this file (2026-10-18): TEMPLATE. Entries were prefilled from
-# docs/discovery/civicmind_dataset_catalog.csv only (ids, catalogue titles, landing URLs).
-# Nothing has been downloaded or opened. Before running the processor on a document:
-#   1. Download the PDF by hand and save it UNCHANGED as
-#      data/external/verify_docs-01/docs/<water|roads>/<original file name>
-#      (tools never download documents or complete portal forms).
-#   2. Fill in: original_filename, local_path, retrieved_at (ISO 8601 with time zone),
-#      retrieved_by, download_url (exact URL used), stated_bytes (if the page states a size).
-#   3. Replace title / publication_date / edition with what is PRINTED on the document.
-#   4. Record licence evidence (where the reuse terms were read). An UNKNOWN licence blocks
-#      promotion.
-#   5. Set source_class to "secondary_mirror" if the copy did not come from the issuing
-#      authority's own site (e.g. data.opencity.in).
+# Status (2026-10-18):
+# - DOC-MORTH-RA2024, DOC-MORTH-RA2023, DOC-MORTH-RA2019: downloaded by the Claude Code session
+#   with the project owner's explicit approval in chat ("All three RAI reports", 2026-10-18),
+#   using bounded HTTPS requests (curl: HTTPS only, at most 3 redirects, 30 MiB cap, 300 s
+#   timeout, fail on HTTP errors) into the git-ignored data/external/verify_docs-01/docs/roads/.
+#   The official morth.nic.in PDF links returned a 40,934-byte HTML page instead of a PDF
+#   (HEAD checks, 2026-10-18), so the copies come from OpenCity (data.opencity.in), which names
+#   MoRTH as the source. They are recorded as secondary_mirror.
+# - Licence: the OpenCity catalogue (CKAN package_show, read 2026-10-18) states
+#   "Other (Public Domain)". That is the mirror's statement, not a licence notice read from
+#   MoRTH; the reviewer must confirm it is acceptable before approval.
+# - Titles, editions and dates below are as catalogued by OpenCity; replace them with what is
+#   printed on each document after reviewing the extracted first pages.
+# - DOC-SLB-HANDBOOK and DOC-MV-ACT remain planned: the catalogued MoHUA URLs returned 404 and
+#   no download of the MV Act was approved.
 # Then: python scripts/process_doc_batch.py docs-01
 batch: docs-01
 documents:
   - document_id: DOC-MORTH-RA2024
-    title: Road Accidents in India 2024  # as catalogued; replace with the printed title
+    title: Road Accidents in India 2024  # as catalogued by OpenCity
     issuing_authority: Ministry of Road Transport and Highways, Government of India
     publisher: Ministry of Road Transport and Highways (Transport Research Wing)
     document_type: statistical_report
     domains: [roads]
-    # Catalogue found only an OpenCity mirror; the official MoRTH URL is still to confirm.
     source_class: secondary_mirror
     resource_page: https://data.opencity.in/dataset/road-accidents-in-india-2024
-    download_url: null
+    download_url: https://data.opencity.in/dataset/33d29ab0-f9e8-4fc7-b404-c93c1ed8e1b8/resource/30af828c-3513-4c74-a919-8daa708f077d/download/road-accidents-in-india-2024.pdf
     publication_date: null
     edition: '2024'
     licence:
-      name: UNKNOWN
+      name: Other (Public Domain)
       url: null
-      evidence: not yet recorded
-      attribution: not yet recorded
+      evidence: >-
+        data.opencity.in CKAN catalogue, package road-accidents-in-india-2024, license_title,
+        read 2026-10-18 (mirror's statement; the MoRTH publication itself not checked)
+      attribution: >-
+        Ministry of Road Transport and Highways, Transport Research Wing, Road Accidents in
+        India 2024; copy obtained from OpenCity (data.opencity.in).
       exemptions_checked: false
-    retrieved_at: null
-    retrieved_by: null
-    original_filename: null
-    local_path: null
-    stated_bytes: null
+    retrieved_at: '2026-10-18T06:22:33Z'
+    retrieved_by: Claude Code session (download approved by the project owner in chat)
+    retrieval_method: bounded HTTPS GET (curl) of the OpenCity resource download URL
+    http_status: 200
+    content_type: application/pdf
+    original_filename: road-accidents-in-india-2024.pdf
+    local_path: data/external/verify_docs-01/docs/roads/road-accidents-in-india-2024.pdf
+    stated_bytes: 21376701  # OpenCity resource size
     relates_to_datasets: [ROAD-RA2024-A47, ROAD-RA2024-A1, ROAD-RA2024-A2, ROAD-RA2024-A49]
     supersedes: []
-  - document_id: DOC-MORTH-RA2019
-    title: Road Accidents in India 2019  # as catalogued; replace with the printed title
+  - document_id: DOC-MORTH-RA2023
+    title: Road Accidents in India 2023  # as catalogued by OpenCity
     issuing_authority: Ministry of Road Transport and Highways, Government of India
     publisher: Ministry of Road Transport and Highways (Transport Research Wing)
     document_type: statistical_report
     domains: [roads]
-    source_class: official
-    resource_page: https://morth.nic.in/sites/default/files/RA_Uploading.pdf
-    download_url: https://morth.nic.in/sites/default/files/RA_Uploading.pdf
+    source_class: secondary_mirror
+    resource_page: https://data.opencity.in/dataset/road-accidents-in-india-2023
+    download_url: https://data.opencity.in/dataset/6c8a27aa-a826-49a8-b017-9147621f8167/resource/bebd95bb-28c5-4acd-8e75-2f4a478f75fb/download/e9ea44b8-1609-455b-911b-3c4682c98092.pdf
+    publication_date: null
+    edition: '2023'
+    licence:
+      name: Other (Public Domain)
+      url: null
+      evidence: >-
+        data.opencity.in CKAN catalogue, package road-accidents-in-india-2023, license_title,
+        read 2026-10-18 (mirror's statement; the MoRTH publication itself not checked)
+      attribution: >-
+        Ministry of Road Transport and Highways, Transport Research Wing, Road Accidents in
+        India 2023; copy obtained from OpenCity (data.opencity.in).
+      exemptions_checked: false
+    retrieved_at: '2026-10-18T06:24:17Z'
+    retrieved_by: Claude Code session (download approved by the project owner in chat)
+    retrieval_method: bounded HTTPS GET (curl) of the OpenCity resource download URL
+    http_status: 200
+    content_type: application/pdf
+    original_filename: e9ea44b8-1609-455b-911b-3c4682c98092.pdf
+    local_path: data/external/verify_docs-01/docs/roads/e9ea44b8-1609-455b-911b-3c4682c98092.pdf
+    stated_bytes: 8596105  # OpenCity resource size
+    relates_to_datasets: [ROAD-RA2023-A47]
+    supersedes: []
+  - document_id: DOC-MORTH-RA2019
+    title: Road Accidents in India 2019  # as catalogued by OpenCity
+    issuing_authority: Ministry of Road Transport and Highways, Government of India
+    publisher: Ministry of Road Transport and Highways (Transport Research Wing)
+    document_type: statistical_report
+    domains: [roads]
+    source_class: secondary_mirror
+    resource_page: https://data.opencity.in/dataset/road-accidents-in-india
+    download_url: https://data.opencity.in/dataset/2bb0be26-f442-49e2-b565-a93450724636/resource/579581a2-f2ac-4fa8-8422-701b8dab2fab/download/2bcdbcac-8f5a-4da3-83df-3f78a95dbe0b.pdf
     publication_date: null
     edition: '2019'
     licence:
-      name: UNKNOWN
+      name: Other (Public Domain)
       url: null
-      evidence: not yet recorded
-      attribution: not yet recorded
+      evidence: >-
+        data.opencity.in CKAN catalogue, package road-accidents-in-india, license_title, read
+        2026-10-18 (mirror's statement; the MoRTH publication itself not checked)
+      attribution: >-
+        Ministry of Road Transport and Highways, Transport Research Wing, Road Accidents in
+        India 2019; copy obtained from OpenCity (data.opencity.in).
       exemptions_checked: false
-    retrieved_at: null
-    retrieved_by: null
-    original_filename: null
-    local_path: null
-    stated_bytes: null
+    retrieved_at: '2026-10-18T06:24:33Z'
+    retrieved_by: Claude Code session (download approved by the project owner in chat)
+    retrieval_method: bounded HTTPS GET (curl) of the OpenCity resource download URL
+    http_status: 200
+    content_type: application/pdf
+    original_filename: 2bcdbcac-8f5a-4da3-83df-3f78a95dbe0b.pdf
+    local_path: data/external/verify_docs-01/docs/roads/2bcdbcac-8f5a-4da3-83df-3f78a95dbe0b.pdf
+    stated_bytes: 9694881  # OpenCity resource size
     relates_to_datasets: [ROAD-RA2019-A47]
-    # Not marked as superseded by the 2024 edition: each edition documents its own tables.
+    # Not superseded by later editions: each edition documents its own tables.
     supersedes: []
   - document_id: DOC-SLB-HANDBOOK
     title: Handbook on Service Level Benchmarks  # as catalogued; replace with the printed title
@@ -76,7 +122,7 @@ documents:
     document_type: handbook_manual
     domains: [water]
     source_class: official
-    # The catalogued URL is an FAQ on mohua.gov.in; the handbook's own URL is still to confirm.
+    # The catalogued URL returned HTTP 404 on 2026-10-18; no working official URL found.
     resource_page: https://mohua.gov.in/upload/uploadfiles/files/SLB_FAQ06.pdf
     download_url: null
     publication_date: null

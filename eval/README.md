@@ -19,6 +19,25 @@ Implemented so far:
   (`.venv-py313/Scripts/python.exe eval/coverage_metrics.py`); `tests/test_coverage_v1.py`
   asserts them.
 
+- `questions/rag.v1.yaml`: 65 labelled document-retrieval items (supported with gold pages
+  derived from key phrases, edition, absent, misleading, analytics and composite probes).
+  `rag_metrics.py` compares BM25, MiniLM dense retrieval and the deterministic pipeline, calibrates
+  thresholds on a calibration split and reports on a held-out split, plus a synthetic
+  prompt-injection check; results in `reports/rag.v1.results.{json,md}`, interpreted in
+  `docs/evaluation/M05_RAG_EVALUATION.md`. `tests/test_rag_eval.py` checks the scoring functions
+  and re-derives the labels from the corpus.
+
+- `api_metrics.py`: stage 2F, the router through `POST /api/v1/query`. Three separate
+  measurements: deterministic regression (`coverage.v1`, `pipeline.v1` and the rag.v1
+  analytics items against the deterministic-only API), the frozen rag.v1 labels scored from
+  HTTP responses and compared item by item with the frozen stage 2D results, and citation
+  leakage, plus machine-dependent cold-start and warm latency. Results in
+  `reports/api.v1.results.{json,md}`; it never writes the rag.v1 or route.v1 reports.
+
+- `route_metrics.py`: evaluates the stage 2D router on the same frozen labels and split
+  (thresholds not re-tuned; gate chosen on the calibration split), writing
+  `reports/route.v1.results.{json,md}`, interpreted in `docs/evaluation/M05_ROUTING_EVALUATION.md`.
+
 Planned contents:
 
 - `questions.v1.jsonl`: a versioned question set. Each item records the expected tool(s),

@@ -5,9 +5,10 @@ answers questions **only from validated, hash-pinned official data**. Every answ
 dataset, SHA-256, metric, unit, period, method and caveats. When the data cannot support a
 question, it refuses with a stable code and a reason instead of guessing.
 
-> **Status: v0.0.1, a deterministic water + traffic slice with a local HTTP API.** No
-> language model, retrieval (RAG), knowledge graph or website exists yet. The API is a
-> development interface (no authentication or rate limiting), not a production deployment.
+> **Status: v0.0.1, a deterministic water + traffic slice with a local HTTP API and
+> extractive, page-cited answers from two approved MoRTH reports.** No language model,
+> knowledge graph or website exists. The API is a development interface (no authentication
+> or rate limiting), not a production deployment.
 > Nothing here is an autonomous action system, a forecaster or a Digital Twin.
 
 ## What works today
@@ -19,18 +20,28 @@ question, it refuses with a stable code and a reason instead of guessing.
 | Ingestion | Fail-closed re-verification of every file before use; `trusted` and (only if a review permits it) `exploratory` modes | `catalog/ingest.py` |
 | Analytics | Water city totals, rankings of published rows (with flags against other months), two-month change; MoRTH city count with share of the Total row, top cities | `src/civicmind/analytics` |
 | Query pipeline | A deterministic parser producing a typed `QuerySpec`, a feasibility check, an allowlisted dispatcher, evidence validation and a templated answer | `planner`, `orchestrator`, `evidence`, `respond` |
-| HTTP API | FastAPI app factory: `GET /health`, `GET /api/v1/ready`, `POST /api/v1/query` over the same pipeline; typed responses, request ids, safe errors | `src/civicmind/api` |
+| HTTP API | FastAPI app factory: `GET /health`, `GET /api/v1/ready`, `POST /api/v1/query` over the same pipeline; typed responses, request ids, safe errors; document answers through the router after the pipeline refuses (additive `route` and `citations` fields) | `src/civicmind/api` |
 | Evaluation | 25 golden analytics questions (re-derived by an independent standard-library script); 55 end-to-end pipeline questions | `eval/`, `tests/` |
 
-**Document catalogue (Milestone 05, stage 1):** official PDFs go through the same kind of
-person-gated workflow as datasets: intake, SHA-256 integrity, page-text extraction with page
-numbers (pypdf, no OCR), screening for AI-directed text, personal-data patterns and non-English
-pages, a review bound to the file's hash, and a promotion gate to `data/docs/`. No document has
-been acquired yet, and nothing retrieves or cites documents. See
-[docs/DOCUMENT_MANIFEST_SPEC.md](docs/DOCUMENT_MANIFEST_SPEC.md) and the approved design
+**Documents and retrieval (Milestone 05, stages 1-2C):** official PDFs go through a
+person-gated workflow: intake, one verified read that yields the SHA-256 and the page text
+(pypdf, no OCR), screening, a review bound to both the PDF hash and the extracted-text hash, and
+a promotion gate. Batch `docs-01`: MoRTH *Road Accidents in India* 2023 and 2019 are approved
+(OpenCity mirror copies, with caveats); 2024 is quarantined (incomplete text layer, mirror
+provenance). A retrieval layer indexes approved documents only (BM25 via SQLite FTS5 and
+MiniLM ONNX vectors) and returns verbatim, page-cited passages or abstains. A small labelled evaluation (65 items) calibrated its thresholds and
+compared the methods ([docs/evaluation/M05_RAG_EVALUATION.md](docs/evaluation/M05_RAG_EVALUATION.md)).
+A routing layer with edition and currency guards (deterministic first, documents only for
+definition, methodology or report-attributed questions) is evaluated and serves the API
+after the deterministic pipeline, BM25 gate only ([docs/ROUTING.md](docs/ROUTING.md),
+[eval/reports/api.v1.results.md](eval/reports/api.v1.results.md)). Coverage is deliberately
+low: on the 65-item labelled set, 7 of 38 document questions are answered with a correct page
+citation and every expected refusal is refused. See
+[docs/RAG_RETRIEVAL.md](docs/RAG_RETRIEVAL.md),
+[docs/DOCUMENT_MANIFEST_SPEC.md](docs/DOCUMENT_MANIFEST_SPEC.md) and
 [docs/design/M05_RAG_DESIGN.md](docs/design/M05_RAG_DESIGN.md).
 
-Planned, **not implemented**: retrieval and cited answers over approved documents (RAG), a source-supported knowledge graph,
+Planned, **not implemented**: a source-supported knowledge graph,
 optional LLM phrasing behind a claim verifier, and a React website (see
 [docs/architecture.md](docs/architecture.md)).
 
@@ -98,10 +109,10 @@ Python 3.11+ is declared; development and testing use **Python 3.13.15** only.
 
 ```bash
 py -3.13 -m venv .venv-py313
-.venv-py313/Scripts/python.exe -m pip install -e ".[api,dev,rag]" -c constraints-py313.txt
+.venv-py313/Scripts/python.exe -m pip install -e ".[api,dev,rag,rag-embed]" -c constraints-py313.txt
 ```
 
-`constraints-py313.txt` pins the exact versions resolved on Windows / Python 3.13 (32
+`constraints-py313.txt` pins the exact versions resolved on Windows / Python 3.13 (44
 packages). On another platform, regenerate it rather than reusing it. No credentials or API
 keys are needed.
 
@@ -115,6 +126,7 @@ keys are needed.
 .venv-py313/Scripts/python.exe scripts/process_batch_01.py
 .venv-py313/Scripts/python.exe scripts/ingest_manifests.py
 .venv-py313/Scripts/python.exe scripts/process_doc_batch.py docs-01
+.venv-py313/Scripts/python.exe scripts/build_doc_index.py
 ```
 
 In order, these:
@@ -172,7 +184,8 @@ The parser uses a closed vocabulary, so unusual phrasings are refused rather tha
 ## HTTP API
 
 The API serves the same pipeline as `scripts/ask.py`; it adds no planner, analytics or data
-access of its own. FastAPI and Uvicorn come with the `api` extra (installed by the setup
+access of its own. Questions the pipeline refuses may then be answered from approved
+documents (see [Document answers](#document-answers)). FastAPI and Uvicorn come with the `api` extra (installed by the setup
 command above; no further dependencies).
 
 ```bash
@@ -184,7 +197,7 @@ Interactive documentation: `http://127.0.0.1:8000/docs` (OpenAPI at `/openapi.js
 | Endpoint | Purpose |
 |---|---|
 | `GET /health` | Liveness only: `{"status": "ok"}`. Says nothing about data. |
-| `GET /api/v1/ready` | Readiness: manifests readable, at least one promoted dataset, every promoted file present. Returns counts per family; `503` with a reason (`catalogue.empty`, `catalogue.unreadable`, `data.missing`) otherwise. File hashes are re-checked on every query, not here. |
+| `GET /api/v1/ready` | Readiness: manifests readable, at least one promoted dataset, every promoted file present. Returns counts per family; `503` with a reason (`catalogue.empty`, `catalogue.unreadable`, `data.missing`) otherwise. File hashes are re-checked on every query, not here. Also reports `retrieval` (`ready`, or `unavailable` with `rag.index_unavailable` / `rag.index_stale` / `rag.corpus_integrity`, or `disabled`), which never changes `status`. |
 | `POST /api/v1/query` | Body `{"question": "..."}` only (whitespace trimmed, 1–1000 characters, no other fields; the parser's own 400-character limit still applies). A blank or whitespace-only question is rejected as invalid input (`422 request.invalid`); the CLI and pipeline keep their own `query.empty` refusal for it. |
 
 Response (`status` is `answered` or `refused`):
@@ -233,7 +246,61 @@ records the request id, path, status, outcome code and duration, never the quest
 Exception text, tracebacks and file paths are never returned. Only **trusted** data reaches
 answers; exploratory data (January 2026) is not reachable through the API.
 
-Run the API tests: `.venv-py313/Scripts/python.exe -m pytest -p no:cacheprovider -q tests/test_api.py`.
+### Document answers
+
+When the pipeline refuses a definition, methodology or report-attributed question about roads,
+the router may answer it from the approved MoRTH 2019 and 2023 reports (RA2024 is
+quarantined). Such a response adds two fields; every other response is exactly as before.
+A refusal that reports a server-side failure (HTTP 503 or 500: damaged or invalid dataset
+files such as `integrity.hash_mismatch`, `file.missing` or `csv.malformed`, `evidence.invalid`,
+`pipeline.internal_error`) is never answered from documents: it is returned exactly as the
+deterministic API returns it, without `route` or citations.
+
+```json
+{
+  "status": "answered",
+  "question": "What is the Integrated Road Accidents (IRAD) project in the 2019 report?",
+  "answer_text": "Relevant passages from approved documents:
+[1] Road Accidents in India 2019 (2019), page 21: \"… (MoRTH) has formulated the Integrated Road Accidents (IRAD) Project under World Bank Assistance.\"",
+  "refusal": null,
+  "result": null,
+  "caveats": ["Quoted document text, not a CivicMind calculation; check the cited page.", "Copy obtained from the OpenCity mirror (data.opencity.in), not from MoRTH directly.", "Publication date not verified.", "…"],
+  "evidence": [],
+  "route": {"kind": "documents", "code": null, "gate": "bm25", "index_id": "f10ba588d120b144", "editions": ["2019"], "parts": [], "trace": ["documents", "retrieve:bm25"], "reason": null},
+  "citations": [{"n": 1, "document_id": "DOC-MORTH-RA2019", "edition": "2019", "page": 21, "source_class": "secondary_mirror", "publication_date": null, "chunk_id": "DOC-MORTH-RA2019:p21:c6", "chunk_sha256": "1fcbd3e1…", "document_sha256": "b656c762…", "extraction_sha256": "67109e87…", "score": 21.775342, "quote": "…", "…": "…"}]
+}
+```
+
+A refusal keeps the pipeline's `refusal.code` (and `answer_text`); `route.code` and
+`route.reason` say why documents could not answer either. Show `route.reason` when present:
+
+```json
+{"status": "refused", "refusal": {"code": "query.out_of_scope", "stage": "planner", "reason": "…"},
+ "route": {"kind": "refused", "code": "rag.edition_unavailable", "reason": "No approved document covers 2024; later or other editions are never used in its place.", "…": "…"},
+ "citations": []}
+```
+
+| `route.code` | Meaning | HTTP |
+|---|---|---|
+| `rag.currency_unverifiable` | "latest", "current", "recent": the newest approved edition is not assumed current | 200 |
+| `rag.edition_unavailable` | the named year has no approved edition; another edition is never substituted | 200 |
+| `rag.no_eligible_documents` | no approved document for the domain (water, waste, census) | 200 |
+| `rag.no_evidence` / `rag.query_empty` | nothing relevant enough to cite (BM25 below the calibrated threshold) | 200 |
+| `route.mixed_unsupported` | a combined question where some part has no supported answer (`route.parts` lists each code) | 200 |
+| `rag.ineligible_evidence` | a passage failed the eligibility re-check | 200 |
+| `rag.index_unavailable` | no index built for the approved corpus | 200 |
+| `rag.index_stale` / `rag.corpus_integrity` | index or document bytes do not match their approval, or approvals changed since startup | 503 |
+| `pipeline.internal_error` | routing raised on a refused question; no document answer (a deterministic answer is kept unchanged) | 500 |
+
+**Local setup for documents.** PDFs, page files, model files and indexes are git-ignored and
+never fetched by the API. With the approved documents present (see
+[docs/RAG_RETRIEVAL.md](docs/RAG_RETRIEVAL.md)), build the index once:
+`.venv-py313/Scripts/python.exe scripts/build_doc_index.py`. The API verifies it at startup
+(about 3 s) and serves BM25 only; it needs no model at runtime. Without an index the API still
+runs: document questions refuse with `rag.index_unavailable`.
+`create_app(documents=False)` serves the deterministic pipeline alone.
+
+Run the API tests: `.venv-py313/Scripts/python.exe -m pytest -p no:cacheprovider -q tests/test_api.py tests/test_api_routing.py`.
 
 ## Known limitations
 
@@ -248,6 +315,11 @@ Run the API tests: `.venv-py313/Scripts/python.exe -m pytest -p no:cacheprovider
   never executed.
 - **The personal-data scan reads column names only,** not cell values.
 - **Tests are a fixed regression set,** not a measure of accuracy on real users' questions.
+
+- **Document answers are extractive and sparse:** verbatim passages only (no summarising),
+  BM25 at a threshold calibrated on 34 items, most document questions refused. The two
+  approved reports are OpenCity mirror copies with unverified publication dates and
+  licences. See the limitations in [docs/ROUTING.md](docs/ROUTING.md#http-api-stage-2f).
 
 ## Next milestone
 

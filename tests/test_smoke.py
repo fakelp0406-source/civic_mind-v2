@@ -13,6 +13,7 @@ SRC_DIR = Path(__file__).resolve().parents[1] / "src"
 #: Third-party stacks that must never be loaded merely by importing ``civicmind``.
 HEAVY_MODULES = (
     "pandas", "numpy", "fastapi", "pydantic", "yaml", "torch", "transformers", "pypdf",
+    "onnxruntime", "tokenizers", "sqlite3",
 )  # fmt: skip
 
 

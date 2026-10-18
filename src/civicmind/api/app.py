@@ -4,8 +4,10 @@ Run locally::
 
     python -m uvicorn civicmind.api.app:create_app --factory --host 127.0.0.1 --port 8000
 
-``create_app`` loads no data: manifests are read per request, and datasets are ingested only
-when a planned query needs them (exactly as the CLI does).
+``create_app`` loads no structured data: manifests are read per request, and datasets are
+ingested only when a planned query needs them (exactly as the CLI does). It does load and verify
+the approved-document index once (stage 2F, ``civicmind.api.retrieval``); it never builds or
+downloads one.
 """
 
 from __future__ import annotations
@@ -25,6 +27,7 @@ from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
 from civicmind import __version__
 from civicmind.api import errors
+from civicmind.api.retrieval import DocumentRetrieval
 from civicmind.api.routes import health_router, v1
 from civicmind.orchestrator.pipeline import ROOT, answer_question
 
@@ -137,11 +140,15 @@ def create_app(
     *,
     docs: bool = True,
     answer: Callable[..., object] = answer_question,
+    documents: bool = True,
+    router: object | None = None,
 ) -> FastAPI:
     """Build the API. ``root`` is the repository root holding ``data/manifests``.
 
     ``answer`` is the pipeline entry point; it is a parameter only so tests can inject
-    failures. Clients cannot choose it, the root, or any dataset.
+    failures. ``documents=False`` serves the deterministic pipeline alone; ``router`` is a
+    prebuilt, already verified ``Router`` (tests). Clients cannot choose any of these, the
+    root, or any dataset or document.
     """
     app = FastAPI(
         title="CivicMind AI",
@@ -153,6 +160,7 @@ def create_app(
     )
     app.state.root = Path(root)
     app.state.answer = answer
+    app.state.retrieval = DocumentRetrieval(root, answer, router=router, enabled=documents)
     app.add_exception_handler(RequestValidationError, errors.on_validation_error)
     app.add_exception_handler(StarletteHTTPException, errors.on_http_error)
     app.add_exception_handler(Exception, errors.on_unhandled)

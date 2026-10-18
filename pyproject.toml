@@ -44,6 +44,14 @@ api = [
 rag = [
     "pypdf>=6.0,<7",
 ]
+# Dense retrieval for the M05 comparison (stage 2C): ONNX Runtime on CPU and the Hugging Face
+# tokenizer for sentence-transformers/all-MiniLM-L6-v2 (Apache-2.0; model files are downloaded
+# separately and pinned by commit and SHA-256, see civicmind.rag.embed). Checked 2026-10-18:
+# onnxruntime 1.31.0 (MIT) and tokenizers 0.23.3, both with Windows CPython 3.13 wheels.
+rag-embed = [
+    "onnxruntime>=1.20,<2",
+    "tokenizers>=0.20,<1",
+]
 # Tooling. Checked: pytest 8.4.2 (>=3.9), ruff 0.17.1 (>=3.7), httpx 0.28.1 (>=3.8).
 # httpx is capped below 1.0 because only 1.0 pre-releases exist.
 dev = [

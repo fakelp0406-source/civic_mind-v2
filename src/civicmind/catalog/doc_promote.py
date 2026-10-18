@@ -2,19 +2,39 @@
 
 See docs/DOCUMENT_MANIFEST_SPEC.md. Only an ``approved`` document is a retrieval source, and a
 document becomes ``approved`` only here. ``promote_document`` never edits the source file and
-never overwrites a different file (it shares ``copy_verified`` with dataset promotion).
+never overwrites a different file.
+
+An approval must be current for the exact prepared artifact: the review binds the source
+SHA-256 *and* the SHA-256 of the extracted page file, and both are re-checked here against the
+files on disk. All reads and the copy go through handle-verified operations
+(``catalog.safe_fs``): the source must really be inside ``data/external/``, the page file inside
+``data/processed/rag/extracted/``, and the copy is created (never replaced) inside ``data/docs/``.
 """
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path, PurePosixPath
 
+from civicmind.catalog.doc_limits import DEFAULT_LIMITS, PreparationLimits
 from civicmind.catalog.documents import DocumentManifest, path_problem, resolves_within
-from civicmind.catalog.fingerprint import sha256_of
-from civicmind.catalog.promote import SOURCE_PREFIX, PromotionRefused, copy_verified
+from civicmind.catalog.promote import SOURCE_PREFIX, PromotionRefused
+from civicmind.catalog.safe_fs import (
+    TooLarge,
+    UnsafePath,
+    read_verified,
+    write_or_match_verified,
+)
 
 DOC_DOMAINS = frozenset({"water", "roads"})
 DOCS_DIR = "data/docs"
+EXTRACTED_DIR = "data/processed/rag/extracted"
+
+
+def page_file_limit(limits: PreparationLimits) -> int:
+    """Upper bound on a page file's size: UTF-8 text (<= 4 bytes a character, JSON-escaped)
+    plus per-page record overhead."""
+    return limits.max_text_chars * 6 + limits.max_pages * 1024
 
 
 def gate_reasons(manifest: DocumentManifest) -> list[str]:
@@ -31,6 +51,10 @@ def gate_reasons(manifest: DocumentManifest) -> list[str]:
         reasons.append("review was made for different bytes")
     if m.extraction is None or m.extraction.pages_with_text == 0:
         reasons.append("no extracted page text")
+    elif m.review is not None and (
+        not m.review.extraction_sha256 or m.review.extraction_sha256 != m.extraction.output_sha256
+    ):
+        reasons.append("review is not bound to the current extracted text")
     if m.error_codes():
         reasons.append(f"error findings: {sorted(m.error_codes())}")
     if m.same_bytes_as:
@@ -57,34 +81,51 @@ def gate_reasons(manifest: DocumentManifest) -> list[str]:
     return reasons
 
 
-def promote_document(manifest: DocumentManifest, root: str | Path) -> DocumentManifest:
+def promote_document(
+    manifest: DocumentManifest, root: str | Path, limits: PreparationLimits = DEFAULT_LIMITS
+) -> DocumentManifest:
     """Copy the document into data/docs/<domain>/ and return the approved manifest.
 
     Idempotent: if the target already holds identical bytes, nothing is written.
     Raises ``PromotionRefused`` if any gate condition fails or bytes differ anywhere.
     """
     root = Path(root)
+    ident = manifest.document_id
     reasons = gate_reasons(manifest)
     if reasons:
-        raise PromotionRefused(manifest.document_id, reasons)
+        raise PromotionRefused(ident, reasons)
     expected = manifest.integrity.sha256
-    source = root / manifest.retrieval.local_path
-    if not resolves_within(root, manifest.retrieval.local_path, "data/external"):
-        raise PromotionRefused(manifest.document_id, ["source resolves outside data/external/"])
-    if not source.is_file():
-        raise PromotionRefused(manifest.document_id, ["source file missing"])
-    if source.stat().st_size != manifest.integrity.bytes or sha256_of(source) != expected:
-        raise PromotionRefused(manifest.document_id, ["source bytes differ from manifest"])
-    domain = PurePosixPath(manifest.retrieval.local_path).parent.name
+    local = manifest.retrieval.local_path
+    if not resolves_within(root, local, "data/external"):
+        raise PromotionRefused(ident, ["source resolves outside data/external/"])
+    if not (root / local).is_file():
+        raise PromotionRefused(ident, ["source file missing"])
+    try:
+        data = read_verified(root, local, ("data/external",), limits.max_bytes)
+        page_rel = manifest.extraction.output_path or ""
+        pages = read_verified(root, page_rel, (EXTRACTED_DIR,), page_file_limit(limits))
+    except (UnsafePath, TooLarge, OSError) as exc:
+        raise PromotionRefused(ident, [f"verified read refused: {type(exc).__name__}"]) from None
+    if len(data) != manifest.integrity.bytes or hashlib.sha256(data).hexdigest() != expected:
+        raise PromotionRefused(ident, ["source bytes differ from manifest"])
+    if hashlib.sha256(pages).hexdigest() != manifest.extraction.output_sha256:
+        raise PromotionRefused(ident, ["extracted page file differs from the reviewed one"])
+    domain = PurePosixPath(local).parent.name
     rel_target = f"{DOCS_DIR}/{domain}/{manifest.retrieval.original_filename}"
     if not resolves_within(root, rel_target, DOCS_DIR):
-        raise PromotionRefused(
-            manifest.document_id, [f"{rel_target} resolves outside {DOCS_DIR}/"]
+        raise PromotionRefused(ident, [f"{rel_target} resolves outside {DOCS_DIR}/"])
+    try:
+        write_or_match_verified(root, rel_target, DOCS_DIR, data)
+    except UnsafePath as exc:
+        reason = (
+            f"{rel_target} exists with different bytes"
+            if "different bytes" in str(exc)
+            else f"{rel_target} resolves outside {DOCS_DIR}/"
         )
-    copy_verified(source, root, rel_target, expected, manifest.document_id)
+        raise PromotionRefused(ident, [reason]) from None
     data = manifest.model_dump()
     data.update(status="approved", promoted_to=rel_target)
     return DocumentManifest.model_validate(data)
 
 
-__all__ = ["DOCS_DIR", "DOC_DOMAINS", "gate_reasons", "promote_document"]
+__all__ = ["DOCS_DIR", "DOC_DOMAINS", "gate_reasons", "page_file_limit", "promote_document"]

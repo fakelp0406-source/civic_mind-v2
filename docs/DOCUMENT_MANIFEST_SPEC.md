@@ -75,15 +75,27 @@ current edition by default.
    a source outside `data/external/` or a target outside `data/docs/`; the orphan sweep never
    moves a file through a link. An entry without a file is
    `planned`, with `retrieval.method: not yet retrieved`.
-2. **Integrity** — size (against `stated_bytes` when given), SHA-256, `%PDF-` header, PDF
-   version, page count, encryption. Errors: `integrity.size_mismatch`, `pdf.not_pdf`,
-   `pdf.unreadable`, `pdf.encrypted` (a password is required). Encryption with an empty user
-   password (permissions only) is `pdf.permissions_restricted` (info).
+2. **Integrity** (stage 2: one verified read) — the file is read **once** through a handle
+   verified to be inside `data/external/` or `data/quarantine/` (`catalog.safe_fs`), bounded by
+   `PreparationLimits.max_bytes`. Size, SHA-256, `%PDF-` header, PDF version, page count,
+   encryption and the extracted text are all computed from that single byte sequence, so the
+   recorded hash always describes exactly the bytes whose text was extracted and screened.
+   Errors: `document.too_large` (not read beyond the limit), `integrity.size_mismatch`,
+   `pdf.not_pdf`, `pdf.unreadable`, `pdf.encrypted` (a password is required),
+   `pdf.too_many_pages`, `path.outside_intake`. Encryption with an empty user password
+   (permissions only) is `pdf.permissions_restricted` (info).
 3. **Extraction** — pypdf, page by page, with 1-based page numbers; only line endings are
    normalised. Pages with fewer than 20 non-space characters are `pages_without_text` (warning
    `extraction.no_text_pages`; never indexed or cited). No page with text → error
-   `extraction.empty`. No OCR. Output: `data/processed/rag/extracted/<id>/<sha12>.jsonl`
-   (git-ignored, deterministic, hash recorded).
+   `extraction.empty`. No OCR. More than `max_text_chars` characters is
+   `extraction.too_large`; more than `extract_seconds` (checked between pages) is
+   `extraction.timeout`; any failure leaves **no** extraction, never a partial one. Output:
+   `data/processed/rag/extracted/<id>/<sha16>-docprep-v2-pypdf-<version>.jsonl` (git-ignored,
+   deterministic). Each record carries the source SHA-256, the extractor version and the
+   preparation version (`docprep@v2`), so the file's own SHA-256
+   (`extraction.output_sha256`) identifies the exact text a reviewer reads. The file is created
+   through a verified handle and never overwritten: an existing page file with other bytes is an
+   error (evidence of tampering), not something to replace.
 4. **Screening** (pages with text; evidence for the reviewer, nothing is edited):
    `content.instruction_like` (text addressed to an AI system), `content.personal_data_suspected`
    (e-mail, mobile number, Aadhaar-like groups; **values never recorded**), `content.non_english`
@@ -100,6 +112,7 @@ current edition by default.
      DOC-MORTH-RA2024:
        decision: approve            # approve | quarantine | reject | withdraw
        sha256: <the SHA-256 reviewed>
+       extraction_sha256: <the page file reviewed>   # required for approve (stage 2)
        accepted_caveats: [source.secondary_mirror]
        excluded_pages: [1, 2]       # never indexed or cited
        add_limitations: []
@@ -109,19 +122,23 @@ current edition by default.
    Fails closed, leaving `human_review: pending` with a finding: other bytes (`review.stale`);
    approving a document that is not `validated` (`review.not_applicable`); a warning neither
    accepted nor confined to excluded pages (`review.incomplete`); excluded pages that do not
-   exist or that remove every page with text (`review.invalid_pages`). Approval resolves
+   exist or that remove every page with text (`review.invalid_pages`); an approval without
+   `extraction_sha256` (`review.extraction_unbound`) or for a different page file, for example
+   after an extractor or preparation-version change (`review.stale_extraction`). Approval resolves
    sensitivity to `public` only when every personal-data match was accepted or excluded.
 7. **Promotion gate** (`catalog.doc_promote`) — all must hold: `validated`; an `approve` review
-   bound to the same SHA-256; integrity passed; page text extracted; no error findings; not a
-   duplicate; licence known; `sensitivity: public` and no personal data; a relative source path
-   without `..`, under `data/external/…/docs/<domain>/` with the domain in `domains`; a plain `.pdf` file name; size
-   and SHA-256 re-checked just before copying. The copy goes through a `.partial` file, is
-   hash-verified, and is never written over a different file. Result: `status: approved`,
+   bound to the same SHA-256 **and** to the current page file (`extraction_sha256`); integrity
+   passed; page text extracted; no error findings; not a duplicate; licence known;
+   `sensitivity: public` and no personal data; a relative source path without `..`, under
+   `data/external/…/docs/<domain>/` with the domain in `domains`; a plain `.pdf` file name.
+   Just before copying, the source and the page file are re-read through verified handles and
+   re-hashed. The copy is created through a verified handle inside `data/docs/` and never
+   replaces a different file. Result: `status: approved`,
    `promoted_to: data/docs/<domain>/<file>`.
 8. **Quarantine, withdrawal and stale copies** — `quarantine` moves the received file to
    `data/quarantine/<batch>/docs/`. `data/docs/` holds only approved documents: whenever a
    document of the batch is not approved after the run (quarantined, rejected, withdrawn, or its
-   bytes changed so its review is stale), an existing promoted copy is moved to
+   bytes or text changed so its review is stale), an existing promoted copy is moved to
    `data/quarantine/<batch>/docs/promoted/`, unless another batch's approved manifest claims that
    path. A withdrawn manifest is kept as a tombstone. Files are moved, never deleted or
    overwritten; a name collision in the quarantine folder stops the run for a person to resolve.
@@ -136,38 +153,53 @@ same publication is re-issued) and its own review; the older one records the rel
 will rebuild from approved manifests only and refuse to serve when the index no longer matches
 them.
 
-## 6. Residual risks (security review, 2026-10-18)
+## 6. Limits (`catalog.doc_limits.PreparationLimits`)
+
+| Limit | Default | Environment variable | Exceeded |
+|---|---|---|---|
+| file size | 50 MiB | `CIVICMIND_DOC_MAX_BYTES` | `document.too_large` |
+| pages | 2,000 | `CIVICMIND_DOC_MAX_PAGES` | `pdf.too_many_pages` |
+| extracted characters | 20,000,000 | `CIVICMIND_DOC_MAX_TEXT_CHARS` | `extraction.too_large` |
+| extraction time (s) | 300 | `CIVICMIND_DOC_EXTRACT_SECONDS` | `extraction.timeout` |
+| documents per batch | 50 | `CIVICMIND_DOC_MAX_BATCH` | the run stops before writing |
+
+A value that is not a positive integer stops the run (`ValueError`); there is no silent default.
+The time limit is cooperative (checked between pages), not a hard kill.
+
+## 7. Residual risks (stage 2 security review, 2026-10-18)
 
 The document catalogue is a local, single-operator tool: whoever can write to `data/external/`,
 `data/docs/` or the intake and decision files can already change what is reviewed. Within that
-threat model these limits remain and are accepted for stage 1:
+threat model:
 
-- **Time-of-check / time-of-use.** Paths are validated (lexically, then after resolving links)
-  immediately before each read, copy, move or write, but a process that swaps a directory for a
-  link *between* the check and the operation is not prevented. What such a swap could still do:
-  - *Source read* (build or promotion): read a file outside the intake folders. Promotion
-    re-hashes the source and the `.partial` copy against the reviewed SHA-256, so only bytes
-    identical to the reviewed ones can ever be copied into `data/docs/`.
-  - *Promotion copy*: write the `.partial` file and the final copy into the directory the link
-    points to, outside `data/docs/`.
-  - *Extraction output*: write the page file outside `data/processed/rag/extracted/`.
-  - *Orphan sweep or quarantine move*: `os.rename` a file from the linked location into
-    `data/quarantine/` (a move, never a delete or an overwrite).
+**Closed in stage 2**
 
-  Hardening, if the tool ever runs alongside untrusted local users: open the file or directory
-  first and verify the opened handle's final path (`GetFinalPathNameByHandle` on Windows,
-  `O_NOFOLLOW`/`openat` per path component on POSIX) before reading, writing or renaming.
-- **Hash and extraction read the file separately.** A file replaced between the two reads would
-  be extracted and screened from bytes other than the hashed ones. A reviewer approves the
-  recorded SHA-256, and promotion copies only bytes with that hash, but the screening findings
-  and page text the reviewer relied on could then describe different bytes. Smallest mitigation
-  (proposed for stage 2, before any document is indexed): read the file once into memory, then
-  hash, inspect and parse those same bytes (pypdf accepts a byte stream).
-- **Filesystem errors abort the run.** An unreadable file raises (for example
-  `PermissionError`) before any manifest or summary is written; extraction outputs already
-  written for earlier documents in the same batch stay in the git-ignored
-  `data/processed/rag/extracted/`.
-- **Screening is pattern-based** and evidence for a reviewer, not a guarantee; matched personal
-  values are never recorded.
-- **Link tests** use symlinks where the OS allows them and Windows directory junctions
-  otherwise; on a platform with neither, those tests skip with a reason.
+- *Hash and extraction from different bytes*: one verified read; hash, inspection and text come
+  from the same byte sequence.
+- *Reads through a swapped link*: every read opens the file first and checks the handle's final
+  path (`GetFinalPathNameByHandleW`, `/proc/self/fd`, `F_GETPATH`); a handle outside the
+  permitted folder is refused even if the pre-check passed. `O_NOFOLLOW` is used where defined.
+- *Writes through a swapped link*: new files (page files, promoted copies) are created with
+  `O_EXCL`, the created handle is verified, and a file created outside the folder is removed and
+  the operation refused. Nothing is overwritten.
+- *Stale approvals*: approval binds the source SHA-256 and the page-file SHA-256; both are
+  re-checked from disk at promotion.
+
+**Remaining**
+
+- *Moves are detected, not prevented*: a rename by path cannot be bound to a handle with the
+  standard library. `move_verified` hashes the verified source first and re-reads the
+  destination through a verified handle afterwards; a swap during the rename raises
+  `UnsafePath`, but the rename itself has already happened. On POSIX, `rename` can replace a
+  destination that appears between the existence check and the rename.
+- *Directories*: `mkdir` for a new file's parent folders is pre-checked but not handle-verified;
+  a swap there could leave empty directories outside the folder (no file is ever written there).
+- *Unsupported platforms*: where a handle's final path cannot be determined, every verified
+  operation refuses (fail closed) rather than falling back.
+- *Dataset promotion* (`catalog.promote`) is unchanged and still uses the stage 1 path-based
+  copy.
+- *Filesystem errors abort the run*: an unreadable file raises before any manifest or summary
+  is written.
+- *Screening is pattern-based* and evidence for a reviewer, not a guarantee.
+- *Link tests* use symlinks where allowed and Windows junctions otherwise; on a platform with
+  neither, they skip with a reason.

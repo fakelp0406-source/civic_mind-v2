@@ -1,0 +1,1056 @@
+{
+  "deterministic_regression": {
+    "answered": 33,
+    "answered_identical": 33,
+    "mismatches": [],
+    "outcomes": {
+      "identical": 91,
+      "routed_refusal_compatible": 5
+    },
+    "questions": 96,
+    "routed_refusals": {
+      "coverage.v1:C15": {
+        "refusal_code": "query.period_missing",
+        "route_code": "rag.currency_unverifiable"
+      },
+      "coverage.v1:C26": {
+        "refusal_code": "query.unsupported_operation",
+        "route_code": "rag.edition_unavailable"
+      },
+      "coverage.v1:C32": {
+        "refusal_code": "query.period_missing",
+        "route_code": "rag.no_evidence"
+      },
+      "coverage.v1:C33": {
+        "refusal_code": "query.unrecognised_terms",
+        "route_code": "rag.no_eligible_documents"
+      },
+      "coverage.v1:C35": {
+        "refusal_code": "query.unrecognised_terms",
+        "route_code": "rag.no_eligible_documents"
+      }
+    }
+  },
+  "frozen_labels": {
+    "agreement_with_stage_2d": {
+      "different": [],
+      "items": 65,
+      "same": 65
+    },
+    "all": {
+      "abstain_items": 18,
+      "abstain_rate": 1.0,
+      "analytics_identical_rate": 1.0,
+      "analytics_items": 6,
+      "balanced_accuracy": 0.5921,
+      "evidence_supported_rate": 0.1842,
+      "supported_answered": 7,
+      "supported_items": 38,
+      "unsupported_answers": 0
+    },
+    "by_category": {
+      "absent": {
+        "codes": {
+          "modelled.not_trusted": 1,
+          "query.out_of_scope": 4,
+          "query.unit_unsupported": 1,
+          "rag.no_eligible_documents": 1,
+          "rag.no_evidence": 1
+        },
+        "items": 8,
+        "outcomes": {
+          "correct": 8
+        },
+        "routes": {
+          "refused": 8
+        }
+      },
+      "analytics": {
+        "codes": {},
+        "items": 6,
+        "outcomes": {
+          "correct": 6
+        },
+        "routes": {
+          "analytics": 6
+        }
+      },
+      "composite": {
+        "codes": {
+          "query.unit_unsupported": 1,
+          "route.mixed_unsupported": 2
+        },
+        "items": 3,
+        "outcomes": {
+          "unscored": 3
+        },
+        "routes": {
+          "refused": 3
+        }
+      },
+      "edition_absent": {
+        "codes": {
+          "query.causal": 1,
+          "query.metric_missing": 1,
+          "rag.edition_unavailable": 1
+        },
+        "items": 3,
+        "outcomes": {
+          "correct": 3
+        },
+        "routes": {
+          "refused": 3
+        }
+      },
+      "edition_latest": {
+        "codes": {
+          "query.period_missing": 1
+        },
+        "items": 1,
+        "outcomes": {
+          "correct": 1
+        },
+        "routes": {
+          "refused": 1
+        }
+      },
+      "misleading": {
+        "codes": {
+          "query.causal": 1,
+          "query.cross_domain": 1,
+          "query.metric_missing": 1,
+          "query.period_missing": 1,
+          "rag.no_evidence": 2
+        },
+        "items": 6,
+        "outcomes": {
+          "correct": 6
+        },
+        "routes": {
+          "refused": 6
+        }
+      },
+      "supported": {
+        "codes": {
+          "city.not_found": 1,
+          "query.causal": 8,
+          "query.metric_missing": 10,
+          "query.period_missing": 2,
+          "query.unrecognised_terms": 1,
+          "rag.no_evidence": 8,
+          "status.quarantined": 1
+        },
+        "items": 38,
+        "outcomes": {
+          "abstained": 31,
+          "correct": 7
+        },
+        "routes": {
+          "documents": 7,
+          "refused": 31
+        }
+      }
+    },
+    "calibration": {
+      "abstain_items": 10,
+      "abstain_rate": 1.0,
+      "analytics_identical_rate": 1.0,
+      "analytics_items": 3,
+      "balanced_accuracy": 0.6052,
+      "evidence_supported_rate": 0.2105,
+      "supported_answered": 4,
+      "supported_items": 19,
+      "unsupported_answers": 0
+    },
+    "per_item": {
+      "A01": {
+        "citations": [],
+        "code": "rag.no_eligible_documents",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "A02": {
+        "citations": [],
+        "code": "query.unit_unsupported",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "A03": {
+        "citations": [],
+        "code": "query.out_of_scope",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "A04": {
+        "citations": [],
+        "code": "query.out_of_scope",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "A05": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "A06": {
+        "citations": [],
+        "code": "query.out_of_scope",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "A07": {
+        "citations": [],
+        "code": "query.out_of_scope",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "A08": {
+        "citations": [],
+        "code": "modelled.not_trusted",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "C01": {
+        "citations": [],
+        "code": "route.mixed_unsupported",
+        "http": 200,
+        "outcome": "unscored",
+        "route": "refused",
+        "status": "refused"
+      },
+      "C02": {
+        "citations": [],
+        "code": "route.mixed_unsupported",
+        "http": 200,
+        "outcome": "unscored",
+        "route": "refused",
+        "status": "refused"
+      },
+      "C03": {
+        "citations": [],
+        "code": "query.unit_unsupported",
+        "http": 200,
+        "outcome": "unscored",
+        "route": "refused",
+        "status": "refused"
+      },
+      "E01": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "E02": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "E03": {
+        "citations": [],
+        "code": "rag.edition_unavailable",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "E04": {
+        "citations": [],
+        "code": "query.period_missing",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "M01": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "M02": {
+        "citations": [],
+        "code": "query.period_missing",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "M03": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "M04": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "M05": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "M06": {
+        "citations": [],
+        "code": "query.cross_domain",
+        "http": 200,
+        "outcome": "correct",
+        "route": "refused",
+        "status": "refused"
+      },
+      "R01": {
+        "citations": [],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "analytics",
+        "status": "answered"
+      },
+      "R02": {
+        "citations": [],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "analytics",
+        "status": "answered"
+      },
+      "R03": {
+        "citations": [],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "analytics",
+        "status": "answered"
+      },
+      "R04": {
+        "citations": [],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "analytics",
+        "status": "answered"
+      },
+      "R05": {
+        "citations": [],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "analytics",
+        "status": "answered"
+      },
+      "R06": {
+        "citations": [],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "analytics",
+        "status": "answered"
+      },
+      "S01": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S02": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S03": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S04": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S05": {
+        "citations": [
+          "DOC-MORTH-RA2023:p22",
+          "DOC-MORTH-RA2023:p22",
+          "DOC-MORTH-RA2019:p20"
+        ],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "documents",
+        "status": "answered"
+      },
+      "S06": {
+        "citations": [
+          "DOC-MORTH-RA2023:p132",
+          "DOC-MORTH-RA2019:p20",
+          "DOC-MORTH-RA2023:p9"
+        ],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "documents",
+        "status": "answered"
+      },
+      "S07": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S08": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S09": {
+        "citations": [
+          "DOC-MORTH-RA2019:p21"
+        ],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "documents",
+        "status": "answered"
+      },
+      "S10": {
+        "citations": [
+          "DOC-MORTH-RA2023:p128",
+          "DOC-MORTH-RA2023:p22",
+          "DOC-MORTH-RA2019:p80"
+        ],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "documents",
+        "status": "answered"
+      },
+      "S11": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S12": {
+        "citations": [],
+        "code": "query.period_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S13": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S14": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S15": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S16": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S17": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S18": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S19": {
+        "citations": [],
+        "code": "city.not_found",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S20": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S21": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S22": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S23": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S24": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S25": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S26": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S27": {
+        "citations": [],
+        "code": "query.unrecognised_terms",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S28": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S29": {
+        "citations": [],
+        "code": "query.metric_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S30": {
+        "citations": [],
+        "code": "status.quarantined",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S31": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S32": {
+        "citations": [],
+        "code": "query.causal",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S33": {
+        "citations": [
+          "DOC-MORTH-RA2019:p88",
+          "DOC-MORTH-RA2019:p28",
+          "DOC-MORTH-RA2019:p91"
+        ],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "documents",
+        "status": "answered"
+      },
+      "S34": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S35": {
+        "citations": [
+          "DOC-MORTH-RA2019:p18",
+          "DOC-MORTH-RA2019:p82",
+          "DOC-MORTH-RA2019:p84"
+        ],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "documents",
+        "status": "answered"
+      },
+      "S36": {
+        "citations": [],
+        "code": "query.period_missing",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S37": {
+        "citations": [],
+        "code": "rag.no_evidence",
+        "http": 200,
+        "outcome": "abstained",
+        "route": "refused",
+        "status": "refused"
+      },
+      "S38": {
+        "citations": [
+          "DOC-MORTH-RA2019:p88",
+          "DOC-MORTH-RA2019:p88",
+          "DOC-MORTH-RA2019:p93"
+        ],
+        "code": null,
+        "http": 200,
+        "outcome": "correct",
+        "route": "documents",
+        "status": "answered"
+      }
+    },
+    "test": {
+      "abstain_items": 8,
+      "abstain_rate": 1.0,
+      "analytics_identical_rate": 1.0,
+      "analytics_items": 3,
+      "balanced_accuracy": 0.5789,
+      "evidence_supported_rate": 0.1579,
+      "supported_answered": 3,
+      "supported_items": 19,
+      "unsupported_answers": 0
+    }
+  },
+  "labels": {
+    "items": 65,
+    "path": "eval/questions/rag.v1.yaml",
+    "sha256": "3abd425762429179869390ef744f08a65eee4f8783c9234f6e87e93271d3e85f",
+    "split": {
+      "calibration": 34,
+      "test": 31
+    }
+  },
+  "leakage": {
+    "citations_checked": 19,
+    "items_with_ineligible_citations": {}
+  },
+  "performance": {
+    "cold_start_s": 2.78,
+    "generated_at_utc": "2026-10-18T12:14:29+00:00",
+    "machine": {
+      "cpu_count": 12,
+      "machine": "AMD64",
+      "platform": "Windows-11-10.0.26200-SP0"
+    },
+    "warm_ms_by_route": {
+      "analytics": {
+        "n": 39,
+        "p50": 1367.6,
+        "p95": 1827.9
+      },
+      "documents": {
+        "n": 7,
+        "p50": 692.2,
+        "p95": 739.3
+      },
+      "refused": {
+        "n": 114,
+        "p50": 598.3,
+        "p95": 734.4
+      },
+      "request_error": {
+        "n": 1,
+        "p50": 9.2,
+        "p95": 9.2
+      }
+    }
+  },
+  "reproducibility": {
+    "datasets": {
+      "manifests": 23,
+      "manifests_digest": "de5819468afc67b3f9288952e60391e74d004d1c830888da6c9203a078c71d25",
+      "promoted": [
+        {
+          "dataset_id": "ROAD-RA2019-A47",
+          "manifest_sha256": "2b9a2c77c0e13798189b10b980fcd6fef113b6924b403262b8194b3f01c0a93a",
+          "sha256": "40bed81dc88f3350b2bd13f3f3699d2d07e7b6afdfdf7e02a286e568897bedcc"
+        },
+        {
+          "dataset_id": "ROAD-RA2020-A47",
+          "manifest_sha256": "f3fdea171082d3d9678201ebf38951ab2deee87ab564a1c350f6bdfde8744fca",
+          "sha256": "279575421cb29ea90c08e5290355c00c170674ba4d43491e01780e08337684be"
+        },
+        {
+          "dataset_id": "ROAD-RA2021-A47",
+          "manifest_sha256": "bd9441d378c872f830d238c7658faf5fe9ba12c6574c3e430078c41368eef1f7",
+          "sha256": "8da252e5a6edb7db6ec4303730826c8da207665d22a82a333b92871891aa08a5"
+        },
+        {
+          "dataset_id": "ROAD-RA2022-A47",
+          "manifest_sha256": "9db0d44956c4ed608c9452299f2024bc75bf973549e83360e8988c7fc6eac75d",
+          "sha256": "d4300164f267d72cffdf60139c84f87c590eacd38195994dee4943f9a52877f0"
+        },
+        {
+          "dataset_id": "ROAD-RA2023-A47",
+          "manifest_sha256": "7d803e714aee5fe982c15b9307be66d0d6062f89404a7c02865103626536ef48",
+          "sha256": "aa3aece258183067f32fb29bdb34389854982472e6fa26f50c4ca61c68b56004"
+        },
+        {
+          "dataset_id": "ROAD-RA2024-A47",
+          "manifest_sha256": "816c22ce5f061df70496d47ea62c4188f37cc3a2d02a62512f989a7bc762cf8e",
+          "sha256": "702f75f332a273e9c09eb500a7d2f90c2ae71eec3bf06fe01d48a6fc56bd37e9"
+        },
+        {
+          "dataset_id": "WATER-BWSSB-2025-07",
+          "manifest_sha256": "1c7e3d0da0af795a5f720b2bee95bd2518e6640787339d1287411795a5c712b6",
+          "sha256": "0034b08291e591ca0d94a535db172eea408746c35c3681551e58b39d316698b3"
+        },
+        {
+          "dataset_id": "WATER-BWSSB-2025-08",
+          "manifest_sha256": "82dbb4d98ee12c005f02aee1695a8441efe6ddc25f337502c412393113b63486",
+          "sha256": "108639ce30129414e1dbd3d67b8403dcc83878bf2c2dc674b58d895f2adca974"
+        },
+        {
+          "dataset_id": "WATER-BWSSB-2025-09",
+          "manifest_sha256": "2c3db420dbf3e123c68ab23409399f95c1615754e47b385311d5818dacdd9ec5",
+          "sha256": "3f5ef8d0dc3ed08e2b593ba8a48ef584f913824a01eb80b34eb5584de1117b48"
+        },
+        {
+          "dataset_id": "WATER-BWSSB-2025-10",
+          "manifest_sha256": "4ed1f0885d6cb15c5db0ea0082bbd267f9fb75f39fe2f8c7430b1f42bc8ed5aa",
+          "sha256": "84e0b2ca373327ae7555078ee2b1a1af86cc88a96035a218f78ac8fb971e4da6"
+        },
+        {
+          "dataset_id": "WATER-BWSSB-2025-11",
+          "manifest_sha256": "3c844027abcfb1d3f1747490f29a39ac372f59a65f9e96b38d53b8e7c908be11",
+          "sha256": "d4ccfb00a970c13320b3a911fde69b959b92c83c8b0a17818523a90de5730012"
+        },
+        {
+          "dataset_id": "WATER-BWSSB-2025-12",
+          "manifest_sha256": "04c102b8e6dcfb5eb4faed4fb9ddcd58a5408ea79b2ff6809a8ee405d851859e",
+          "sha256": "deb04248fe61aaa1019bbbd51592d2aa8c2838d26af5c75bc7bc52768dd24476"
+        },
+        {
+          "dataset_id": "WATER-BWSSB-2026-02",
+          "manifest_sha256": "148a82ebd27c2aa68acfbff514d3c4de76a64340a3ace0d68ac099327e98a258",
+          "sha256": "a5ea2b8c60a0f54ebbe2b141222e48a0c5844496feafbd6fa74710f034166525"
+        },
+        {
+          "dataset_id": "WATER-BWSSB-2026-03",
+          "manifest_sha256": "b7ec9e6a4b60b43bc59731609d3924815f24b0276122de3e8466b9b491e5c45a",
+          "sha256": "798243f90aad7697d4c5fb9e76bc2ef32c1e91b75b9e987be52685c115d8bc3c"
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_id": "DOC-MORTH-RA2019",
+        "edition": "2019",
+        "eligible": true,
+        "excluded_pages": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "extraction_sha256": "67109e87e8704ab07aa837cd3c5be7ae22f5863164ae20480dd5938aea8eb105",
+        "manifest_sha256": "701e9b474df0f620ddd181f37be2a9f0108359fcdcc839a0965012527187e069",
+        "sha256": "b656c762ee4b5c6067b5e374d9786a70d645a1515e7039a79a52a3d6d0b09e3e",
+        "status": "approved"
+      },
+      {
+        "document_id": "DOC-MORTH-RA2023",
+        "edition": "2023",
+        "eligible": true,
+        "excluded_pages": [],
+        "extraction_sha256": "44330171085614c9002eb59141838e3fd43b98c626418b2c7232bdfa577389f6",
+        "manifest_sha256": "1d067187b6d6c7506bdbd55a7cb96d3748ecdce5ccab4be58a5f82d03610729b",
+        "sha256": "901505420d5b387052ac51e36b4bdce0274f6326b614f9ebcee6e7954d45b5b0",
+        "status": "approved"
+      },
+      {
+        "document_id": "DOC-MORTH-RA2024",
+        "edition": "2024",
+        "eligible": false,
+        "excluded_pages": [],
+        "extraction_sha256": "d6099c729c8cbcb6bace4e9dacd2f31f5b2c04cc14706efc5c963bcdb78fd866",
+        "manifest_sha256": "280863941faa0dc90c464eabded64816fbc4852d92c2c71bf26dfdd0d44799df",
+        "sha256": "b45b0e4d8e14a8d4653790f9080a01b9b95b79008359ba93dc12497064be69b2",
+        "status": "quarantined"
+      },
+      {
+        "document_id": "DOC-MV-ACT",
+        "edition": null,
+        "eligible": false,
+        "excluded_pages": [],
+        "extraction_sha256": null,
+        "manifest_sha256": "b76e2065a95ca75e1b7ffb666c7f5aefcc93648876d10b20f068db88c0c5bce3",
+        "sha256": null,
+        "status": "planned"
+      },
+      {
+        "document_id": "DOC-SLB-HANDBOOK",
+        "edition": null,
+        "eligible": false,
+        "excluded_pages": [],
+        "extraction_sha256": null,
+        "manifest_sha256": "0e7518f1c927c12e3db0ae972843bbf65d3398010be486c0a21ea9ce97a7c452",
+        "sha256": null,
+        "status": "planned"
+      }
+    ],
+    "index": {
+      "bm25": {
+        "engine": "sqlite3-fts5",
+        "sqlite_version": "3.50.4",
+        "tokenizer": "porter unicode61"
+      },
+      "chunker": {
+        "max_words": 160,
+        "min_words": 12,
+        "overlap_words": 40,
+        "version": "chunk@v1"
+      },
+      "chunks": 2394,
+      "corpus_digest": "662b88ce9529f21902ea0515f628168f1f9432e5e43c9efaa1208055dc6a58dd",
+      "embedding": {
+        "dim": 384,
+        "files": {
+          "onnx/model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+          "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+        },
+        "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "runtime": {
+          "onnxruntime": "1.31.0"
+        }
+      },
+      "files_sha256": {
+        "bm25.sqlite": "f5b888861b0d87e835955ad9d5bd01a5661172430ff5a04dc036c4626326f723",
+        "chunks.jsonl": "db84782372855972b5a6b7988b92b49e312cd5c83c5c5cb32cb5b29c7d0f53b3",
+        "dense.f32": "27ebd244605db079df0c25b0cb273e19a803834cbcc55a72642900e6dc73a74e"
+      },
+      "index_id": "f10ba588d120b144",
+      "index_version": "ragindex@v1",
+      "screen": "extracted-text pattern screen docscreen@v2 (regular expressions per page; matched personal values are not recorded)"
+    },
+    "inputs": {
+      "docs/acquisition/docs-01/DOCUMENT_REVIEW_DECISIONS.yaml": "354c3f3e4ce2b2bb7df7978b3410bd2674d8c62081d571e231bb92a2c8c4c2bd",
+      "eval/questions/coverage.v1.yaml": "083d0efd9f07d6f5cde225ae0c8bfa5f17e85504fa9da3d729bea0708d9bb236",
+      "eval/questions/pipeline.v1.yaml": "b0854af4b84f9f8c0898703bedaabedfb8a08d360746dc592e182dc49f4ceb0d",
+      "eval/questions/rag.v1.yaml": "3abd425762429179869390ef744f08a65eee4f8783c9234f6e87e93271d3e85f",
+      "eval/reports/rag.v1.results.json": "4c55a5a6bb4a9ac7e2fbb79792ff69383323dba178bd0535b8e4a64dea337e43",
+      "eval/reports/route.v1.results.json": "1f5ba8987478bb929d812330fef050e91e3f54706dcaa11f6fb434c7961a173d"
+    },
+    "retrieval": {
+      "bm25_min_score": 21.775342,
+      "candidate_pool": 50,
+      "dense_min_score": 0.638919,
+      "dense_used": false,
+      "gate": "bm25",
+      "k": 5,
+      "threshold": 21.775342
+    },
+    "runtime": {
+      "PyYAML": "6.0.3",
+      "civicmind": "0.0.1",
+      "fastapi": "0.143.3",
+      "httpx": "0.28.1",
+      "numpy": "2.5.4",
+      "onnxruntime": "1.31.0",
+      "pandas": "2.3.3",
+      "pydantic": "2.14.1",
+      "pypdf": "6.21.1",
+      "python": "3.13.15",
+      "python_implementation": "CPython",
+      "sqlite": "3.50.4",
+      "starlette": "1.8.0",
+      "tokenizers": "0.23.3"
+    },
+    "source_fingerprint": {
+      "file_sha256": {
+        "eval/api_metrics.py": "3444634f955486354c818d09b0a0455a98017bf72ba7ecaef7a181ed5f5c568b",
+        "eval/rag_metrics.py": "cb27205ffb61f054917111ed8ec5b1a3265f3e49028c32d8eec2a605eae34f14",
+        "eval/route_metrics.py": "ca23551e7a9f6fcf539761fd6d980a2b75d9cff4a1479c594bb33c11409a25be",
+        "src/civicmind/__init__.py": "b473c42a145019c4711069d924d81221592b7581be3329ec01c055109a8bd6ad",
+        "src/civicmind/analytics/__init__.py": "058f4b50f370e14e60be96bfeddcd8b9c4f53639b08cb70a4e0194493fd3b010",
+        "src/civicmind/analytics/result.py": "7a974d9c1cf99a5bb1941957d43a5a2511faf452afb8bbb3b7e1af8e85100d41",
+        "src/civicmind/analytics/roads.py": "aa30af4dd17d53cbda89c069a9ad475b90a516afc8572893e12a5299b2d896a2",
+        "src/civicmind/analytics/water.py": "27bc3f66675e3e207acb7acfb9c40edfbe0e9a51a484d1a8e4bc73f53b039192",
+        "src/civicmind/api/__init__.py": "9f04fb7aa736cdb263af9ca4702a693440106acdb1ba66b7b1d93047f0cfa060",
+        "src/civicmind/api/app.py": "b4556156bb5c22a3f61c7bd4c321b6068f84633be34765910ac310e507c1521d",
+        "src/civicmind/api/errors.py": "8327087dd3950f6da10027b94d0f93a0ffdb7c14796ff1f94126f02988fcbaee",
+        "src/civicmind/api/retrieval.py": "b03be94b0a8df673d109945f223b92cff49f6ca4a0f33d175d2e07b4a4301024",
+        "src/civicmind/api/routes.py": "94d3d5e6de73740e3015a870800261339d0243bbcb9b7b65b5295b1a7ded56e1",
+        "src/civicmind/api/schemas.py": "8803cf2ae83b534798ac5907f1f652bf922ef4fcd20be2096c95d9ed54761ce2",
+        "src/civicmind/catalog/__init__.py": "fcbc46c716964b6a3a8f96023a059f4f8d998ace01c3652490b2b489215b644a",
+        "src/civicmind/catalog/doc_limits.py": "7b8666fc106d88c71e4ffb5fa0a772a53e8283b5f77569fecee775661f34521e",
+        "src/civicmind/catalog/doc_promote.py": "0a5c34e2390259183f82a47cae972d41227383b252f04f13c67059b97cdc8338",
+        "src/civicmind/catalog/doc_review.py": "9c30a8764c867d79bdf60706f57f94a0c4f5992fc6ce83dd8d9aa4f615442e94",
+        "src/civicmind/catalog/documents.py": "ec578b5a01317f209f143b022ec9494a776db4a9a20492f8e7e1472a10594031",
+        "src/civicmind/catalog/fingerprint.py": "f7be6d54ea20b0def82bcb6ebca89dba658781c3727bc49bb1f821b220b4733d",
+        "src/civicmind/catalog/identifiers.py": "8cd8284b55013fc063e6779e9f38983651c7415f7e604a9ad23b0156d4a3b7fe",
+        "src/civicmind/catalog/ingest.py": "7ee7f19c5185154bbf659c73e11f1d9763b7eec97d33e41fd36c4939347c066d",
+        "src/civicmind/catalog/manifest.py": "e63e0b69d742396216ef6a4ef7102497df1ef3c6562b64ef711a1e203285046b",
+        "src/civicmind/catalog/profile.py": "4907ea9a18efbc5a15d589a0c04b3d7fc74e2bef94be4b58eb4ebdd54eff8769",
+        "src/civicmind/catalog/promote.py": "ad3247580966ec075a168baaea054b7bc0fa2e4c538b5e76d55cebbb94ca2c84",
+        "src/civicmind/catalog/quarantine.py": "8a37293c66be848ebcf976bc2c13e04a4ee47abc81081a866ac5767adf847347",
+        "src/civicmind/catalog/review.py": "ef6fa42e3100a9993ffd94ac53ca13acb87a339234eb0a538101ac3ebd1d9843",
+        "src/civicmind/catalog/safe_fs.py": "b93bbc7d6502a3412abb0f0bd2811d817c8b9ae3f6673b9f31d485eedfcc7227",
+        "src/civicmind/catalog/schemas.py": "32df203ac3bdf0a8e4287b633f665935fe258f389603932d85e7ce53d35bfd22",
+        "src/civicmind/catalog/sensitivity.py": "6b83d3a96dc70bddf55a27a21e87596683bed77c26a8b6cbb9cb5bea94cfcef8",
+        "src/civicmind/catalog/validators/__init__.py": "1173eec8bd2dfab3958c35679d2358af57408d8565b6d8ea5fbfbd3d4eb62e8c",
+        "src/civicmind/catalog/validators/base.py": "c4aa00710d8f46156aa787b4a9d265733729b191e48b6690a9a67a0984f9f0c3",
+        "src/civicmind/catalog/validators/bwssb_monthly.py": "60d36cfabee7e1abddcd6f7f706383619c07ccd65c01b819e7e063bf967dadf7",
+        "src/civicmind/catalog/validators/census_ward_profile.py": "d148cf4b3263f2ebef8adaabd211c90e62a625acfcc346662a9d7e4d757f35a6",
+        "src/civicmind/catalog/validators/morth_city_table.py": "32bc968fb7080462b5d9ad7422f1c596db5de994bdf47c9241601a42824c8e08",
+        "src/civicmind/catalog/validators/swm_gcp.py": "c9746fcc7025a201012882a6cecac5a5e8f024c9f9290c9aa7f76989c808cb8f",
+        "src/civicmind/evidence/__init__.py": "3a96c1207f8d26986137f61c49a9f72b17db4a93541475333a13d8002ff5b8a6",
+        "src/civicmind/evidence/model.py": "f4ef2250036f3f49dd39644564353225e4f878c8933dba62a8638c5f34f51e22",
+        "src/civicmind/graph/__init__.py": "38a82820f1d822e0ec5b3cc00ba8797e5ec25623fd29f34ba057edf2b83c2654",
+        "src/civicmind/orchestrator/__init__.py": "addec371bae28cb1d6c5d9b7a3403b4ba8c332e938b61b25a9a439c2e47ec458",
+        "src/civicmind/orchestrator/pipeline.py": "5954a9dbcd77dd0f1b203f97ea5829e953f4d0cfb6e2eedc2e0f417d479b1e88",
+        "src/civicmind/orchestrator/router.py": "cfbf8974e15e5ccf28a59e556835440a1f8d4bfcc87dc5ccab0b26a6e34d4e2a",
+        "src/civicmind/planner/__init__.py": "55d2b2898b5afa9671c9309e38ac4dc1316dda8410ac32f0d7a3279f334df733",
+        "src/civicmind/planner/catalog_index.py": "b6d45d9fe249cebd3cf7b1bf94356f9f7b4967eca298ed1b9386f3ec7a94d3bb",
+        "src/civicmind/planner/feasibility.py": "09c6612d8368ffb5c58f2f8620ea857f5eaea4daf2c4ee3a21fdb9d1810826a8",
+        "src/civicmind/planner/parser.py": "cbc34e6d96602e7962163b712eb11adb2789e7a69d86b14bb7d1d8a958751347",
+        "src/civicmind/planner/spec.py": "565b7eac1e66db5f32c6957cd9049dae4f139157e6cc5ddf1783e17343e04a8a",
+        "src/civicmind/rag/__init__.py": "9d8ceef803d7e31280b8d80f959298d8860ee130b7942ba8d65a6ac3fd71d7cd",
+        "src/civicmind/rag/chunk.py": "e4008f835c5c43094ef77c0eb99aecf24eba3c23bbcf8238a7671073f0a38ad4",
+        "src/civicmind/rag/corpus.py": "353e88f8e5ffbad25f13f712270989947dcc29a52924dcd42d1d7e98109f5abe",
+        "src/civicmind/rag/doc_intake.py": "933c612b6ab964e93393b9e3ef8cf21b631da01259bf173e8df9b4d81a867e34",
+        "src/civicmind/rag/embed.py": "1a20fa85bbb81416b646562d819c234182a2045f3c8a360995c4f3944473c564",
+        "src/civicmind/rag/extract.py": "b36cebb547f315d13b0315ab383802979b2a7926849189f3abbbd78c02212f14",
+        "src/civicmind/rag/index.py": "b001754ae0bc5aedef7a2a6c84d2eb674c924cebe0a350e608ab8a157eead135",
+        "src/civicmind/rag/retrieve.py": "c91f5eadb45afc0d524945b633a66d8ab189e3c224d1dd21b5d62a80277bb5f6",
+        "src/civicmind/rag/screen.py": "8e00d1faa7191de893945c94dbe239f894fc3c920edd56ad0f1142bde474158d",
+        "src/civicmind/respond/__init__.py": "cf4bc0af4d191aeae0407dd4e0e044245204a0a5fd3c2530cd8e0a31a3e5cdd3",
+        "src/civicmind/respond/compose.py": "3287ba2de52b3020a0dc892d27087d39455d0f375eace659e7c6791c04b05338"
+      },
+      "files": 58,
+      "method": "sha256 of '<sha256>  <path>' lines sorted by path; each file hashed with CRLF normalised to LF (the form Git stores)",
+      "scope": [
+        "src/civicmind/**/*.py",
+        "eval/api_metrics.py",
+        "eval/rag_metrics.py",
+        "eval/route_metrics.py"
+      ],
+      "sha256": "60aa83f38d376040a9d9f9d356187fb4dd4dcf6f3937d9c67b603f255526b424"
+    }
+  },
+  "retrieval": {
+    "chunks": 2394,
+    "code": null,
+    "documents": [
+      "DOC-MORTH-RA2019",
+      "DOC-MORTH-RA2023"
+    ],
+    "gate": "bm25",
+    "index_id": "f10ba588d120b144",
+    "status": "ready"
+  }
+}

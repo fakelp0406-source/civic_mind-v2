@@ -1,53 +1,65 @@
 [
   {
     "document_id": "DOC-MORTH-RA2024",
-    "status": "planned",
-    "human_review": "pending",
-    "sha256": null,
-    "pages": null,
-    "pages_with_text": null,
+    "status": "quarantined",
+    "human_review": "rejected",
+    "sha256": "b45b0e4d8e14a8d4653790f9080a01b9b95b79008359ba93dc12497064be69b2",
+    "extraction_sha256": "d6099c729c8cbcb6bace4e9dacd2f31f5b2c04cc14706efc5c963bcdb78fd866",
+    "pages": 266,
+    "pages_with_text": 127,
     "errors": [],
     "warnings": [
+      "content.personal_data_suspected",
+      "extraction.no_text_pages",
       "source.secondary_mirror"
     ],
     "gate": [
-      "status is 'planned', not 'validated'",
+      "status is 'quarantined', not 'validated'",
       "no approving person review",
-      "integrity not passed or hash missing",
-      "no extracted page text",
-      "licence unknown",
-      "not public, or contains personal data",
-      "source is not under data/external/: ''",
-      "original_filename 'not yet retrieved' is not a .pdf"
+      "not public, or contains personal data"
     ],
     "promoted_to": null
   },
   {
-    "document_id": "DOC-MORTH-RA2019",
-    "status": "planned",
-    "human_review": "pending",
-    "sha256": null,
-    "pages": null,
-    "pages_with_text": null,
+    "document_id": "DOC-MORTH-RA2023",
+    "status": "approved",
+    "human_review": "accepted",
+    "sha256": "901505420d5b387052ac51e36b4bdce0274f6326b614f9ebcee6e7954d45b5b0",
+    "extraction_sha256": "44330171085614c9002eb59141838e3fd43b98c626418b2c7232bdfa577389f6",
+    "pages": 272,
+    "pages_with_text": 256,
     "errors": [],
-    "warnings": [],
-    "gate": [
-      "status is 'planned', not 'validated'",
-      "no approving person review",
-      "integrity not passed or hash missing",
-      "no extracted page text",
-      "licence unknown",
-      "not public, or contains personal data",
-      "source is not under data/external/: ''",
-      "original_filename 'not yet retrieved' is not a .pdf"
+    "warnings": [
+      "content.personal_data_suspected",
+      "extraction.no_text_pages",
+      "source.secondary_mirror"
     ],
-    "promoted_to": null
+    "gate": [],
+    "promoted_to": "data/docs/roads/e9ea44b8-1609-455b-911b-3c4682c98092.pdf"
+  },
+  {
+    "document_id": "DOC-MORTH-RA2019",
+    "status": "approved",
+    "human_review": "accepted",
+    "sha256": "b656c762ee4b5c6067b5e374d9786a70d645a1515e7039a79a52a3d6d0b09e3e",
+    "extraction_sha256": "67109e87e8704ab07aa837cd3c5be7ae22f5863164ae20480dd5938aea8eb105",
+    "pages": 213,
+    "pages_with_text": 210,
+    "errors": [],
+    "warnings": [
+      "content.personal_data_suspected",
+      "extraction.no_text_pages",
+      "source.secondary_mirror"
+    ],
+    "gate": [],
+    "promoted_to": "data/docs/roads/2bcdbcac-8f5a-4da3-83df-3f78a95dbe0b.pdf"
   },
   {
     "document_id": "DOC-SLB-HANDBOOK",
     "status": "planned",
     "human_review": "pending",
     "sha256": null,
+    "extraction_sha256": null,
     "pages": null,
     "pages_with_text": null,
     "errors": [],
@@ -69,6 +81,7 @@
     "status": "planned",
     "human_review": "pending",
     "sha256": null,
+    "extraction_sha256": null,
     "pages": null,
     "pages_with_text": null,
     "errors": [],

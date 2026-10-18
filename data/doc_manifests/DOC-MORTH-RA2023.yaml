@@ -1,0 +1,166 @@
+document_id: DOC-MORTH-RA2023
+manifest_version: 1
+title: Road Accidents in India 2023
+issuing_authority: Ministry of Road Transport and Highways, Government of India
+publisher: Ministry of Road Transport and Highways (Transport Research Wing)
+document_type: statistical_report
+language: en
+domains:
+- roads
+source_class: secondary_mirror
+resource_page: https://data.opencity.in/dataset/road-accidents-in-india-2023
+download_url: https://data.opencity.in/dataset/6c8a27aa-a826-49a8-b017-9147621f8167/resource/bebd95bb-28c5-4acd-8e75-2f4a478f75fb/download/e9ea44b8-1609-455b-911b-3c4682c98092.pdf
+publication_date: null
+effective_from: null
+effective_to: null
+edition: '2023'
+version_label: null
+licence:
+  name: Other (Public Domain)
+  url: null
+  evidence: data.opencity.in CKAN catalogue, package road-accidents-in-india-2023, license_title, read
+    2026-10-18 (mirror's statement; the MoRTH publication itself not checked)
+  attribution: Ministry of Road Transport and Highways, Transport Research Wing, Road Accidents in India
+    2023; copy obtained from OpenCity (data.opencity.in).
+  exemptions_checked: false
+retrieval:
+  retrieved_at: '2026-10-18T06:24:17Z'
+  retrieved_by: Claude Code session (download approved by the project owner in chat)
+  method: bounded HTTPS GET (curl) of the OpenCity resource download URL
+  http_status: 200
+  content_type: application/pdf
+  original_filename: e9ea44b8-1609-455b-911b-3c4682c98092.pdf
+  local_path: data/external/verify_docs-01/docs/roads/e9ea44b8-1609-455b-911b-3c4682c98092.pdf
+  note: null
+integrity:
+  bytes: 8596105
+  stated_bytes: 8596105
+  size_matches_stated: true
+  sha256: 901505420d5b387052ac51e36b4bdce0274f6326b614f9ebcee6e7954d45b5b0
+  format: pdf
+  pdf_header: true
+  pdf_version: '1.6'
+  pages: 272
+  encrypted: false
+  producer: Corel PDF Engine Version 17.0.0.491
+  passed: true
+extraction:
+  extractor: pypdf
+  extractor_version: 6.21.1
+  pages: 272
+  pages_with_text: 256
+  pages_without_text:
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 24
+  - 43
+  - 72
+  - 87
+  - 98
+  - 116
+  - 122
+  - 127
+  - 131
+  - 138
+  characters: 367658
+  output_path: data/processed/rag/extracted/DOC-MORTH-RA2023/901505420d5b3870-docprep-v2-pypdf-6.21.1.jsonl
+  output_sha256: 44330171085614c9002eb59141838e3fd43b98c626418b2c7232bdfa577389f6
+  preparation_version: docprep@v2
+relates_to_datasets:
+- ROAD-RA2023-A47
+supersedes: []
+superseded_by: []
+same_bytes_as: null
+sensitivity: public
+contains_personal_data: false
+findings:
+- code: source.secondary_mirror
+  severity: warning
+  message: Copy obtained from a mirror, not the issuing authority; every answer will carry this caveat
+  details:
+    resource_page: https://data.opencity.in/dataset/road-accidents-in-india-2023
+- code: extraction.no_text_pages
+  severity: warning
+  message: Pages without extractable text are never indexed or cited
+  details:
+    pages:
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 24
+    - 43
+    - 72
+    - 87
+    - 98
+    - 116
+    - 122
+    - 127
+    - 131
+    - 138
+- code: content.personal_data_suspected
+  severity: warning
+  message: Patterns that may be personal data (values not recorded); accept as official contact details
+    or exclude the pages
+  details:
+    pages:
+    - 79
+    - 81
+    - 82
+    - 89
+    - 103
+    - 104
+    - 105
+    - 106
+    - 107
+    - 119
+    kinds:
+      aadhaar_like:
+      - 79
+      - 81
+      - 82
+      - 89
+      - 103
+      - 104
+      - 105
+      - 106
+      - 107
+      - 119
+- code: content.screen
+  severity: info
+  message: Extracted text screened
+  details:
+    method: extracted-text pattern screen docscreen@v2 (regular expressions per page; matched personal
+      values are not recorded)
+    pages_screened: 256
+human_review: accepted
+review:
+  decision: approve
+  reviewed_by: project owner
+  reviewed_on: '2026-10-18'
+  sha256: 901505420d5b387052ac51e36b4bdce0274f6326b614f9ebcee6e7954d45b5b0
+  extraction_sha256: 44330171085614c9002eb59141838e3fd43b98c626418b2c7232bdfa577389f6
+  accepted_caveats:
+  - source.secondary_mirror
+  - extraction.no_text_pages
+  - content.personal_data_suspected
+  excluded_pages: []
+  note: 'Approved with caveats by the project owner, subject to the validation and promotion gates. Accepted:
+    secondary-mirror provenance; the no-text-page limitation; the screening findings on pages 79, 81,
+    82, 89, 103-107 and 119, reviewed as numeric table cells and chart axes, not personal data. Publication
+    date and publisher licence remain unverified.'
+status: approved
+promoted_to: data/docs/roads/e9ea44b8-1609-455b-911b-3c4682c98092.pdf
+known_limitations:
+- Copy obtained from the OpenCity mirror (data.opencity.in), not from MoRTH directly.
+- Publication date not verified.
+- Licence as stated by the OpenCity catalogue ("Other (Public Domain)"); the publisher's licence is not
+  verified.
+- Pages without extractable text (3-8 front matter, and section dividers 24, 43, 72, 87, 98, 116, 122,
+  127, 131, 138) are never indexed or cited.

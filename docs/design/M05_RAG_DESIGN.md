@@ -1,6 +1,9 @@
 # Milestone 05 — Document Retrieval-Augmented Generation (design, not implemented)
 
-Status: **approved 2026-10-18** (extractive first, BM25 first). Stage 1 (document catalogue)
+Status: **approved 2026-10-18** (extractive first, BM25 first). Stage 2 (2026-10-18): secure
+preparation, the docs-01 corpus review and the retrieval layer are implemented on
+`feat/m05-stage2-secure-rag` (see docs/RAG_RETRIEVAL.md); dense MiniLM retrieval was added
+for comparison with BM25 at the owner's request. Stage 1 (document catalogue)
 is implemented on `feat/m05-stage1-document-catalogue`: see
 [docs/DOCUMENT_MANIFEST_SPEC.md](../DOCUMENT_MANIFEST_SPEC.md). Stages 2–6 are not implemented.
 The audit below describes `main` before stage 1.
@@ -366,6 +369,14 @@ index glob `data/manifests/*.yaml` and parse each file as a dataset `Manifest`
 ---
 
 ## 6. API integration design
+
+> **Superseded by the implementation (stage 2F, 2026-10-18).** This section is the
+> pre-implementation sketch. As built (see docs/ROUTING.md, "HTTP API (stage 2F)"):
+> `route` is an object present only when the router went past the deterministic pipeline,
+> not a string on every response; document answers keep `result: null` (no
+> `value_basis: "document"`); router codes are the stage 2D `rag.*` / `route.*` codes in
+> `route.code`, while `refusal.code` stays the deterministic code; "latest" questions
+> refuse (`rag.currency_unverifiable`) instead of assuming the newest edition.
 
 ### 6.1 Request — unchanged
 

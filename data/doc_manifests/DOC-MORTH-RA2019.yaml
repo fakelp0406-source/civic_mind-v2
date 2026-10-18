@@ -7,41 +7,130 @@ document_type: statistical_report
 language: en
 domains:
 - roads
-source_class: official
-resource_page: https://morth.nic.in/sites/default/files/RA_Uploading.pdf
-download_url: https://morth.nic.in/sites/default/files/RA_Uploading.pdf
+source_class: secondary_mirror
+resource_page: https://data.opencity.in/dataset/road-accidents-in-india
+download_url: https://data.opencity.in/dataset/2bb0be26-f442-49e2-b565-a93450724636/resource/579581a2-f2ac-4fa8-8422-701b8dab2fab/download/2bcdbcac-8f5a-4da3-83df-3f78a95dbe0b.pdf
 publication_date: null
 effective_from: null
 effective_to: null
 edition: '2019'
 version_label: null
 licence:
-  name: UNKNOWN
+  name: Other (Public Domain)
   url: null
-  evidence: not yet recorded
-  attribution: not yet recorded
+  evidence: data.opencity.in CKAN catalogue, package road-accidents-in-india, license_title, read 2026-10-18
+    (mirror's statement; the MoRTH publication itself not checked)
+  attribution: Ministry of Road Transport and Highways, Transport Research Wing, Road Accidents in India
+    2019; copy obtained from OpenCity (data.opencity.in).
   exemptions_checked: false
 retrieval:
-  retrieved_at: null
-  retrieved_by: null
-  method: not yet retrieved
-  http_status: null
-  content_type: null
-  original_filename: not yet retrieved
-  local_path: null
+  retrieved_at: '2026-10-18T06:24:33Z'
+  retrieved_by: Claude Code session (download approved by the project owner in chat)
+  method: bounded HTTPS GET (curl) of the OpenCity resource download URL
+  http_status: 200
+  content_type: application/pdf
+  original_filename: 2bcdbcac-8f5a-4da3-83df-3f78a95dbe0b.pdf
+  local_path: data/external/verify_docs-01/docs/roads/2bcdbcac-8f5a-4da3-83df-3f78a95dbe0b.pdf
   note: null
-integrity: null
-extraction: null
+integrity:
+  bytes: 9694881
+  stated_bytes: 9694881
+  size_matches_stated: true
+  sha256: b656c762ee4b5c6067b5e374d9786a70d645a1515e7039a79a52a3d6d0b09e3e
+  format: pdf
+  pdf_header: true
+  pdf_version: '1.6'
+  pages: 213
+  encrypted: false
+  producer: Corel PDF Engine Version 17.0.0.491
+  passed: true
+extraction:
+  extractor: pypdf
+  extractor_version: 6.21.1
+  pages: 213
+  pages_with_text: 210
+  pages_without_text:
+  - 1
+  - 94
+  - 213
+  characters: 696702
+  output_path: data/processed/rag/extracted/DOC-MORTH-RA2019/b656c762ee4b5c60-docprep-v2-pypdf-6.21.1.jsonl
+  output_sha256: 67109e87e8704ab07aa837cd3c5be7ae22f5863164ae20480dd5938aea8eb105
+  preparation_version: docprep@v2
 relates_to_datasets:
 - ROAD-RA2019-A47
 supersedes: []
 superseded_by: []
 same_bytes_as: null
-sensitivity: restricted
-contains_personal_data: true
-findings: []
-human_review: pending
-review: null
-status: planned
-promoted_to: null
-known_limitations: []
+sensitivity: public
+contains_personal_data: false
+findings:
+- code: source.secondary_mirror
+  severity: warning
+  message: Copy obtained from a mirror, not the issuing authority; every answer will carry this caveat
+  details:
+    resource_page: https://data.opencity.in/dataset/road-accidents-in-india
+- code: extraction.no_text_pages
+  severity: warning
+  message: Pages without extractable text are never indexed or cited
+  details:
+    pages:
+    - 1
+    - 94
+    - 213
+- code: content.personal_data_suspected
+  severity: warning
+  message: Patterns that may be personal data (values not recorded); accept as official contact details
+    or exclude the pages
+  details:
+    pages:
+    - 4
+    - 5
+    - 6
+    - 7
+    kinds:
+      email:
+      - 4
+      - 5
+      - 6
+      - 7
+- code: content.screen
+  severity: info
+  message: Extracted text screened
+  details:
+    method: extracted-text pattern screen docscreen@v2 (regular expressions per page; matched personal
+      values are not recorded)
+    pages_screened: 210
+human_review: accepted
+review:
+  decision: approve
+  reviewed_by: project owner
+  reviewed_on: '2026-10-18'
+  sha256: b656c762ee4b5c6067b5e374d9786a70d645a1515e7039a79a52a3d6d0b09e3e
+  extraction_sha256: 67109e87e8704ab07aa837cd3c5be7ae22f5863164ae20480dd5938aea8eb105
+  accepted_caveats:
+  - source.secondary_mirror
+  - extraction.no_text_pages
+  - content.personal_data_suspected
+  excluded_pages:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  note: 'Approved with caveats by the project owner, subject to the validation and promotion gates. Accepted:
+    secondary-mirror provenance; the no-text-page limitation; the screening findings on pages 4-7, reviewed
+    as official nic.in contact e-mail addresses. Legacy-font Hindi passages are kept out of retrieval
+    by excluding pages 2-7 (page-level exclusion is the only mechanism available). Publication date and
+    publisher licence remain unverified.'
+status: approved
+promoted_to: data/docs/roads/2bcdbcac-8f5a-4da3-83df-3f78a95dbe0b.pdf
+known_limitations:
+- Copy obtained from the OpenCity mirror (data.opencity.in), not from MoRTH directly.
+- Publication date not verified.
+- Licence as stated by the OpenCity catalogue ("Other (Public Domain)"); the publisher's licence is not
+  verified.
+- 'Pages 2-7 are excluded: they contain Hindi set in legacy (non-Unicode) fonts that extract as meaningless
+  Latin characters. The English foreword and preface on those pages are excluded with them. Pages without
+  extractable text (1, 94, 213) are never indexed.'

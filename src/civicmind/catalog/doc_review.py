@@ -6,7 +6,10 @@ never erases them. Each decision is bound to the SHA-256 it was made for. Fails 
 bytes (``review.stale``), an ``approve`` that leaves a warning uncovered
 (``review.incomplete``), an approval of a document that did not validate
 (``review.not_applicable``) or impossible page exclusions (``review.invalid_pages``) leave
-``human_review: pending`` and add a finding.
+``human_review: pending`` and add a finding. An ``approve`` must also name the SHA-256 of the
+extracted page file the reviewer read (``extraction_sha256``): missing ->
+``review.extraction_unbound``; different from the current page file (the extractor or the
+preparation changed) -> ``review.stale_extraction``.
 
 A warning is covered when its code is listed in ``accepted_caveats``, or when every page it
 names is in ``excluded_pages`` (excluded pages are never indexed or cited).
@@ -38,6 +41,9 @@ class _Strict(BaseModel):
 class DocumentDecisionEntry(_Strict):
     decision: DocumentDecision
     sha256: str
+    #: The page file the reviewer read (``extraction.output_sha256`` in the summary). Required
+    #: for ``approve``; a different value means the text changed since review.
+    extraction_sha256: str | None = None
     accepted_caveats: list[str] = Field(default_factory=list)
     excluded_pages: list[int] = Field(default_factory=list)
     add_limitations: list[str] = Field(default_factory=list)
@@ -128,6 +134,25 @@ def apply_document_review(
                 f"'approve' recorded but status is {manifest.status!r}; not applied",
                 {"status": manifest.status},
             )
+        current_text = manifest.extraction.output_sha256 if manifest.extraction else None
+        if d.extraction_sha256 is None:
+            return _with_finding(
+                manifest,
+                "review.extraction_unbound",
+                "'approve' must record extraction_sha256 (the page file reviewed); not applied",
+                {"current_extraction_sha256": current_text},
+            )
+        if d.extraction_sha256 != current_text:
+            return _with_finding(
+                manifest,
+                "review.stale_extraction",
+                "Recorded review was made for a different extracted text (extractor or "
+                "preparation changed); not applied",
+                {
+                    "reviewed_extraction_sha256": d.extraction_sha256,
+                    "current_extraction_sha256": current_text,
+                },
+            )
         problems = _page_problems(manifest, d.excluded_pages)
         if problems:
             return _with_finding(
@@ -157,6 +182,7 @@ def apply_document_review(
         reviewed_by=decisions.reviewed_by,
         reviewed_on=decisions.reviewed_on,
         sha256=d.sha256,
+        extraction_sha256=d.extraction_sha256,
         accepted_caveats=d.accepted_caveats,
         excluded_pages=sorted(d.excluded_pages),
         note=d.note,

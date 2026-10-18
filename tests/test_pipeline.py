@@ -342,7 +342,15 @@ ALLOWED = {
     "evidence": set(),
     "planner": {"catalog", "planner"},
     "respond": {"evidence", "respond"},
-    "orchestrator": {"planner", "analytics", "catalog", "evidence", "respond", "orchestrator"},
+    "orchestrator": {
+        "planner",
+        "analytics",
+        "catalog",
+        "evidence",
+        "respond",
+        "rag",
+        "orchestrator",
+    },
     "api": {"orchestrator", "respond", "catalog", "api"},
 }
 

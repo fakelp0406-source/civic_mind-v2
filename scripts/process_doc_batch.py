@@ -6,9 +6,15 @@ PDF was saved), builds one document manifest per entry, applies the person's dec
 what passes the document gate, and writes manifests to ``data/doc_manifests/`` plus a summary to
 ``docs/acquisition/<batch>/document_summary.json``.
 
-* Source bytes are never changed. A quarantined document is moved (``os.rename``) to
-  ``data/quarantine/<batch>/docs/``. An approved document is copied byte-identically to
-  ``data/docs/<domain>/``.
+* Source bytes are never changed. A quarantined document is moved to
+  ``data/quarantine/<batch>/docs/``; an approved document is copied byte-identically to
+  ``data/docs/<domain>/``. Reads, copies and moves go through ``catalog.safe_fs``: handles are
+  verified to lie inside their permitted folders, nothing is overwritten, and a move is checked
+  afterwards against the hash of the verified source.
+* Limits (``PreparationLimits``, configurable by environment variables) bound file size, pages,
+  extracted text, extraction time and the number of documents in a batch.
+* The summary lists, for each document, the source ``sha256`` and the ``extraction_sha256`` of
+  its page file: an ``approve`` decision must record both.
 * ``data/docs/`` holds only approved documents: a promoted copy left by a document of this batch
   that is no longer approved (quarantined, rejected, withdrawn, or its bytes changed so the review
   is stale) is moved to ``data/quarantine/<batch>/docs/promoted/``, unless an approved manifest
@@ -26,6 +32,7 @@ import argparse
 import json
 from pathlib import Path, PurePosixPath
 
+from civicmind.catalog.doc_limits import PreparationLimits
 from civicmind.catalog.doc_promote import gate_reasons, promote_document
 from civicmind.catalog.doc_review import apply_document_review, load_document_decisions
 from civicmind.catalog.documents import (
@@ -37,7 +44,7 @@ from civicmind.catalog.documents import (
     write_document_manifest,
 )
 from civicmind.catalog.promote import PromotionRefused
-from civicmind.catalog.quarantine import move_to_quarantine
+from civicmind.catalog.safe_fs import move_verified
 from civicmind.rag.doc_intake import build_document_manifest, finding, link_documents, load_intake
 from civicmind.rag.extract import PdfSupportMissing
 
@@ -82,6 +89,7 @@ def quarantine_orphans(
     quarantine: Path,
     manifests: list[DocumentManifest],
     others: list[DocumentManifest],
+    max_bytes: int = PreparationLimits().max_bytes,
 ) -> list[str]:
     """Move promoted copies of this batch's non-approved documents out of data/docs/.
 
@@ -98,12 +106,14 @@ def quarantine_orphans(
         if m.status == "approved" or rel is None or rel in claimed:
             continue
         if (root / rel).is_file() and resolves_within(root, rel, "data/docs"):
-            move_to_quarantine(root / rel, quarantine / "promoted")
+            target = (quarantine / "promoted" / PurePosixPath(rel).name).relative_to(root)
+            move_verified(root, rel, "data/docs", target.as_posix(), "data/quarantine", max_bytes)
             moved.append(rel)
     return moved
 
 
-def process(batch: str, root: Path = ROOT) -> list[dict]:
+def process(batch: str, root: Path = ROOT, limits: PreparationLimits | None = None) -> list[dict]:
+    limits = limits or PreparationLimits.from_env()
     reports = root / "docs/acquisition" / batch
     quarantine = root / "data/quarantine" / batch / "docs"
     intake = load_intake(reports / "DOCUMENT_INTAKE.yaml")
@@ -113,6 +123,10 @@ def process(batch: str, root: Path = ROOT) -> list[dict]:
     ids = {d.document_id for d in intake.documents}
     if len(ids) != len(intake.documents):
         raise SystemExit("duplicate document_id in the intake file")
+    if len(intake.documents) > limits.max_batch:
+        raise SystemExit(
+            f"the batch has {len(intake.documents)} documents; the limit is {limits.max_batch}"
+        )
     owners = other_batch_ids(root, batch)
     clashes = sorted(f"{i} (batch {owners[i]})" for i in ids if i in owners)
     if clashes:
@@ -120,7 +134,7 @@ def process(batch: str, root: Path = ROOT) -> list[dict]:
     existing = [m for m in read_document_manifests(root) if m.document_id not in ids]
 
     built = [
-        build_document_manifest(d, root, locate(root, quarantine, d.local_path))
+        build_document_manifest(d, root, locate(root, quarantine, d.local_path), limits)
         for d in intake.documents
     ]
     out_dir = root / DOC_MANIFEST_DIR
@@ -130,10 +144,19 @@ def process(batch: str, root: Path = ROOT) -> list[dict]:
         manifest = apply_document_review(manifest, decisions)
         source = locate(root, quarantine, manifest.retrieval.local_path)
         if manifest.status == "quarantined" and source is not None:
-            move_to_quarantine(source, quarantine)
+            if not source.is_relative_to(quarantine):  # not yet moved
+                target = (quarantine / source.name).relative_to(root).as_posix()
+                move_verified(
+                    root,
+                    manifest.retrieval.local_path,
+                    "data/external",
+                    target,
+                    "data/quarantine",
+                    limits.max_bytes,
+                )
         elif manifest.human_review == "accepted" and manifest.status == "validated":
             try:
-                manifest = promote_document(manifest, root)
+                manifest = promote_document(manifest, root, limits)
             except PromotionRefused as exc:
                 manifest = _with(
                     manifest,
@@ -148,7 +171,7 @@ def process(batch: str, root: Path = ROOT) -> list[dict]:
                     ],
                 )
         final.append(manifest)
-    for rel in quarantine_orphans(root, quarantine, final, existing):
+    for rel in quarantine_orphans(root, quarantine, final, existing, limits.max_bytes):
         print(f"moved {rel} to {(quarantine / 'promoted').relative_to(root).as_posix()}/")
     summary = []
     for manifest in final:
@@ -159,6 +182,9 @@ def process(batch: str, root: Path = ROOT) -> list[dict]:
                 "status": manifest.status,
                 "human_review": manifest.human_review,
                 "sha256": manifest.integrity.sha256 if manifest.integrity else None,
+                "extraction_sha256": manifest.extraction.output_sha256
+                if manifest.extraction
+                else None,
                 "pages": manifest.integrity.pages if manifest.integrity else None,
                 "pages_with_text": manifest.extraction.pages_with_text
                 if manifest.extraction
